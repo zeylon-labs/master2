@@ -13,6 +13,39 @@ Installer Python 3.10+ et l'extension Python de Microsoft. Ouvrir **ce dossier**
 VS Code puis `Ctrl+Maj+P` > `Python: Select Interpreter`.
 Les profils F5 sont fournis dans `.vscode/launch.json`.
 
+## Lancer tous les contrôles avec le BAT Windows
+
+Double-cliquer sur **lancer_tests_complets.bat**, ou saisir dans un terminal :
+
+```powershell
+.\lancer_tests_complets.bat
+```
+
+Le terminal reste ouvert à la fin. Le lanceur vérifie Python 3.10+, exécute les
+15 tests RSA et les 3 tests X.509, puis contrôle les démonstrations, le texte
+long, le texte vide, le refus d'un message trop long, le certificat archivé
+et la présence des rapports Word/PDF. Les journaux et le bilan JSON sont dans
+`resultats/tests_windows/`. Une erreur entraîne un code retour non nul.
+
+Si `cryptography` n'est pas disponible, le BAT crée un environnement isolé
+`.venv-tests` et y installe `requirements-certificat.txt`. Cette préparation
+demande Internet au premier lancement ; Python global n'est pas modifié.
+Les contrôles par défaut sont ensuite hors ligne et portent sur le certificat
+daté du rapport. Pour ajouter une nouvelle observation TLS actuelle :
+
+```powershell
+.\lancer_tests_complets.bat --certificat
+```
+
+Ce nouveau relevé est conservé à part dans `resultats/tests_windows/` et ne
+remplace pas la preuve citée dans le rapport. Un échec réseau fait échouer
+cette étape lorsqu'elle a été explicitement demandée.
+
+Les deux fichiers Python à rendre sont largement commentés : chaque fonction
+explique son rôle, les calculs et les conversions. Garder les deux fichiers
+ensemble lors du dépôt. La CI teste aussi le BAT sur un vrai runner Windows,
+dans un dossier dont le chemin contient des espaces.
+
 ```powershell
 python Walter_Arthur_main.py --test
 python Walter_Arthur_main.py --partie toutes --message "Bonjour Alice"

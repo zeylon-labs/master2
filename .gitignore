@@ -1,4 +1,6 @@
 __pycache__/
 *.py[cod]
 .venv/
+.venv-tests/
 TP_secu_1/resultats/ci_*.json
+TP_secu_1/resultats/tests_windows/

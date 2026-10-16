@@ -17,8 +17,17 @@ import unittest
 
 import Walter_Arthur_util as u
 
+# Ce fichier orchestre les expériences et affiche leurs résultats.
+# Les calculs demandés dans l'énoncé se trouvent dans Walter_Arthur_util.py.
+# L'alias u signifie simplement que u.na désigne la variable na de ce module.
+
 
 def partie1(message):
+    """Reproduire le scénario de base, puis préparer une sortie JSON lisible.
+
+    Les grands entiers affichés sont des résultats réels, pas des exemples codés
+    en dur. Le même message donne le même chiffré RSA brut dans cette partie.
+    """
     paquet = u.home_envoyer(message)
     texte, valide = u.home_recevoir(paquet)
     return {"message": message, "octets_utf8": len(message.encode("utf-8")),
@@ -31,11 +40,17 @@ def partie1(message):
 
 
 def partie2():
+    """Réunir l'exemple de trace, le CRT officiel et les mesures bonus.
+
+    137, 131, 11787 et 8363 viennent de l'exemple du support CRT du professeur.
+    asdict transforme les dataclasses en dictionnaires sérialisables en JSON.
+    """
     exemple = u.home_preparer_crt(137, 131, 11787)
     trace = u.home_mod_expnoent_trace(3, 13, 17)
     c = u.home_mod_expnoent(513, u.ea, u.na)
     traces_messages = []
     for m in [1, 42, 513, 123456789]:
+        # L'exposant privé est fixé : son poids de Hamming reste constant.
         t = u.home_mod_expnoent_trace(u.home_mod_expnoent(m, u.ea, u.na), u.da, u.na)
         traces_messages.append({"message": m, "resultat": t.resultat,
                                 "conditionnelles": t.multiplications_conditionnelles,
@@ -52,6 +67,11 @@ def partie2():
 
 
 def partie3(message):
+    """Démontrer le message long avec padding et comparaison CRT/direct.
+
+    Le bourrage est tiré au hasard à chaque appel : les chiffrés varient,
+    tandis que le texte retrouvé doit toujours rester identique.
+    """
     paquet = u.home_envoyer_blocs(message)
     texte, valide = u.home_recevoir_blocs(paquet)
     direct = u.home_recevoir_blocs(paquet, utiliser_crt=False)
@@ -66,6 +86,12 @@ def partie3(message):
 
 
 def main():
+    """Entrée du programme : lire les options, exécuter, afficher et sauvegarder.
+
+    --test charge les tests du dépôt ; --partie choisit l'expérience.
+    --message fournit le texte sans saisie ; --sortie conserve les résultats.
+    Une erreur de saisie donne un code retour non nul, détectable par le .bat.
+    """
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--partie", choices=["1", "2", "3", "toutes"], default="toutes")
     parser.add_argument("--message", help="Partie 1 limitée à 25 octets UTF-8")
@@ -73,6 +99,7 @@ def main():
     parser.add_argument("--test", action="store_true")
     args = parser.parse_args()
     if args.test:
+        # unittest découvre les fonctions de test et fournit un bilan effectif.
         dossier_tests = Path(__file__).parent / "tests"
         if not dossier_tests.is_dir():
             parser.error("Conserver le dossier tests pour exécuter --test.")
@@ -92,6 +119,7 @@ def main():
     except ValueError as erreur:
         parser.error(str(erreur))
     sortie = json.dumps(resultats, ensure_ascii=False, indent=2)
+    # ensure_ascii=False conserve les accents ; indent=2 rend le JSON lisible.
     print(sortie)
     if args.sortie:
         args.sortie.parent.mkdir(parents=True, exist_ok=True)
@@ -100,4 +128,5 @@ def main():
 
 
 if __name__ == "__main__":
+    # Exécuter main seulement si ce fichier est lancé, pas s'il est importé.
     sys.exit(main())

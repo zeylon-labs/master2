@@ -7,6 +7,29 @@ on:
 permissions:
   contents: read
 jobs:
+  tests-windows:
+    runs-on: windows-latest
+    env:
+      TP_SANS_PAUSE: '1'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Lancer le BAT depuis un chemin contenant des espaces
+        shell: pwsh
+        run: |
+          $destination = Join-Path $env:RUNNER_TEMP 'TP RSA test'
+          Copy-Item -Path TP_secu_1 -Destination $destination -Recurse
+          & "$destination\lancer_tests_complets.bat"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tests-complets-windows
+          path: ${{ runner.temp }}/TP RSA test/resultats/tests_windows/
+          if-no-files-found: error
   tests:
     runs-on: ubuntu-latest
     strategy:
