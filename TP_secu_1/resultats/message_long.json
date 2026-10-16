@@ -1,0 +1,28 @@
+{
+  "environnement": {
+    "python": "3.12.14",
+    "systeme": "Linux-6.18.44-x86_64-with-glibc2.39"
+  },
+  "partie3": {
+    "message": "Bonjour Alice ! Ce message dépasse vingt-cinq octets et contient des accents é et un emoji 😀.",
+    "octets_utf8": 98,
+    "k_octets": 26,
+    "j_max_octets": 13,
+    "ps_min_avec_j_max": 10,
+    "nombre_blocs": 8,
+    "chiffres": [
+      1080709612708469106745528710027768822930658895987290494042093,
+      5286147779761757090312328636483640627261347069913902435131230,
+      3110573759948070714188021076826384896892872301186801870534472,
+      172219349610798400098683097161002945912486439863141102877015,
+      4510062727305942020985960589298595993809262012052833979798961,
+      5747169162360113965662091553910320246685338158238585129454228,
+      1079846703607193557199623776868649064038386192507567888109088,
+      3765467435503049042969195346500207374722163522109409917849534
+    ],
+    "message_retrouve": "Bonjour Alice ! Ce message dépasse vingt-cinq octets et contient des accents é et un emoji 😀.",
+    "signature_valide": true,
+    "crt_identique_au_direct": true,
+    "note": "Bourrage aléatoire : les chiffres varient entre deux exécutions."
+  }
+}

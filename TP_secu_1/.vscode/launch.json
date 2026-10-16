@@ -1,0 +1,8 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {"name": "TP toutes les parties", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/Walter_Arthur_main.py", "console": "integratedTerminal", "args": ["--partie", "toutes", "--message", "Bonjour Alice"]},
+    {"name": "TP partie 3 message long", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/Walter_Arthur_main.py", "console": "integratedTerminal", "args": ["--partie", "3", "--message", "Bonjour Alice, ce message dépasse la limite de la partie 1 et contient des accents é."]},
+    {"name": "TP tests", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/Walter_Arthur_main.py", "console": "integratedTerminal", "args": ["--test"]}
+  ]
+}

@@ -1,0 +1,2 @@
+# Uniquement pour le relevé X.509, pas pour les calculs du TP.
+cryptography>=43,<49

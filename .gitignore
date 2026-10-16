@@ -1,0 +1,4 @@
+__pycache__/
+*.py[cod]
+.venv/
+TP_secu_1/resultats/ci_*.json

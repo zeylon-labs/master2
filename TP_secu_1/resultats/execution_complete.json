@@ -1,0 +1,136 @@
+{
+  "environnement": {
+    "python": "3.12.14",
+    "systeme": "Linux-6.18.44-x86_64-with-glibc2.39"
+  },
+  "partie1": {
+    "message": "Bonjour Alice",
+    "octets_utf8": 13,
+    "module_alice_bits": 203,
+    "module_bob_bits": 206,
+    "limite_octets": 25,
+    "chiffre": 4426868884748371728864122823926702527992494185971659915730941,
+    "sha256": "44a0fc349f47f9774122f1de8eca398bda30eb145ea2bb552b7961411601f0f0",
+    "tailles_blocs_hash": [
+      25,
+      7
+    ],
+    "signatures": [
+      15503372710695889245462070883701106612804478853305475870757835,
+      24126157544966375185066866520566308103415206644078990296325505
+    ],
+    "message_retrouve": "Bonjour Alice",
+    "signature_valide": true
+  },
+  "partie2": {
+    "trace_exemple": {
+      "resultat": 12,
+      "multiplications_conditionnelles": 3,
+      "carres": 4,
+      "bits_lsb": [
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    "ordre_bits": "poids faible vers poids fort",
+    "crt_exemple_professeur": {
+      "p": 137,
+      "q": 131,
+      "d": 11787,
+      "dp": 91,
+      "dq": 87,
+      "q_inv": 114,
+      "c": 8363,
+      "mp": 102,
+      "mq": 120,
+      "m": 513
+    },
+    "dechiffrement_alice_direct": 513,
+    "dechiffrement_alice_crt": 513,
+    "traces_messages": [
+      {
+        "message": 1,
+        "resultat": 1,
+        "conditionnelles": 85,
+        "carres": 198
+      },
+      {
+        "message": 42,
+        "resultat": 42,
+        "conditionnelles": 85,
+        "carres": 198
+      },
+      {
+        "message": 513,
+        "resultat": 513,
+        "conditionnelles": 85,
+        "carres": 198
+      },
+      {
+        "message": 123456789,
+        "resultat": 123456789,
+        "conditionnelles": 85,
+        "carres": 198
+      }
+    ],
+    "temps_bonus": [
+      {
+        "message": 1,
+        "direct_ns": 62661,
+        "crt_ns": 43763,
+        "rapport_direct_sur_crt": 1.432,
+        "multiplications_conditionnelles": 85,
+        "bits_exposant": 198,
+        "series": 5,
+        "repetitions_par_serie": 30
+      },
+      {
+        "message": 42,
+        "direct_ns": 361520,
+        "crt_ns": 182812,
+        "rapport_direct_sur_crt": 1.978,
+        "multiplications_conditionnelles": 85,
+        "bits_exposant": 198,
+        "series": 5,
+        "repetitions_par_serie": 30
+      },
+      {
+        "message": 513,
+        "direct_ns": 267391,
+        "crt_ns": 246892,
+        "rapport_direct_sur_crt": 1.083,
+        "multiplications_conditionnelles": 85,
+        "bits_exposant": 198,
+        "series": 5,
+        "repetitions_par_serie": 30
+      },
+      {
+        "message": 123456789,
+        "direct_ns": 156573,
+        "crt_ns": 112352,
+        "rapport_direct_sur_crt": 1.394,
+        "multiplications_conditionnelles": 85,
+        "bits_exposant": 198,
+        "series": 5,
+        "repetitions_par_serie": 30
+      }
+    ]
+  },
+  "partie3": {
+    "message": "Bonjour Alice",
+    "octets_utf8": 13,
+    "k_octets": 26,
+    "j_max_octets": 13,
+    "ps_min_avec_j_max": 10,
+    "nombre_blocs": 1,
+    "chiffres": [
+      1798528999689287158522774818359791195245687554244095504485491
+    ],
+    "message_retrouve": "Bonjour Alice",
+    "signature_valide": true,
+    "crt_identique_au_direct": true,
+    "note": "Bourrage aléatoire : les chiffres varient entre deux exécutions."
+  }
+}
