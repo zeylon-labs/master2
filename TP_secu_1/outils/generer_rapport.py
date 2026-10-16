@@ -4,6 +4,7 @@ Dépendance d'édition : python-docx. Aucun besoin pour exécuter le TP RSA.
 Les marqueurs <!-- page --> séparent les chapitres ; vérifier le PDF après export.
 """
 from pathlib import Path
+import argparse
 import re
 from docx import Document
 from docx.oxml import OxmlElement
@@ -66,6 +67,11 @@ def equation(document, texte):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--version', choices=['guide', 'compte-rendu'], default='guide')
+    args = parser.parse_args()
+    nom_source = 'Walter_Arthur_rapport' if args.version == 'guide' else 'Walter_Arthur_compte_rendu'
+    nom_sortie = 'Walter_Arthur' if args.version == 'guide' else 'Walter_Arthur_compte_rendu'
     document = Document()
     section = document.sections[0]
     section.page_width, section.page_height = Inches(8.5), Inches(11)
@@ -89,7 +95,7 @@ def main():
     field = OxmlElement('w:fldSimple'); field.set(qn('w:instr'), 'PAGE'); footer._p.append(field)
     document.core_properties.title = 'TP RSA Sécurité et Pratiques'
     document.core_properties.author = 'Arthur Walter'
-    source = (RACINE / 'docs/Walter_Arthur_rapport.md').read_text(encoding='utf-8')
+    source = (RACINE / ('docs/' + nom_source + '.md')).read_text(encoding='utf-8')
     lignes = source.splitlines(); i = 0; premier = True
     while i < len(lignes):
         ligne = lignes[i]
@@ -123,7 +129,7 @@ def main():
         if ligne.startswith('$$') and ligne.endswith('$$'):
             equation(document, ligne[2:-2]); i += 1; continue
         document.add_paragraph(texte_propre(ligne)); i += 1
-    sortie = RACINE / 'docs/Walter_Arthur.docx'
+    sortie = RACINE / ('docs/' + nom_sortie + '.docx')
     document.save(sortie)
     print(sortie)
 

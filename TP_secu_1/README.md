@@ -4,6 +4,9 @@ Trois parties implémentées, avec explications dans [le rapport](docs/Walter_Ar
 
 - [Rapport PDF](docs/Walter_Arthur.pdf)
 - [Rapport Word](docs/Walter_Arthur.docx)
+- [Compte rendu en questions et réponses PDF](docs/Walter_Arthur_compte_rendu.pdf)
+- [Compte rendu en questions et réponses Word](docs/Walter_Arthur_compte_rendu.docx)
+- [Différence entre les deux versions](docs/README.md)
 - [Programme principal](Walter_Arthur_main.py) et [fonctions](Walter_Arthur_util.py)
 - [Tests](tests/test_rsa.py) et [résultats réels](resultats/)
 
