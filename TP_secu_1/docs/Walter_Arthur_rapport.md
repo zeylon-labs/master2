@@ -12,7 +12,7 @@ Ce rapport accompagne la réalisation des trois parties du TP RSA. Il présente 
 
 Bob envoie un message à Alice. Il le chiffre avec la clé publique d'Alice, puis signe son empreinte avec sa propre clé privée. Alice déchiffre et vérifie la signature. L'exercice ajoute ensuite une simulation de canal auxiliaire, le calcul CRT et un bourrage pédagogique par blocs.
 
-Les sources prioritaires sont TP_RSA_Enonce.pdf et RSA_B_A.py à la racine du dépôt. Exp_CRT_RSA.pdf précise la recombinaison CRT. Le programme conserve les facteurs premiers et les exposants publics du professeur.
+Les sources prioritaires sont TP_RSA_Enonce.pdf et RSA_B_A.py dans TP_secu_1/sources. Exp_CRT_RSA.pdf, dans ce même dossier, précise la recombinaison CRT. Le programme conserve les facteurs premiers et les exposants publics du professeur.
 
 ## Résultats essentiels
 
@@ -93,7 +93,7 @@ texte = entier.to_bytes(taille_octets, "big").decode("utf-8")
 
 La longueur en octets accompagne l'envoi de la partie 1. Elle permet de conserver les zéros initiaux et le message vide. Un caractère accentué peut utiliser plusieurs octets : é compte pour un caractère mais deux octets UTF-8.
 
-Les conversions historiques du squelette ont été remplacées ensemble. Le bloc triple guillemets initial non refermé a été supprimé et les deux fonctions vides complétées. Les fichiers originaux à la racine restent inchangés.
+Les conversions historiques du squelette ont été remplacées ensemble. Le bloc triple guillemets initial non refermé a été supprimé et les deux fonctions vides complétées. Les fichiers originaux sont conservés dans le dossier sources.
 
 <!-- page -->
 
@@ -473,7 +473,7 @@ Déposer Walter_Arthur_main.py, Walter_Arthur_util.py et docs/Walter_Arthur.pdf 
 
 ## Références
 
-Sources du TP : TP_RSA_Enonce.pdf pages 2 à 4 ; Exp_CRT_RSA.pdf pages 1 et 2 ; RSA_B_A.py, Abdeljalil ABBAS-TURKI. Les copies originales sont conservées à la racine du dépôt.
+Sources du TP : TP_RSA_Enonce.pdf pages 2 à 4 ; Exp_CRT_RSA.pdf pages 1 et 2 ; RSA_B_A.py, Abdeljalil ABBAS-TURKI. Les copies originales sont conservées dans TP_secu_1/sources.
 
 Compléments techniques : RFC 8017, sections 7.2 et 8.2, https://www.rfc-editor.org/rfc/rfc8017.html ; RFC 8446, TLS 1.3, https://www.rfc-editor.org/rfc/rfc8446.html. Documentation VS Code : https://code.visualstudio.com/docs/python/run. Sources consultées le 16 octobre 2026.
 

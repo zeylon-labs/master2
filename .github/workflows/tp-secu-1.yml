@@ -24,6 +24,12 @@ jobs:
           Copy-Item -Path TP_secu_1 -Destination $destination -Recurse
           & "$destination\lancer_tests_complets.bat"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Afficher les trois programmes dans la console Windows
+        shell: pwsh
+        run: |
+          $destination = Join-Path $env:RUNNER_TEMP 'TP RSA test'
+          & "$destination\lancer_programmes.bat"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - uses: actions/upload-artifact@v4
         if: always()
         with:

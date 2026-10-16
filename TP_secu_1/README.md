@@ -13,6 +13,21 @@ Installer Python 3.10+ et l'extension Python de Microsoft. Ouvrir **ce dossier**
 VS Code puis `Ctrl+Maj+P` > `Python: Select Interpreter`.
 Les profils F5 sont fournis dans `.vscode/launch.json`.
 
+## Afficher les programmes dans la console
+
+Double-cliquer sur **lancer_programmes.bat** pour voir les parties 1, 2 et 3
+dans l'ordre, avec une pause entre chaque partie et à la fin. Les messages,
+les chiffrés, les traces, les calculs CRT et la vérification des signatures
+sont affichés directement dans le terminal, sans dépendance externe.
+
+```powershell
+.\lancer_programmes.bat
+```
+
+Ce fichier montre les démonstrations. `lancer_tests_complets.bat` affiche les
+tests automatiques et les démonstrations, puis enregistre un bilan et des logs.
+Les documents du professeur sont conservés dans `sources/`.
+
 ## Lancer tous les contrôles avec le BAT Windows
 
 Double-cliquer sur **lancer_tests_complets.bat**, ou saisir dans un terminal :
