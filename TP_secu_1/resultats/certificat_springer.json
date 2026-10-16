@@ -1,0 +1,32 @@
+{
+  "hote": "link.springer.com",
+  "port": 443,
+  "observation_utc": "2026-10-16T16:02:25.468483+00:00",
+  "python": "3.13.16",
+  "openssl": "OpenSSL 3.0.13 30 Jan 2024",
+  "tls": "TLSv1.3",
+  "suite_tls": [
+    "TLS_AES_128_GCM_SHA256",
+    "TLSv1.3",
+    128
+  ],
+  "validation_tls": true,
+  "subject": "CN=*.springer.com",
+  "issuer": "CN=YR2,O=Let's Encrypt,C=US",
+  "san_dns": [
+    "*.springer.com"
+  ],
+  "serial_hex": "0x53c1008ea7aa9ab114d4dff5a11a8c69637",
+  "not_before_utc": "2026-09-23T11:18:57+00:00",
+  "not_after_utc": "2026-12-22T11:18:56+00:00",
+  "cle_publique_algorithme": "RSA",
+  "cle_publique_bits": 2048,
+  "exposant_public_rsa": 65537,
+  "signature_certificat_oid": "1.2.840.113549.1.1.11",
+  "signature_certificat_nom": "sha256WithRSAEncryption",
+  "empreinte_utilisee_dans_signature": "sha256",
+  "bourrage_signature_certificat": "RSASSA-PKCS1-v1_5 pour la signature du certificat",
+  "empreinte_certificat_sha256": "27d5c26b2047ca2b459030694a9fed4e68157c22b802be2ffb231ee09d327350",
+  "note": "La signature du certificat utilise la clé de l'autorité émettrice ; elle n'indique pas un chiffrement RSA du trafic TLS.",
+  "statut": "observe"
+}

@@ -55,6 +55,7 @@ def analyser_der(der):
 
 
 def observer(hote, sortie):
+    sortie.parent.mkdir(parents=True, exist_ok=True)
     resultat = {"hote": hote, "port": 443,
                 "observation_utc": datetime.now(timezone.utc).isoformat(),
                 "python": platform.python_version(), "openssl": ssl.OPENSSL_VERSION}

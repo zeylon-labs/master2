@@ -1,0 +1,8 @@
+test_cle_ec_certificat_signe_rsa (__main__.Certificat.test_cle_ec_certificat_signe_rsa) ... ok
+test_ec (__main__.Certificat.test_ec) ... ok
+test_rsa (__main__.Certificat.test_rsa) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.411s
+
+OK

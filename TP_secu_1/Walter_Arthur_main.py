@@ -73,10 +73,13 @@ def main():
     parser.add_argument("--test", action="store_true")
     args = parser.parse_args()
     if args.test:
-        suite = unittest.defaultTestLoader.discover(str(Path(__file__).parent / "tests"))
+        dossier_tests = Path(__file__).parent / "tests"
+        if not dossier_tests.is_dir():
+            parser.error("Conserver le dossier tests pour exécuter --test.")
+        suite = unittest.defaultTestLoader.discover(str(dossier_tests))
         resultat = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if resultat.wasSuccessful() else 1
-    message = args.message if args.message is not None else input("Message de Bob : ")
+    message = args.message if args.message is not None else ("" if args.partie == "2" else input("Message de Bob : "))
     resultats = {"environnement": {"python": platform.python_version(),
                                   "systeme": platform.platform()}}
     try:
