@@ -11,6 +11,11 @@ Le compte rendu présente les réponses des trois parties, les résultats et les
 commentaires. Il conserve seulement les commandes d'exécution et de test,
 sans le tutoriel d'installation du guide. Les résultats utilisés sont les mêmes.
 
+Sur la branche `retravail/tp-rsa-rapport-commentaires`, le compte rendu ajoute
+des exemples simples de modulo, d'inverse, de chiffrement RSA, de CRT et de
+découpage UTF-8. Le fichier `resultats/exemples_simples.json` conserve leurs
+résultats vérifiés. Le guide détaillé reste inchangé.
+
 Pour régénérer le Word de l'une des versions depuis le dossier TP_secu_1 :
 
 ```powershell

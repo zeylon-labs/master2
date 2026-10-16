@@ -1,7 +1,7 @@
 name: TP RSA tests et certificat
 on:
   push:
-    branches: [main]
+    branches: [main, 'retravail/**']
     paths: ['TP_secu_1/**', '.github/workflows/tp-secu-1.yml']
   workflow_dispatch:
 permissions:

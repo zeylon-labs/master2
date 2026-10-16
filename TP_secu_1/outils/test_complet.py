@@ -46,7 +46,7 @@ def verifier_simulation(nom, partie, message):
                 raise RuntimeError("Le texte ou la signature ne correspond pas.")
     if "partie2" in donnees:
         resultat = donnees["partie2"]
-        if resultat["crt_exemple_professeur"]["m"] != 513:
+        if resultat["crt_exemple_tp"]["m"] != 513:
             raise RuntimeError("Exemple CRT incorrect.")
         if resultat["dechiffrement_alice_crt"] != resultat["dechiffrement_alice_direct"]:
             raise RuntimeError("Désaccord entre CRT et calcul direct.")

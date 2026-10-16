@@ -8,15 +8,15 @@ Sécurité des systèmes d'information · Abdeljalil ABBAS-TURKI · 16 octobre 2
 
 ## Question 1a Compléter l’exponentiation modulaire rapide
 
-La fonction home_mod_expnoent(x, y, n) calcule x puissance y modulo n par carrés et multiplications. L’exposant est parcouru en binaire, du bit de poids faible vers le bit de poids fort. Lorsqu’un bit vaut 1, la puissance courante est multipliée au résultat. La base est ensuite élevée au carré et l’exposant divisé par deux.
+La fonction home_mod_expnoent(x, y, n) calcule x puissance y modulo n. Elle évite de construire toute la puissance : elle utilise des carrés successifs et ne multiplie au résultat que les puissances nécessaires. Pour cela, l’exposant est lu en binaire, de droite à gauche.
 
-Le modulo est appliqué après chaque multiplication pour éviter de construire la puissance entière. Le nombre de tours correspond à la longueur de l’exposant en bits. Le nom de la fonction a été conservé tel qu’il figure dans le squelette.
+À chaque multiplication, on ne garde que le reste de la division par n. Par exemple, 17 modulo 5 vaut 2, puisque 17 = 3 × 5 + 2. De même, 2 puissance 3 modulo 5 donne 3 : on calcule 8, puis son reste dans la division par 5. Le nombre de tours de la boucle correspond à la longueur de l’exposant en bits.
 
 Pour x = 3, y = 13 et n = 17, la fonction retourne 12. Comme 13 s’écrit 1101 en binaire, le calcul utilise trois multiplications conditionnelles. Les tests comparent également 300 cas à pow(x, y, n), utilisé comme référence de vérification.
 
 ## Question 1b Compléter l’algorithme d’Euclide étendu
 
-home_ext_euclide(y, b) renvoie l’inverse de b modulo y. L’ordre des arguments reste celui du fichier fourni : le module en premier, puis l’exposant public. Le calcul de la clé privée d’Alice est donc home_ext_euclide(lambda_a, ea).
+home_ext_euclide(y, b) cherche le nombre qui, multiplié par b, donne un reste de 1 modulo y. C’est ce que l’on appelle un inverse modulaire. Le module vient en premier dans l’appel ; le calcul de la clé privée d’Alice est donc home_ext_euclide(lambda_a, ea).
 
 L’algorithme suit les divisions d’Euclide et le coefficient de b dans l’identité de Bézout. Si le PGCD vaut 1, ce coefficient fournit l’inverse recherché.
 
@@ -25,7 +25,7 @@ $$t × b ≡ 1 (mod y)$$
 
 Le résultat est ramené dans l’intervalle de 0 à y − 1. Lorsque le PGCD est différent de 1, la fonction signale qu’aucun inverse n’existe.
 
-La vérification sur l’exemple classique donne l’inverse 2753 pour 17 modulo 3120 :
+Avec le module 20 et le nombre 3, l’inverse vaut 7 : 3 × 7 = 21, qui laisse un reste de 1 modulo 20. La même méthode donne 2753 comme inverse de 17 modulo 3120 :
 
 $$17 × 2753 = 15 × 3120 + 1$$
 
@@ -37,9 +37,9 @@ Le calcul du squelette nommé phia ou phib utilise un PPCM. Il correspond donc �
 
 ## Question 2 Simuler l’échange entre Bob et Alice
 
-Bob convertit le message en octets UTF-8, puis en entier big-endian. Il chiffre cet entier avec la clé publique d’Alice, formée de na et ea. Alice applique l’exponentiation avec da pour retrouver le message.
+Bob commence par représenter son texte avec un nombre. Le texte passe en octets UTF-8, puis en entier big-endian. Il chiffre cet entier avec la clé publique d’Alice, formée de na et ea. Alice utilise ensuite da, sa clé privée, pour retrouver l’entier et reconstruire le texte.
 
-La signature utilise l’autre paire de clés. Bob calcule l’empreinte du texte et la signe avec db. Alice recalcule l’empreinte du message déchiffré et vérifie la signature avec eb et nb. Cette vérification suppose que la clé publique attribuée à Bob soit fiable.
+Pour la signature, ce sont les clés de Bob qui interviennent. Bob signe l’empreinte du texte avec db. Alice recalcule l’empreinte du message qu’elle a retrouvé et vérifie les signatures avec eb et nb. Le chiffrement sert donc à réserver la lecture à Alice ; la signature permet de vérifier le contenu avec la clé de Bob, à condition de disposer de sa véritable clé publique.
 
 | Contrôle sur Bonjour Alice | Résultat |
 | --- | --- |
@@ -48,7 +48,7 @@ La signature utilise l’autre paire de clés. Bob calcule l’empreinte du text
 | Message après déchiffrement | Bonjour Alice |
 | Vérification de la signature | Valide |
 
-La longueur en octets est conservée dans l’envoi pour restituer les éventuels zéros initiaux. Les conversions du squelette ont été remplacées ensemble pour traiter les accents correctement. Les valeurs du chiffré et des signatures sont conservées dans resultats/execution_complete.json.
+La longueur en octets accompagne l’envoi pour ne pas perdre les éventuels zéros au début. Les deux conversions ont été modifiées ensemble pour conserver aussi les accents. Le détail des valeurs calculées se trouve dans resultats/execution_complete.json.
 
 ## Question 3a Remplacer MD5 par SHA 256
 
@@ -70,13 +70,13 @@ Cette augmentation par rapport aux 10 caractères du squelette vient de la corre
 
 ## Question 1 Compter et interpréter les multiplications conditionnelles
 
-home_mod_expnoent_trace reprend l’exponentiation de la première partie. Elle compte les multiplications effectuées lorsque le bit courant de l’exposant vaut 1 et enregistre la suite des bits parcourus. Les carrés sont comptés séparément.
+home_mod_expnoent_trace fait le même calcul qu’en partie 1, mais garde une trace des opérations. Chaque bit à 1 entraîne une multiplication supplémentaire. La fonction compte ces multiplications et note l’ordre des bits rencontrés ; elle compte les carrés à part.
 
 Pour 3 puissance 13 modulo 17, le résultat est 12. La fonction compte trois multiplications conditionnelles et quatre carrés. Les bits sont rencontrés dans l’ordre 1, 0, 1, 1 ; leur lecture dans l’autre sens donne la représentation habituelle 1101.
 
 Le nombre total de multiplications conditionnelles donne le poids de Hamming de l’exposant, c’est-à-dire son nombre de bits à 1. Il ne permet pas, à lui seul, de connaître leur position. Par exemple, les exposants 11 et 13 comportent chacun trois bits à 1 sur quatre bits.
 
-Si les pics d’activité sont observés avec assez de précision pour distinguer les opérations de chaque tour, leur position peut révéler les bits de la clé dans ce modèle. Ici, les événements sont enregistrés dans le programme ; aucune mesure physique de consommation ou de cache n’a été effectuée.
+Un observateur qui distingue les opérations de chaque tour peut en déduire davantage que ce simple total : la position des multiplications peut révéler les bits de l’exposant. Dans le TP, ces événements sont notés directement par le programme. Ils représentent ce que l’on pourrait chercher à observer ; aucune mesure physique de consommation ou de cache n’a été réalisée.
 
 ## Question 2 Bonus Comparer plusieurs messages
 
@@ -99,7 +99,7 @@ Le CRT est plus rapide dans cette série de mesures. Les durées restent sensibl
 
 ## Question 3a Calculer les exposants réduits
 
-Le déchiffrement est réparti entre les deux facteurs premiers du module. Les paramètres sont calculés une seule fois, puis réutilisés :
+Au lieu de faire tout le déchiffrement modulo n, on fait deux calculs, l’un modulo p et l’autre modulo q. Ces nombres sont plus petits. Les exposants réduits sont préparés une fois, puis réutilisés :
 
 $$dp = d mod (p − 1)$$
 $$dq = d mod (q − 1)$$
@@ -108,14 +108,14 @@ L’inverse de q modulo p, noté q_inv, est obtenu avec la fonction d’Euclide 
 
 ## Question 3b Reconstituer le message
 
-Les deux exponentiations donnent mp modulo p et mq modulo q. La recombinaison est celle du document fourni :
+Les résultats mp et mq ne sont pas deux morceaux du texte. Ce sont deux restes du même message : l’un modulo p, l’autre modulo q. Le CRT permet de retrouver le seul entier entre 0 et n − 1 qui respecte ces deux restes :
 
 $$mp = cᵈᵖ mod p$$
 $$mq = cᵈᑫ mod q$$
 $$h = ((mp − mq) × q_inv) mod p$$
 $$m = (mq + h × q) mod n$$
 
-Dans l’exemple du professeur, p = 137, q = 131, c = 8363 et d = 11787. Le programme obtient dp = 91, dq = 87 et q_inv = 114. Les résultats intermédiaires sont mp = 102 et mq = 120.
+Dans l’exemple du TP, p = 137, q = 131, c = 8363 et d = 11787. Le programme obtient dp = 91, dq = 87 et q_inv = 114. Les résultats intermédiaires sont mp = 102 et mq = 120.
 
 On trouve alors h = 3, puis m = 120 + 3 × 131 = 513. Le rechiffrement avec e = 3 redonne 8363. Le calcul CRT et le calcul direct restituent donc le même message.
 
@@ -151,7 +151,7 @@ Les valeurs de PS sont tirées avec secrets.randbelow(255) + 1, donc entre 1 et 
 
 Le bloc est converti en entier et chiffré avec la clé publique d’Alice. Son premier octet nul garantit ici une valeur inférieure au module. Au déchiffrement, to_bytes reconstruit exactement 26 octets afin de retrouver ce zéro initial.
 
-Le programme vérifie le préfixe, le séparateur et les tailles, puis retire le bourrage. Les morceaux sont réunis avant le décodage UTF-8, ce qui préserve un caractère coupé entre deux blocs. La signature est vérifiée sur le message complet restitué.
+Alice vérifie le préfixe, le séparateur et les tailles, puis enlève le bourrage. Elle réunit d’abord les octets et les décode seulement après, car un caractère UTF-8 peut être coupé entre deux blocs. La signature est vérifiée sur le texte complet retrouvé.
 
 Le texte d’essai « Bonjour Alice ! Ce message dépasse vingt-cinq octets et contient des accents é et un emoji 😀. » occupe 98 octets et produit huit blocs. Le texte retrouvé est identique et la signature est valide. Le déchiffrement direct donne le même résultat que le CRT.
 
@@ -192,6 +192,40 @@ La signature du certificat utilise RSASSA-PKCS1-v1_5. Cet encodage concerne la s
 La présence d’une clé RSA dans le certificat ne signifie pas que le trafic est chiffré directement par RSA. La connexion observée utilise AES-GCM pour protéger les données et TLS 1.3 ne reprend pas l’ancien échange de clés RSA. Le schéma de signature de CertificateVerify ne peut pas être déduit du seul certificat.
 
 Les champs du JSON ont été comparés à ceux du PEM conservé. Ces valeurs décrivent le certificat présenté au moment du relevé ; elles pourront changer lors d’un renouvellement ou selon la négociation du client.
+
+<!-- page -->
+
+# Vérifications avec de petits exemples
+
+Les exemples ci-dessous utilisent les mêmes fonctions que le TP. Les petites valeurs servent uniquement à suivre les opérations à la main. Les résultats sont aussi enregistrés dans resultats/exemples_simples.json.
+
+## Retrouver un message avec de petites clés
+
+On prend p = 11 et q = 5, donc n = 55 et λ(n) = 20. On choisit e = 3 et d = 7 : ces exposants vont ensemble, car 3 × 7 laisse un reste de 1 modulo 20. Pour ce seul exemple, le message est directement l’entier 8, sans texte ni bourrage.
+
+$$Chiffrement : 8³ mod 55 = 17$$
+$$Déchiffrement : 17⁷ mod 55 = 8$$
+
+On retrouve donc bien 8. Dans le programme principal, le principe est le même, mais le texte est d’abord converti en entier et les clés sont celles de l’énoncé.
+
+## Vérifier le même calcul avec le CRT
+
+Pour ce chiffré 17, on trouve dp = 7, dq = 3 et q_inv = 9. Les deux calculs donnent mp = 8 et mq = 3. La recombinaison donne h = 1, puis m = 3 + 1 × 5 = 8. Le calcul direct et le CRT arrivent bien au même résultat.
+
+## Changer une seule lettre dans le message
+
+Les textes Bonjour et bonjour ne diffèrent que par la majuscule. Leurs empreintes SHA-256 sont pourtant différentes. Voici leurs seize premiers caractères hexadécimaux ; les empreintes complètes restent de 32 octets.
+
+| Texte | Début du SHA-256 |
+| --- | --- |
+| Bonjour | 9172e8eec99f144f |
+| bonjour | 2cb4b1431b84ec15 |
+
+## Vérifier le découpage en blocs
+
+Les 26 lettres ABCDEFGHIJKLMNOPQRSTUVWXYZ occupent 26 octets en UTF-8. Avec 13 octets par morceau, on obtient deux blocs : ABCDEFGHIJKLM puis NOPQRSTUVWXYZ. Après déchiffrement et retrait du bourrage, leur réunion restitue l’alphabet complet.
+
+Un accent illustre pourquoi le décodage attend la fin : douze lettres A suivies de é occupent 14 octets. Les deux octets de é, C3 et A9 en hexadécimal, se retrouvent de part et d’autre de la coupure à 13 octets. Réunir les octets avant de décoder permet de retrouver la lettre.
 
 <!-- page -->
 

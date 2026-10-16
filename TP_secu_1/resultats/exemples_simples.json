@@ -1,0 +1,53 @@
+{
+  "modulo": {
+    "17_mod_5": 2,
+    "2_puissance_3_mod_5": 3
+  },
+  "inverse": {
+    "module": 20,
+    "nombre": 3,
+    "inverse": 7
+  },
+  "rsa": {
+    "p": 11,
+    "q": 5,
+    "n": 55,
+    "lambda": 20,
+    "e": 3,
+    "d": 7,
+    "message": 8,
+    "chiffre": 17,
+    "dechiffre": 8
+  },
+  "crt": {
+    "dp": 7,
+    "dq": 3,
+    "q_inv": 9,
+    "mp": 8,
+    "mq": 3,
+    "h": 1,
+    "m": 8
+  },
+  "sha256": {
+    "Bonjour": "9172e8eec99f144f72eca9a568759580edadb2cfd154857f07e657569493bc44",
+    "bonjour": "2cb4b1431b84ec15d35ed83bb927e27e8967d75f4bcd9cc4b25c8d879ae23e18"
+  },
+  "blocs": {
+    "texte": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "morceaux": [
+      "ABCDEFGHIJKLM",
+      "NOPQRSTUVWXYZ"
+    ],
+    "nombre_blocs": 2,
+    "retour": [
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      true
+    ]
+  },
+  "utf8": {
+    "texte": "AAAAAAAAAAAAé",
+    "octets": "414141414141414141414141c3a9",
+    "premier_bloc": "414141414141414141414141c3",
+    "second_bloc": "a9"
+  }
+}

@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-"""TP RSA de M. ABBAS-TURKI - trois parties pédagogiques, Python 3.10+.
+"""TP RSA - chiffrement, signature, traces et bourrage. Python 3.10+.
 
 python Walter_Arthur_main.py --partie toutes --message "Bonjour Alice"
 python Walter_Arthur_main.py --partie 3 --message "Un message beaucoup plus long..."
 python Walter_Arthur_main.py --test
-Le code utilise de petites clés et des signatures RSA non standard, sans PSS.
+Les petites clés servent aux calculs du TP. La signature en deux blocs
+est une adaptation pour ces clés ; ce n'est pas une signature RSA-PSS.
 """
 import argparse
 from dataclasses import asdict
@@ -17,16 +18,17 @@ import unittest
 
 import Walter_Arthur_util as u
 
-# Ce fichier orchestre les expériences et affiche leurs résultats.
-# Les calculs demandés dans l'énoncé se trouvent dans Walter_Arthur_util.py.
-# L'alias u signifie simplement que u.na désigne la variable na de ce module.
+# Ce fichier lance les trois parties et affiche ce qu'elles donnent.
+# Les fonctions de calcul sont regroupées dans Walter_Arthur_util.py.
+# On l'importe sous le nom u pour écrire, par exemple, u.home_envoyer(...).
 
 
 def partie1(message):
-    """Reproduire le scénario de base, puis préparer une sortie JSON lisible.
+    """Faire l'aller-retour du message entre Bob et Alice.
 
-    Les grands entiers affichés sont des résultats réels, pas des exemples codés
-    en dur. Le même message donne le même chiffré RSA brut dans cette partie.
+    Bob prépare le message chiffré et les signatures. Alice reçoit cet envoi,
+    retrouve le texte et vérifie les signatures. On regroupe ensuite les
+    valeurs pour pouvoir lire chaque résultat dans la console.
     """
     paquet = u.home_envoyer(message)
     texte, valide = u.home_recevoir(paquet)
@@ -40,23 +42,25 @@ def partie1(message):
 
 
 def partie2():
-    """Réunir l'exemple de trace, le CRT officiel et les mesures bonus.
+    """Observer les opérations, puis comparer les deux déchiffrements.
 
-    137, 131, 11787 et 8363 viennent de l'exemple du support CRT du professeur.
-    asdict transforme les dataclasses en dictionnaires sérialisables en JSON.
+    Les nombres 137, 131, 11787 et 8363 reprennent l'exemple CRT du TP.
+    Le petit calcul 3**13 modulo 17 permet de suivre facilement les bits.
+    asdict rassemble les champs d'un résultat pour les afficher en JSON.
     """
     exemple = u.home_preparer_crt(137, 131, 11787)
     trace = u.home_mod_expnoent_trace(3, 13, 17)
     c = u.home_mod_expnoent(513, u.ea, u.na)
     traces_messages = []
     for m in [1, 42, 513, 123456789]:
-        # L'exposant privé est fixé : son poids de Hamming reste constant.
+        # On change le message, mais pas la clé : le nombre de bits à 1
+        # de l'exposant privé reste donc le même.
         t = u.home_mod_expnoent_trace(u.home_mod_expnoent(m, u.ea, u.na), u.da, u.na)
         traces_messages.append({"message": m, "resultat": t.resultat,
                                 "conditionnelles": t.multiplications_conditionnelles,
                                 "carres": t.carres})
     return {"trace_exemple": asdict(trace), "ordre_bits": "poids faible vers poids fort",
-            "crt_exemple_professeur": {**asdict(exemple), "c": 8363,
+            "crt_exemple_tp": {**asdict(exemple), "c": 8363,
                                       "mp": u.home_mod_expnoent(8363, exemple.dp, exemple.p),
                                       "mq": u.home_mod_expnoent(8363, exemple.dq, exemple.q),
                                       "m": u.home_rsa_crt(8363, exemple)},
@@ -67,10 +71,11 @@ def partie2():
 
 
 def partie3(message):
-    """Démontrer le message long avec padding et comparaison CRT/direct.
+    """Envoyer un texte qui peut occuper plusieurs blocs.
 
-    Le bourrage est tiré au hasard à chaque appel : les chiffrés varient,
-    tandis que le texte retrouvé doit toujours rester identique.
+    Le bourrage contient un aléa : les chiffrés peuvent changer d'un envoi
+    à l'autre. Alice doit pourtant retrouver exactement le même texte.
+    Le calcul direct sert ici à vérifier le résultat obtenu par le CRT.
     """
     paquet = u.home_envoyer_blocs(message)
     texte, valide = u.home_recevoir_blocs(paquet)
@@ -86,11 +91,12 @@ def partie3(message):
 
 
 def main():
-    """Entrée du programme : lire les options, exécuter, afficher et sauvegarder.
+    """Lire la commande et lancer la partie demandée.
 
-    --test charge les tests du dépôt ; --partie choisit l'expérience.
-    --message fournit le texte sans saisie ; --sortie conserve les résultats.
-    Une erreur de saisie donne un code retour non nul, détectable par le .bat.
+    Sans --message, le texte est demandé dans le terminal, sauf en partie 2.
+    --test lance les vérifications ; --sortie garde aussi une copie des
+    résultats dans un fichier. Le .bat lit le code de retour pour savoir
+    si l'exécution s'est bien passée.
     """
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--partie", choices=["1", "2", "3", "toutes"], default="toutes")
@@ -99,7 +105,8 @@ def main():
     parser.add_argument("--test", action="store_true")
     args = parser.parse_args()
     if args.test:
-        # unittest découvre les fonctions de test et fournit un bilan effectif.
+        # Charger les tests du dossier tests, puis afficher les réussites
+        # et les erreurs. Sans ce dossier, on signale le problème.
         dossier_tests = Path(__file__).parent / "tests"
         if not dossier_tests.is_dir():
             parser.error("Conserver le dossier tests pour exécuter --test.")
@@ -119,7 +126,7 @@ def main():
     except ValueError as erreur:
         parser.error(str(erreur))
     sortie = json.dumps(resultats, ensure_ascii=False, indent=2)
-    # ensure_ascii=False conserve les accents ; indent=2 rend le JSON lisible.
+    # Garder les accents tels quels et indenter le texte pour faciliter la lecture.
     print(sortie)
     if args.sortie:
         args.sortie.parent.mkdir(parents=True, exist_ok=True)
@@ -128,5 +135,5 @@ def main():
 
 
 if __name__ == "__main__":
-    # Exécuter main seulement si ce fichier est lancé, pas s'il est importé.
+    # Démarrer le programme quand on lance ce fichier dans le terminal.
     sys.exit(main())
