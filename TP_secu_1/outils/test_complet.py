@@ -83,7 +83,7 @@ def main():
     args = parser.parse_args()
     SORTIE.mkdir(parents=True, exist_ok=True)
     etapes = [
-        ("tests_rsa", lambda: executer("tests_rsa", ["Walter_Arthur_main.py", "--test"])),
+        ("tests_rsa", lambda: executer("tests_rsa", ["-m", "unittest", "discover", "-s", "tests", "-v"])),
         ("tests_x509", lambda: executer("tests_x509", ["outils/test_certificat.py"])),
         ("certificat_archive", verifier_certificat_archive),
         ("demonstration_complete", lambda: verifier_simulation("demonstration_complete", "toutes", "Bonjour Alice")),

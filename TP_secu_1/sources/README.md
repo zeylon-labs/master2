@@ -1,4 +1,4 @@
-# Sources originales du professeur
+# Documents de départ du TP
 
 - `TP_RSA_Enonce.pdf` : sujet et consignes du TP.
 - `Exp_CRT_RSA.pdf` : explications et exemple du CRT.

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Fonctions de calcul utilisées dans les trois parties du TP RSA.
 
-On garde les clés de l'énoncé et on représente le texte en UTF-8.
-Le SHA-256 est signé en deux blocs pour tenir dans ces petites clés.
-Ce code permet de suivre les calculs du TP, sans constituer un échange sûr
-pour une application réelle.
+Les clés sont celles de l'énoncé. Le texte est encodé en UTF-8.
+La signature SHA-256 utilise deux blocs car le module de Bob est trop petit
+pour contenir les 32 octets à la fois. Il s'agit d'une adaptation au TP,
+pas d'un schéma de signature à utiliser dans une application.
 """
 import hashlib
 import secrets
@@ -25,7 +25,7 @@ def home_mod_expnoent(x, y, n):
         raise ValueError("Il faut n > 0 et y >= 0.")
     resultat = 1 % n  # Pour n=1, le reste doit être 0, même si y vaut 0.
     base = x % n
-    exposant = y  # Cette copie diminue au fil de la boucle.
+    exposant = y
     while exposant > 0:
         if exposant % 2 == 1:
             # Exposant impair : la puissance courante participe au résultat.
@@ -40,7 +40,7 @@ def home_mod_expnoent(x, y, n):
 def home_ext_euclide(y, b):
     """Trouver le nombre qui, multiplié par b, laisse un reste de 1 modulo y.
 
-    Le module vient en premier, comme dans le squelette :
+    Le module vient en premier, comme dans le code de départ du TP :
     home_ext_euclide(20, 3) donne 7 car 3*7 = 20+1.
     Les divisions d'Euclide donnent le PGCD et le coefficient utile.
     Si le PGCD n'est pas 1, l'inverse n'existe pas.
@@ -52,7 +52,6 @@ def home_ext_euclide(y, b):
     ancien_t, t = 0, 1
     while r:
         quotient = ancien_r // r
-        # Les deux affectations utilisent les anciennes valeurs à droite.
         ancien_r, r = r, ancien_r - quotient * r
         # Mettre à jour le coefficient avec la même division.
         ancien_t, t = t, ancien_t - quotient * t
@@ -92,7 +91,7 @@ x2a = 3503815992030544427564583819137
 x1b = 9434659759111223227678316435911
 x2b = 8842546075387759637728590482297
 na, nb = x1a * x2a, x1b * x2b
-# Le squelette calcule un PPCM : il s'agit de lambda(n), et non de phi(n).
+# Le TP utilise le PPCM de p-1 et q-1, donc lambda(n).
 lambda_a = (x1a - 1) * (x2a - 1) // home_pgcd(x1a - 1, x2a - 1)
 lambda_b = (x1b - 1) * (x2b - 1) // home_pgcd(x1b - 1, x2b - 1)
 ea, eb = 17, 23
@@ -100,7 +99,7 @@ da = home_ext_euclide(lambda_a, ea)
 db = home_ext_euclide(lambda_b, eb)
 
 # Choisir L pour que n'importe quel bloc de L octets représente un entier < n.
-LIMITE_MESSAGE = (na.bit_length() - 1) // 8  # 25 octets, pas caracteres
+LIMITE_MESSAGE = (na.bit_length() - 1) // 8  # 25 octets UTF-8
 TAILLE_BLOC_HASH = (nb.bit_length() - 1) // 8  # 25 octets
 
 
@@ -108,9 +107,8 @@ TAILLE_BLOC_HASH = (nb.bit_length() - 1) // 8  # 25 octets
 class Envoi:
     """Les valeurs que Bob transmet à Alice dans la première partie.
 
-    La longueur aide Alice à reconstruire le texte. Les deux signatures
-    correspondent aux deux blocs du hash. frozen=True évite de modifier
-    cet envoi par erreur une fois qu'il a été préparé.
+    La longueur conserve les éventuels zéros au début du message.
+    Les deux signatures correspondent aux deux blocs du SHA-256.
     """
     chiffre: int
     taille_octets: int
@@ -140,14 +138,14 @@ def home_envoyer(secret):
     if len(donnees) > LIMITE_MESSAGE:
         raise ValueError(f"Message trop long : {len(donnees)} octets UTF-8 ; "
                          f"limite : {LIMITE_MESSAGE} octets en partie 1.")
-    num_sec = home_string_to_int(secret)
-    if not 0 <= num_sec < na:
+    message_entier = home_string_to_int(secret)
+    if not 0 <= message_entier < na:
         raise ValueError("Le message doit etre strictement inferieur au module d'Alice.")
-    chif = home_mod_expnoent(num_sec, ea, na)  # Seule Alice doit pouvoir lire.
+    chiffre = home_mod_expnoent(message_entier, ea, na)
     # Bob utilise sa propre clé privée pour signer les deux blocs du hash.
     signatures = tuple(home_mod_expnoent(int.from_bytes(bloc, "big"), db, nb)
                        for bloc in home_blocs_hash(secret))
-    return Envoi(chif, len(donnees), signatures)
+    return Envoi(chiffre, len(donnees), signatures)
 
 
 def home_recevoir(envoi):
@@ -160,13 +158,12 @@ def home_recevoir(envoi):
             0 <= envoi.taille_octets <= LIMITE_MESSAGE):
         raise ValueError("Chiffre ou longueur invalide.")
     entier = home_mod_expnoent(envoi.chiffre, da, na)
-    # da est la clé privée d'Alice : on retrouve l'entier, puis le texte.
+    # Alice utilise son exposant privé da pour retrouver le message.
     try:
-        dechif = home_int_to_string(entier, envoi.taille_octets)
+        texte = home_int_to_string(entier, envoi.taille_octets)
     except (OverflowError, UnicodeDecodeError) as erreur:
         raise ValueError("Message dechiffre incompatible avec le format UTF-8.") from erreur
-    blocs = home_blocs_hash(dechif)
-    # Calculer le hash du texte réellement retrouvé pour pouvoir le comparer.
+    blocs = home_blocs_hash(texte)
     valide = len(envoi.signatures) == len(blocs)
     if valide:
         for signature, bloc in zip(envoi.signatures, blocs):
@@ -178,7 +175,7 @@ def home_recevoir(envoi):
             if obtenu != int.from_bytes(bloc, "big"):
                 valide = False
                 break
-    return dechif, valide
+    return texte, valide
 
 
 @dataclass(frozen=True)
@@ -277,7 +274,7 @@ def home_bourrer(bloc, k=K_BLOC):
     """
     if not isinstance(bloc, bytes) or k < 11 or len(bloc) > min(k // 2, k - 11):
         raise ValueError("Bloc ou taille de bourrage invalide.")
-    # Tirer entre 1 et 255 : aucun zéro dans PS, réservé au séparateur.
+    # Les octets de PS sont non nuls : le zéro marque la fin du bourrage.
     ps = bytes(secrets.randbelow(255) + 1 for _ in range(k - len(bloc) - 3))
     return b"\x00\x02" + ps + b"\x00" + bloc
 
@@ -389,12 +386,11 @@ def home_comparer_temps(messages, repetitions=30, series=5):
                 for _ in range(repetitions):
                     calcul()
                 mesures.append((time.perf_counter_ns() - debut) / repetitions)
-        td, tc = statistics.median(direct), statistics.median(crt)
-        resultats.append({"message": message, "direct_ns": round(td), "crt_ns": round(tc),
-                          "rapport_direct_sur_crt": round(td / tc, 3),
+        temps_direct = statistics.median(direct)
+        temps_crt = statistics.median(crt)
+        resultats.append({"message": message, "direct_ns": round(temps_direct), "crt_ns": round(temps_crt),
+                          "rapport_direct_sur_crt": round(temps_direct / temps_crt, 3),
                           "multiplications_conditionnelles": da.bit_count(),
                           "bits_exposant": da.bit_length(), "series": series,
                           "repetitions_par_serie": repetitions})
     return resultats
-
-

@@ -35,7 +35,7 @@
       ]
     },
     "ordre_bits": "poids faible vers poids fort",
-    "crt_exemple_professeur": {
+    "crt_exemple_tp": {
       "p": 137,
       "q": 131,
       "d": 11787,
