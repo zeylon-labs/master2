@@ -246,11 +246,3 @@ Les quinze tests RSA passent. Ils contrôlent l’exponentiation, les inverses, 
 Trois tests distincts ont aussi vérifié le lecteur de certificats sur des certificats locaux de test : RSA, EC et clé EC avec signature RSA de l’émetteur. Ils valident l’extraction des champs ; les valeurs Springer proviennent du certificat réellement relevé, et non de ces jeux de test.
 
 Les résultats du TP sont conservés dans execution_complete.json et message_long.json. Les tests vérifient le comportement du programme, sans établir la sécurité de l’échange. Les clés restent petites, la signature SHA-256 en deux blocs est non standard et les calculs Python ne sont pas à temps constant. Le remplacement de MD5 et l’ajout du bourrage ne suffisent pas à rendre cette construction adaptée à un usage réel.
-
-## Références
-
-Abdeljalil ABBAS-TURKI, TP_RSA_Enonce.pdf, partie 1 page 2, parties 2 et 3 pages 2 et 3 ; Exp_CRT_RSA.pdf, pages 1 et 2 ; squelette RSA_B_A.py. Les trois fichiers sont conservés dans TP_secu_1/sources.
-
-RFC 8017, sections 7.2 et 8.2 : https://www.rfc-editor.org/rfc/rfc8017.html. RFC 8446, TLS 1.3 : https://www.rfc-editor.org/rfc/rfc8446.html.
-
-Relevé du certificat du 16 octobre 2026 : https://github.com/zeylon-labs/master2-TP/actions/runs/38928738912.
