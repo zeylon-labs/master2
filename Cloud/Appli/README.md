@@ -1,6 +1,6 @@
 # Atelier Cloud
 
-Petite application pédagogique associée à la fiche 01, pour explorer cinq notions du cours Cloud et traitements distribués.
+Petite application pédagogique associée à la fiche 01, avec sept modules pour explorer le cours Cloud et traitements distribués et s’entraîner aux calculs.
 
 ## Utilisation
 
@@ -21,14 +21,20 @@ Puis ouvrir http://127.0.0.1:8765.
 - Chord : recherche d’une clé de 0 à 31 parmi les neuf nœuds du support, avec les raccourcis et le chemin parcouru.
 - ASP et cloud : accès web ou client natif, puis comparaison pédagogique des responsabilités sur site, IaaS, PaaS et SaaS.
 - Middleware : schéma des applications, des instances de middleware, des OS locaux et du réseau, avec un exemple d’appel distant.
+- Évolutivité : comparaison verticale et horizontale, avec charge entrante, facteur de capacité et nombre de machines réglables.
+- Entraînement maths : huit exercices avec réponse numérique et correction pas à pas sur les files, les probabilités, Little, le dimensionnement, la recherche aléatoire et les capteurs.
 
-Chaque module propose une question avec correction. La fiche PDF est accessible dans l’application.
+Les modules de notions proposent une question avec correction. La fiche PDF est accessible dans l’application.
 
 ## Sources et limites
 
 Support d’Olivier Grunder, Cloud et traitements distribués, master DSICS : pages 8 à 9, 15 à 18, 21 et 34 à 35. Livre : Maarten van Steen et Andrew S. Tanenbaum, Distributed Systems, 4e édition, 2023, https://www.distributed-systems.net/index.php/books/ds4/.
 
 Les valeurs sont des exemples calculés, sans mesure d’une infrastructure réelle. La réplication est un scénario simplifié asynchrone avec un nœud d’écriture. La répartition des responsabilités cloud dépend en pratique des services et des contrats.
+
+La comparaison de mise à l’échelle suppose une capacité verticale proportionnelle aux ressources et, en horizontal, des arrivées réparties uniformément dans des files M/M/1 séparées, sans coût de réseau ou de coordination. Elle ne modélise pas une file unique M/M/n. L’évolutivité verticale ne doit pas être confondue avec la distribution verticale des couches décrite page 34 du support.
+
+Les exercices de maths sont proposés pour la révision, pas annoncés comme des questions de l’examen. Leurs références au support et leurs hypothèses sont indiquées dans l’application. L note le nombre moyen de requêtes, appelé N dans le support, pour éviter de le confondre avec le nombre de machines.
 
 ## Vérification
 

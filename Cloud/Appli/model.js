@@ -20,6 +20,11 @@
     }
     return {path,owner};
   }
-  root.CloudModel={NODES,queue,successor,fingers,route};
+  function scaling(arrival,capacity,factor,nodes){
+    if(!Number.isFinite(arrival)||arrival<0||!Number.isFinite(capacity)||capacity<=0||!Number.isFinite(factor)||factor<1||!Number.isInteger(nodes)||nodes<1)throw new RangeError('Paramètres de mise à l’échelle invalides');
+    const verticalCapacity=capacity*factor,horizontalCapacity=capacity*nodes;
+    return {vertical:{capacity:verticalCapacity,utilisation:arrival/verticalCapacity,stable:arrival<verticalCapacity,response:arrival<verticalCapacity?1000/(verticalCapacity-arrival):Infinity},horizontal:{capacity:horizontalCapacity,perNode:arrival/nodes,utilisation:arrival/horizontalCapacity,stable:arrival<horizontalCapacity,response:arrival<horizontalCapacity?1000/(capacity-arrival/nodes):Infinity}};
+  }
+  root.CloudModel={NODES,queue,successor,fingers,route,scaling};
   if(typeof module!=='undefined')module.exports=root.CloudModel;
 })(typeof window!=='undefined'?window:globalThis);
