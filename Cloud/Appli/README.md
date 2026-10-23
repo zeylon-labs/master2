@@ -1,6 +1,6 @@
 # Atelier Cloud
 
-Petite application pédagogique associée à la fiche 01, pour manipuler quatre notions du cours Cloud et traitements distribués.
+Petite application pédagogique associée à la fiche 01, pour explorer cinq notions du cours Cloud et traitements distribués.
 
 ## Utilisation
 
@@ -20,6 +20,7 @@ Puis ouvrir http://127.0.0.1:8765.
 - Données distribuées : comparaison de la réplication et du partitionnement, panne du nœud A, lectures et propagation manuelle d’une mise à jour.
 - Chord : recherche d’une clé de 0 à 31 parmi les neuf nœuds du support, avec les raccourcis et le chemin parcouru.
 - ASP et cloud : accès web ou client natif, puis comparaison pédagogique des responsabilités sur site, IaaS, PaaS et SaaS.
+- Middleware : schéma des applications, des instances de middleware, des OS locaux et du réseau, avec un exemple d’appel distant.
 
 Chaque module propose une question avec correction. La fiche PDF est accessible dans l’application.
 
