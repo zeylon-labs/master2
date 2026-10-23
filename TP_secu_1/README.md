@@ -29,7 +29,7 @@ sont affichés directement dans le terminal, sans dépendance externe.
 
 Ce fichier montre les démonstrations. `lancer_tests_complets.bat` affiche les
 tests automatiques et les démonstrations, puis enregistre un bilan et des logs.
-Les documents du professeur sont conservés dans `sources/`.
+Les documents du TP sont conservés dans `sources/`.
 
 ## Lancer tous les contrôles avec le BAT Windows
 
@@ -40,7 +40,7 @@ Double-cliquer sur **lancer_tests_complets.bat**, ou saisir dans un terminal :
 ```
 
 Le terminal reste ouvert à la fin. Le lanceur vérifie Python 3.10+, exécute les
-15 tests RSA et les 3 tests X.509, puis contrôle les démonstrations, le texte
+16 tests RSA et les 3 tests X.509, puis contrôle les démonstrations, le texte
 long, le texte vide, le refus d'un message trop long, le certificat archivé
 et la présence des rapports Word/PDF. Les journaux et le bilan JSON sont dans
 `resultats/tests_windows/`. Une erreur entraîne un code retour non nul.
@@ -65,15 +65,16 @@ ensemble lors du dépôt. La CI teste aussi le BAT sur un vrai runner Windows,
 dans un dossier dont le chemin contient des espaces.
 
 ```powershell
-python Walter_Arthur_main.py --test
+python Walter_Arthur_main.py --partie 1 --message "Bonjour Alice"
+python Walter_Arthur_main.py --partie 2
+python Walter_Arthur_main.py --partie 3 --message "Un message long avec des accents é."
 python Walter_Arthur_main.py --partie toutes --message "Bonjour Alice"
-python Walter_Arthur_main.py --partie 3 --message "Un message long avec des accents é et un emoji 😀, qui dépasse vingt-cinq octets."
 ```
 
-Sans `--message`, saisir le secret dans le terminal. Avec `--sortie chemin.json`,
+L’option `toutes` enchaîne les trois démonstrations. Sans `--message`, saisir le texte dans le terminal, sauf pour la partie 2. Avec `--sortie chemin.json`,
 enregistrer aussi les résultats. `--partie toutes` inclut la partie 1 et conserve
 sa limite de **25 octets UTF-8**. Utiliser `--partie 3` pour un texte plus long.
-Le programme de calcul et ses quinze tests n'ont aucune dépendance externe.
+Le programme de calcul et ses seize tests n'ont aucune dépendance externe.
 
 ## Refaire le relevé du certificat
 

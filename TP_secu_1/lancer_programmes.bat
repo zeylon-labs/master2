@@ -31,7 +31,7 @@ echo PARTIE 1 - Chiffrement, signature SHA-256 et verification
 if errorlevel 1 goto fin
 if not defined TP_SANS_PAUSE pause
 echo.
-echo PARTIE 2 - Traces, exemple CRT du professeur et comparaison des temps
+echo PARTIE 2 - Traces, exemple CRT du TP et comparaison des temps
 "%TP_PYTHON%" -u "Walter_Arthur_main.py" --partie 2
 if errorlevel 1 goto fin
 if not defined TP_SANS_PAUSE pause

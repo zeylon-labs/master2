@@ -1,7 +1,7 @@
 name: TP RSA tests et certificat
 on:
   push:
-    branches: [main]
+    branches: [main, 'retravail/**']
     paths: ['TP_secu_1/**', '.github/workflows/tp-secu-1.yml']
   workflow_dispatch:
 permissions:
@@ -47,7 +47,7 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Tests parties 1 2 et 3
-        run: python TP_secu_1/Walter_Arthur_main.py --test
+        run: python -m unittest discover -s TP_secu_1/tests -v
       - name: Simulation complète et message long
         run: |
           python TP_secu_1/Walter_Arthur_main.py --partie toutes --message "Bonjour Alice" --sortie TP_secu_1/resultats/ci_demo.json

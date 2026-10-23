@@ -12,11 +12,11 @@ Ce rapport accompagne la réalisation des trois parties du TP RSA. Il présente 
 
 Bob envoie un message à Alice. Il le chiffre avec la clé publique d'Alice, puis signe son empreinte avec sa propre clé privée. Alice déchiffre et vérifie la signature. L'exercice ajoute ensuite une simulation de canal auxiliaire, le calcul CRT et un bourrage pédagogique par blocs.
 
-Les sources prioritaires sont TP_RSA_Enonce.pdf et RSA_B_A.py dans TP_secu_1/sources. Exp_CRT_RSA.pdf, dans ce même dossier, précise la recombinaison CRT. Le programme conserve les facteurs premiers et les exposants publics du professeur.
+Les sources prioritaires sont TP_RSA_Enonce.pdf et RSA_B_A.py dans TP_secu_1/sources. Exp_CRT_RSA.pdf, dans ce même dossier, précise la recombinaison CRT. Le programme conserve les facteurs premiers et les exposants publics du TP.
 
 ## Résultats essentiels
 
-Les trois parties fonctionnelles sont implémentées. Quinze tests automatisés contrôlent le calcul, les conversions, les traces, le CRT et le bourrage. Trois tests supplémentaires vérifient l'analyse de certificats X.509. La première CI a validé les calculs sous Python 3.10 et 3.13.
+Les trois parties fonctionnelles sont implémentées. Seize tests automatisés contrôlent le calcul, les conversions, les traces, le CRT et le bourrage. Trois tests supplémentaires vérifient l'analyse de certificats X.509. Les calculs ont également été vérifiés sous Python 3.10 et 3.13 dans le dépôt.
 
 Le certificat présenté par link.springer.com a été observé avec validation TLS le 16 octobre 2026 à 16:02:25 UTC depuis GitHub Actions. Le certificat PEM et les champs extraits sont conservés dans resultats.
 
@@ -43,15 +43,15 @@ Installer l'extension Python publiée par Microsoft, identifiant ms-python.pytho
 Le programme de calcul n'a aucune dépendance externe à installer. Les imports de Walter_Arthur_util.py sont locaux ; conserver les deux fichiers Python ensemble.
 
 ```powershell
-python Walter_Arthur_main.py --test
+python Walter_Arthur_main.py --partie 1 --message "Bonjour Alice"
 python Walter_Arthur_main.py --partie toutes --message "Bonjour Alice"
-python Walter_Arthur_main.py --partie 2 --message "Bonjour"
+python Walter_Arthur_main.py --partie 2
 python Walter_Arthur_main.py --partie 3 --message "Un message long avec accents é"
 ```
 
 L'option --partie 1 impose 25 octets UTF-8. L'option toutes exécute aussi cette partie et conserve donc cette limite. Pour un long message, choisir --partie 3. Sans --message, le terminal demande le texte à saisir.
 
-L'option --sortie resultats/mon_execution.json enregistre les résultats en plus de les afficher. Les configurations F5 fournies dans .vscode permettent de lancer la démonstration, un message long ou les tests. Un point d'arrêt dans la marge permet de suivre les variables avec F10.
+L'option --sortie resultats/mon_execution.json enregistre les résultats en plus de les afficher. Les configurations F5 fournies dans .vscode permettent de lancer chaque partie séparément ou les trois parties à la suite. Un point d'arrêt dans la marge permet de suivre les variables avec F10.
 
 ## Résoudre les erreurs courantes
 
@@ -258,7 +258,7 @@ q_inv est calculé par notre fonction d'Euclide étendu. La fonction home_prepar
 
 La réduction d'exposant repose sur le petit théorème de Fermat pour les résidus non nuls modulo les premiers. Le code traite aussi explicitement un chiffré divisible par p ou q : le résidu doit rester nul, même si l'exposant réduit est zéro.
 
-## Reproduire l'exemple du professeur
+## Reproduire l'exemple du TP
 
 | Paramètre | Valeur | Paramètre | Valeur |
 | --- | --- | --- | --- |
@@ -415,7 +415,7 @@ La connexion a négocié TLSv1.3 avec TLS_AES_128_GCM_SHA256. Le trafic est prot
 
 ## Tests reproductibles
 
-La commande python Walter_Arthur_main.py --test exécute quinze tests. Le journal local tests_locaux.txt conserve leur résultat. La première exécution GitHub Actions a passé les mêmes tests et les démonstrations sous Python 3.10 et 3.13.
+Seize tests automatiques vérifient les fonctions RSA dans le dépôt. Le journal local tests_locaux.txt conserve leur résultat. Les calculs RSA et les démonstrations ont également été exécutés sous Python 3.10 et 3.13 dans la CI.
 
 | Partie | Contrôles principaux |
 | --- | --- |
@@ -444,7 +444,7 @@ Les tests chronométriques ne fixent aucun seuil de performance, car un système
 
 <!-- page -->
 
-# Livrables limites et références
+# Livrables et limites
 
 ## Correspondance avec le sujet
 
@@ -461,7 +461,7 @@ Les tests chronométriques ne fixent aucun seuil de performance, car un système
 
 ## Limites et choix d'adaptation
 
-Les clés sont celles du professeur. Le code n'ajoute ni RSA-PSS, ni RSA-OAEP, ni gestion de confiance des clés de Bob. La signature en deux blocs conserve le SHA-256 avec ces petites clés, mais n'est pas un schéma standard : les deux blocs sont signés indépendamment. La construction est conservée pour les objectifs pédagogiques et ne doit pas être présentée comme sécurisée.
+Les clés sont celles de l'énoncé. Le code n'ajoute ni RSA-PSS, ni RSA-OAEP, ni gestion de confiance des clés de Bob. La signature en deux blocs conserve le SHA-256 avec ces petites clés, mais n'est pas un schéma standard : les deux blocs sont signés indépendamment. La construction est conservée pour les objectifs pédagogiques et ne doit pas être présentée comme sécurisée.
 
 Le CRT exige deux premiers distincts et des paramètres cohérents. Le padding est validé avec une erreur générique mais sans garantie de temps constant. La taille totale du texte de la partie 3 dépend de la mémoire disponible et le nombre de blocs révèle sa longueur approximative.
 
@@ -470,11 +470,3 @@ Le remplacement de MD5 ne change pas la capacité du module. Les résultats de t
 ## Fichiers à déposer et vérification
 
 Déposer Walter_Arthur_main.py, Walter_Arthur_util.py et docs/Walter_Arthur.pdf dans le devoir Teams. Les tests, les résultats JSON et la version Word sont disponibles dans le dépôt pour expliquer et reproduire le travail. Après dépôt, contrôler les pièces jointes et la confirmation de remise dans Teams.
-
-## Références
-
-Sources du TP : TP_RSA_Enonce.pdf pages 2 à 4 ; Exp_CRT_RSA.pdf pages 1 et 2 ; RSA_B_A.py, Abdeljalil ABBAS-TURKI. Les copies originales sont conservées dans TP_secu_1/sources.
-
-Compléments techniques : RFC 8017, sections 7.2 et 8.2, https://www.rfc-editor.org/rfc/rfc8017.html ; RFC 8446, TLS 1.3, https://www.rfc-editor.org/rfc/rfc8446.html. Documentation VS Code : https://code.visualstudio.com/docs/python/run. Sources consultées le 16 octobre 2026.
-
-Preuve du relevé : https://github.com/zeylon-labs/master2-TP/actions/runs/38928738912. Démonstrations et mesures locales : resultats/execution_complete.json et resultats/message_long.json.

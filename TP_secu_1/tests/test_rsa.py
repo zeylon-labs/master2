@@ -2,8 +2,12 @@
 from dataclasses import replace
 from pathlib import Path
 import hashlib
+import json
 import random
+import shutil
+import subprocess
 import sys
+import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -84,7 +88,7 @@ class Partie2(unittest.TestCase):
         self.assertEqual(u.home_rsa_crt(8363, config), 513)
         self.assertEqual(u.home_mod_expnoent(513, 3, 17947), 8363)
 
-    def test_crt_cles_professeur(self):
+    def test_crt_cles_du_tp(self):
         rng = random.Random(1234)
         for config in [u.CRT_ALICE, u.CRT_BOB]:
             n = config.p * config.q
@@ -149,6 +153,30 @@ class Partie3(unittest.TestCase):
         for chiffres in [(), (0,), (u.na,), (-1,)]:
             with self.assertRaisesRegex(ValueError, "Bloc chiffré invalide"):
                 u.home_recevoir_blocs(replace(paquet, chiffres=chiffres))
+
+
+class Lancement(unittest.TestCase):
+    def test_quatre_options_avec_seulement_les_deux_fichiers(self):
+        racine = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as dossier:
+            for nom in ["Walter_Arthur_main.py", "Walter_Arthur_util.py"]:
+                shutil.copyfile(racine / nom, Path(dossier) / nom)
+            for partie in ["1", "2", "3", "toutes"]:
+                with self.subTest(partie=partie):
+                    commande = [sys.executable, "Walter_Arthur_main.py", "--partie", partie]
+                    if partie != "2":
+                        commande += ["--message", "Bonjour Alice"]
+                    execution = subprocess.run(commande, cwd=dossier, capture_output=True,
+                                               text=True, encoding="utf-8", timeout=20)
+                    self.assertEqual(execution.returncode, 0, execution.stderr)
+                    resultats = json.loads(execution.stdout)
+                    attendues = {"partie1", "partie2", "partie3"} if partie == "toutes" else {"partie" + partie}
+                    self.assertEqual(set(resultats) - {"environnement"}, attendues)
+                    for cle in attendues & {"partie1", "partie3"}:
+                        self.assertEqual(resultats[cle]["message_retrouve"], "Bonjour Alice")
+                        self.assertTrue(resultats[cle]["signature_valide"])
+                    if "partie2" in resultats:
+                        self.assertEqual(resultats["partie2"]["crt_exemple_tp"]["m"], 513)
 
 
 if __name__ == "__main__":

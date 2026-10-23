@@ -1,9 +1,12 @@
+
+=== tests_rsa ===
+test_quatre_options_avec_seulement_les_deux_fichiers (test_rsa.Lancement.test_quatre_options_avec_seulement_les_deux_fichiers) ... ok
 test_alterations (test_rsa.Partie1.test_alterations) ... ok
 test_echanges_utf8 (test_rsa.Partie1.test_echanges_utf8) ... ok
 test_exponentiation (test_rsa.Partie1.test_exponentiation) ... ok
 test_inverses (test_rsa.Partie1.test_inverses) ... ok
 test_limites_et_hash (test_rsa.Partie1.test_limites_et_hash) ... ok
-test_crt_cles_professeur (test_rsa.Partie2.test_crt_cles_professeur) ... ok
+test_crt_cles_du_tp (test_rsa.Partie2.test_crt_cles_du_tp) ... ok
 test_crt_exemple_officiel (test_rsa.Partie2.test_crt_exemple_officiel) ... ok
 test_crt_exposant_reduit_zero (test_rsa.Partie2.test_crt_exposant_reduit_zero) ... ok
 test_trace_et_bits (test_rsa.Partie2.test_trace_et_bits) ... ok
@@ -15,6 +18,6 @@ test_messages_multiblocs (test_rsa.Partie3.test_messages_multiblocs) ... ok
 test_structure_bourrage (test_rsa.Partie3.test_structure_bourrage) ... ok
 
 ----------------------------------------------------------------------
-Ran 15 tests in 0.098s
+Ran 16 tests in 0.514s
 
 OK

@@ -7,9 +7,14 @@ Les deux versions du rapport sont conservées séparément.
 | Guide détaillé avec explications et prise en main | [Walter_Arthur.pdf](Walter_Arthur.pdf) | [Walter_Arthur.docx](Walter_Arthur.docx) | [Markdown](Walter_Arthur_rapport.md) |
 | Compte rendu organisé selon les questions du sujet | [Walter_Arthur_compte_rendu.pdf](Walter_Arthur_compte_rendu.pdf) | [Walter_Arthur_compte_rendu.docx](Walter_Arthur_compte_rendu.docx) | [Markdown](Walter_Arthur_compte_rendu.md) |
 
-Le compte rendu présente les réponses des trois parties, les résultats et les
-commentaires. Il conserve seulement les commandes d'exécution et de test,
+Le compte rendu est la version prévue pour la remise. Il présente les réponses
+des trois parties, les résultats et les commentaires. Il conserve seulement les commandes d'exécution et de test,
 sans le tutoriel d'installation du guide. Les résultats utilisés sont les mêmes.
+
+Sur la branche `retravail/tp-rsa-rapport-commentaires`, le compte rendu ajoute
+des exemples simples de modulo, d'inverse, de chiffrement RSA, de CRT et de
+découpage UTF-8. Le fichier `resultats/exemples_simples.json` conserve leurs
+résultats vérifiés. Les commandes du guide détaillé sont aussi mises à jour.
 
 Pour régénérer le Word de l'une des versions depuis le dossier TP_secu_1 :
 
