@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Manipuler les notions du cours Cloud et traitements distribués : saturation, copies de données, Chord et ASP.">
+  <meta name="description" content="Comprendre le cours Cloud et systèmes distribués, réviser l’examen et préparer les TP : simulations, synthèse sourcée et exercices corrigés.">
   <title>Atelier Cloud · Master DSICS</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='10' cy='20' r='5' fill='%231b6c80'/%3E%3Ccircle cx='30' cy='9' r='5' fill='%231b6c80'/%3E%3Ccircle cx='30' cy='31' r='5' fill='%231b6c80'/%3E%3Cpath d='M14 18L26 11M14 22L26 29' stroke='%231b6c80' stroke-width='2'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css"><script src="model.js" defer></script><script src="charts.js" defer></script><script src="app.js" defer></script>
+  <link rel="stylesheet" href="style.css"><script src="model.js" defer></script><script src="charts.js" defer></script><script src="revision-data.js" defer></script><script src="app.js" defer></script><script src="revision.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Aller au contenu</a>
@@ -23,11 +23,14 @@
       <a href="#middleware" data-route="middleware"><span>Middleware</span><small>Entre applications et OS locaux</small></a>
       <a href="#evolutivite" data-route="evolutivite"><span>Évolutivité</span><small>Verticale et horizontale</small></a>
       <a href="#maths" data-route="maths"><span>Entraînement maths</span><small>Calculs et corrections détaillées</small></a>
+      <a href="#synthese" data-route="synthese"><span>Synthèse du cours</span><small>Notions, livre et sources</small></a>
+      <a href="#examens" data-route="examens"><span>Préparer l’examen</span><small>12 questions et sujet blanc</small></a>
+      <a href="#tp" data-route="tp"><span>Préparer les TP</span><small>VM, répartition et panne</small></a>
     </nav>
-    <div class="sidebar-bottom"><p class="nav-label">Pour approfondir</p><a href="fiche-01.pdf" target="_blank" rel="noopener">Lire la fiche illustrée ↗</a><a href="https://www.distributed-systems.net/index.php/books/ds4/" target="_blank" rel="noopener">Le livre de référence ↗</a><p>O. Grunder · Cours 01<br>van Steen &amp; Tanenbaum · 4e éd.</p></div>
+    <div class="sidebar-bottom"><p class="nav-label">Pour approfondir</p><a href="guide-revision.pdf" target="_blank" rel="noopener">Guide examen et TP ↗</a><a href="fiche-01.pdf" target="_blank" rel="noopener">Lire la fiche illustrée ↗</a><a href="https://www.distributed-systems.net/index.php/books/ds4/" target="_blank" rel="noopener">Le livre de référence ↗</a><p>O. Grunder · Cours 01<br>van Steen &amp; Tanenbaum · 4e éd.</p></div>
   </aside>
-  <header class="topbar"><div class="mobile-brand">Atelier Cloud</div><span class="desktop-context">Master DSICS <span class="sep">/</span> Le laboratoire du cours</span><a href="fiche-01.pdf" target="_blank" rel="noopener">Fiche de révision ↗</a></header>
-  <div class="mobile-navigation"><label for="lesson">Explorer une notion</label><select id="lesson"><option value="saturation">Saturation</option><option value="donnees">Données distribuées</option><option value="chord">Anneau Chord</option><option value="cloud">ASP et cloud</option><option value="middleware">Middleware</option><option value="evolutivite">Évolutivité</option><option value="maths">Entraînement maths</option></select></div>
+  <header class="topbar"><div class="mobile-brand">Atelier Cloud</div><span class="desktop-context">Master DSICS <span class="sep">/</span> Le laboratoire du cours</span><a href="guide-revision.pdf" target="_blank" rel="noopener">Guide examen et TP ↗</a></header>
+  <div class="mobile-navigation"><label for="lesson">Explorer une notion</label><select id="lesson"><option value="saturation">Saturation</option><option value="donnees">Données distribuées</option><option value="chord">Anneau Chord</option><option value="cloud">ASP et cloud</option><option value="middleware">Middleware</option><option value="evolutivite">Évolutivité</option><option value="maths">Entraînement maths</option><option value="synthese">Synthèse du cours</option><option value="examens">Préparer l’examen</option><option value="tp">Préparer les TP</option></select></div>
   <main id="main" class="sheet" tabindex="-1">
     <div class="page-heading"><div><p id="page-source" class="source-ref"></p><h1 id="page-title"></h1><p id="page-intro" class="intro"></p></div><button id="reset" class="button secondary">Réinitialiser</button></div>
 
@@ -81,6 +84,9 @@
       <div class="experiment-grid"><section class="experiment"><div class="section-heading"><h2 id="math-title"></h2><span id="math-reference" class="subtle"></span></div><p id="math-question" class="math-question"></p><p id="math-givens" class="equation"></p><form id="math-form" class="math-form"><label for="math-answer">Ta réponse <span id="math-unit" class="subtle"></span><input id="math-answer" type="text" inputmode="decimal" autocomplete="off" aria-describedby="math-feedback"></label><button class="button primary" type="submit">Vérifier</button><button class="button" id="math-reveal" type="button">Voir la correction</button></form><p id="math-feedback" class="feedback" aria-live="polite"></p><div id="math-solution" class="math-solution" hidden></div></section><aside class="explanation"><h2>Une méthode pour l’examen</h2><ol class="math-method"><li>Écris ce qui est donné et ce qui est demandé.</li><li>Vérifie le modèle et ses hypothèses.</li><li>Convertis les unités avant le calcul.</li><li>Remplace les symboles par leurs valeurs.</li><li>Donne le résultat avec son unité et vérifie son ordre de grandeur.</li></ol><details open><summary>Les notations</summary><p>λ : arrivées par seconde.<br>μ : capacité de service par seconde.<br>S : traitement moyen.<br>R : réponse, attente comprise.<br>U : utilisation, entre 0 et 1 en régime stable.<br>L : nombre moyen de requêtes dans le système, noté N dans le support.<br>n : nombre de machines.</p></details><p class="subtle">Pour une file M/M/1 stable : λ &lt; μ. Pour une loi de Little : moyennes stables, même périmètre et unités compatibles.</p></aside></div>
       <details class="formula-sheet"><summary>Afficher le mémo des formules</summary><div class="formula-grid"><p><b>File M/M/1 stable</b><br>μ = 1/S<br>U = λ/μ<br>R = 1/(μ − λ) = S/(1 − U)<br>L = U/(1 − U)<br>p₀ = 1 − U</p><p><b>Loi de Little</b><br>L = λR<br><br><b>Dimensionnement idéal</b><br>n ≥ λ/(U_max × μ)<br>Arrondir au supérieur, n ≥ 1</p><p><b>Recherche aléatoire</b><br>E[K] ≈ N/r<br><br><b>Capteurs</b><br>τ = T_actif / (T_actif + T_sommeil)</p></div></details>
     </section>
+    <section id="synthese" class="view" hidden aria-labelledby="page-title"></section>
+    <section id="examens" class="view" hidden aria-labelledby="page-title"></section>
+    <section id="tp" class="view" hidden aria-labelledby="page-title"></section>
     <footer><span id="footer-source"></span><a href="https://www.distributed-systems.net/index.php/books/ds4/" target="_blank" rel="noopener">Distributed Systems · 4e édition ↗</a><span>Exemples pédagogiques · calculs locaux</span></footer>
     <noscript><p>Active JavaScript pour manipuler les simulations. La fiche PDF reste disponible depuis le lien en haut de page.</p></noscript>
   </main>
