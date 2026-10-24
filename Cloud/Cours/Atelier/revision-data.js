@@ -140,6 +140,36 @@ window.CloudStudy = {
       ],
       "trap": "Un pourcentage de temps actif n’est pas directement un pourcentage d’énergie économisée : il faut aussi connaître les puissances et coûts de transition.",
       "task": "Décris ce qui arrive à une écriture faite hors ligne si la même donnée a été modifiée ailleurs."
+    },
+    {
+      "id": "objets-services",
+      "title": "9 · Architectures orientées objet et services",
+      "priority": "Support p. 29 ; comparaison SOA : complément pédagogique",
+      "source": "Support p. 29, section 2.1.2 ; synthèse et exemple proposés",
+      "route": "middleware",
+      "points": [
+        "Orientée objet : les composants encapsulent un état et exposent des méthodes. Exemple : un objet Panier contient des lignes et propose ajouterProduit(). Son implémentation reste cachée. Il peut être local ; s’il est distant, un proxy et un middleware peuvent transporter l’appel sur le réseau.",
+        "Un appel de méthode distant ressemble à un appel local dans le code, mais ajoute sérialisation, latence et pannes partielles. Un timeout ne prouve pas que la méthode n’a pas modifié l’objet. Ni les classes ni l’encapsulation ne suppriment les contraintes du distribué.",
+        "Orientée services (SOA) : organiser des capacités métier derrière des contrats explicites. Exemple : un service Paiement propose une opération autoriserPaiement(), utilisée par plusieurs applications sans exposer son code interne. HTTP/REST, RPC ou des messages sont des moyens de communication possibles.",
+        "Les deux approches sont compatibles : un service peut être développé avec des objets. Objet décrit surtout la structure du composant et son interface ; service décrit une capacité accessible par contrat. Une architecture SOA n’impose ni un protocole unique ni un bus central obligatoire."
+      ],
+      "trap": "Un objet distant n’est pas automatiquement un microservice : il faut aussi considérer le découpage métier et l’autonomie de déploiement.",
+      "task": "Compare Panier.ajouterProduit() et le contrat d’un service Commandes ; explique ce qui change si l’appel traverse le réseau."
+    },
+    {
+      "id": "docker-microservices",
+      "title": "10 · Microservices et Docker : deux rôles différents",
+      "priority": "Complément pédagogique ; pas un sujet d’examen confirmé",
+      "source": "Documentation officielle Docker et Microsoft Azure Architecture Center ; sources en fin de guide",
+      "route": "cloud",
+      "points": [
+        "Microservices : découper une application par capacités métier autonomes, déployables indépendamment. Dans une boutique : Catalogue, Commandes, Paiement. On peut multiplier les instances du seul Catalogue. Chaque service maîtrise ses données et ses contrats ; une base physique distincte par service n’est pas une obligation universelle.",
+        "Le gain d’autonomie demande de gérer réseau, timeouts, sécurité et diagnostic entre services. Si le paiement échoue après la création d’une commande, l’ensemble n’est pas automatiquement annulé : il faut prévoir états, reprise ou compensation. Un monolithe modulaire peut rester un meilleur choix pour une petite application.",
+        "Docker sert à construire et exécuter des conteneurs. Image : modèle de fichiers et configuration ; conteneur : processus isolé créé depuis une image. Dockerfile : recette de construction ; registre : stockage des images ; volume : données conservées indépendamment du conteneur. Compose décrit et lance plusieurs services conteneurisés.",
+        "Une VM possède son noyau invité ; les conteneurs Linux partagent le noyau de l’hôte Linux. Sur Windows, Docker Desktop peut fournir cet hôte via une VM ou WSL 2. Plusieurs conteneurs sur un même hôte ne protègent pas d’une panne de cet hôte."
+      ],
+      "trap": "Docker n’est pas une architecture microservices : on peut conteneuriser un monolithe et exécuter des microservices sans Docker. Compose ne transforme pas un projet en cluster tolérant aux pannes.",
+      "task": "Dessine Client → Catalogue / Commandes → Paiement ; place un conteneur par service, puis montre ce qui reste partagé sur l’hôte."
     }
   ],
   "formulas": [
@@ -362,6 +392,16 @@ window.CloudStudy = {
       "title": "TP : exemple de répartiteur",
       "detail": "Exemple officiel de classic Application Load Balancer avec groupe géré ; exemple de préparation, pas le produit imposé pour le TP.",
       "url": "https://docs.cloud.google.com/load-balancing/docs/https/ext-https-lb-simple"
+    },
+    {
+      "title": "Complément : conteneurs et Docker",
+      "detail": "Documentation officielle : images, conteneurs et partage du noyau. Complément au support fourni, consulté le 24/10/2026.",
+      "url": "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/"
+    },
+    {
+      "title": "Complément : microservices",
+      "detail": "Microsoft Azure Architecture Center : autonomie métier, déploiement et compromis. Complément pédagogique, pas une annonce de programme d’examen.",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices"
     }
   ]
 };

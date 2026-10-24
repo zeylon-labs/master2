@@ -54,11 +54,11 @@ add(D['scope'])
 heading('Ce qui est établi, ce qui reste à confirmer')
 for e in D['evidence']: heading(e['label']);add(e['text'])
 heading('Un parcours de révision en quatre passages')
-for t in ['1. Comprendre : nœuds, middleware, transparence, pannes et stratégies de mise à l’échelle (p. 2–5).','2. Calculer : identifier le modèle, convertir les unités, vérifier la stabilité, interpréter les résultats (p. 6–9).','3. S’entraîner : faire le sujet blanc sans regarder les corrections (p. 10).','4. Manipuler : suivre le parcours VM / répartiteur et expliquer les observations (p. 11–12). Livre et sources : p. 13.']:add(t)
+for t in ['1. Comprendre : nœuds, middleware, transparence, pannes et stratégies de mise à l’échelle (p. 2–6).','2. Calculer : identifier le modèle, convertir les unités, vérifier la stabilité, interpréter les résultats (p. 7–10).','3. S’entraîner : faire le sujet blanc sans regarder les corrections (p. 11).','4. Manipuler : suivre le parcours VM / répartiteur et expliquer les observations (p. 12–13). Livre et sources : p. 14.']:add(t)
 add('Ce guide complète la Fiche 01 illustrée. Dans l’atelier, les simulations existantes restent disponibles et les nouvelles rubriques Synthèse, Examen et TP reprennent le même contenu. Les apartés privés sont exclus.','small')
 
 for start in range(0,len(D['topics']),2):
- page(['Fondations du distribué','Tenue en charge et files','Cloud et architectures','P2P, transactions et énergie'][start//2],'Notions vérifiées dans le support ; les compléments sont signalés.')
+ page(['Fondations du distribué','Tenue en charge et files','Cloud et architectures','P2P, transactions et énergie','Objets, services et conteneurs'][start//2],'Notions vérifiées dans le support ; les compléments sont signalés.')
  for t in D['topics'][start:start+2]:
   heading(t['title']);add(t['priority']+' · '+t['source'],'small')
   for text in t['points']:add(text)
