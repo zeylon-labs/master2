@@ -2,8 +2,8 @@
 
 Notes de cours, fiches de notions et exemples à enrichir au fil des séances.
 
-- [Resumes](Resumes/) : [Fiche 01 illustrée](Resumes/Fiche_01_Cloud_et_systemes_distribues.pdf), [guide consolidé de 16 pages](Resumes/Guide_revision_Cloud_examen_TP.pdf) et données éditables `revisions.json`.
-- [Atelier](Atelier/README.md) : onze modules pour comprendre les notions, réviser et préparer les TP ; fonctionnement local, sans build.
+- [Resumes](Resumes/) : [Fiche 01 illustrée](Resumes/Fiche_01_Cloud_et_systemes_distribues.pdf), [guide consolidé de 19 pages](Resumes/Guide_revision_Cloud_examen_TP.pdf) et données éditables `revisions.json`.
+- [Atelier](Atelier/README.md) : douze modules pour comprendre les notions, réviser et préparer les TP ; fonctionnement local, sans build.
 - [Schemas](Schemas/) : schéma du middleware en [SVG](Schemas/Schema_middleware.svg) et [PNG](Schemas/Schema_middleware.png).
 - [Sources](Sources/README.md) : inventaire des originaux locaux : support du professeur, notes personnelles et exports Plaud.
 - [Outils](Outils/) : générateur du guide PDF et des données de l’application.
@@ -21,3 +21,5 @@ Complément du 24 octobre : objets et services (support p. 29), puis Docker et m
 Point noté le 24 octobre : événements, publish/subscribe, couplage temporel/référentiel et espaces de tuples (Linda), support p. 30–31. Le thème 11 est ajouté au guide et à l’Atelier ; le récap Plaud de la séance sera intégré après réception.
 
 Linda en clair : page dédiée avec définition, tableau out/rd/in, motif et variables, trace corrigée à deux processus et pièges de blocage. Le même contenu est lisible sous les schémas de l’Atelier.
+
+Architectures des systèmes : trois pages de schémas comparant client-serveur, 3 tiers, services, microservices et P2P sur un même exemple ; même rubrique dans l’Atelier avec parcours pas à pas. Les catégories ne sont pas exclusives et les placements dessinés sont des exemples.

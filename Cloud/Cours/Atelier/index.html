@@ -7,7 +7,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='10' cy='20' r='5' fill='%231b6c80'/%3E%3Ccircle cx='30' cy='9' r='5' fill='%231b6c80'/%3E%3Ccircle cx='30' cy='31' r='5' fill='%231b6c80'/%3E%3Cpath d='M14 18L26 11M14 22L26 29' stroke='%231b6c80' stroke-width='2'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="coordination.css"><script src="model.js" defer></script><script src="charts.js" defer></script><script src="revision-data.js" defer></script><script src="coordination-model.js" defer></script><script src="app.js" defer></script><script src="revision.js" defer></script><script src="coordination.js" defer></script>
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="coordination.css"><link rel="stylesheet" href="architectures.css"><script src="model.js" defer></script><script src="charts.js" defer></script><script src="revision-data.js" defer></script><script src="coordination-model.js" defer></script><script src="app.js" defer></script><script src="revision.js" defer></script><script src="coordination.js" defer></script><script src="architectures.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Aller au contenu</a>
@@ -20,6 +20,7 @@
       <a href="#donnees" data-route="donnees"><span>Données distribuées</span><small>Copies, partitions et pannes</small></a>
       <a href="#chord" data-route="chord"><span>Anneau Chord</span><small>Une recherche, saut par saut</small></a>
       <a href="#cloud" data-route="cloud"><span>ASP et cloud</span><small>Hébergement et responsabilités</small></a>
+      <a href="#architectures" data-route="architectures"><span>Architectures des systèmes</span><small>Un exemple, cinq organisations</small></a>
       <a href="#middleware" data-route="middleware"><span>Middleware</span><small>Entre applications et OS locaux</small></a>
       <a href="#evenements" data-route="evenements"><span>Événements et espace partagé</span><small>Publier, lire ou retirer</small></a>
       <a href="#evolutivite" data-route="evolutivite"><span>Évolutivité</span><small>Verticale et horizontale</small></a>
@@ -31,7 +32,7 @@
     <div class="sidebar-bottom"><p class="nav-label">Pour approfondir</p><a href="guide-revision.pdf" target="_blank" rel="noopener">Guide examen et TP ↗</a><a href="fiche-01.pdf" target="_blank" rel="noopener">Lire la fiche illustrée ↗</a><a href="https://www.distributed-systems.net/index.php/books/ds4/" target="_blank" rel="noopener">Le livre de référence ↗</a><p>O. Grunder · Cours 01<br>van Steen &amp; Tanenbaum · 4e éd.</p></div>
   </aside>
   <header class="topbar"><div class="mobile-brand">Atelier Cloud</div><span class="desktop-context">Master DSICS <span class="sep">/</span> Le laboratoire du cours</span><a href="guide-revision.pdf" target="_blank" rel="noopener">Guide examen et TP ↗</a></header>
-  <div class="mobile-navigation"><label for="lesson">Explorer une notion</label><select id="lesson"><option value="saturation">Saturation</option><option value="donnees">Données distribuées</option><option value="chord">Anneau Chord</option><option value="cloud">ASP et cloud</option><option value="middleware">Middleware</option><option value="evenements">Pub/sub et espace partagé</option><option value="evolutivite">Évolutivité</option><option value="maths">Entraînement maths</option><option value="synthese">Synthèse du cours</option><option value="examens">Préparer l’examen</option><option value="tp">Préparer les TP</option></select></div>
+  <div class="mobile-navigation"><label for="lesson">Explorer une notion</label><select id="lesson"><option value="saturation">Saturation</option><option value="donnees">Données distribuées</option><option value="chord">Anneau Chord</option><option value="cloud">ASP et cloud</option><option value="architectures">Architectures des systèmes</option><option value="middleware">Middleware</option><option value="evenements">Pub/sub et espace partagé</option><option value="evolutivite">Évolutivité</option><option value="maths">Entraînement maths</option><option value="synthese">Synthèse du cours</option><option value="examens">Préparer l’examen</option><option value="tp">Préparer les TP</option></select></div>
   <main id="main" class="sheet" tabindex="-1">
     <div class="page-heading"><div><p id="page-source" class="source-ref"></p><h1 id="page-title"></h1><p id="page-intro" class="intro"></p></div><button id="reset" class="button secondary">Réinitialiser</button></div>
 
@@ -86,6 +87,7 @@
       <details class="formula-sheet"><summary>Afficher le mémo des formules</summary><div class="formula-grid"><p><b>File M/M/1 stable</b><br>μ = 1/S<br>U = λ/μ<br>R = 1/(μ − λ) = S/(1 − U)<br>L = U/(1 − U)<br>p₀ = 1 − U</p><p><b>Loi de Little</b><br>L = λR<br><br><b>Dimensionnement idéal</b><br>n ≥ λ/(U_max × μ)<br>Arrondir au supérieur, n ≥ 1</p><p><b>Recherche aléatoire</b><br>E[K] ≈ N/r<br><br><b>Capteurs</b><br>τ = T_actif / (T_actif + T_sommeil)</p></div></details>
     </section>
     <section id="evenements" class="view" hidden aria-labelledby="page-title"></section>
+    <section id="architectures" class="view" hidden aria-labelledby="page-title"></section>
     <section id="synthese" class="view" hidden aria-labelledby="page-title"></section>
     <section id="examens" class="view" hidden aria-labelledby="page-title"></section>
     <section id="tp" class="view" hidden aria-labelledby="page-title"></section>

@@ -4,6 +4,7 @@ Usage depuis Cloud/Cours : python Outils/generer_revisions.py (dépendance : rep
 from pathlib import Path
 from html import escape
 import json, re
+from architectures_pdf import render as render_architectures
 from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
@@ -55,7 +56,7 @@ add(D['scope'])
 heading('Ce qui est établi, ce qui reste à confirmer')
 for e in D['evidence']: heading(e['label']);add(e['text'])
 heading('Un parcours de révision en quatre passages')
-for t in ['1. Comprendre : nœuds, middleware, transparence, pannes et stratégies de mise à l’échelle (p. 2–8).','2. Calculer : identifier le modèle, convertir les unités, vérifier la stabilité, interpréter les résultats (p. 9–12).','3. S’entraîner : faire le sujet blanc sans regarder les corrections (p. 13).','4. Manipuler : suivre le parcours VM / répartiteur et expliquer les observations (p. 14–15). Livre et sources : p. 16.']:add(t)
+for t in ['1. Comprendre : nœuds, middleware, transparence, pannes et stratégies de mise à l’échelle (p. 2–11).','2. Calculer : identifier le modèle, convertir les unités, vérifier la stabilité, interpréter les résultats (p. 12–15).','3. S’entraîner : faire le sujet blanc sans regarder les corrections (p. 16).','4. Manipuler : suivre le parcours VM / répartiteur et expliquer les observations (p. 17–18). Livre et sources : p. 19.']:add(t)
 add('Ce guide complète la Fiche 01 illustrée. Dans l’atelier, les simulations existantes restent disponibles et les nouvelles rubriques Synthèse, Examen et TP reprennent le même contenu. Les apartés privés sont exclus.','small')
 
 grouped_topics = [t for t in D['topics'] if not t.get('standalone')]
@@ -80,6 +81,8 @@ table([['Instruction','Résultat','Espace après']] + [[t['instruction'],t['resu
 heading('Raisonner pour un exercice')
 for t in l['pitfalls']:add(t)
 add(l['course'],'small');add(l['source'],'small')
+
+render_architectures(D['architectures'],page,add,heading,table,story,link)
 
 page('Les formules et leurs limites','Support p. 16–17, 26 et 36 ; dimensionnement : application proposée')
 table([['Calcul','Formule','Conditions']] + [[f[0],f[1],f[2]] for f in D['formulas']],[104,207,188])
