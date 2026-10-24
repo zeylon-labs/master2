@@ -23,11 +23,11 @@ Puis ouvrir http://127.0.0.1:8765.
 - Middleware : schéma des applications, des instances de middleware, des OS locaux et du réseau, avec un exemple d’appel distant.
 - Évolutivité : comparaison verticale et horizontale, avec charge entrante, facteur de capacité et nombre de machines réglables.
 - Entraînement maths : huit exercices avec réponse numérique et correction pas à pas sur les files, les probabilités, Little, le dimensionnement, la recherche aléatoire et les capteurs.
-- Synthèse du cours : dix thèmes avec recherche, pièges, savoir-faire et références au support ou à l’oral ; aperçu du livre et corrections du résumé automatique.
+- Synthèse du cours : onze thèmes avec recherche, pièges, savoir-faire et références au support ou à l’oral ; aperçu du livre et corrections du résumé automatique.
 - Préparer l’examen : douze questions filtrables avec corrections masquées, sujet blanc de 45 minutes sur 20 et mémo des formules. Ce format est proposé pour l’entraînement, pas annoncé par le professeur.
 - Préparer les TP : simulation de panne avant/après détection, effet de la charge sur le survivant et six étapes avec preuves à produire. La progression est conservée dans le navigateur si son stockage local est disponible ; « Réinitialiser » dans cette rubrique l’efface.
 
-La fiche initiale et le nouveau [guide de révision et TP de 14 pages](guide-revision.pdf) sont accessibles dans l’application. Accès direct aux nouvelles rubriques : `index.html#synthese`, `index.html#examens`, `index.html#tp`.
+La fiche initiale et le nouveau [guide de révision et TP de 15 pages](guide-revision.pdf) sont accessibles dans l’application. Accès direct aux nouvelles rubriques : `index.html#synthese`, `index.html#examens`, `index.html#tp`.
 
 ## Sources et limites
 

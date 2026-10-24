@@ -170,6 +170,23 @@ window.CloudStudy = {
       ],
       "trap": "Docker n’est pas une architecture microservices : on peut conteneuriser un monolithe et exécuter des microservices sans Docker. Compose ne transforme pas un projet en cluster tolérant aux pannes.",
       "task": "Dessine Client → Catalogue / Commandes → Paiement ; place un conteneur par service, puis montre ce qui reste partagé sur l’hôte."
+    },
+    {
+      "id": "evenements-espaces",
+      "title": "11 · Événements, publish/subscribe et espaces partagés",
+      "priority": "Support p. 30–31 ; point signalé pendant la séance du 24 octobre",
+      "source": "Support p. 30–31, sections 2.1.4.1 à 2.1.4.3 ; récap Plaud de la séance à intégrer dès réception",
+      "route": "middleware",
+      "points": [
+        "Un événement décrit un fait survenu, par exemple CommandeCréée. Dans publish/subscribe, un producteur publie sur un sujet (topic) ou un bus ; les abonnés intéressés reçoivent une notification. Exemple : Email et Stock réagissent à la même commande sans que le service Commandes connaisse chacun de leurs destinataires.",
+        "Couplage référentiel : faut-il désigner le destinataire pour communiquer ? Le découplage référentiel permet de passer par un sujet ou de chercher une donnée par son contenu. Couplage temporel : les participants doivent-ils être disponibles en même temps ? Le découplage temporel demande qu’un intermédiaire conserve ce qui doit être récupéré plus tard.",
+        "La grille du cours compare quatre modèles : échange direct = couplage temporel et référentiel ; événement éphémère = couplage temporel, découplage référentiel ; boîte aux lettres persistante adressée = découplage temporel, couplage référentiel ; espace de données partagé avec conservation des tuples = découplage temporel et référentiel.",
+        "Nuance : publish/subscribe n’implique pas automatiquement de perdre les événements hors ligne, ni de pouvoir les rejouer. Cela dépend de la conservation, des abonnements et des garanties du système. Redis Pub/Sub classique, par exemple, ne rejoue pas les messages manqués après une déconnexion. Un mécanisme durable configuré pour conserver les messages peut fournir un découplage temporel.",
+        "Dans un espace de données partagé de type Linda, un producteur dépose un tuple, par exemple (commande, 42, prête). Le consommateur cherche un tuple correspondant à un motif, sans identifier son producteur. Le support précise : out(t) ajoute un tuple ; rd(motif) lit une copie sans retirer le tuple ; in(motif) récupère et retire un tuple correspondant. in et rd attendent si aucun tuple ne correspond ; deux out identiques créent deux occurrences.",
+        "Lien avec les microservices : un service Commandes peut publier CommandeCréée ; Stock et Email réagissent indépendamment. Publication ne signifie pas que tous ont déjà traité l’événement. Réessais, doublons et ordre dépendent des garanties ; identifier les événements et rendre certains traitements idempotents aide à éviter de répéter un effet."
+      ],
+      "trap": "Asynchrone ne signifie pas durable. Un espace de tuples n’est ni une mémoire RAM commune à tous les OS ni une diffusion automatique vers tous les abonnés : in et rd sélectionnent des tuples par motif.",
+      "task": "Classe un appel direct, un topic éphémère, une boîte aux lettres persistante et Linda selon les deux couplages. Puis explique ce qui arrive si le consommateur est absent lors de la publication."
     }
   ],
   "formulas": [
@@ -371,7 +388,7 @@ window.CloudStudy = {
     },
     {
       "title": "Résumé Plaud et productions précédentes",
-      "detail": "Résumé Plaud du 23/10, 12 pages, utilisé après vérification ; Fiche 01 illustrée, schéma middleware et Atelier Cloud. Noms corrigés : Maarten van Steen ; Plouin pour la référence 2022. Ne pas assimiler transparence de réplication et cohérence immédiate."
+      "detail": "Résumé Plaud du 23/10 vérifié, Fiche 01 et Atelier Cloud. Noms corrigés : Maarten van Steen et Plouin (2022). Le récap Plaud du 24/10 n’a pas encore été reçu ; il complétera la partie événements et espaces partagés."
     },
     {
       "title": "Livre et ressources officielles",
@@ -402,6 +419,11 @@ window.CloudStudy = {
       "title": "Complément : microservices",
       "detail": "Microsoft Azure Architecture Center : autonomie métier, déploiement et compromis. Complément pédagogique, pas une annonce de programme d’examen.",
       "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices"
+    },
+    {
+      "title": "Complément : durée de vie des événements",
+      "detail": "Redis Pub/Sub : messages manqués non rejoués ; les garanties dépendent du mécanisme choisi.",
+      "url": "https://redis.io/docs/latest/develop/pubsub/"
     }
   ]
 };

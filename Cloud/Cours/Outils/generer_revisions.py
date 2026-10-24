@@ -22,6 +22,7 @@ INK, MUTED, ACCENT, RULE, PALE = map(colors.HexColor, ['#182d40','#526575','#1b6
 S = {name: ParagraphStyle(name,fontName=font,fontSize=size,leading=lead,textColor=col,spaceAfter=after,spaceBefore=before) for name,font,size,lead,col,after,before in [
  ('title','Arial-Bold',23,28,INK,15,0),('h','Arial-Bold',12,16,INK,7,12),
  ('p','Arial',9.8,13.8,INK,7,0),('small','Arial',8,11,MUTED,5,0),('cell','Arial',9,12,INK,0,0)]}
+S['reference'] = ParagraphStyle('reference', parent=S['small'], spaceAfter=3)
 story=[]
 def para(text,style='p'):
  text=escape(text).replace('⇒','donc').replace('→',' → ')
@@ -54,13 +55,15 @@ add(D['scope'])
 heading('Ce qui est établi, ce qui reste à confirmer')
 for e in D['evidence']: heading(e['label']);add(e['text'])
 heading('Un parcours de révision en quatre passages')
-for t in ['1. Comprendre : nœuds, middleware, transparence, pannes et stratégies de mise à l’échelle (p. 2–6).','2. Calculer : identifier le modèle, convertir les unités, vérifier la stabilité, interpréter les résultats (p. 7–10).','3. S’entraîner : faire le sujet blanc sans regarder les corrections (p. 11).','4. Manipuler : suivre le parcours VM / répartiteur et expliquer les observations (p. 12–13). Livre et sources : p. 14.']:add(t)
+for t in ['1. Comprendre : nœuds, middleware, transparence, pannes et stratégies de mise à l’échelle (p. 2–7).','2. Calculer : identifier le modèle, convertir les unités, vérifier la stabilité, interpréter les résultats (p. 8–11).','3. S’entraîner : faire le sujet blanc sans regarder les corrections (p. 12).','4. Manipuler : suivre le parcours VM / répartiteur et expliquer les observations (p. 13–14). Livre et sources : p. 15.']:add(t)
 add('Ce guide complète la Fiche 01 illustrée. Dans l’atelier, les simulations existantes restent disponibles et les nouvelles rubriques Synthèse, Examen et TP reprennent le même contenu. Les apartés privés sont exclus.','small')
 
 for start in range(0,len(D['topics']),2):
- page(['Fondations du distribué','Tenue en charge et files','Cloud et architectures','P2P, transactions et énergie','Objets, services et conteneurs'][start//2],'Notions vérifiées dans le support ; les compléments sont signalés.')
+ page(['Fondations du distribué','Tenue en charge et files','Cloud et architectures','P2P, transactions et énergie','Objets, services et conteneurs','Événements et données partagées'][start//2],'Notions vérifiées dans le support ; les compléments sont signalés.')
  for t in D['topics'][start:start+2]:
   heading(t['title']);add(t['priority']+' · '+t['source'],'small')
+  if t['id']=='evenements-espaces':
+   table([['Modèle du cours','Temporel','Référentiel'],['Direct','Couplé','Couplé'],['Événement éphémère','Couplé','Découplé'],['Boîte persistante adressée','Découplé','Couplé'],['Espace de tuples conservés','Découplé','Découplé']],[249,125,125]);story.append(Spacer(1,10))
   for text in t['points']:add(text)
   add('Piège : '+t['trap']);add('À savoir faire : '+t['task'],'small')
 
@@ -111,11 +114,11 @@ for start in [0,3]:
 
 page('Livre et sources','Traçabilité et limites de cette consolidation')
 heading(D['book']['title']);add(D['book']['text']);link('Livre, slides et demande de copie numérique',D['book']['url'])
-for c in D['book']['chapters']:add(c,'small')
+for c in D['book']['chapters']:add(c,'reference')
 add(D['book']['reading'])
 heading('Sources utilisées et corrections')
 for s in D['sources']:
- add(s['title']+' — '+s['detail'],'small')
+ add(s['title']+' — '+s['detail'],'reference')
  if s.get('url') and s['url']!=D['book']['url']:link(s['title'],s['url'])
 add('Pour enrichir le cours : mettre à jour revisions.json, puis exécuter Outils/generer_revisions.py depuis Cloud/Cours. Le PDF et revision-data.js sont régénérés ensemble. Ajouter un repère de source à chaque nouvelle notion.','small')
 
