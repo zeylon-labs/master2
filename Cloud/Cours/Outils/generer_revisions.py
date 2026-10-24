@@ -4,6 +4,8 @@ Usage depuis Cloud/Cours : python Outils/generer_revisions.py (dépendance : rep
 from pathlib import Path
 from html import escape
 import json, re
+from architectures_pdf import render as render_architectures
+from seance24_pdf import render as render_seance24
 from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
@@ -22,6 +24,7 @@ INK, MUTED, ACCENT, RULE, PALE = map(colors.HexColor, ['#182d40','#526575','#1b6
 S = {name: ParagraphStyle(name,fontName=font,fontSize=size,leading=lead,textColor=col,spaceAfter=after,spaceBefore=before) for name,font,size,lead,col,after,before in [
  ('title','Arial-Bold',23,28,INK,15,0),('h','Arial-Bold',12,16,INK,7,12),
  ('p','Arial',9.8,13.8,INK,7,0),('small','Arial',8,11,MUTED,5,0),('cell','Arial',9,12,INK,0,0)]}
+S['reference'] = ParagraphStyle('reference', parent=S['small'], spaceAfter=3)
 story=[]
 def para(text,style='p'):
  text=escape(text).replace('⇒','donc').replace('→',' → ')
@@ -37,9 +40,9 @@ def page(title,sub):
  add(title,'title');add(sub,'small')
 def link(title,url):
  story.append(Paragraph(f'<link href="{escape(url,quote=True)}" color="#1b6c80">{escape(title)} (lien)</link>',S['small']))
-def table(rows,widths):
+def table(rows,widths,padding=7):
  t=Table([[para(c,'cell') for c in row] for row in rows],colWidths=widths,hAlign='LEFT')
- t.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('BACKGROUND',(0,0),(-1,0),PALE),('LINEBELOW',(0,0),(-1,-1),.4,RULE),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('TOPPADDING',(0,0),(-1,-1),7),('BOTTOMPADDING',(0,0),(-1,-1),7)]));story.append(t)
+ t.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('BACKGROUND',(0,0),(-1,0),PALE),('LINEBELOW',(0,0),(-1,-1),.4,RULE),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('TOPPADDING',(0,0),(-1,-1),padding),('BOTTOMPADDING',(0,0),(-1,-1),padding)]));story.append(t)
 def graph():
  d=Drawing(499,145)
  for i,(x,title,note) in enumerate([(0,'Client','Envoie les requêtes'),(170,'Répartiteur','Oriente vers les VM'),(340,'VM A / VM B','Traitent les demandes')]):
@@ -54,15 +57,35 @@ add(D['scope'])
 heading('Ce qui est établi, ce qui reste à confirmer')
 for e in D['evidence']: heading(e['label']);add(e['text'])
 heading('Un parcours de révision en quatre passages')
-for t in ['1. Comprendre : nœuds, middleware, transparence, pannes et stratégies de mise à l’échelle (p. 2–5).','2. Calculer : identifier le modèle, convertir les unités, vérifier la stabilité, interpréter les résultats (p. 6–9).','3. S’entraîner : faire le sujet blanc sans regarder les corrections (p. 10).','4. Manipuler : suivre le parcours VM / répartiteur et expliquer les observations (p. 11–12). Livre et sources : p. 13.']:add(t)
+for t in ['1. Comprendre : nœuds, middleware, transparence, pannes et stratégies de mise à l’échelle (p. 2–16).','2. Calculer : identifier le modèle, convertir les unités, vérifier la stabilité, interpréter les résultats (p. 17–20).','3. S’entraîner : faire le sujet blanc sans regarder les corrections (p. 21).','4. Manipuler : suivre le parcours VM / répartiteur et expliquer les observations (p. 22–23). Livre et sources : p. 24.']:add(t)
 add('Ce guide complète la Fiche 01 illustrée. Dans l’atelier, les simulations existantes restent disponibles et les nouvelles rubriques Synthèse, Examen et TP reprennent le même contenu. Les apartés privés sont exclus.','small')
 
-for start in range(0,len(D['topics']),2):
- page(['Fondations du distribué','Tenue en charge et files','Cloud et architectures','P2P, transactions et énergie'][start//2],'Notions vérifiées dans le support ; les compléments sont signalés.')
- for t in D['topics'][start:start+2]:
+grouped_topics = [t for t in D['topics'] if not t.get('standalone')]
+for start in range(0,len(grouped_topics),2):
+ page(['Fondations du distribué','Tenue en charge et files','Cloud et architectures','P2P, transactions et énergie','Objets, services et conteneurs','Événements et données partagées'][start//2],'Notions vérifiées dans le support ; les compléments sont signalés.')
+ for t in grouped_topics[start:start+2]:
   heading(t['title']);add(t['priority']+' · '+t['source'],'small')
+  if t['id']=='evenements-espaces':
+   table([['Modèle du cours','Temporel','Référentiel'],['Direct','Couplé','Couplé'],['Événement éphémère','Couplé','Découplé'],['Boîte persistante adressée','Découplé','Couplé'],['Espace de tuples conservés','Découplé','Découplé']],[249,125,125]);story.append(Spacer(1,10))
   for text in t['points']:add(text)
   add('Piège : '+t['trap']);add('À savoir faire : '+t['task'],'small')
+
+l = D['linda']
+page(l['title'],'Support p. 31–32 · Définition, opérations et exercice corrigé')
+add(l['intro']);add(l['tuple'])
+heading('Les trois opérations')
+table([['Opération','Effet','Attente']] + l['operations'],[85,207,207],padding=4)
+add(l['memory'])
+heading('Exercice corrigé · espace initialement vide')
+add('A et B sont deux processus. Les lignes ci-dessous suivent un ordre proposé ; B peut avancer pendant que A attend.','small')
+table([['Instruction','Résultat','Espace après']] + [[t['instruction'],t['result'],t['space']] for t in l['trace']],[152,242,105],padding=4)
+heading('Raisonner pour un exercice')
+for t in l['pitfalls']:add(t)
+add(l['course'],'small');add(l['source'],'small')
+
+render_architectures(D['architectures'],page,add,heading,table,story,link)
+
+render_seance24(D['morning24'],page,add,heading,table,link)
 
 page('Les formules et leurs limites','Support p. 16–17, 26 et 36 ; dimensionnement : application proposée')
 table([['Calcul','Formule','Conditions']] + [[f[0],f[1],f[2]] for f in D['formulas']],[104,207,188])
@@ -111,11 +134,11 @@ for start in [0,3]:
 
 page('Livre et sources','Traçabilité et limites de cette consolidation')
 heading(D['book']['title']);add(D['book']['text']);link('Livre, slides et demande de copie numérique',D['book']['url'])
-for c in D['book']['chapters']:add(c,'small')
+for c in D['book']['chapters']:add(c,'reference')
 add(D['book']['reading'])
 heading('Sources utilisées et corrections')
 for s in D['sources']:
- add(s['title']+' — '+s['detail'],'small')
+ add(s['title']+' — '+s['detail'],'reference')
  if s.get('url') and s['url']!=D['book']['url']:link(s['title'],s['url'])
 add('Pour enrichir le cours : mettre à jour revisions.json, puis exécuter Outils/generer_revisions.py depuis Cloud/Cours. Le PDF et revision-data.js sont régénérés ensemble. Ajouter un repère de source à chaque nouvelle notion.','small')
 
