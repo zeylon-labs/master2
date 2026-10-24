@@ -1,6 +1,6 @@
 window.CloudStudy = {
   "date": "24 octobre 2026",
-  "scope": "Synthèse du support fourni (42 pages), des notes Word, de la transcription et du résumé Plaud du 23 octobre, complétée par les fiches et simulations existantes. L’enregistrement s’arrête pendant l’introduction aux systèmes HPC ; les architectures de la suite du PDF sont aussi à travailler, sans les présenter comme déjà traitées oralement.",
+  "scope": "Synthèse du support fourni (42 pages), des notes Word, de la transcription et du résumé Plaud du 23 octobre, puis du résumé Plaud du matin du 24 octobre (8 pages). Les compléments de la seconde séance sont identifiés comme provenant de ce résumé automatique ; ils sont confrontés au support et aux sources techniques officielles. Les fiches et simulations existantes sont conservées et enrichies.",
   "evidence": [
     {
       "label": "Annoncé oralement",
@@ -12,11 +12,11 @@ window.CloudStudy = {
     },
     {
       "label": "À confirmer",
-      "text": "Les dates exactes, la durée définitive, les documents autorisés et le barème des évaluations. Le Word et l’oral évoquent un écrit en décembre et un final ; la pondération 50/25/25 évoquée à 00:07:35 ne constitue pas une consigne officielle stabilisée ici."
+      "text": "Les dates exactes, la durée définitive, les documents autorisés et le barème des évaluations. Le Word et l’oral évoquent un écrit en décembre et un final ; la pondération 50/25/25 évoquée à 00:07:35 ne constitue pas une consigne officielle stabilisée ici. Le résumé du 24/10 p. 2 rapporte certains schémas avancés de mobilité/capteurs hors examen : périmètre à confirmer, sans exclure tout le chapitre."
     },
     {
       "label": "Priorités proposées",
-      "text": "Les priorités ci-dessous reposent sur le support et l’insistance de l’oral. Elles ne prédisent ni le sujet ni la probabilité d’une question. Les suggestions de Plaud ne sont pas reprises comme devoirs donnés par le professeur."
+      "text": "Les priorités ci-dessous reposent sur le support et l’insistance de l’oral. Elles ne prédisent ni le sujet ni la probabilité d’une question. Les suggestions de Plaud ne sont pas reprises comme devoirs donnés par le professeur. La liste « devoirs et plan d’action » de Plaud reste une proposition de révision, pas un énoncé officiel."
     }
   ],
   "topics": [
@@ -98,7 +98,7 @@ window.CloudStudy = {
     {
       "id": "architectures",
       "title": "6 · Couches, services et messages",
-      "priority": "Suite du PDF à préparer",
+      "priority": "Support ; éléments repris dans le résumé Plaud du 24 octobre",
       "source": "Support p. 23–24 et 28–33 ; complément HTTP RFC 9110",
       "route": "middleware",
       "points": [
@@ -114,7 +114,7 @@ window.CloudStudy = {
     {
       "id": "p2p",
       "title": "7 · P2P, Chord et recherches",
-      "priority": "Suite du PDF à préparer",
+      "priority": "Support ; hypercube repris dans le résumé Plaud du 24 octobre",
       "source": "Support p. 34–39",
       "route": "chord",
       "points": [
@@ -130,13 +130,14 @@ window.CloudStudy = {
     {
       "id": "autres",
       "title": "8 · Transactions, mobilité et énergie",
-      "priority": "Suite du PDF à préparer",
+      "priority": "Support ; éléments repris dans le résumé Plaud du 24 octobre",
       "source": "Support p. 23–26",
       "route": "maths",
       "points": [
         "Une transaction regroupe des opérations avec une décision de validation ou d’abandon. L’atomicité impose tout ou rien ; envoyer plusieurs appels réseau ne suffit pas à fournir cette propriété.",
         "Les systèmes mobiles et capteurs doivent gérer déconnexions, ressources limitées et consommation. Pour un capteur : τ = T_actif/(T_actif + T_sommeil). Avec 2 s actives et 8 s de sommeil, τ = 20 %.",
-        "Le mode hors ligne d’une PWA nécessite une stratégie de cache et de synchronisation. Un service worker ne résout pas automatiquement les conflits lors de la reconnexion."
+        "Le mode hors ligne d’une PWA nécessite une stratégie de cache et de synchronisation. Un service worker ne résout pas automatiquement les conflits lors de la reconnexion.",
+        "Un système omniprésent s’intègre à l’environnement : capteurs pour comprendre le contexte, autonomie et adaptation discrète des interactions. Le support distingue systèmes ubiquitaires, mobiles et réseaux de capteurs/actionneurs, avec recoupements possibles. Être mobile ajoute notamment les problèmes de découverte et de connectivité variable."
       ],
       "trap": "Un pourcentage de temps actif n’est pas directement un pourcentage d’énergie économisée : il faut aussi connaître les puissances et coûts de transition.",
       "task": "Décris ce qui arrive à une écriture faite hors ligne si la même donnée a été modifiée ailleurs."
@@ -159,8 +160,8 @@ window.CloudStudy = {
     {
       "id": "docker-microservices",
       "title": "10 · Microservices et Docker : deux rôles différents",
-      "priority": "Complément pédagogique ; pas un sujet d’examen confirmé",
-      "source": "Documentation officielle Docker et Microsoft Azure Architecture Center ; sources en fin de guide",
+      "priority": "Résumé Plaud du 24/10 p. 3 et compléments ; périmètre d’examen à confirmer",
+      "source": "Résumé Plaud du 24/10 p. 3 ; documentations officielles Docker et Microsoft Azure Architecture Center.",
       "route": "cloud",
       "points": [
         "Microservices : découper une application par capacités métier autonomes, déployables indépendamment. Dans une boutique : Catalogue, Commandes, Paiement. On peut multiplier les instances du seul Catalogue. Chaque service maîtrise ses données et ses contrats ; une base physique distincte par service n’est pas une obligation universelle.",
@@ -175,7 +176,7 @@ window.CloudStudy = {
       "id": "evenements-espaces",
       "title": "11 · Événements, publish/subscribe et espaces partagés",
       "priority": "Support p. 30–31 ; point signalé pendant la séance du 24 octobre",
-      "source": "Support p. 30–31, sections 2.1.4.1 à 2.1.4.3 ; récap Plaud de la séance à intégrer dès réception",
+      "source": "Support p. 30–31 ; résumé Plaud reçu du 24/10 p. 4–5, avec corrections sur la persistance.",
       "route": "evenements",
       "points": [
         "Un événement décrit un fait survenu, par exemple CommandeCréée. Dans publish/subscribe, un producteur publie sur un sujet (topic) ou un bus ; les abonnés intéressés reçoivent une notification. Exemple : Email et Stock réagissent à la même commande sans que le service Commandes connaisse chacun de leurs destinataires.",
@@ -222,6 +223,113 @@ window.CloudStudy = {
       ],
       "trap": "Ne pas confondre rôle client/serveur, découpage logique, déploiement en tiers et autonomie des services. Une boîte du schéma ne correspond pas automatiquement à une machine.",
       "task": "Ouvrir le module Architectures des systèmes, suivre la consultation puis la commande pour chaque modèle et justifier où résident les données."
+    },
+    {
+      "id": "bilan-24",
+      "title": "14 · Séance du 24 octobre · bilan vérifié",
+      "standalone": true,
+      "priority": "Mise à jour de la séance du 24 octobre ; exercices proposés",
+      "source": "Résumé Plaud du 24/10, p. 1–8 ; support du professeur ; corrections documentées ci-dessous.",
+      "route": "architectures",
+      "points": [
+        "Le résumé de ce matin reprend les architectures, Linda et l’hypercube déjà préparés ; il complète surtout transactions, middleware et économie du cloud. Il s’agit d’un résumé automatique de huit pages, pas de la transcription intégrale : les consignes d’examen rapportées restent à confirmer.",
+        "Couches, services, Docker, microservices — Préciser service / interface / protocole, serverless et idempotence HTTP.",
+        "Couplages, pub/sub et Linda — Distinguer tuples et événements persistants ; préciser initialisation et blocages.",
+        "P2P et Chord — Ajouter le routage complet 0 → 14 dans l’hypercube à 4 bits.",
+        "Middleware et migration évoqués — Détailler ACID/TPM, adaptateurs, intercepteurs et calculs de flux/coûts.",
+        "Un espace de tuples n’est pas simplement du pub/sub avec persistance : Linda recherche par motif et in retire une occurrence. La durabilité d’un bus règle une autre question. Le couple in puis out protège temporairement l’accès à un jeton ; les deux instructions ne constituent pas une transaction atomique unique.",
+        "Idempotent signifie : plusieurs demandes identiques ont le même effet métier attendu qu’une seule. GET est sûr au sens lecture, même si le serveur écrit un journal. PUT et DELETE sont idempotents ; une seconde réponse DELETE peut être différente. POST ne garantit pas l’idempotence par sa méthode, mais une application peut dédupliquer une demande avec un identifiant.",
+        "REST est un style d’architecture ; SOAP est un protocole de messages XML. « Stateless » ne signifie pas absence de données métier. Un broker réduit le nombre d’adaptateurs, sans garantir à lui seul les performances ou la disponibilité.",
+        "La mention « certains schémas avancés de mobilité/capteurs hors examen » vient du résumé Plaud p. 2 ; ne pas exclure tout le chapitre sans confirmation. La liste « devoirs et plan d’action » reste une proposition de révision tant qu’aucun énoncé n’est fourni. Les échanges personnels et logistiques sont exclus de la synthèse."
+      ],
+      "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
+      "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
+    },
+    {
+      "id": "integration-24",
+      "title": "15 · Transactions et structure du middleware",
+      "standalone": true,
+      "priority": "Mise à jour de la séance du 24 octobre ; exercices proposés",
+      "source": "Support p. 23–24 et 32–33 ; Plaud du 24/10 p. 2 et 5.",
+      "route": "middleware",
+      "points": [
+        "L’intégration d’applications d’entreprise (EAI) relie des applications par fichiers, base commune, appels ou messages. Connecter les applications ne garantit pas automatiquement leur cohérence : formats, contrats et transactions doivent être définis.",
+        "Atomicité — Tout ou rien pour les opérations couvertes par la transaction.",
+        "Cohérence — Les règles et contraintes d’intégrité de l’application sont respectées.",
+        "Isolation — Les exécutions concurrentes sont contrôlées selon le niveau d’isolation choisi.",
+        "Durabilité — Les effets validés sont conservés selon les garanties du système.",
+        "Un moniteur de transactions (TPM, Transaction Processing Monitor) coordonne des participants. L’exemple vol + hôtel n’est atomique que si les participants et le protocole le permettent. Une API externe ayant déjà confirmé une action irréversible peut exiger une compensation ; un simple appel réseau n’assure pas un rollback global.",
+        "Service : la capacité fournie, par exemple réserver une chambre. Interface : les opérations et paramètres exposés. Protocole : les règles des échanges. L’API socket est une interface ; TCP est un protocole de transport. Un composant peut proposer un contrat indépendant de son implémentation.",
+        "Un wrapper adapte une interface existante. Avec les conventions du support, N applications nécessitent N(N − 1) adaptateurs orientés en point-à-point, contre 2N interfaces via un broker. Pour N = 10 : 90 contre 20. Les paires non orientées sont N(N − 1)/2 = 45 : ne pas mélanger ces comptages.",
+        "Un intercepteur ajoute un traitement sur le chemin d’un appel, entre application et middleware ou middleware et OS. Exemples : journalisation, redirection vers une réplique, découpage/réassemblage applicatif de gros transferts. Il doit conserver le contrat attendu ; découper un fichier ne garantit pas de réduire son volume ou son coût réseau."
+      ],
+      "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
+      "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
+    },
+    {
+      "id": "linda-hypercube-24",
+      "title": "16 · Linda et hypercube · exercices de lecture",
+      "standalone": true,
+      "priority": "Mise à jour de la séance du 24 octobre ; exercices proposés",
+      "source": "Support p. 31–35 ; Plaud du 24/10 p. 4–6 ; exemples proposés, sans sujet d’examen confirmé.",
+      "route": "evenements",
+      "points": [
+        "Un in ou rd sur un motif absent bloque le processus appelant. Les autres processus continuent. Les philosophes ont donc besoin de tuples initiaux pour les baguettes et les autorisations d’entrée. Avec N philosophes, donner N autorisations peut permettre à tous de saisir une baguette puis d’attendre la suivante ; limiter l’entrée à N − 1 est une solution classique dans ce protocole, sans garantie générale d’absence de famine.",
+        "Un compteur partagé peut être protégé par un tuple unique : in(\"server index\", ?id), puis out(\"server index\", id + 1). Pendant le retrait, les autres lecteurs in de ce motif attendent. Si le détenteur tombe en panne avant de remettre le tuple, ils peuvent rester bloqués. Une clé de requête permet ensuite d’associer demande et réponse ; elle ne garantit pas à elle seule la livraison.",
+        "Dans un hypercube complet de dimension d, il y a 2^d nœuds, d voisins par nœud et d × 2^d / 2 liens non orientés. Deux voisins diffèrent d’un bit. Pour l’exemple simplifié du support, la clé 14 mène au nœud 1110. Depuis 0 = 0000, un chemin possible corrige les bits de gauche à droite :",
+        "0000 — 0 — 3",
+        "1000 — 8 — 2",
+        "1100 — 12 — 1",
+        "1110 — 14 — 0",
+        "La distance de Hamming compte les bits différents : ici 3 différences, donc 3 sauts minimaux. En dimension 4 : 16 nœuds, 4 voisins chacun et 32 liens ; au maximum 4 sauts entre deux nœuds. 0 → 2 → 6 → 14 est également un plus court chemin. Respecter l’ordre de correction imposé par l’énoncé, s’il y en a un.",
+        "La proximité est binaire, pas la différence entre les valeurs décimales. Cette borne concerne un routage idéal sans panne ; elle ne prédit pas le temps réel en présence de congestion ou de défaillances. Le stockage des clés et la topologie sont deux aspects à distinguer."
+      ],
+      "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
+      "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
+    },
+    {
+      "id": "cloud-economie-24",
+      "title": "17 · Cloud · exécution et modèle économique",
+      "standalone": true,
+      "priority": "Mise à jour de la séance du 24 octobre ; exercices proposés",
+      "source": "Support p. 21–22 ; Plaud du 24/10 p. 3 et 6–7 ; compléments officiels Kubernetes et serverless.",
+      "route": "cloud",
+      "points": [
+        "Application — Usage de logiciels et fonctions métier.",
+        "Plateforme — Runtimes, frameworks et abstractions de déploiement.",
+        "Infrastructure — Ressources virtuelles de calcul, stockage et réseau.",
+        "Fabrique / matériel — CPU, mémoire, disques, réseau et équipements du centre de données.",
+        "La « fabrique » ne désigne pas les abstractions de plus haut niveau. Kubernetes gère des charges conteneurisées et leur état désiré sur des nœuds ; il n’est ni le matériel, ni un hyperviseur universel, ni un PaaS complet à lui seul. Le placer dans une seule couche est une simplification pédagogique.",
+        "Serverless désigne une offre où le fournisseur prend en charge une grande part de l’exploitation des serveurs ; ils existent toujours. Les fonctions à la demande (FaaS) en sont un exemple, pas la totalité du serverless. Il reste à gérer code, droits, données, configuration et limites du service. Docker empaquette un logiciel ; ces notions ne sont pas interchangeables.",
+        "Capex : investissement dans des actifs, par exemple du matériel. Opex : dépenses d’exploitation récurrentes. Le cloud peut déplacer une partie des dépenses vers la consommation ou l’abonnement ; il ne rend pas automatiquement la solution moins chère.",
+        "Comparer sur la même durée et le même périmètre : calcul, stockage, réseau, licences, exploitation humaine, transition et coûts restant sur site. Un amortissement comptable, une dépense déjà engagée et une économie réellement évitable ne sont pas trois fois le même gain.",
+        "B_calcul = bénéfice unitaire net de migration ; M_calcul = nombre de composants de calcul migrés. Même définition pour stockage. G_brut = B_calcul × M_calcul + B_stockage × M_stockage. Le support note les deux nombres M_c et M_s ; ne pas les confondre avec N_i, le nombre de serveurs d’un composant.",
+        "Exemple d’entraînement : 3 composants à 40 €/mois de bénéfice net chacun et 2 à 15 €/mois donnent 3 × 40 + 2 × 15 = 150 €/mois, avant les coûts supplémentaires qui n’y sont pas déjà inclus. Les contraintes de sécurité, de latence et de fonctionnement transactionnel restent à respecter."
+      ],
+      "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
+      "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
+    },
+    {
+      "id": "migration-flux-24",
+      "title": "18 · Migration cloud · calculer les flux et le gain",
+      "standalone": true,
+      "priority": "Mise à jour de la séance du 24 octobre ; exercices proposés",
+      "source": "Support p. 21–22 ; Plaud du 24/10 p. 6–8. Tous les nombres et tarifs de cet exercice sont fictifs.",
+      "route": "maths",
+      "points": [
+        "Pour l’arc i → j : T_ij est un nombre de transactions par mois ; s_ij est ici le volume moyen en Go par transaction. Alors F_ij = T_ij × s_ij est un flux en Go/mois. Si S_ij donné dans l’énoncé est déjà un volume total par mois, prendre F_ij = S_ij et ne pas le multiplier à nouveau. Le libellé S du support appelle cette vérification d’unités.",
+        "N_i est le nombre initial de serveurs du composant i ; n_i est le nombre déplacé ; f_i = n_i/N_i, avec 0 ≤ f_i ≤ 1 et N_i > 0. Le modèle suppose une répartition uniforme du trafic et des placements indépendants entre extrémités.",
+        "Local → local — (1 − f_i)(1 − f_j) — 375 Go/mois",
+        "Local → cloud — (1 − f_i)f_j — 125 Go/mois",
+        "Cloud → local — f_i(1 − f_j) — 375 Go/mois",
+        "Cloud → cloud — f_i f_j — 125 Go/mois",
+        "Valeurs de l’exemple : T = 100 000 transactions/mois, s = 0,01 Go/transaction, f_i = 0,5 et f_j = 0,25. Les quatre fractions font 1 et les volumes font 1 000. Le trafic qui traverse la frontière local/cloud vaut 125 + 375 = 500 Go/mois.",
+        "Tarifs fictifs pour cet exercice : c_local→cloud = 0,02 €/Go et c_cloud→local = 0,08 €/Go, chacun incluant toutes les charges retenues pour ce sens. C_réseau_après = 125 × 0,02 + 375 × 0,08 = 32,50 €/mois. On suppose ici les autres flux gratuits ou inchangés ; ce n’est pas une règle de tarification réelle.",
+        "Toujours comparer avant/après : ΔC_réseau = C_réseau_après − C_réseau_avant. Si le bénéfice calcul/stockage du plan est déjà net de ces postes et vaut 150 €/mois, si C_réseau_avant = 0 et si les autres surcoûts retenus sont nuls, G_net = 150 − 32,50 = 117,50 €/mois.",
+        "En général : gain = coût total avant − coût total après, sur le même horizon. Inclure les flux utilisateurs, autres arcs, communications inter-zones, réplications et coûts de transition lorsqu’ils existent. Ne pas recompter un poste déjà déduit des bénéfices unitaires. Une économie calculée ne rend pas un plan admissible si les contraintes fonctionnelles sont violées."
+      ],
+      "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
+      "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
     }
   ],
   "formulas": [
@@ -423,7 +531,7 @@ window.CloudStudy = {
     },
     {
       "title": "Résumé Plaud et productions précédentes",
-      "detail": "Résumé Plaud du 23/10 vérifié, Fiche 01 et Atelier Cloud. Noms corrigés : Maarten van Steen et Plouin (2022). Le récap Plaud du 24/10 n’a pas encore été reçu ; il complétera la partie événements et espaces partagés."
+      "detail": "Résumés Plaud du 23/10 (12 p.) et du 24/10 (8 p.), confrontés au support ; Fiche 01 et Atelier. Le second est un résumé sans transcription fournie ; les apartés et démarches personnelles sont exclus."
     },
     {
       "title": "Livre et ressources officielles",
@@ -1103,6 +1211,379 @@ window.CloudStudy = {
       [
         "Microservices",
         "https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices"
+      ]
+    ]
+  },
+  "morning24": {
+    "date": "24 octobre 2026",
+    "source": "Résumé Plaud du matin, 8 pages, reçu et comparé au support ; transcription de cette séance non fournie.",
+    "sections": [
+      {
+        "id": "bilan-24",
+        "title": "Séance du 24 octobre · bilan vérifié",
+        "source": "Résumé Plaud du 24/10, p. 1–8 ; support du professeur ; corrections documentées ci-dessous.",
+        "route": "architectures",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Le résumé de ce matin reprend les architectures, Linda et l’hypercube déjà préparés ; il complète surtout transactions, middleware et économie du cloud. Il s’agit d’un résumé automatique de huit pages, pas de la transcription intégrale : les consignes d’examen rapportées restent à confirmer."
+          },
+          {
+            "type": "table",
+            "header": [
+              "Déjà présent",
+              "Mise à jour utile"
+            ],
+            "rows": [
+              [
+                "Couches, services, Docker, microservices",
+                "Préciser service / interface / protocole, serverless et idempotence HTTP."
+              ],
+              [
+                "Couplages, pub/sub et Linda",
+                "Distinguer tuples et événements persistants ; préciser initialisation et blocages."
+              ],
+              [
+                "P2P et Chord",
+                "Ajouter le routage complet 0 → 14 dans l’hypercube à 4 bits."
+              ],
+              [
+                "Middleware et migration évoqués",
+                "Détailler ACID/TPM, adaptateurs, intercepteurs et calculs de flux/coûts."
+              ]
+            ],
+            "widths": [
+              176,
+              323
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Corrections à conserver"
+          },
+          {
+            "type": "text",
+            "text": "Un espace de tuples n’est pas simplement du pub/sub avec persistance : Linda recherche par motif et in retire une occurrence. La durabilité d’un bus règle une autre question. Le couple in puis out protège temporairement l’accès à un jeton ; les deux instructions ne constituent pas une transaction atomique unique."
+          },
+          {
+            "type": "text",
+            "text": "Idempotent signifie : plusieurs demandes identiques ont le même effet métier attendu qu’une seule. GET est sûr au sens lecture, même si le serveur écrit un journal. PUT et DELETE sont idempotents ; une seconde réponse DELETE peut être différente. POST ne garantit pas l’idempotence par sa méthode, mais une application peut dédupliquer une demande avec un identifiant."
+          },
+          {
+            "type": "text",
+            "text": "REST est un style d’architecture ; SOAP est un protocole de messages XML. « Stateless » ne signifie pas absence de données métier. Un broker réduit le nombre d’adaptateurs, sans garantir à lui seul les performances ou la disponibilité."
+          },
+          {
+            "type": "heading",
+            "text": "Ce qui ne devient pas une consigne officielle"
+          },
+          {
+            "type": "text",
+            "text": "La mention « certains schémas avancés de mobilité/capteurs hors examen » vient du résumé Plaud p. 2 ; ne pas exclure tout le chapitre sans confirmation. La liste « devoirs et plan d’action » reste une proposition de révision tant qu’aucun énoncé n’est fourni. Les échanges personnels et logistiques sont exclus de la synthèse."
+          }
+        ]
+      },
+      {
+        "id": "integration-24",
+        "title": "Transactions et structure du middleware",
+        "source": "Support p. 23–24 et 32–33 ; Plaud du 24/10 p. 2 et 5.",
+        "route": "middleware",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "EAI et transactions ACID"
+          },
+          {
+            "type": "text",
+            "text": "L’intégration d’applications d’entreprise (EAI) relie des applications par fichiers, base commune, appels ou messages. Connecter les applications ne garantit pas automatiquement leur cohérence : formats, contrats et transactions doivent être définis."
+          },
+          {
+            "type": "table",
+            "header": [
+              "Propriété",
+              "Ce qu’il faut comprendre"
+            ],
+            "rows": [
+              [
+                "Atomicité",
+                "Tout ou rien pour les opérations couvertes par la transaction."
+              ],
+              [
+                "Cohérence",
+                "Les règles et contraintes d’intégrité de l’application sont respectées."
+              ],
+              [
+                "Isolation",
+                "Les exécutions concurrentes sont contrôlées selon le niveau d’isolation choisi."
+              ],
+              [
+                "Durabilité",
+                "Les effets validés sont conservés selon les garanties du système."
+              ]
+            ],
+            "widths": [
+              108,
+              391
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Un moniteur de transactions (TPM, Transaction Processing Monitor) coordonne des participants. L’exemple vol + hôtel n’est atomique que si les participants et le protocole le permettent. Une API externe ayant déjà confirmé une action irréversible peut exiger une compensation ; un simple appel réseau n’assure pas un rollback global."
+          },
+          {
+            "type": "heading",
+            "text": "Service, interface et protocole"
+          },
+          {
+            "type": "text",
+            "text": "Service : la capacité fournie, par exemple réserver une chambre. Interface : les opérations et paramètres exposés. Protocole : les règles des échanges. L’API socket est une interface ; TCP est un protocole de transport. Un composant peut proposer un contrat indépendant de son implémentation."
+          },
+          {
+            "type": "heading",
+            "text": "Wrappers, broker et intercepteurs"
+          },
+          {
+            "type": "text",
+            "text": "Un wrapper adapte une interface existante. Avec les conventions du support, N applications nécessitent N(N − 1) adaptateurs orientés en point-à-point, contre 2N interfaces via un broker. Pour N = 10 : 90 contre 20. Les paires non orientées sont N(N − 1)/2 = 45 : ne pas mélanger ces comptages."
+          },
+          {
+            "type": "text",
+            "text": "Un intercepteur ajoute un traitement sur le chemin d’un appel, entre application et middleware ou middleware et OS. Exemples : journalisation, redirection vers une réplique, découpage/réassemblage applicatif de gros transferts. Il doit conserver le contrat attendu ; découper un fichier ne garantit pas de réduire son volume ou son coût réseau."
+          }
+        ]
+      },
+      {
+        "id": "linda-hypercube-24",
+        "title": "Linda et hypercube · exercices de lecture",
+        "source": "Support p. 31–35 ; Plaud du 24/10 p. 4–6 ; exemples proposés, sans sujet d’examen confirmé.",
+        "route": "evenements",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "Linda : initialiser, puis suivre les processus"
+          },
+          {
+            "type": "text",
+            "text": "Un in ou rd sur un motif absent bloque le processus appelant. Les autres processus continuent. Les philosophes ont donc besoin de tuples initiaux pour les baguettes et les autorisations d’entrée. Avec N philosophes, donner N autorisations peut permettre à tous de saisir une baguette puis d’attendre la suivante ; limiter l’entrée à N − 1 est une solution classique dans ce protocole, sans garantie générale d’absence de famine."
+          },
+          {
+            "type": "text",
+            "text": "Un compteur partagé peut être protégé par un tuple unique : in(\"server index\", ?id), puis out(\"server index\", id + 1). Pendant le retrait, les autres lecteurs in de ce motif attendent. Si le détenteur tombe en panne avant de remettre le tuple, ils peuvent rester bloqués. Une clé de requête permet ensuite d’associer demande et réponse ; elle ne garantit pas à elle seule la livraison."
+          },
+          {
+            "type": "heading",
+            "text": "Hypercube : rejoindre la cible en corrigeant les bits"
+          },
+          {
+            "type": "text",
+            "text": "Dans un hypercube complet de dimension d, il y a 2^d nœuds, d voisins par nœud et d × 2^d / 2 liens non orientés. Deux voisins diffèrent d’un bit. Pour l’exemple simplifié du support, la clé 14 mène au nœud 1110. Depuis 0 = 0000, un chemin possible corrige les bits de gauche à droite :"
+          },
+          {
+            "type": "table",
+            "header": [
+              "Nœud courant",
+              "Décimal",
+              "Bits différents de 1110"
+            ],
+            "rows": [
+              [
+                "0000",
+                "0",
+                "3"
+              ],
+              [
+                "1000",
+                "8",
+                "2"
+              ],
+              [
+                "1100",
+                "12",
+                "1"
+              ],
+              [
+                "1110",
+                "14",
+                "0"
+              ]
+            ],
+            "widths": [
+              165,
+              95,
+              239
+            ]
+          },
+          {
+            "type": "text",
+            "text": "La distance de Hamming compte les bits différents : ici 3 différences, donc 3 sauts minimaux. En dimension 4 : 16 nœuds, 4 voisins chacun et 32 liens ; au maximum 4 sauts entre deux nœuds. 0 → 2 → 6 → 14 est également un plus court chemin. Respecter l’ordre de correction imposé par l’énoncé, s’il y en a un."
+          },
+          {
+            "type": "text",
+            "text": "La proximité est binaire, pas la différence entre les valeurs décimales. Cette borne concerne un routage idéal sans panne ; elle ne prédit pas le temps réel en présence de congestion ou de défaillances. Le stockage des clés et la topologie sont deux aspects à distinguer."
+          }
+        ]
+      },
+      {
+        "id": "cloud-economie-24",
+        "title": "Cloud · exécution et modèle économique",
+        "source": "Support p. 21–22 ; Plaud du 24/10 p. 3 et 6–7 ; compléments officiels Kubernetes et serverless.",
+        "route": "cloud",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "Quatre couches, des responsabilités différentes"
+          },
+          {
+            "type": "table",
+            "header": [
+              "Couche du modèle",
+              "Rôle illustratif"
+            ],
+            "rows": [
+              [
+                "Application",
+                "Usage de logiciels et fonctions métier."
+              ],
+              [
+                "Plateforme",
+                "Runtimes, frameworks et abstractions de déploiement."
+              ],
+              [
+                "Infrastructure",
+                "Ressources virtuelles de calcul, stockage et réseau."
+              ],
+              [
+                "Fabrique / matériel",
+                "CPU, mémoire, disques, réseau et équipements du centre de données."
+              ]
+            ],
+            "widths": [
+              130,
+              369
+            ]
+          },
+          {
+            "type": "text",
+            "text": "La « fabrique » ne désigne pas les abstractions de plus haut niveau. Kubernetes gère des charges conteneurisées et leur état désiré sur des nœuds ; il n’est ni le matériel, ni un hyperviseur universel, ni un PaaS complet à lui seul. Le placer dans une seule couche est une simplification pédagogique."
+          },
+          {
+            "type": "text",
+            "text": "Serverless désigne une offre où le fournisseur prend en charge une grande part de l’exploitation des serveurs ; ils existent toujours. Les fonctions à la demande (FaaS) en sont un exemple, pas la totalité du serverless. Il reste à gérer code, droits, données, configuration et limites du service. Docker empaquette un logiciel ; ces notions ne sont pas interchangeables."
+          },
+          {
+            "type": "heading",
+            "text": "Capex, Opex et périmètre du coût"
+          },
+          {
+            "type": "text",
+            "text": "Capex : investissement dans des actifs, par exemple du matériel. Opex : dépenses d’exploitation récurrentes. Le cloud peut déplacer une partie des dépenses vers la consommation ou l’abonnement ; il ne rend pas automatiquement la solution moins chère."
+          },
+          {
+            "type": "text",
+            "text": "Comparer sur la même durée et le même périmètre : calcul, stockage, réseau, licences, exploitation humaine, transition et coûts restant sur site. Un amortissement comptable, une dépense déjà engagée et une économie réellement évitable ne sont pas trois fois le même gain."
+          },
+          {
+            "type": "heading",
+            "text": "Approche forfaitaire du support"
+          },
+          {
+            "type": "text",
+            "text": "B_calcul = bénéfice unitaire net de migration ; M_calcul = nombre de composants de calcul migrés. Même définition pour stockage. G_brut = B_calcul × M_calcul + B_stockage × M_stockage. Le support note les deux nombres M_c et M_s ; ne pas les confondre avec N_i, le nombre de serveurs d’un composant."
+          },
+          {
+            "type": "text",
+            "text": "Exemple d’entraînement : 3 composants à 40 €/mois de bénéfice net chacun et 2 à 15 €/mois donnent 3 × 40 + 2 × 15 = 150 €/mois, avant les coûts supplémentaires qui n’y sont pas déjà inclus. Les contraintes de sécurité, de latence et de fonctionnement transactionnel restent à respecter."
+          }
+        ]
+      },
+      {
+        "id": "migration-flux-24",
+        "title": "Migration cloud · calculer les flux et le gain",
+        "source": "Support p. 21–22 ; Plaud du 24/10 p. 6–8. Tous les nombres et tarifs de cet exercice sont fictifs.",
+        "route": "maths",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "Fixer les unités avant de multiplier"
+          },
+          {
+            "type": "text",
+            "text": "Pour l’arc i → j : T_ij est un nombre de transactions par mois ; s_ij est ici le volume moyen en Go par transaction. Alors F_ij = T_ij × s_ij est un flux en Go/mois. Si S_ij donné dans l’énoncé est déjà un volume total par mois, prendre F_ij = S_ij et ne pas le multiplier à nouveau. Le libellé S du support appelle cette vérification d’unités."
+          },
+          {
+            "type": "text",
+            "text": "N_i est le nombre initial de serveurs du composant i ; n_i est le nombre déplacé ; f_i = n_i/N_i, avec 0 ≤ f_i ≤ 1 et N_i > 0. Le modèle suppose une répartition uniforme du trafic et des placements indépendants entre extrémités."
+          },
+          {
+            "type": "table",
+            "header": [
+              "Flux après placement",
+              "Fraction de F_ij",
+              "Exemple : F = 1 000"
+            ],
+            "rows": [
+              [
+                "Local → local",
+                "(1 − f_i)(1 − f_j)",
+                "375 Go/mois"
+              ],
+              [
+                "Local → cloud",
+                "(1 − f_i)f_j",
+                "125 Go/mois"
+              ],
+              [
+                "Cloud → local",
+                "f_i(1 − f_j)",
+                "375 Go/mois"
+              ],
+              [
+                "Cloud → cloud",
+                "f_i f_j",
+                "125 Go/mois"
+              ]
+            ],
+            "widths": [
+              161,
+              171,
+              167
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Valeurs de l’exemple : T = 100 000 transactions/mois, s = 0,01 Go/transaction, f_i = 0,5 et f_j = 0,25. Les quatre fractions font 1 et les volumes font 1 000. Le trafic qui traverse la frontière local/cloud vaut 125 + 375 = 500 Go/mois."
+          },
+          {
+            "type": "heading",
+            "text": "Passer du trafic au coût, puis au bénéfice net"
+          },
+          {
+            "type": "text",
+            "text": "Tarifs fictifs pour cet exercice : c_local→cloud = 0,02 €/Go et c_cloud→local = 0,08 €/Go, chacun incluant toutes les charges retenues pour ce sens. C_réseau_après = 125 × 0,02 + 375 × 0,08 = 32,50 €/mois. On suppose ici les autres flux gratuits ou inchangés ; ce n’est pas une règle de tarification réelle."
+          },
+          {
+            "type": "text",
+            "text": "Toujours comparer avant/après : ΔC_réseau = C_réseau_après − C_réseau_avant. Si le bénéfice calcul/stockage du plan est déjà net de ces postes et vaut 150 €/mois, si C_réseau_avant = 0 et si les autres surcoûts retenus sont nuls, G_net = 150 − 32,50 = 117,50 €/mois."
+          },
+          {
+            "type": "text",
+            "text": "En général : gain = coût total avant − coût total après, sur le même horizon. Inclure les flux utilisateurs, autres arcs, communications inter-zones, réplications et coûts de transition lorsqu’ils existent. Ne pas recompter un poste déjà déduit des bénéfices unitaires. Une économie calculée ne rend pas un plan admissible si les contraintes fonctionnelles sont violées."
+          }
+        ]
+      }
+    ],
+    "links": [
+      [
+        "Sémantique HTTP (RFC 9110)",
+        "https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2"
+      ],
+      [
+        "Kubernetes : périmètre",
+        "https://kubernetes.io/docs/concepts/overview/"
+      ],
+      [
+        "Serverless : définition",
+        "https://aws.amazon.com/serverless/"
       ]
     ]
   }

@@ -9,7 +9,7 @@
   feedback.middleware='Le middleware fournit des fonctions communes au-dessus des OS locaux ; il ne les remplace pas.';
   pages.evolutivite={title:'Évolutivité verticale et horizontale',intro:'Augmenter la puissance d’une machine ou répartir les demandes sur plusieurs machines.',source:'Scalabilité · Support, pages 15 à 18 · Comparaison idéale proposée'};
   pages.maths={title:'S’entraîner aux calculs',intro:'Huit exercices corrigés sur les files d’attente, la capacité et les systèmes distribués.',source:'Entraînement proposé · Support, pages 16 à 17, 26 et 36'};
-  pages.synthese={title:'La synthèse du cours',intro:'Relier le support du professeur, les notes et l’oral, puis retrouver les sources.',source:'Consolidation · Support, Word et Plaud du 23 octobre 2026'};
+  pages.synthese={title:'La synthèse du cours',intro:'Relier le support du professeur, les notes et l’oral, puis retrouver les sources.',source:'Consolidation · Support, notes et résumés Plaud des 23–24 octobre 2026'};
   pages.examens={title:'Préparer l’examen',intro:'Savoir expliquer, calculer et justifier : des entraînements construits à partir du cours.',source:'Maths évoquées à l’oral · Questions et sujet blanc proposés'};
   pages.tp={title:'Préparer les TP',intro:'Du schéma aux observations : comprendre les VM, la répartition et les pannes.',source:'VM et load balancing évoqués à l’oral · Parcours proposé'};
   feedback.scale='Plus de ressources sur une même machine : évolution verticale. Ajouter des machines relève de l’évolution horizontale.';
