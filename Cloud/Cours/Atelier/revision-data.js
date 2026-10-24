@@ -176,7 +176,7 @@ window.CloudStudy = {
       "title": "11 · Événements, publish/subscribe et espaces partagés",
       "priority": "Support p. 30–31 ; point signalé pendant la séance du 24 octobre",
       "source": "Support p. 30–31, sections 2.1.4.1 à 2.1.4.3 ; récap Plaud de la séance à intégrer dès réception",
-      "route": "middleware",
+      "route": "evenements",
       "points": [
         "Un événement décrit un fait survenu, par exemple CommandeCréée. Dans publish/subscribe, un producteur publie sur un sujet (topic) ou un bus ; les abonnés intéressés reçoivent une notification. Exemple : Email et Stock réagissent à la même commande sans que le service Commandes connaisse chacun de leurs destinataires.",
         "Couplage référentiel : faut-il désigner le destinataire pour communiquer ? Le découplage référentiel permet de passer par un sujet ou de chercher une donnée par son contenu. Couplage temporel : les participants doivent-ils être disponibles en même temps ? Le découplage temporel demande qu’un intermédiaire conserve ce qui doit être récupéré plus tard.",
