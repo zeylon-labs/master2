@@ -2,7 +2,7 @@
 
 Notes de cours, fiches de notions et exemples à enrichir au fil des séances.
 
-- [Resumes](Resumes/) : [Fiche 01 illustrée](Resumes/Fiche_01_Cloud_et_systemes_distribues.pdf), [guide consolidé de 15 pages](Resumes/Guide_revision_Cloud_examen_TP.pdf) et données éditables `revisions.json`.
+- [Resumes](Resumes/) : [Fiche 01 illustrée](Resumes/Fiche_01_Cloud_et_systemes_distribues.pdf), [guide consolidé de 16 pages](Resumes/Guide_revision_Cloud_examen_TP.pdf) et données éditables `revisions.json`.
 - [Atelier](Atelier/README.md) : onze modules pour comprendre les notions, réviser et préparer les TP ; fonctionnement local, sans build.
 - [Schemas](Schemas/) : schéma du middleware en [SVG](Schemas/Schema_middleware.svg) et [PNG](Schemas/Schema_middleware.png).
 - [Sources](Sources/README.md) : inventaire des originaux locaux : support du professeur, notes personnelles et exports Plaud.
@@ -19,3 +19,5 @@ Pour enrichir la synthèse, classer le support reçu dans `Sources/Originaux_loc
 Complément du 24 octobre : objets et services (support p. 29), puis Docker et microservices avec sources officielles. Les thèmes 9 et 10 sont disponibles dans le guide et dans la synthèse de l’Atelier. Docker et les microservices ne sont pas présentés comme des sujets d’examen annoncés.
 
 Point noté le 24 octobre : événements, publish/subscribe, couplage temporel/référentiel et espaces de tuples (Linda), support p. 30–31. Le thème 11 est ajouté au guide et à l’Atelier ; le récap Plaud de la séance sera intégré après réception.
+
+Linda en clair : page dédiée avec définition, tableau out/rd/in, motif et variables, trace corrigée à deux processus et pièges de blocage. Le même contenu est lisible sous les schémas de l’Atelier.

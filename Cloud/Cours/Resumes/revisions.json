@@ -187,6 +187,22 @@
       ],
       "trap": "Asynchrone ne signifie pas durable. Un espace de tuples n’est ni une mémoire RAM commune à tous les OS ni une diffusion automatique vers tous les abonnés : in et rd sélectionnent des tuples par motif.",
       "task": "Classe un appel direct, un topic éphémère, une boîte aux lettres persistante et Linda selon les deux couplages. Puis explique ce qui arrive si le consommateur est absent lors de la publication."
+    },
+    {
+      "id": "linda-clair",
+      "title": "12 · Linda, en clair : lire et tracer un exercice",
+      "standalone": true,
+      "priority": "Support p. 31–32 ; entraînement proposé",
+      "source": "Support p. 31–32 ; exercice numérique proposé pour l’entraînement. La possibilité d’un exercice Linda est signalée par Arthur à partir de l’oral ; le sujet exact n’est pas connu.",
+      "route": "evenements",
+      "points": [
+        "Linda est un langage de coordination : plusieurs processus communiquent et se synchronisent grâce à un espace de tuples partagé. On peut ajouter ces opérations à un langage comme C. Imagine un tableau commun : un processus dépose une information, un autre la cherche par son contenu, sans connaître son producteur. Ce tableau est une abstraction logicielle, pas une RAM commune aux OS.",
+        "Un tuple est une suite ordonnée de valeurs, par exemple (\"commande\", 42, \"prête\"). Un motif précise les valeurs recherchées ; ?x indique une valeur à récupérer dans la variable x. La syntaxe ci-dessous est un pseudo-code proche de celle du cours.",
+        "Attention au nom : out dépose dans l’espace ; in prend dans l’espace. rd lit sans retirer.",
+        "Exercice : out(\"note\", 12), puis rd(\"note\", ?x) donne x = 12 sans retrait ; in(\"note\", ?y) donne y = 12 et vide l’espace. Un nouveau in(\"note\", ?z) bloque jusqu’au dépôt d’un tuple correspondant par un autre processus."
+      ],
+      "trap": "Un processus bloqué ne peut pas exécuter ses instructions suivantes. Le dépôt qui le débloque doit venir d’un processus qui peut encore avancer.",
+      "task": "Dans le module Événements et espace partagé, lire la section « Linda, en clair » sous les schémas, puis tracer l’espace pour chaque instruction."
     }
   ],
   "formulas": [
@@ -425,5 +441,63 @@
       "detail": "Redis Pub/Sub : messages manqués non rejoués ; les garanties dépendent du mécanisme choisi.",
       "url": "https://redis.io/docs/latest/develop/pubsub/"
     }
-  ]
+  ],
+  "linda": {
+    "title": "Linda, en clair",
+    "intro": "Linda est un langage de coordination : plusieurs processus communiquent et se synchronisent grâce à un espace de tuples partagé. On peut ajouter ces opérations à un langage comme C. Imagine un tableau commun : un processus dépose une information, un autre la cherche par son contenu, sans connaître son producteur. Ce tableau est une abstraction logicielle, pas une RAM commune aux OS.",
+    "tuple": "Un tuple est une suite ordonnée de valeurs, par exemple (\"commande\", 42, \"prête\"). Un motif précise les valeurs recherchées ; ?x indique une valeur à récupérer dans la variable x. La syntaxe ci-dessous est un pseudo-code proche de celle du cours.",
+    "operations": [
+      [
+        "out(t)",
+        "Dépose une nouvelle occurrence du tuple.",
+        "N’attend pas qu’un consommateur le lise."
+      ],
+      [
+        "rd(motif)",
+        "Lit une copie, sans retirer le tuple.",
+        "Attend si aucun tuple ne correspond au motif."
+      ],
+      [
+        "in(motif)",
+        "Récupère et retire une occurrence correspondante.",
+        "Attend si aucun tuple ne correspond au motif."
+      ]
+    ],
+    "memory": "Attention au nom : out dépose dans l’espace ; in prend dans l’espace. rd lit sans retirer.",
+    "trace": [
+      {
+        "instruction": "A : out(\"note\", 12)",
+        "result": "Le tuple est déposé.",
+        "space": "(\"note\", 12)"
+      },
+      {
+        "instruction": "A : rd(\"note\", ?x)",
+        "result": "x = 12 ; la lecture conserve le tuple.",
+        "space": "(\"note\", 12)"
+      },
+      {
+        "instruction": "A : in(\"note\", ?y)",
+        "result": "y = 12 ; le tuple est retiré.",
+        "space": "Vide"
+      },
+      {
+        "instruction": "A : in(\"note\", ?z)",
+        "result": "A se bloque : aucun tuple correspondant.",
+        "space": "Vide"
+      },
+      {
+        "instruction": "B : out(\"note\", 18)",
+        "result": "Un autre processus dépose le tuple ; la demande de A reprend avec z = 18 et le retire.",
+        "space": "Vide après la reprise de A"
+      }
+    ],
+    "pitfalls": [
+      "Tracer l’espace après chaque instruction : ajout, conservation ou retrait. Une opération bloquée empêche la suite de ce processus d’avancer, mais pas les autres processus.",
+      "La présence d’un tuple quelconque ne suffit pas : le motif doit correspondre. out(\"autre\", 18) ne débloque pas in(\"note\", ?z).",
+      "Deux out identiques donnent deux occurrences. Une même occurrence ne peut pas être retirée deux fois, même si deux consommateurs sont en concurrence.",
+      "Avec plusieurs tuples correspondants ou plusieurs processus, ne pas inventer un ordre FIFO : considérer les choix et ordres d’exécution possibles, sauf indication contraire de l’énoncé."
+    ],
+    "course": "Le support propose les philosophes à table et un échange client/serveur, pages 31–32. Dans un modèle à jetons, in prend une ressource et out la remet à disposition. Savoir repérer les attentes et les blocages est utile pour ces exercices.",
+    "source": "Support p. 31–32 ; exercice numérique proposé pour l’entraînement. La possibilité d’un exercice Linda est signalée par Arthur à partir de l’oral ; le sujet exact n’est pas connu."
+  }
 }

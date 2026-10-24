@@ -38,9 +38,9 @@ def page(title,sub):
  add(title,'title');add(sub,'small')
 def link(title,url):
  story.append(Paragraph(f'<link href="{escape(url,quote=True)}" color="#1b6c80">{escape(title)} (lien)</link>',S['small']))
-def table(rows,widths):
+def table(rows,widths,padding=7):
  t=Table([[para(c,'cell') for c in row] for row in rows],colWidths=widths,hAlign='LEFT')
- t.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('BACKGROUND',(0,0),(-1,0),PALE),('LINEBELOW',(0,0),(-1,-1),.4,RULE),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('TOPPADDING',(0,0),(-1,-1),7),('BOTTOMPADDING',(0,0),(-1,-1),7)]));story.append(t)
+ t.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('BACKGROUND',(0,0),(-1,0),PALE),('LINEBELOW',(0,0),(-1,-1),.4,RULE),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('TOPPADDING',(0,0),(-1,-1),padding),('BOTTOMPADDING',(0,0),(-1,-1),padding)]));story.append(t)
 def graph():
  d=Drawing(499,145)
  for i,(x,title,note) in enumerate([(0,'Client','Envoie les requêtes'),(170,'Répartiteur','Oriente vers les VM'),(340,'VM A / VM B','Traitent les demandes')]):
@@ -55,17 +55,31 @@ add(D['scope'])
 heading('Ce qui est établi, ce qui reste à confirmer')
 for e in D['evidence']: heading(e['label']);add(e['text'])
 heading('Un parcours de révision en quatre passages')
-for t in ['1. Comprendre : nœuds, middleware, transparence, pannes et stratégies de mise à l’échelle (p. 2–7).','2. Calculer : identifier le modèle, convertir les unités, vérifier la stabilité, interpréter les résultats (p. 8–11).','3. S’entraîner : faire le sujet blanc sans regarder les corrections (p. 12).','4. Manipuler : suivre le parcours VM / répartiteur et expliquer les observations (p. 13–14). Livre et sources : p. 15.']:add(t)
+for t in ['1. Comprendre : nœuds, middleware, transparence, pannes et stratégies de mise à l’échelle (p. 2–8).','2. Calculer : identifier le modèle, convertir les unités, vérifier la stabilité, interpréter les résultats (p. 9–12).','3. S’entraîner : faire le sujet blanc sans regarder les corrections (p. 13).','4. Manipuler : suivre le parcours VM / répartiteur et expliquer les observations (p. 14–15). Livre et sources : p. 16.']:add(t)
 add('Ce guide complète la Fiche 01 illustrée. Dans l’atelier, les simulations existantes restent disponibles et les nouvelles rubriques Synthèse, Examen et TP reprennent le même contenu. Les apartés privés sont exclus.','small')
 
-for start in range(0,len(D['topics']),2):
+grouped_topics = [t for t in D['topics'] if not t.get('standalone')]
+for start in range(0,len(grouped_topics),2):
  page(['Fondations du distribué','Tenue en charge et files','Cloud et architectures','P2P, transactions et énergie','Objets, services et conteneurs','Événements et données partagées'][start//2],'Notions vérifiées dans le support ; les compléments sont signalés.')
- for t in D['topics'][start:start+2]:
+ for t in grouped_topics[start:start+2]:
   heading(t['title']);add(t['priority']+' · '+t['source'],'small')
   if t['id']=='evenements-espaces':
    table([['Modèle du cours','Temporel','Référentiel'],['Direct','Couplé','Couplé'],['Événement éphémère','Couplé','Découplé'],['Boîte persistante adressée','Découplé','Couplé'],['Espace de tuples conservés','Découplé','Découplé']],[249,125,125]);story.append(Spacer(1,10))
   for text in t['points']:add(text)
   add('Piège : '+t['trap']);add('À savoir faire : '+t['task'],'small')
+
+l = D['linda']
+page(l['title'],'Support p. 31–32 · Définition, opérations et exercice corrigé')
+add(l['intro']);add(l['tuple'])
+heading('Les trois opérations')
+table([['Opération','Effet','Attente']] + l['operations'],[85,207,207],padding=4)
+add(l['memory'])
+heading('Exercice corrigé · espace initialement vide')
+add('A et B sont deux processus. Les lignes ci-dessous suivent un ordre proposé ; B peut avancer pendant que A attend.','small')
+table([['Instruction','Résultat','Espace après']] + [[t['instruction'],t['result'],t['space']] for t in l['trace']],[152,242,105],padding=4)
+heading('Raisonner pour un exercice')
+for t in l['pitfalls']:add(t)
+add(l['course'],'small');add(l['source'],'small')
 
 page('Les formules et leurs limites','Support p. 16–17, 26 et 36 ; dimensionnement : application proposée')
 table([['Calcul','Formule','Conditions']] + [[f[0],f[1],f[2]] for f in D['formulas']],[104,207,188])
