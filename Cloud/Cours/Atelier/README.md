@@ -4,7 +4,7 @@ Application pédagogique avec dix modules pour comprendre le cours Cloud et trai
 
 ## Utilisation
 
-Ouvrir `index.html` dans un navigateur. Les interactions et les calculs fonctionnent localement, sans installation. La police distante est facultative : une police système est utilisée hors ligne.
+Sous Windows, double-cliquer sur `../../lancer_atelier_cloud.bat` pour ouvrir http://127.0.0.1:8765/. Le serveur démarre en arrière-plan et le second lancement le réutilise. Pour arrêter : `../../lancer_atelier_cloud.bat -Arreter`. On peut aussi ouvrir `index.html` dans un navigateur. Les interactions et les calculs fonctionnent localement, sans installation. La police distante est facultative : une police système est utilisée hors ligne.
 
 Pour un aperçu avec un serveur local, depuis ce dossier :
 
@@ -45,7 +45,7 @@ La nouvelle simulation de TP emploie un routage round-robin illustratif et deux 
 
 ## Enrichir le cours
 
-Modifier `../Cours/revisions.json`, puis exécuter `python ../Cours/generer_revisions.py` avec ReportLab installé. Le script régénère le guide PDF et `revision-data.js` depuis la même source. `revision.js` gère l’interface des trois rubriques. Les références détaillées figurent dans la synthèse et à la fin du guide.
+Modifier `../Resumes/revisions.json`, puis exécuter `python ../Outils/generer_revisions.py` avec ReportLab installé. Le script régénère le guide PDF et `revision-data.js` depuis la même source. `revision.js` gère l’interface des trois rubriques. Les références détaillées figurent dans la synthèse et à la fin du guide.
 
 ## Vérification
 

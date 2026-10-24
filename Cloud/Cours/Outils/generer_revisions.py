@@ -1,5 +1,5 @@
 """Génère le guide PDF et les données de l’atelier depuis revisions.json.
-Usage : python generer_revisions.py (dépendance : reportlab ; polices Arial Windows).
+Usage depuis Cloud/Cours : python Outils/generer_revisions.py (dépendance : reportlab ; polices Arial Windows).
 """
 from pathlib import Path
 from html import escape
@@ -11,9 +11,9 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
 from reportlab.graphics.shapes import Drawing, Rect, Line, String, PolyLine
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1] / 'Resumes'
 D = json.loads((ROOT / 'revisions.json').read_text(encoding='utf8'))
-APP = ROOT.parent / 'Appli'
+APP = ROOT.parent / 'Atelier'
 (APP / 'revision-data.js').write_text('window.CloudStudy = ' + json.dumps(D, ensure_ascii=False, indent=2) + ';\n', encoding='utf8')
 pdfmetrics.registerFont(TTFont('Arial', 'C:/Windows/Fonts/arial.ttf'))
 pdfmetrics.registerFont(TTFont('Arial-Bold', 'C:/Windows/Fonts/arialbd.ttf'))
@@ -117,7 +117,7 @@ heading('Sources utilisées et corrections')
 for s in D['sources']:
  add(s['title']+' — '+s['detail'],'small')
  if s.get('url') and s['url']!=D['book']['url']:link(s['title'],s['url'])
-add('Pour enrichir le cours : mettre à jour revisions.json, puis exécuter generer_revisions.py. Le PDF et revision-data.js sont régénérés ensemble. Ajouter un repère de source à chaque nouvelle notion.','small')
+add('Pour enrichir le cours : mettre à jour revisions.json, puis exécuter Outils/generer_revisions.py depuis Cloud/Cours. Le PDF et revision-data.js sont régénérés ensemble. Ajouter un repère de source à chaque nouvelle notion.','small')
 
 def footer(c,doc):
  c.saveState();c.setStrokeColor(RULE);c.line(48,41,547,41);c.setFont('Arial',8);c.setFillColor(MUTED);c.drawString(48,27,'Atelier Cloud · Révision et TP · '+D['date']);c.drawRightString(547,27,str(doc.page));c.restoreState()
