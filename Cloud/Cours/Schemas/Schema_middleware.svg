@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="970" viewBox="0 0 1400 970" role="img" aria-labelledby="title desc">
+  <title id="title">La couche middleware dans un système distribué</title>
+  <desc id="desc">Trois machines ont chacune une application, une instance du middleware, un système d’exploitation local et du matériel. Les instances du middleware coopèrent pour fournir des services communs. Les échanges réels passent par les systèmes d’exploitation et le réseau.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526575"/></marker>
+    <marker id="logical" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#146e96"/></marker>
+    <style>
+      text{font-family:Arial,sans-serif;fill:#182d40;font-size:22px}
+      .title{font-size:36px;font-weight:700}.subtitle{font-size:22px;fill:#526575}.source{font-size:16px;fill:#526575}
+      .machine{font-size:24px;font-weight:700}.label{font-size:20px;fill:#526575}
+      .box-title{font-size:24px;font-weight:700}.detail{font-size:20px;fill:#526575}
+      .middleware{fill:#146e96}.note{font-size:20px;fill:#526575}
+      .local{stroke:#526575;stroke-width:2;marker-end:url(#arrow)}
+      .link{stroke:#146e96;stroke-width:2;stroke-dasharray:7 5;marker-start:url(#logical);marker-end:url(#logical)}
+    </style>
+  </defs>
+  <rect width="1400" height="970" fill="#fff"/>
+  <text x="55" y="65" class="title">La couche middleware dans un système distribué</text>
+  <text x="55" y="104" class="subtitle">Une abstraction commune au-dessus de plusieurs systèmes d’exploitation locaux</text>
+
+  <text x="380" y="158" text-anchor="middle" class="machine">Machine A</text>
+  <text x="730" y="158" text-anchor="middle" class="machine">Machine B</text>
+  <text x="1080" y="158" text-anchor="middle" class="machine">Machine C</text>
+
+  <text x="55" y="221" class="label">Applications</text>
+  <rect x="230" y="185" width="300" height="88" rx="8" fill="#f4f6f8" stroke="#d9e2e8"/>
+  <rect x="580" y="185" width="300" height="88" rx="8" fill="#f4f6f8" stroke="#d9e2e8"/>
+  <rect x="930" y="185" width="300" height="88" rx="8" fill="#f4f6f8" stroke="#d9e2e8"/>
+  <text x="380" y="222" text-anchor="middle" class="box-title">Application cliente</text><text x="380" y="251" text-anchor="middle" class="detail">Demander un document</text>
+  <text x="730" y="222" text-anchor="middle" class="box-title">Service métier</text><text x="730" y="251" text-anchor="middle" class="detail">Traiter la demande</text>
+  <text x="1080" y="222" text-anchor="middle" class="box-title">Service de données</text><text x="1080" y="251" text-anchor="middle" class="detail">Retrouver le document</text>
+  <path d="M380 274V314" class="local"/><path d="M730 274V314" class="local"/><path d="M1080 274V314" class="local"/>
+
+  <rect x="210" y="320" width="1040" height="150" rx="10" fill="#eaf3f7"/>
+  <text x="55" y="383" class="box-title middleware">Middleware</text>
+  <text x="55" y="412" class="label">Services</text><text x="55" y="438" class="label">communs</text>
+  <rect x="230" y="346" width="300" height="94" rx="8" fill="#fff" stroke="#146e96"/>
+  <rect x="580" y="346" width="300" height="94" rx="8" fill="#fff" stroke="#146e96"/>
+  <rect x="930" y="346" width="300" height="94" rx="8" fill="#fff" stroke="#146e96"/>
+  <text x="380" y="383" text-anchor="middle" class="box-title middleware">Instance locale A</text><text x="380" y="414" text-anchor="middle" class="detail">Appels RPC, messages</text>
+  <text x="730" y="383" text-anchor="middle" class="box-title middleware">Instance locale B</text><text x="730" y="414" text-anchor="middle" class="detail">Nommage, authentification</text>
+  <text x="1080" y="383" text-anchor="middle" class="box-title middleware">Instance locale C</text><text x="1080" y="414" text-anchor="middle" class="detail">Accès aux données</text>
+  <path d="M538 393H572" class="link"/><path d="M888 393H922" class="link"/>
+  <text x="730" y="459" text-anchor="middle" class="note">Coopération logique entre instances · exemples de fonctions, selon le middleware</text>
+  <path d="M380 470V510" class="local"/><path d="M730 470V510" class="local"/><path d="M1080 470V510" class="local"/>
+
+  <text x="55" y="552" class="label">OS locaux</text>
+  <rect x="230" y="520" width="300" height="88" rx="8" fill="#f4f6f8" stroke="#d9e2e8"/>
+  <rect x="580" y="520" width="300" height="88" rx="8" fill="#f4f6f8" stroke="#d9e2e8"/>
+  <rect x="930" y="520" width="300" height="88" rx="8" fill="#f4f6f8" stroke="#d9e2e8"/>
+  <text x="380" y="554" text-anchor="middle" class="box-title">OS de la machine A</text><text x="380" y="585" text-anchor="middle" class="detail">Processus, fichiers, sockets</text>
+  <text x="730" y="554" text-anchor="middle" class="box-title">OS de la machine B</text><text x="730" y="585" text-anchor="middle" class="detail">Processus, fichiers, sockets</text>
+  <text x="1080" y="554" text-anchor="middle" class="box-title">OS de la machine C</text><text x="1080" y="585" text-anchor="middle" class="detail">Processus, fichiers, sockets</text>
+  <path d="M380 609V653" class="local"/><path d="M730 609V653" class="local"/><path d="M1080 609V653" class="local"/>
+
+  <text x="55" y="701" class="label">Matériel</text>
+  <rect x="230" y="663" width="300" height="70" rx="8" fill="#f4f6f8" stroke="#d9e2e8"/>
+  <rect x="580" y="663" width="300" height="70" rx="8" fill="#f4f6f8" stroke="#d9e2e8"/>
+  <rect x="930" y="663" width="300" height="70" rx="8" fill="#f4f6f8" stroke="#d9e2e8"/>
+  <text x="380" y="706" text-anchor="middle" class="detail">CPU, mémoire, interface réseau</text>
+  <text x="730" y="706" text-anchor="middle" class="detail">CPU, mémoire, interface réseau</text>
+  <text x="1080" y="706" text-anchor="middle" class="detail">CPU, mémoire, interface réseau</text>
+  <path d="M380 734V790 M730 734V790 M1080 734V790 M280 790H1180" stroke="#526575" stroke-width="3" fill="none"/>
+  <circle cx="380" cy="790" r="5" fill="#526575"/><circle cx="730" cy="790" r="5" fill="#526575"/><circle cx="1080" cy="790" r="5" fill="#526575"/>
+  <text x="730" y="828" text-anchor="middle" class="box-title">Réseau physique · LAN / Internet</text>
+  <text x="730" y="861" text-anchor="middle" class="note">Les échanges réels utilisent les OS locaux, leurs piles réseau et les interfaces réseau.</text>
+  <path d="M55 894H1345" stroke="#d9e2e8"/>
+  <text x="55" y="926" class="note">À retenir : le middleware ne remplace pas les OS. Il réutilise leurs services pour masquer une partie de la distribution.</text>
+  <text x="55" y="954" class="source">Schéma pédagogique original · D’après O. Grunder, Cloud et traitements distribués, page 13 · Master DSICS</text>
+</svg>

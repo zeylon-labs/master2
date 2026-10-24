@@ -2,5 +2,10 @@ __pycache__/
 *.py[cod]
 .venv/
 .venv-tests/
-TP_secu_1/resultats/ci_*.json
-TP_secu_1/resultats/tests_windows/
+Secu/TP/TP_secu_1/resultats/ci_*.json
+Secu/TP/TP_secu_1/resultats/tests_windows/
+
+# Sources originales personnelles : disponibles localement, jamais publiees.
+Cloud/Cours/Sources/Originaux_locaux/
+Cloud/Cours/Atelier/.serveur-local/
+~$*
