@@ -1,6 +1,6 @@
 window.CloudStudy = {
-  "date": "24 octobre 2026",
-  "scope": "Synthèse du support fourni (42 pages), des notes Word, de la transcription et du résumé Plaud du 23 octobre, puis du résumé Plaud du matin du 24 octobre (8 pages). Les compléments de la seconde séance sont identifiés comme provenant de ce résumé automatique ; ils sont confrontés au support et aux sources techniques officielles. Les fiches et simulations existantes sont conservées et enrichies.",
+  "date": "13 novembre 2026",
+  "scope": "Guide des deux supports d’Olivier Grunder. Les chapitres 1 et 2 reprennent les fondations, les architectures et les compléments des séances des 23 et 24 octobre. Les chapitres 3 et 4 abordent les processus et les communications à partir du support du week-end. Des exemples résolus, des questions corrigées et un parcours de préparation aux TP complètent le cours.",
   "evidence": [
     {
       "label": "Annoncé oralement",
@@ -17,6 +17,10 @@ window.CloudStudy = {
     {
       "label": "Priorités proposées",
       "text": "Les priorités ci-dessous reposent sur le support et l’insistance de l’oral. Elles ne prédisent ni le sujet ni la probabilité d’une question. Les suggestions de Plaud ne sont pas reprises comme devoirs donnés par le professeur. La liste « devoirs et plan d’action » de Plaud reste une proposition de révision, pas un énoncé officiel."
+    },
+    {
+      "label": "Support du cours 2",
+      "text": "44 pages, couverture 2024–2025. Les exercices sur les processus et la communication sont proposés pour la révision. Le document ne fixe ni les modalités de l’examen ni un énoncé de TP."
     }
   ],
   "topics": [
@@ -330,6 +334,124 @@ window.CloudStudy = {
       ],
       "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
       "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
+    },
+    {
+      "id": "threads",
+      "title": "Threads, ordonnancement et serveurs concurrents",
+      "priority": "Cours 2 · Processus",
+      "source": "Cours 2, PDF p. 10–13 et 17",
+      "route": "tp",
+      "standalone": true,
+      "trap": "Concurrence et parallélisme décrivent deux propriétés différentes.",
+      "task": "Expliquer le dispatcher, comparer deux traitements d’E/S et calculer le TLP.",
+      "coursePages": [
+        0
+      ]
+    },
+    {
+      "id": "virtualisation",
+      "title": "Virtualisation, VM et conteneurs",
+      "priority": "Cours 2 · Processus",
+      "source": "Cours 2, PDF p. 14–15 et 20–21",
+      "route": "cloud",
+      "standalone": true,
+      "trap": "Une image contient le nécessaire pour démarrer un conteneur. Le conteneur est une instance en exécution.",
+      "task": "Dessiner le rôle de l’hyperviseur, du noyau invité, des namespaces et des cgroups.",
+      "coursePages": [
+        1
+      ]
+    },
+    {
+      "id": "serveurs",
+      "title": "Clients, état et clusters",
+      "priority": "Cours 2 · Processus",
+      "source": "Cours 2, PDF p. 15–21",
+      "route": "tp",
+      "standalone": true,
+      "trap": "L’état TCP et la session applicative relèvent de couches différentes.",
+      "task": "Suivre une requête du frontal jusqu’au worker, puis expliquer la reprise d’une session.",
+      "coursePages": [
+        2
+      ]
+    },
+    {
+      "id": "migration",
+      "title": "Migration de code et de VM",
+      "priority": "Cours 2 · Processus",
+      "source": "Cours 2, PDF p. 22–24",
+      "route": "cloud",
+      "standalone": true,
+      "trap": "La durée de migration, la dégradation et l’indisponibilité sont trois mesures différentes.",
+      "task": "Identifier qui déplace le code, où il s’exécute et quel état il emporte.",
+      "coursePages": [
+        3
+      ]
+    },
+    {
+      "id": "transport",
+      "title": "Transport et deux axes de communication",
+      "priority": "Cours 2 · Communication",
+      "source": "Cours 2, PDF p. 26–28",
+      "route": "middleware",
+      "standalone": true,
+      "trap": "L’attente d’un accusé et la conservation du message sont deux axes indépendants.",
+      "task": "Identifier le jalon confirmé dans un appel ou un dépôt en file.",
+      "coursePages": [
+        4
+      ]
+    },
+    {
+      "id": "rpc",
+      "title": "RPC, stubs et passage de paramètres",
+      "priority": "Cours 2 · Communication",
+      "source": "Cours 2, PDF p. 28–30",
+      "route": "middleware",
+      "standalone": true,
+      "trap": "Un timeout laisse le résultat de l’écriture incertain.",
+      "task": "Dessiner le trajet d’un appel et justifier une stratégie de reprise.",
+      "coursePages": [
+        5
+      ]
+    },
+    {
+      "id": "interfaces-message",
+      "title": "Sockets, ZeroMQ et MPI",
+      "priority": "Cours 2 · Communication",
+      "source": "Cours 2, PDF p. 31–35",
+      "route": "evenements",
+      "standalone": true,
+      "trap": "Un flux TCP peut fractionner ou regrouper les octets de plusieurs messages.",
+      "task": "Choisir entre sockets, ZeroMQ et MPI selon le besoin.",
+      "coursePages": [
+        6
+      ]
+    },
+    {
+      "id": "broker",
+      "title": "Files de messages et broker",
+      "priority": "Cours 2 · Communication",
+      "source": "Cours 2, PDF p. 36–38",
+      "route": "evenements",
+      "standalone": true,
+      "trap": "Un accusé de dépôt ne confirme pas le résultat métier.",
+      "task": "Distinguer producteur, file, broker, gestionnaire et consommateur.",
+      "coursePages": [
+        7
+      ]
+    },
+    {
+      "id": "gossip",
+      "title": "Multicast, inondation et gossip",
+      "priority": "Cours 2 · Communication",
+      "source": "Cours 2, PDF p. 38–42",
+      "route": "donnees",
+      "standalone": true,
+      "trap": "Une rumeur peut s’arrêter avant d’atteindre toutes les copies. Une suppression doit se propager.",
+      "task": "Calculer un tour de pull et expliquer l’utilité d’un tombstone.",
+      "coursePages": [
+        8,
+        9
+      ]
     }
   ],
   "formulas": [
@@ -441,6 +563,78 @@ window.CloudStudy = {
       "q": "Deux VM servent des pages différentes après équilibrage. Comment diagnostiquer ?",
       "a": "Afficher l’identité/version de chaque backend, vérifier le déploiement et la configuration, examiner les logs et le cache. Répéter des requêtes n’impose pas une alternance stricte ; l’affinité et la politique du répartiteur peuvent maintenir un même backend.",
       "source": "Entraînement proposé VM et load balancing"
+    },
+    {
+      "category": "Maths",
+      "q": "M/M/1. À 75 req/s et 12,5 ms de service moyen, calculer l’utilisation et la latence. Que se passe-t-il à 80 req/s ?",
+      "a": "μ = 80 req/s, U = 93,75 %, R = 1/(80 − 75) = 200 ms, W = 187,5 ms et L = 15. À 80 req/s, aucun régime stationnaire.",
+      "source": "C1 p. 16–17"
+    },
+    {
+      "category": "TP",
+      "q": "Dimensionnement. Deux VM de 100 req/s reçoivent 160 req/s uniformément. Calculer la charge et la latence idéales, puis expliquer une panne.",
+      "a": "Chaque VM reçoit 80 req/s, soit U = 80 % et R = 50 ms. Après retrait de B du routage, A reçoit 160 req/s, soit U = 160 % et aucun régime stationnaire. Avant retrait, une partie des demandes est encore envoyée à B.",
+      "source": "C1 p. 16–18 et C2 p. 17–19"
+    },
+    {
+      "category": "Architectures",
+      "q": "Chord. Avec les neuf nœuds du cours, qui gère la clé 30 ? Si 30 est l’identifiant d’un groupe multicast, quel rôle prend ce nœud ?",
+      "a": "En revenant au début de l’anneau, le successeur est 1. Pour le groupe multicast, 1 devient la racine de l’arbre logique dans le modèle décrit.",
+      "source": "C1 p. 35 et C2 p. 38"
+    },
+    {
+      "category": "Maths",
+      "q": "Threads. Deux tâches indépendantes attendent chacune 80 ms une E/S, puis calculent chacune 20 ms. Quel ordre de grandeur si elles commencent ensemble sur un cœur ?",
+      "a": "En série, 200 ms. Si les attentes se recouvrent entièrement et que le CPU traite les deux calculs l’un après l’autre, environ 120 ms hors surcoûts. Le recouvrement des E/S explique le gain.",
+      "source": "C2 p. 10–13"
+    },
+    {
+      "category": "TP",
+      "q": "État. La première requête enregistre un panier sur A. La suivante arrive sur B, qui renvoie un panier vide. Que vérifier ?",
+      "a": "Localiser le stockage de session, contrôler le contexte porté par la requête et comparer le stockage vu par A et B. Une affinité peut masquer le symptôme tant qu’A reste accessible. Une session externe accessible aux deux backends facilite la reprise.",
+      "source": "C2 p. 18–19"
+    },
+    {
+      "category": "Concepts",
+      "q": "Virtualisation. Quel mécanisme limite la mémoire d’un conteneur ? Lequel lui donne sa propre vue du réseau ?",
+      "a": "Les cgroups encadrent les ressources. Les namespaces isolent des vues, notamment celle du réseau. Une VM système ajoute un OS invité.",
+      "source": "C2 p. 14–15, 20–21"
+    },
+    {
+      "category": "Communication",
+      "q": "RPC. Une écriture reçoit un timeout. Peut-on relancer la commande immédiatement ?",
+      "a": "L’écriture a pu aboutir avant la perte de réponse. Vérifier l’état ou réessayer avec le même identifiant d’opération et une déduplication adaptée. Un accusé d’acceptation ne suffit pas à prouver la réussite métier.",
+      "source": "C2 p. 27–30 et C1 p. 14"
+    },
+    {
+      "category": "Communication",
+      "q": "Messagerie. Un worker est arrêté pendant dix minutes. Dans quel scénario peut-il traiter à son retour la demande publiée pendant son absence ?",
+      "a": "Avec une file qui conserve le message pour ce worker et une politique adaptée. Un abonné absent à un PUB/SUB transitoire peut manquer le message. Si le gestionnaire redémarre aussi, vérifier la persistance et la validation du dépôt.",
+      "source": "C2 p. 32–38"
+    },
+    {
+      "category": "Concepts",
+      "q": "Migration. Un graphique indique une hausse de latence sur 25 s et une coupure de 2 s. Quels chiffres rapporter ?",
+      "a": "Rapporter les deux durées séparément. Mesurer aussi le temps total de migration si les événements début et fin sont connus.",
+      "source": "C2 p. 23–24"
+    },
+    {
+      "category": "Maths",
+      "q": "Gossip. Quatre répliques sur dix connaissent la version v2. Avec pull et des tirages indépendants uniformes avec remise, quelle fraction restera ignorante après un tour en moyenne ?",
+      "a": "La fraction initiale ignorante est 0,6. Il faut à la fois être ignorant et tirer un ignorant, soit 0,6² = 0,36. Une réalisation sur dix nœuds peut s’écarter de cette espérance.",
+      "source": "C2 p. 39–40"
+    },
+    {
+      "category": "Communication",
+      "q": "Suppression distribuée. A supprime un objet, mais B revient après une panne avec une ancienne version. Comment empêcher sa réapparition ?",
+      "a": "Représenter la suppression par une mise à jour versionnée, propager cette version et conserver le marqueur jusqu’au critère de purge retenu.",
+      "source": "C2 p. 41"
+    },
+    {
+      "category": "Maths",
+      "q": "Calculer le TLP avec c₀ = 20 %, c₁ = 40 %, c₂ = 30 % et c₃ = 10 %.",
+      "a": "Le nombre moyen de threads actifs, temps inactif compris, vaut 1 × 0,4 + 2 × 0,3 + 3 × 0,1 = 1,30. La fraction de temps actif vaut 0,80. Le TLP vaut 1,30 / 0,80 = 1,625.",
+      "source": "C2 p. 13"
     }
   ],
   "mock": [
@@ -463,6 +657,11 @@ window.CloudStudy = {
       "title": "D · Architecturer et diagnostiquer — 4 points",
       "prompt": "Proposer un client → répartiteur → deux VM → stockage partagé. Distinguer répartition et réplication. Expliquer quoi mesurer lors d’une panne et retrouver le responsable de la clé 30 dans Chord.",
       "rubric": "Architecture et données 1 pt ; mesures/health checks 2 pts ; responsable 1 dans Chord 1 pt."
+    },
+    {
+      "title": "E · Exercice complémentaire du cours 2",
+      "prompt": "Un service reçoit des commandes pendant un arrêt du worker. Proposer un échange et expliquer quel événement autorise à informer le client que la commande a été créée. Si la fraction de répliques ignorantes vaut 0,2, calculer son espérance après un tour de pull dans le modèle du cours.",
+      "rubric": "Utiliser une file persistante selon la politique retenue. Confirmer la création après validation métier, et distinguer cette confirmation de l’accusé de dépôt. Le pull donne 0,2² = 0,04, soit 4 %."
     }
   ],
   "labs": [
@@ -524,6 +723,10 @@ window.CloudStudy = {
     {
       "title": "Support principal",
       "detail": "Olivier Grunder, Cloud et traitements distribués, fichier lucc01-cours01-26.pdf, 42 pages. Les références p. n sont les pages du PDF, couverture comprise."
+    },
+    {
+      "title": "Support du cours 2",
+      "detail": "Olivier Grunder, Cloud et traitements distribués, lucc01-cours02-26.pdf (44 pages, couverture 2024–2025). C2 désigne la page physique du PDF. À partir de la p. 9, le numéro imprimé est supérieur de 34."
     },
     {
       "title": "Notes personnelles et oral",
@@ -1586,5 +1789,365 @@ window.CloudStudy = {
         "https://aws.amazon.com/serverless/"
       ]
     ]
-  }
+  },
+  "course2Pages": [
+    {
+      "title": "Threads, ordonnancement et serveurs concurrents",
+      "source": "Cours 2, PDF p. 10–13 et 17",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Un processus possède notamment un espace d’adressage et des ressources. Ses threads partagent cet espace tout en ayant leur propre pile, registres et position d’exécution. Une commutation sauvegarde l’état nécessaire à la reprise. Le coût direct vient de la commutation elle-même. Le coût indirect peut venir des données évincées du cache. La mémoire partagée facilite les échanges mais impose de coordonner les écritures concurrentes."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Le cours compare les threads utilisateur, les threads pris en charge par le noyau et un modèle hybride many-to-many avec des processus légers (LWP). Dans le modèle utilisateur pur présenté, si le noyau ne connaît qu’un seul contexte ordonnançable pour le processus, un appel bloquant peut suspendre l’ensemble. Avec plusieurs threads connus du noyau, celui-ci peut en exécuter un autre. Le modèle LWP multiplexe des threads utilisateur sur plusieurs contextes ordonnançables."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La concurrence organise plusieurs opérations dont les durées se recouvrent. Le parallélisme signifie que certaines s’exécutent simultanément. Sur un seul cœur, on peut commencer une autre tâche pendant l’attente d’une E/S. Sur plusieurs cœurs, plusieurs tâches CPU peuvent avancer réellement en parallèle. Le cours illustre ce recouvrement avec des ressources web téléchargées en parallèle et des appels RPC lancés vers plusieurs serveurs. Avec des appels indépendants et des ressources suffisantes, attendre tous les résultats prend approximativement la durée du plus lent, plus les coûts de coordination."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Un serveur itératif traite une demande à la fois. Dans le modèle dispatcher/workers, le dispatcher reçoit et confie les demandes à des travailleurs, qui peuvent être des threads ou des processus. Une boucle d’événements utilisant des E/S non bloquantes peut gérer plusieurs demandes en cours sur un thread. Pour obtenir du parallélisme CPU, il faut des unités d’exécution distinctes. Un pool de workers et sa file peuvent eux-mêmes saturer."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Calcul TLP. Si cᵢ est la fraction de temps avec i threads en exécution simultanée, TLP = Σ(i × cᵢ)/(1 − c₀), sur les instants où au moins un thread s’exécute. Pour c₀ = 20 %, c₁ = 40 %, c₂ = 30 % et c₃ = 10 %, le numérateur vaut 1,30 et le TLP vaut 1,625. La métrique décrit la simultanéité observée. Elle ne donne pas à elle seule le gain de vitesse."
+        }
+      ]
+    },
+    {
+      "title": "Virtualisation, VM et conteneurs",
+      "source": "Cours 2, PDF p. 14–15 et 20–21",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La virtualisation expose une interface attendue au-dessus d’un autre environnement. Selon le niveau, cette interface peut être un jeu d’instructions (ISA), des appels système ou une API de bibliothèque. Le support distingue une VM de processus, qui fournit un environnement d’exécution à un programme, et une VM système, dans laquelle un OS invité s’exécute sous le contrôle d’un VMM ou hyperviseur."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Forme",
+              "Organisation",
+              "Exemple d’usage"
+            ],
+            [
+              "VM de processus",
+              "Un runtime fournit une machine abstraite à un programme.",
+              "Exécuter du bytecode sur plusieurs plateformes."
+            ],
+            [
+              "Hyperviseur natif (type 1)",
+              "La couche de virtualisation s’exécute directement sur le matériel dans le modèle du cours.",
+              "Héberger plusieurs VM sur un serveur."
+            ],
+            [
+              "Hyperviseur hébergé (type 2)",
+              "La couche de virtualisation s’appuie sur un OS hôte.",
+              "Exécuter une VM de test sur un poste."
+            ],
+            [
+              "Conteneur",
+              "Les processus sont isolés au niveau de l’OS et partagent un noyau.",
+              "Emballer et déployer une application avec ses dépendances."
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dans le modèle classique, le VMM peut intercepter les instructions sensibles si elles déclenchent un piège en mode non privilégié. Le support explique le problème historique des instructions sensibles qui ne déclenchent pas ce piège et compare émulation, réécriture et paravirtualisation. L’exemple x86 décrit une difficulté historique du modèle classique. Le cours relie les VM à l’IaaS et rappelle que des VM partageant une machine physique peuvent encore se disputer ses ressources."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Pour les conteneurs, retenir trois rôles. Les namespaces isolent la vue des processus ou du réseau. Les cgroups encadrent les ressources comme le CPU et la mémoire. Un système de fichiers en couches assemble le contenu de l’image et peut ajouter une couche d’écriture propre à l’instance. Une image décrit ce qui sert à démarrer un conteneur. PlanetLab illustre une tranche constituée d’environnements isolés sur plusieurs nœuds."
+        }
+      ]
+    },
+    {
+      "title": "Clients, état et clusters",
+      "source": "Cours 2, PDF p. 15–21",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Un protocole peut être propre à une application ou fourni par le middleware. X Window montre que le rôle de serveur dépend du service considéré. Le serveur X gère l’affichage et les entrées près de l’utilisateur. L’application, locale ou distante, est son client. Des échanges très synchrones entre les deux deviennent pénalisants quand la latence augmente."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Un serveur expose un point d’accès, fixe ou découvert via un annuaire ou un service de résolution. Le support évoque également un canal séparé pour une demande urgente et le mécanisme urgent de TCP comme exemples de communication hors bande."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Un serveur applicatif sans état de session local peut traiter une requête avec le contexte qu’elle transporte ou qu’il récupère dans un stockage partagé. Un serveur avec état local peut mémoriser l’ouverture d’un fichier, la session ou l’état du cache d’un client. Cela peut accélérer certaines interactions, mais impose de gérer la reprise après changement de serveur. Une connexion TCP conserve son propre état au niveau transport. Un service applicatif sans état de session local peut s’appuyer sur TCP."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Le cluster du support a trois tiers, un frontal, des serveurs applicatifs et des bases distribuées. Le répartiteur du cluster choisit un backend. Le dispatcher interne de ce backend choisit un travailleur pour traiter la demande. Le frontal peut devenir le goulot même si les backends disposent de capacité. Le cours compare des décisions fondées sur la connexion ou les métriques de transport à des décisions fondées sur le contenu de la requête. Il présente aussi un transfert TCP où le backend peut répondre directement dans le modèle décrit."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Pour une distribution géographique, DNS peut orienter vers une réplique proche, mais la localisation observée peut être celle du résolveur. Mobile IPv6 illustre la dissociation entre une adresse stable et une adresse de transit. Ces deux exemples éclairent la transparence de localisation avec des mécanismes différents."
+        }
+      ]
+    },
+    {
+      "title": "Migration de code et de VM",
+      "source": "Cours 2, PDF p. 22–24",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "On peut rapprocher le calcul des données, répartir la charge ou fournir du code à la demande. Pour identifier le modèle, demander qui possède le code, où il s’exécute et quel état le suit."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Modèle",
+              "Mouvement",
+              "Exemple"
+            ],
+            [
+              "Client-serveur classique",
+              "La demande voyage vers le serveur, qui a déjà le code.",
+              "Lecture d’une page calculée sur un serveur."
+            ],
+            [
+              "Évaluation à distance",
+              "Le client envoie le code à la machine qui l’exécute.",
+              "Script envoyé à un serveur de calcul."
+            ],
+            [
+              "Code à la demande",
+              "Le client récupère du code et l’exécute localement.",
+              "JavaScript téléchargé par le navigateur."
+            ],
+            [
+              "Agent mobile",
+              "Le code et un état se déplacent entre les hôtes.",
+              "Agent qui collecte des résultats sur plusieurs serveurs."
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "La mobilité faible transfère le code et éventuellement des données d’initialisation. L’exécution recommence à un point prévu. La mobilité forte emporte le contexte nécessaire pour reprendre l’exécution. Une VM ou une machine abstraite peut faciliter le transfert entre environnements compatibles. Il faut encore traiter les dépendances aux ressources locales, comme les volumes et le réseau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Pour migrer une VM, le support compare la pré-copie des pages mémoire avec recopie des pages modifiées, l’arrêt-copie-redémarrage et la copie à la demande après bascule. Le graphique p. 24 montre une période de latence accrue et une fenêtre d’indisponibilité plus courte. À l’oral ou en TP, distinguer durée totale du transfert, durée de dégradation et durée de coupure. Les durées illustrées dépendent du scénario."
+        }
+      ]
+    },
+    {
+      "title": "Transport et deux axes de communication",
+      "source": "Cours 2, PDF p. 26–28",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Le modèle en couches sépare la transmission physique, la liaison, le routage et le transport. TCP fournit un flux d’octets ordonné avec contrôle de livraison tant que la connexion fonctionne. UDP envoie des datagrammes en mode best effort. La sérialisation, le nommage et la coordination relèvent de mécanismes au-dessus du transport."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Question",
+              "Distinction"
+            ],
+            [
+              "Que devient le message quand le destinataire est indisponible ?",
+              "Transitoire si le système finit par abandonner faute de livraison. Persistant si le middleware conserve le message pour une livraison ultérieure selon la politique configurée."
+            ],
+            [
+              "Jusqu’à quand l’émetteur attend-il ?",
+              "Dans un appel synchrone, il attend un jalon défini. Dans un échange asynchrone, il peut poursuivre avant le résultat final."
+            ],
+            [
+              "Que confirme l’accusé reçu ?",
+              "Il peut confirmer l’acceptation de la demande, sa réception à destination ou la fin de son traitement. Il faut identifier le jalon exact."
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Un RPC classique est généralement synchrone et transitoire. Un appel asynchrone peut attendre un accusé d’acceptation puis recevoir le résultat plus tard. Un producteur peut aussi attendre la confirmation d’écriture dans une file persistante alors que le consommateur traitera le message ultérieurement. Ces exemples montrent que l’attente de l’appelant et la conservation du message sont deux propriétés indépendantes."
+        }
+      ]
+    },
+    {
+      "title": "RPC, stubs et passage de paramètres",
+      "source": "Cours 2, PDF p. 28–30",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Le stub client présente une interface locale et sérialise les arguments. Le système client transmet la requête. Le stub serveur désérialise les données, appelle la procédure locale puis sérialise le résultat. La réponse fait le trajet inverse. Un IDL décrit les opérations et types échangés. Le DCE du support illustre le rôle d’un annuaire et d’un service qui permet de résoudre le port effectif."
+        },
+        {
+          "kind": "diagram",
+          "text": "Client → stub client → réseau → stub serveur → service. Le résultat suit le chemin inverse."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Le client et le serveur doivent s’accorder sur les types, l’encodage et la représentation des données. Un pointeur mémoire local n’identifie aucune donnée exploitable dans l’autre processus. Une référence distante est un identifiant interprété par un protocole prévu à cet effet. L’interface peut donner l’apparence d’un appel local tout en laissant au client la gestion du délai, du timeout et des erreurs."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Exemple. CréerCommande(42) peut réussir côté serveur alors que la réponse se perd. Si le client réessaie, un identifiant d’opération stable et une déduplication persistante côté serveur permettent de reconnaître la même demande. En mode asynchrone, un retour « accepté » signifie que le serveur a pris la demande en charge. Le résultat métier arrive ensuite, par exemple via un callback."
+        }
+      ]
+    },
+    {
+      "title": "Sockets, ZeroMQ et MPI",
+      "source": "Cours 2, PDF p. 31–35",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Sockets TCP. Le serveur crée un socket, l’associe à une adresse avec bind, écoute avec listen et accepte les connexions avec accept. Le client utilise connect. L’échange de données se fait sur le socket connecté. En Python, recv(1024) peut renvoyer une partie de message ou des octets de plusieurs messages. Il faut définir un cadrage, par exemple une longueur suivie du contenu, lire le nombre d’octets nécessaire et traiter les cas de fermeture. sendall aide à envoyer le bloc complet au niveau du socket. La confirmation du traitement relève de l’application. Les exemples de C2 illustrent le flux, avec une syntaxe et une manipulation des octets à adapter pour Python 3."
+        },
+        {
+          "kind": "link",
+          "title": "Documentation Python — Socket Programming HOWTO",
+          "url": "https://docs.python.org/3/howto/sockets.html"
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Modèle ZeroMQ",
+              "Quand le reconnaître"
+            ],
+            [
+              "REQ/REP",
+              "Une demande attend une réponse suivant le protocole d’échange."
+            ],
+            [
+              "PUB/SUB",
+              "Un producteur publie à plusieurs abonnés, avec filtrage possible par sujet. Un abonné tardif peut manquer des messages."
+            ],
+            [
+              "PUSH/PULL",
+              "Des tâches sont distribuées à des consommateurs dans un pipeline."
+            ],
+            [
+              "ROUTER/DEALER",
+              "Un intermédiaire peut piloter les échanges et le routage entre plusieurs interlocuteurs."
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "ZeroMQ fournit des modèles de communication au-dessus des sockets. Le cours le place dans la messagerie transitoire. Dans les exemples, une réception peut bloquer et une file interne ne constitue pas à elle seule une boîte persistante pour les abonnés absents."
+        },
+        {
+          "kind": "link",
+          "title": "Guide ZeroMQ",
+          "url": "https://zguide.zeromq.org/docs/chapter1/"
+        },
+        {
+          "kind": "paragraph",
+          "text": "MPI. Cette interface cible la communication et la synchronisation entre processus de calcul parallèle. Un communicateur définit un contexte de communication et un groupe. Le rang identifie un processus à l’intérieur de ce groupe. MPI_COMM_WORLD est le communicateur initial du programme illustré. Avec quatre processus, les rangs sont 0 à 3. L’ordre d’affichage dépend de l’exécution. Une barrière synchronise le passage à la suite quand les membres l’ont atteinte. Pour pratiquer, retenir MPI_Sendrecv comme combinaison d’un envoi et d’une réception, et MPI_Isend comme lancement non bloquant dont il faut vérifier l’achèvement avant de modifier le tampon. L’exemple MPI:: de C2 utilise les anciennes liaisons C++ retirées de MPI-3. Pour un exemple exécutable, utiliser l’API C depuis C ou C++."
+        },
+        {
+          "kind": "link",
+          "title": "Open MPI — MPI_Sendrecv",
+          "url": "https://docs.open-mpi.org/en/main/man-openmpi/man3/MPI_Sendrecv.3.html"
+        },
+        {
+          "kind": "link",
+          "title": "MPI_Isend",
+          "url": "https://docs.open-mpi.org/en/main/man-openmpi/man3/MPI_Isend.3.html"
+        },
+        {
+          "kind": "link",
+          "title": "Liaisons retirées",
+          "url": "https://docs.open-mpi.org/en/v5.0.x/building-apps/removed-mpi-constructs.html"
+        }
+      ]
+    },
+    {
+      "title": "Files de messages et broker",
+      "source": "Cours 2, PDF p. 36–38",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Le producteur dépose un message dans une file. Le middleware l’achemine vers la file de destination, que le consommateur peut consulter plus tard. Dans le modèle du support, put dépose un message, get attend si la file est vide puis retire le premier, poll tente une lecture sans bloquer, notify déclenche un gestionnaire quand un message arrive."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Les gestionnaires de files résolvent un nom logique vers une destination réseau et transfèrent les messages. Un broker peut aussi router par sujet ou traduire des formats entre applications. Dans l’exemple WebSphere MQ, des agents de canal transfèrent les messages entre gestionnaires sur des canaux orientés. Le support illustre notamment l’ordre de livraison et les nouvelles tentatives configurées."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Exemple d’intégration. Une application dépose une demande de génération de rapport. La file peut confirmer son acceptation alors que le service de traitement est arrêté. Quand un worker revient, il peut produire le rapport et publier un événement distinct. La survie au redémarrage du gestionnaire dépend de la persistance configurée et de la validation du dépôt. La déduplication des effets métier reste un point de conception si un message peut être représenté au consommateur."
+        },
+        {
+          "kind": "link",
+          "title": "IBM MQ — Persistance des messages",
+          "url": "https://www.ibm.com/docs/en/ibm-mq/10.0.x?topic=messages-message-persistence"
+        }
+      ]
+    },
+    {
+      "title": "Multicast et inondation",
+      "source": "Cours 2, PDF p. 38–39",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La multidiffusion vise plusieurs destinataires. Une application peut construire un réseau superposé où chaque lien logique traverse un chemin physique. Dans l’exemple Chord, un identifiant multicast mid désigne le groupe. Son successeur succ(mid) devient la racine. Les demandes de jointure remontent vers la racine et peuvent s’arrêter lorsqu’elles rencontrent une branche connue. La recherche de clé du cours 1 fournit ici un point d’ancrage à la construction d’un arbre."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lire les coûts de l’exemple p. 39. En supposant les liens bidirectionnels, le plus court chemin physique pour chaque saut logique et des coûts de délai additifs, le trajet logique A → B → E → D → C coûte 9 + 39 + 27 + 7 = 82. Le plus court chemin physique A → C coûte 52 via Rₐ → Rₑ → R꜀. L’élongation vaut donc 82/52 ≈ 1,58. Le lien Rₐ–Rᵦ est traversé deux fois par ce chemin logique, une illustration du stress de liaison. Le stress compte des traversées d’un lien physique. L’élongation compare deux délais de trajet."
+        },
+        {
+          "kind": "paragraph",
+          "text": "L’inondation retransmet un message inédit aux voisins et reconnaît les doublons. Elle diffuse vite sur un graphe connecté, avec un coût qui augmente avec le nombre d’arêtes. Une variante retransmet avec une probabilité choisie. Le cours 1 l’utilise pour chercher une donnée. Le cours 2 l’utilise pour propager un message ou une mise à jour."
+        }
+      ]
+    },
+    {
+      "title": "Gossip et suppressions distribuées",
+      "source": "Cours 2, PDF p. 39–42",
+      "blocks": [
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Gossip",
+              "Mécanisme",
+              "Ce qu’on observe"
+            ],
+            [
+              "Push",
+              "Le nœud à l’initiative propose ses mises à jour au pair tiré.",
+              "Les nœuds à jour peuvent informer plusieurs pairs au fil des tours."
+            ],
+            [
+              "Pull",
+              "Le nœud à l’initiative demande les mises à jour au pair tiré.",
+              "Un nœud ignorant reste ignorant s’il tire un autre nœud ignorant."
+            ],
+            [
+              "Push-pull",
+              "Les deux pairs échangent leurs différences.",
+              "La diffusion bénéficie des deux directions. Le support donne un ordre logarithmique du nombre de tours dans son modèle."
+            ],
+            [
+              "Propagation de rumeurs",
+              "Un nœud informé peut arrêter de transmettre après des contacts avec des pairs déjà informés.",
+              "L’activité baisse, et certaines répliques peuvent rester ignorantes."
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Le cours suppose l’absence de conflits d’écriture concurrents. En anti-entropie, on poursuit des échanges périodiques pour rapprocher les répliques. Pour le modèle du pull, si la fraction ignorante est p et que les tirages sont indépendants et uniformes, la fraction attendue au tour suivant est p². Avec p = 0,20, cela donne 0,04, soit 4 %. En push, le support donne p(1 − 1/N)^{N(1 − p)}, proche de p × exp(−(1 − p)) pour N grand. L’approximation p/e suppose en plus p petit. À p = 0,20, les mêmes approximations donnent environ 8,99 % en push et 1,80 % en push-pull, avec l’approximation d’indépendance utilisée pour combiner les conditions. La p. 40 affiche une expression ambiguë pour push-pull et un classement push/pull incompatible avec ses propres récurrences dans ce régime. Réviser à partir des événements « rester ignorant » plutôt qu’en apprenant ce classement."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rumeurs et suppressions. La fraction finale ignorante s du modèle peut satisfaire s = exp[−(1 + 1/pstop)(1 − s)], où pstop est la probabilité de cesser de propager après avoir contacté un nœud déjà informé. Le tableau p. 41 donne environ 595 ignorants sur 10 000 pour pstop = 0,5. Cela motive un mécanisme complémentaire si toutes les répliques doivent finalement recevoir la mise à jour. Une suppression se propage comme une écriture spéciale, appelée tombstone. Si l’on efface seulement la valeur sur A, B peut ensuite réintroduire son ancienne copie. Un tombstone versionné permet à A d’annoncer la suppression à B. Son retrait demande une garantie suffisante de propagation ou une hypothèse explicite sur les délais."
+        }
+      ]
+    }
+  ]
 };
