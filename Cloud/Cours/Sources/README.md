@@ -12,7 +12,9 @@ Originaux_locaux/
 └── Plaud/
     ├── Transcription_2026-10-23.pdf
     ├── Resume_Plaud_2026-10-23.pdf
-    └── Resume_Plaud_2026-10-24.pdf
+    ├── Resume_Plaud_2026-10-24.pdf
+    ├── Transcription_2026-11-14.pdf
+    └── Resume_Plaud_2026-11-14.md
 ```
 
 - **Support principal** : Olivier Grunder, Cloud et traitements distribués, 42 pages. Les références des fiches désignent les pages du PDF, couverture comprise.
@@ -26,3 +28,5 @@ Référence principale : Maarten van Steen et Andrew S. Tanenbaum, *Distributed 
 Les sources détaillées figurent dans [revisions.json](../Resumes/revisions.json), dans la synthèse de l’Atelier et à la fin du guide. Les futurs supports peuvent être ajoutés aux sous-dossiers locaux sans publication automatique.
 
 Résumé du matin du 24 octobre : huit pages reçues et comparées au support. La copie brute est locale et ignorée par Git ; les ajouts vérifiés sont dans la synthèse et le guide. La transcription intégrale du 24 octobre n’a pas été fournie.
+
+Séance du 14 novembre : résumé Markdown et transcription PDF de 84 pages. Les repères utilisés dans les fiches renvoient à la transcription. Les anciens sujets apportent les valeurs de l’exercice P2P mal reconnues par Plaud.

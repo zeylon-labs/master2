@@ -2,7 +2,9 @@
 
 > Guide de révision · Master DSICS · Cours 1 et 2 · 14 novembre 2026
 
-Préparation à l’écrit de mi-décembre. Le guide couvre les quatre chapitres des deux PDF d’Olivier Grunder et les compléments Plaud des 23 et 24 octobre. L’oral du 23 octobre confirme un mélange de questions qualitatives et de maths appliquées. La date exacte, le barème, les documents autorisés et la liste précise des notions évaluées restent à confirmer. L’export Plaud du 14 novembre et les éventuels ajouts oraux du 13 novembre restent à intégrer.
+L’enseignant annonce un écrit de **1 h 30**, mêlant notions et maths appliquées. Il attend des réponses courtes et accepte un schéma si celui-ci clarifie la réponse. Le périmètre suit la progression d’octobre et du week-end de novembre. La date exacte, le barème, les documents autorisés et les formules à mémoriser restent à confirmer.
+
+Le 14 novembre, la séance s’arrête après ZeroMQ avant les révisions. Priorité à RPC, sockets et ZeroMQ. Les détails de DCE RPC, MPI, messagerie avancée et gossip sont à vérifier pour l’écrit.
 
 ## Le fil rouge · Un portail de dépôt de dossiers
 
@@ -23,7 +25,7 @@ Ton navigateur envoie un dossier. Un répartiteur choisit un serveur API. L’AP
 
 > Une file d’attente qui grossit alors que le serveur tourne indique un goulot. Un timeout indique qu’une réponse n’est pas revenue à temps. Si l’API a écrit avant la perte de réponse, une nouvelle tentative peut créer un doublon. Donne à la demande un identifiant stable et explique comment le serveur le déduplique.
 
-Références · C1 p. 10 à 19. Plaud 23/10 p. 5 à 9 et transcription p. 63. C1 et C2 désignent les pages PDF, couverture comprise. Pour C2, ajouter 34 au numéro PDF à partir de la page 9 pour retrouver le numéro imprimé.
+Références · C1 p. 10 à 19. Oral du 23/10, 02:37:44 et du 14/11, 02:12:42–02:15:27, 02:41:08–02:41:30. C1 et C2 désignent les pages PDF, couverture comprise. Pour C2, ajouter 34 au numéro PDF à partir de la page 9 pour retrouver le numéro imprimé.
 
 <!-- page -->
 
@@ -103,7 +105,7 @@ Un **processus** offre un espace mémoire et des ressources. Les **threads** d�
 | Concept | Ce qu’il faut pouvoir expliquer |
 | --- | --- |
 | VM de processus | Environnement d’exécution pour un programme, par exemple une JVM. |
-| Hyperviseur de type 1 | S’exécute au niveau de la machine physique et héberge des OS invités. |
+| Hyperviseur de type 1 | S’exécute directement sur le matériel. Avec Hyper-V, Windows tourne dans la partition racine. |
 | Hyperviseur de type 2 | Fonctionne avec un OS hôte et héberge des OS invités. |
 | Conteneur | Processus isolés qui partagent le noyau hôte. Les namespaces isolent des vues, les cgroups encadrent l’usage des ressources. |
 | Serveur avec état de session | L’instance conserve du contexte entre requêtes. En cas de bascule, le contexte doit être accessible au nouveau serveur pour reprendre. |
@@ -113,7 +115,7 @@ Un **processus** offre un espace mémoire et des ressources. Les **threads** d�
 
 > Pour lire les exemples du PDF. Avec X Window, le serveur X gère écran et entrées près de l’utilisateur. Dans PlanetLab, une tranche regroupe des environnements virtuels sur plusieurs machines. Ces exemples illustrent le rôle des composants et leur placement.
 
-Références · C2 p. 10 à 24. Les VM et conteneurs répondent à des besoins d’isolation différents. Un conteneur peut aussi tourner dans une VM.
+Références · C2 p. 10 à 24 et oral du 14/11, 00:04:25–00:54:55. Un conteneur peut aussi tourner dans une VM.
 
 <!-- page -->
 
@@ -130,9 +132,9 @@ Références · C2 p. 10 à 24. Les VM et conteneurs répondent à des besoins d
 
 **RPC.** Le stub client encode les arguments, le transport envoie la requête, le stub serveur la décode et appelle la procédure. Le résultat suit le trajet inverse. Une adresse mémoire locale ne désigne pas le même objet sur l’autre machine. Il faut transmettre une valeur, un identifiant ou une référence distante avec un protocole adapté. Un accusé de réception ou d’acceptation est distinct du résultat métier.
 
-**Deux axes.** Synchrone/asynchrone décrit quand l’appelant peut reprendre. Transitoire/persistant décrit ce que le système fait du message quand l’application destinataire n’est pas disponible. Un envoi asynchrone peut être transitoire. Avec une file durable, précise aussi la condition d’acquittement, les redélivrances et la déduplication.
+**Deux axes.** Jusqu’à quel événement l’appelant attend-il ? Que devient le message si le destinataire est absent ? Ajoute une troisième question pour la durabilité : que se passe-t-il si le processus qui conserve le message s’arrête ?
 
-**Exemples à replacer.** Un serveur TCP prépare `socket → bind → listen → accept`, puis échange des octets avec le client connecté. ZeroMQ fournit des schémas REQ/REP, PUB/SUB et PUSH/PULL. MPI sert à faire échanger des processus de calcul identifiés par leur rang. Dans une messagerie orientée messages, le broker peut router et convertir des formats, et les canaux WebSphere MQ transfèrent entre gestionnaires de files.
+**TCP et ZeroMQ.** Le serveur TCP prépare `socket → bind → listen → accept`, puis échange sur la socket connectée. ZeroMQ peut mettre les messages en file en mémoire. La file est volatile. Le mode REQ/REP classique alterne envoi et réception, PUB/SUB diffuse aux abonnés, et PUSH/PULL alimente les workers. MPI et les files avancées figurent aussi dans le support.
 
 ## Un message pour plusieurs machines
 
@@ -140,7 +142,27 @@ Références · C2 p. 10 à 24. Les VM et conteneurs répondent à des besoins d
 - **Inondation.** Chaque nœud relaie un message nouveau vers ses voisins suivant la règle choisie. Un identifiant aide à éliminer les doublons, et un TTL limite la propagation.
 - **Gossip.** En push, un nœud envoie ce qu’il sait. En pull, il demande l’état d’un pair. Push-pull combine les échanges. L’anti-entropie est périodique, tandis qu’une rumeur peut s’arrêter avant d’avoir atteint tout le monde. Une suppression se propage comme une mise à jour spéciale (tombstone) pour éviter la réapparition d’une ancienne valeur.
 
-Références · C2 p. 26 à 41. Le résumé Plaud du 24/10 décrit le couplage, utile pour relier la messagerie à la matrice de la page 2. La fiche de maths explique l’ambiguïté du support pour push-pull.
+Références · C2 p. 26 à 41 et oral du 14/11, 01:08:16–01:33:10 et 01:54:34–02:11:33. Multicast et gossip figurent dans le PDF après la partie traitée le 14/11.
+
+<!-- page -->
+
+# Trois exercices du 14 novembre
+
+## Linda · Limiter un buffer à deux places
+
+Écris deux fois `out("libre")` à l’initialisation. Avant chaque `out("buffer", i, valeur)`, le producteur réserve une place avec `in("libre")`. Le consommateur retire le tuple attendu avec `in("buffer", i, ?valeur)`, rend la place avec `out("libre")`, puis affiche la valeur. Après deux dépôts, la troisième production attend. Après un retrait à vide, le consommateur attend la donnée.
+
+## Hypercube · Adresser 60 nœuds et vérifier la route
+
+Pour stocker 50 To à raison de 1 To par nœud, il en faut au moins 50, sans réplication. Sur 60 nœuds, la marge brute vaut 10 To. Comme 2⁵ = 32 et 2⁶ = 64, il faut 6 bits, avec quatre positions vacantes. Si les IDs actifs sont 0 à 59, la route 55 → 63 → 59 échoue sur 63. La route 55 → 51 → 59 reste active et change un bit par saut.
+
+## P2P · Comparer inondation et marche aléatoire
+
+Avec un degré de 10, un TTL de 4 et 1 % de copies, l’inondation idéale explore 10 + 90 + 810 + 7 290 = 8 200 nœuds hors source. La marche effectue au plus quatre contacts. Avec n tests indépendants, la probabilité de succès vaut 1 − 0,99 à la puissance n. Elle est quasi certaine pour l’inondation et vaut 3,94 % pour la marche. La fiche de formules détaille le calcul du ratio P/n.
+
+> À l’écrit, pour la question « extensibilité en taille », explique la scalabilité et ses deux méthodes. Pour illustrer un réseau superposé, montre les liens logiques entre des pairs Chord et le réseau IP qui les transporte.
+
+Références · Oral du 14/11, 02:20:37–02:26:15 et 02:42:30–03:06:16. Anciennes questions, p. 5 à 7. Le guide complet et l’Atelier contiennent le sujet blanc de 90 minutes.
 
 <!-- page -->
 
@@ -167,7 +189,7 @@ Références · C2 p. 26 à 41. Le résumé Plaud du 24/10 décrit le couplage, 
 ## Trois passages avant mi-décembre
 
 - **Compréhension.** Redessine le portail, décris les flèches, puis explique un exemple de panne et un exemple de migration.
-- **Calcul.** Reprends la fiche sans correction, d’abord M/M/1 et dimensionnement, puis migration cloud, TLP, P2P et gossip.
-- **Simulation d’écrit.** Refais le mini-sujet sur papier, puis le sujet blanc du guide complet ou de l’Atelier. Reprends les justifications où il manque une hypothèse ou une unité.
+- **Calcul.** Reprends M/M/1 et le dimensionnement, puis refais l’hypercube et la comparaison P2P avec un TTL.
+- **Simulation d’écrit.** Refais le mini-sujet sur papier, puis le sujet blanc de 90 minutes du guide complet ou de l’Atelier. Reprends les réponses où il manque une hypothèse, une unité ou une justification.
 
-Sources · Supports d’Olivier Grunder `lucc01-cours01-26.pdf` (42 p.) et `lucc01-cours02-26.pdf` (44 p.). Résumés Plaud des 23 et 24 octobre et transcription du 23 octobre. Le guide complet du 13 novembre permet d’approfondir chaque chapitre. Les exemples et le mini-sujet sont des exercices de révision.
+Sources · Supports d’Olivier Grunder `lucc01-cours01-26.pdf` (42 p.) et `lucc01-cours02-26.pdf` (44 p.). Résumés Plaud des 23 et 24 octobre et du 14 novembre. Transcriptions des 23 octobre et 14 novembre.

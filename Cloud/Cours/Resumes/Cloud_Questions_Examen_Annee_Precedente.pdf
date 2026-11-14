@@ -1,4 +1,4 @@
-%PDF-1.4
+%PDF-1.3
 %‚„œ”
 1 0 obj
 <<
@@ -10,12 +10,12 @@ endobj
 <<
 /Type /Pages
 /Count 7
-/Kids [ 3 0 R 9 0 R 15 0 R 20 0 R 25 0 R 33 0 R 46 0 R ]
+/Kids [ 3 0 R 9 0 R 15 0 R 20 0 R 25 0 R 33 0 R 39 0 R ]
 >>
 endobj
 3 0 obj
 <<
-/Contents 40 0 R
+/Contents 4 0 R
 /MediaBox [ 0 0 595.2756 841.8898 ]
 /Resources <<
 /Font 5 0 R
@@ -329,7 +329,7 @@ T*
 ET
 BT
 1 0 0 1 529.7616 33 Tm
-(1 \057 6) Tj
+(1 \057 7) Tj
 T*
 ET
 
@@ -371,11 +371,11 @@ endobj
 endobj
 9 0 obj
 <<
-/Contents 41 0 R
+/Contents 10 0 R
 /MediaBox [ 0 0 595.2756 841.8898 ]
 /Resources <<
 /Font 11 0 R
-/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
 >>
 /Rotate 0
 /Trans <<
@@ -385,349 +385,14 @@ endobj
 >>
 endobj
 10 0 obj
-<<
-/Length 5298
->>
-stream
-1 0 0 1 0 0 cm
-BT
-/F1 12 Tf
-14.4 TL
-ET
-0.027451 0.4 0.368627 rg
-n
-48 791.8898 30 3 re
-f*
-BT
-/F2 10 Tf
-12 TL
-ET
-BT
-1 0 0 1 48 773.8898 Tm
-(MASTER 2 DATA SCIENCE  \057  CLOUD) Tj
-T*
-ET
-q
-1 0 0 1 48 694.8898 cm
-q
-BT
-1 0 0 1 0 36 Tm
-32 TL
-/F2 28 Tf
-0.090196 0.164706 0.227451 rg
-(Questions de l\222examen) Tj
-T*
-(de l\222an dernier) Tj
-T*
-ET
-Q
-Q
-0.933333 0.964706 0.960784 rg
-n
-53 646.8898 m
-68 646.8898 l
-70.764 646.8898 73 649.1258 73 651.8898 c
-73 666.8898 l
-73 669.6538 70.764 671.8898 68 671.8898 c
-53 671.8898 l
-50.236 671.8898 48 669.6538 48 666.8898 c
-48 651.8898 l
-48 649.1258 50.236 646.8898 53 646.8898 c
-h
-f*
-0.027451 0.4 0.368627 rg
-BT
-/F2 12 Tf
-14.4 TL
-ET
-BT
-1 0 0 1 57.164 655.1898 Tm
-(4) Tj
-T*
-ET
-q
-1 0 0 1 85 632.8898 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 23 Tm
-/F2 15 Tf
-19 TL
-(D\351finir l\222extensibilit\351 et la scalabilit\351 en taille\056 Quelles sont les) Tj
-T*
-(deux fa\347ons de passer \340 l\222\351chelle \077) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 587.8898 cm
-q
-BT
-1 0 0 1 0 21.6 Tm
-16.5 TL
-/F2 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(L\222extensibilit\351) Tj
-/F1 11.4 Tf
-( est la capacit\351 \340 ajouter de nouvelles fonctionnalit\351s ou de nouveaux composants) Tj
-T*
-(avec peu de modifications de l\222existant\056 Par exemple\054 on peut ajouter un service de notification\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 530.3898 cm
-q
-BT
-1 0 0 1 0 38.1 Tm
-16.5 TL
-/F2 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(La scalabilit\351 en taille) Tj
-/F1 11.4 Tf
-(\054 ou \351volutivit\351 en taille\054 est la capacit\351 \340 absorber une hausse du nombre) Tj
-T*
-(d\222utilisateurs\054 de processus ou de requ\352tes en adaptant les ressources pour maintenir des) Tj
-T*
-(performances acceptables\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 488.3898 cm
-q
-BT
-1 0 0 1 0 21.6 Tm
-16.5 TL
-/F2 11.4 Tf
-0.270588 0.34902 0.407843 rg
-(Verticale \050) Tj
-/F3 11.4 Tf
-(scale up) Tj
-/F2 11.4 Tf
-(\051\056) Tj
-/F1 11.4 Tf
-( Augmenter les ressources d\222une machine existante\054 par exemple passer une) Tj
-T*
-(VM de 4 \340 8 vCPU\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 448.3898 cm
-q
-BT
-1 0 0 1 0 21.6 Tm
-16.5 TL
-/F2 11.4 Tf
-0.270588 0.34902 0.407843 rg
-(Horizontale \050) Tj
-/F3 11.4 Tf
-(scale out) Tj
-/F2 11.4 Tf
-(\051\056) Tj
-/F1 11.4 Tf
-( Ajouter des machines ou des instances et r\351partir la charge\054 par exemple) Tj
-T*
-(placer trois instances d\222une API derri\350re un r\351partiteur\056) Tj
-T*
-ET
-Q
-Q
-0.827451 0.87451 0.894118 RG
-0.65 w
-n
-48 432.3898 m
-547.2756 432.3898 l
-S
-0.933333 0.964706 0.960784 rg
-n
-53 388.3898 m
-68 388.3898 l
-70.764 388.3898 73 390.6258 73 393.3898 c
-73 408.3898 l
-73 411.1538 70.764 413.3898 68 413.3898 c
-53 413.3898 l
-50.236 413.3898 48 411.1538 48 408.3898 c
-48 393.3898 l
-48 390.6258 50.236 388.3898 53 388.3898 c
-h
-f*
-0.027451 0.4 0.368627 rg
-BT
-/F2 12 Tf
-14.4 TL
-ET
-BT
-1 0 0 1 57.164 396.6898 Tm
-(5) Tj
-T*
-ET
-q
-1 0 0 1 85 374.3898 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 23 Tm
-/F2 15 Tf
-19 TL
-(D\351finir la transparence de la distribution\056 Quel type de) Tj
-T*
-(transparence est le plus difficile \340 atteindre et pourquoi \077) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 329.3898 cm
-q
-BT
-1 0 0 1 0 21.6 Tm
-16.5 TL
-/F1 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(La ) Tj
-/F2 11.4 Tf
-(transparence de la distribution) Tj
-/F1 11.4 Tf
-( consiste \340 masquer \340 l\222utilisateur ou \340 l\222application certains) Tj
-T*
-(d\351tails li\351s \340 la r\351partition des ressources\054 de fa\347on \340 pr\351senter un syst\350me unique et coh\351rent\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 288.3898 cm
-q
-BT
-1 0 0 1 0 21.6 Tm
-16.5 TL
-/F1 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(Le cours distingue l\222) Tj
-/F2 11.4 Tf
-(acc\350s) Tj
-/F1 11.4 Tf
-(\054 la ) Tj
-/F2 11.4 Tf
-(localisation) Tj
-/F1 11.4 Tf
-(\054 la ) Tj
-/F2 11.4 Tf
-(migration) Tj
-/F1 11.4 Tf
-(\054 la ) Tj
-/F2 11.4 Tf
-(relocalisation) Tj
-/F1 11.4 Tf
-( \050d\351placement pendant) Tj
-T*
-(l\222usage\051\054 la ) Tj
-/F2 11.4 Tf
-(r\351plication) Tj
-/F1 11.4 Tf
-(\054 la ) Tj
-/F2 11.4 Tf
-(concurrence) Tj
-/F1 11.4 Tf
-( et l\222) Tj
-/F2 11.4 Tf
-(\351chec) Tj
-/F1 11.4 Tf
-(\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 230.8898 cm
-q
-BT
-1 0 0 1 0 38.1 Tm
-16.5 TL
-/F1 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(La ) Tj
-/F2 11.4 Tf
-(transparence aux pannes) Tj
-/F1 11.4 Tf
-( \050ou transparence de l\222\351chec\051 est la plus difficile \340 atteindre\056 En cas) Tj
-T*
-(de panne partielle\054 une absence de r\351ponse peut venir d\222un n\234ud lent\054 d\222un n\234ud en panne ou) Tj
-T*
-(d\222un probl\350me r\351seau\056 Le client ignore parfois si l\222op\351ration a \351t\351 ex\351cut\351e avant la panne\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 189.8898 cm
-q
-BT
-1 0 0 1 0 21.6 Tm
-16.5 TL
-/F2 11.4 Tf
-0.270588 0.34902 0.407843 rg
-(Exemple\056) Tj
-/F1 11.4 Tf
-( Un paiement a pu \352tre valid\351 avant la perte de la r\351ponse\056 Relancer la requ\352te peut) Tj
-T*
-(d\351biter deux fois le client\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 165.8898 cm
-q
-0.270588 0.34902 0.407843 rg
-BT
-1 0 0 1 0 3.3 Tm
-/F1 8.7 Tf
-12 TL
-(Support du cours 1\054 sections 1\0563\0562 \340 1\0563\0564\054 p\056 14\05518\056) Tj
-T*
-ET
-Q
-Q
-0.827451 0.87451 0.894118 RG
-0.65 w
-n
-48 49 m
-547.2756 49 l
-S
-0.270588 0.34902 0.407843 rg
-BT
-/F1 9 Tf
-10.8 TL
-ET
-BT
-1 0 0 1 48 33 Tm
-(Fiche de r\351vision) Tj
-T*
-ET
-0.270588 0.34902 0.407843 rg
-BT
-/F1 9 Tf
-10.8 TL
-ET
-BT
-1 0 0 1 529.7616 33 Tm
-(2 \057 6) Tj
-T*
-ET
-
-endstream
+[ 49 0 R 50 0 R ]
 endobj
 11 0 obj
 <<
 /F1 12 0 R
+/F1-0 47 0 R
 /F2 13 0 R
+/F2-0 48 0 R
 /F3 14 0 R
 >>
 endobj
@@ -760,7 +425,7 @@ endobj
 endobj
 15 0 obj
 <<
-/Contents 42 0 R
+/Contents 16 0 R
 /MediaBox [ 0 0 595.2756 841.8898 ]
 /Resources <<
 /Font 17 0 R
@@ -1264,7 +929,7 @@ T*
 ET
 BT
 1 0 0 1 529.7616 33 Tm
-(3 \057 6) Tj
+(3 \057 7) Tj
 T*
 ET
 
@@ -1296,7 +961,7 @@ endobj
 endobj
 20 0 obj
 <<
-/Contents 43 0 R
+/Contents 21 0 R
 /MediaBox [ 0 0 595.2756 841.8898 ]
 /Resources <<
 /Font 22 0 R
@@ -1845,7 +1510,7 @@ T*
 ET
 BT
 1 0 0 1 528.7616 33 Tm
-(4 \057 6) Tj
+(4 \057 7) Tj
 T*
 ET
 
@@ -1877,7 +1542,7 @@ endobj
 endobj
 25 0 obj
 <<
-/Contents 44 0 R
+/Contents 26 0 R
 /MediaBox [ 0 0 595.2756 841.8898 ]
 /Resources <<
 /Font 27 0 R
@@ -2405,7 +2070,7 @@ T*
 ET
 BT
 1 0 0 1 528.7616 33 Tm
-(5 \057 6) Tj
+(5 \057 7) Tj
 T*
 ET
 
@@ -2466,11 +2131,11 @@ endobj
 endobj
 33 0 obj
 <<
-/Contents 45 0 R
+/Contents 34 0 R
 /MediaBox [ 0 0 595.2756 841.8898 ]
 /Resources <<
 /Font 35 0 R
-/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
 >>
 /Rotate 0
 /Trans <<
@@ -2480,18 +2145,14 @@ endobj
 >>
 endobj
 34 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ]
-/Length 1997
->>
-stream
-Gatm<95iQE&AII3bgBY)X@PsJ"RI2@8\-=sh4fmMo0nu0QsDj[4jk&.O5Ci?ku`+m7:X9%.!"J1bVp&iK8Ugh^QT)acP=*<a+4V#m=9Q-K@L4:=ZJ)g)(@KMnM_#n(I<?8jPY_'7%D@Q$:28I#K[+5)Kr;(.nK_bXX)<9_,9'gUpYba+g#$]Yk\+_mHWgi#e5>qH4.2`mr/39\cI$XE:r2Mh=Y]jq?!^!,_W_%&qLRPq^PPXQk4i3F+VnU'd7:VP,W`?P)joR27fe^O]Sd;OKO9KqD$9;5#HR;>"-iK\mH-6\@g%F/uLrZ*[iZA(AT0F3<"5d/$.tThZJ8U$Ha>'N-D67\4goXN^J@#jeI7of3WW49,tNAC0678\5p+3_&ss6m:0&A?RJm&J!W2E>D5t66aY*E&mb5m&r5n$rFpW1!ZP\BTVjkFS@sQNR&*[+Pc(%@=Ig-5;PdR"Ol^jJZ1M+qT,RP>qdfK[10aMb!1#0=$cOJ)#UU`DMedreW/r46`etbDjR=LOrV(psP@gSH3E9?1s2OeZ!pUGJ7UTmZ5Jm14J/rD987`!10cMW$$9>FN3PPYuHplhZl;1FqKN2o6cn/NO(\4tq?F.';k-->H8Yc1e*/^V0GG*+s+hg%Q$jCOr.Vn9i>qrjHe"fQ465h)Ic=W_b8-c1HnflhQXhflGe+FQ#K/K!7BM:kL8t$Zpfss-0MEIk.-c?NV6,D*U]g7@[7rC6[OBqL5&nosbd_m4ud[?g'fRf:j%WPrm1<?d^+af6<=\]7'+bSB!F*STn,fmG2'BFQK]=:.R23=6]A5+uNi$1$!]6Ptkf.mSoI@N.i&uletAP(W=UaCr?/W^pMRPH>C16D0NpC'6YS!89Z.@9b7.!E5N7MYcDT"q:L;`=:W1dk6/g(p*.<+^-,qC\2jM\Pc3U!j0tlRC@[pjEa5E[M9cp&.P>I5akn8Wb#kD4NE$@qS4j>&cWn&ZQ3:lcpgl0apM<LekRf)C:Aa>s!LGN$Cb.1]-r_e!ga<QF-ojY%ETf0KTs2oaodqPK*m0CC0gLI;B=h(mGt(F8eO8.[*rWNp9GWC7R;VEuN-g28UMY./#+7/f&d?T'1Qm@I6L+JZm'JXMCFJ>c`qFR.%#'Q=*Vc7jEK')eU/.;EMr<`irD3-*?O1qkBG6A*?DqMmC+(4b8]YkJYtYT"PX1F`c4[9&$s!E@58Ke&2`%9/$PQ7_0t!8``,F_(ckHZ_HD0;>kQ(r<'9Xq&P%HQa0s>Nh)H1:+4W6!Vh6GVkGmn$ah85cc?_SErSWkF$=/,#4H/=l*OAKm(ZU+U[g/m+jOXP^MB]QR_@;#FeOa'ebd)(l4ZNi@X:iD-H?>Le?4EMnb>u3[&Jg?_-ig.3S.6ENgl%m="^Dq8m*u.(,._4`BB*t*pZ+YQ#1I'b`K;fO)dTbQ=cR*/DQ-J/j[PS[\X%Q8/j+5Fr]85]A\RNkk<XqL4dKg8^SY;&sqrB<c4-gp%G(f0U24:5W%;A@I.ME`rt'ITtFIYV:d]TP`=O),UojhhQ%R]f%I)uY1lNX"Yk%/GIa%Q+ob[]o?u:)H.:me2NsqTEn]S'$!d?dZN(Fh5F_8TVLmOEeqDP-Q9(]X63k0cZ#q,!(YOnZDE`\_7PYZPDo>R"1Un=X)G"u#C$lsp_(i0@$)Sq7Jtpu;kNHV`Jb@dM;se/*%>EkE*_7i3j//hM)caha\ighY`M#h\H_\]SnJ@(dI*O\-\QndVSg7rE$9#J3"-B$3,Oe:+@2'pp&rU&]TuBR5OSXkq:"\1RT]f8bo&7tq"J-)e2P28+Iff[BN/gKi1#++rJpoduStaf[G.<mpjRVP,7<jtgCc!E.U!X8)R0.;1!B<L-/"":-DAHG-dYetIdg'6s>%$*:'q=/H*kiI^n$Vd`qO8VG(.&!/48!%CEbm0gs5dXos44mn_@q>Uku/csiV"XL7tb",Ama.\]9C2qK/#s5gOs4<MU&u4nO:M#`DsZN_&H47WSm[ZcE+U`~>
-endstream
+[ 53 0 R 54 0 R ]
 endobj
 35 0 obj
 <<
 /F1 36 0 R
+/F1-0 51 0 R
 /F2 37 0 R
+/F2-0 52 0 R
 /F3 38 0 R
 >>
 endobj
@@ -2524,323 +2185,103 @@ endobj
 endobj
 39 0 obj
 <<
+/Contents 40 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font 41 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+>>
+endobj
+40 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ]
+/Length 2284
+>>
+stream
+Gatm<968iI%)2U?i6iLPlR3r';:;.nDOU"[:ARNAhJuJ(VGTjelB+g@r;rcCdC/C">u/J&.$=Q9I!Cd)MgnG!:CD\;f5U_L!TUDu#Ne*3XKUQ&]l:gX@c<%R5!pCd0f35R-28(*0lsuUNkf_,!'H$(,N8XP6;caX>XaJ[FRUe"=OQ'QF!B>M/n"MSc-?+U1N7U9B)MpO0)iT_E,c2'%WHF\n]T[RYl4jm=%'uH,Jh7t*#=?$Gi3N^q>hh'#-L'4Y+Fg4H+k>hpg3^#mBWa.@3Zr1jdaMlUl_FlE-o'Mj(Z!UPE`Sj.5TZ0K#T>UIL&[gnCVCKoOF4<eL^hEE(Ucn(*]8<q''o$O,7QH'RCl'e1X#9l_(\.5pIPmI5o*Wg_Bl[)Bm_]`590bMS0nh$`#?uO&)D3R"c6e)]n6q7YZDq7p<-ZL(W-'@Cg\c+=Li1A<=*T3D8\VO:s.<Yst0pZ)-^R$aVYs/H$8BE?$QHF8uK16AlJ<&1C4GU+AOPoKbD1K2;CYe4BaF=d>J0:]j].7A;,mr726XdT'Ep/^^`kD\<Qq(;p5gb)!MY6\,/g6>-D&ZnF0IjmX^,GpT.-eu_Vl-":$mFXKH]U!BE(/C>8>f7id]H[`_DLM=Y7$*o3U+o0tfZNQFO)NRnLB':kQKVJ;db>Rb+Eo8F`0OV8Brak`,bd/MZ86?2-T'u*ppRt=XDI9j,ja)>tqiYL6'A-8qWJMa7IJ>kL^A%J.gGf"M_[CS5p>Fn2crO;)i<nUQ<G/U[hu^<R1pV[[2!;0GME?c87IlZX8T)%_L<@4[.&[uS+J7r3d\^3q1$YXI9CB)jCP8"^I@B0-g[:3,kKK3djU$\=X3YF[EYOahDu%Tm-lIcOkC`>8Bjd<4C<(7(Q_`oZm@KF]Wb,Lnp?7uf#$OPWWDR_M!DU0n$kVA!a'#rM@$'TDA_4(S_^1@!"UtN+alLVI56l'QfGl]G@^jc_T6MNr;eWM@ATj\;+ReQp^'-Z"os3pbYbB%dXVWb1_;DZdW!%@)Eh7ioMW8\n9JZ_3f6'/"PH-kh2_U43s4JPm`T"`Ic9PdZ*;Fl>J]AW)JfhiE-&h$Il:m=W,7@2P.T3@@.Li=%9[Ut5bHgNA:87:m$s)R@77GjJnL[Z^63#d5\@6D'S0m`*r?FeZakm=WC<r/Y#S[0j^91JOa&8U(0]WlZKMu5ESl'/H?6s3;IRJ:[>b@\02RnT3<+N!EYtEDXA:)oR-/o9BOR*fU;(Oi:_U:&e7Q>3-aFui$VLO_S%>!R'2+55cG:$SDa]2m+V56*<q*8+@Gi0J@!1'oog#qQ!8_7KpG]ZH]cr"'E4@E\O0^N'38(B1]I7/p.hdY?S25_P`?:0=+j^ZjajOd(DoPkqHWolsEH"*)dJ4ETr%WP0D'&0ZaP#WjZNZj;n*i?]:']!A_ap-6pC8.[2o&FJ/?)n,(s5AJinG[]%O=,Y/k*n$f98#OsT1VfpIdp^q)2!Dh5Z.qD%\<5QRJ4Zo.<;@h5gsO>s1V?u87CC2)HAO2EP&S0"S-E^pcD+Rd(G*8XBYcZAt=-tLZ53#Z!RNK-'_hKl`FWGT<%L7UF8K.fld)KAdC>'9AmjQK3JJKEA9;4doo&'a/@I8@Kte4RnuX`AdNpW=lLnS:%,oA]@?'Z3"ZSi+6m.u%O)hi_f^]W7et)OJkGc6D%?FG$bVVP**"ol_F/`G+BX(HQ.D0IL@lllb]2enidS4<^KU!iKA8WV;bt7.ZX!snSBm69*DMJulSDba6\bSoU506VgC2af_^T"71@+1L?)roO/^fQPVDK9RR;sL#/?#lihp8TjhA8.Fk?7hPBuR&&qjdRR-N7;jHWiX]4FTm\<h)Bb=)f^r`iCN_WEHnP=oQ7p[tPJbXqu.u,2ZlOAq_XV=Y/M&?OQ3Kr\^[KQm+bTEk!h1_4&0%R;hQ^Y53N/PLDKQn`<J#GCK`%2%mMM>ke)l"H=8R@t@!!"Dqs1ff/f[)F]flbp[_bO4ZpPlA)WN>d(?N*55BPNHM_,.\j)aL+1C2^&j4k'),cAh).Tuft*)E;))'0fb5qS>-\q3W#;UVm"fe>d6CLI1:91-O-E6aFdYOtc6JWkfO@3"[@jO4g@V2)I-abt99i6&G$.D<XQpV4S>o.d=S*W;;-_kI%Nc8D;-#u8q$5]r3)Mfg%@I$sQ"rF/H>G(97t=g('b>LNLHFKh5Jn5c%f4YB([aohF'qr6*[=J`?YH+lLlcpfn4?NEgi_aKgf#S(^<6e<S)HPn9Mlh?#H%r`:bZ=$L2[Wr[1jDV!@Q^]B)~>
+endstream
+endobj
+41 0 obj
+<<
+/F1 42 0 R
+/F2 43 0 R
+/F3 44 0 R
+/F4 45 0 R
+>>
+endobj
+42 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+43 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+44 0 obj
+<<
+/BaseFont /Helvetica-Oblique
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+45 0 obj
+<<
+/BaseFont /Helvetica-BoldOblique
+/Encoding /WinAnsiEncoding
+/Name /F4
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+46 0 obj
+<<
 /Producer (pypdf)
 /Title (Cloud \055 Questions de l\220examen de l\220an dernier)
 /Subject (Douze questions corrig\351es sur les syst\350mes distribu\351s)
 >>
 endobj
-40 0 obj
+47 0 obj
 <<
-/Length 4847
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
 >>
-stream
-1 0 0 1 0 0 cm
-BT
-/F1 12 Tf
-14.4 TL
-ET
-0.027451 0.4 0.368627 rg
-n
-48 791.8898 30 3 re
-f*
-BT
-/F2 10 Tf
-12 TL
-ET
-BT
-1 0 0 1 48 773.8898 Tm
-(MASTER 2 DATA SCIENCE  \057  CLOUD) Tj
-T*
-ET
-q
-1 0 0 1 48 690.8898 cm
-q
-BT
-1 0 0 1 0 38 Tm
-34 TL
-/F2 30 Tf
-0.090196 0.164706 0.227451 rg
-(Questions de l\222examen) Tj
-T*
-(de l\222an dernier) Tj
-T*
-ET
-Q
-Q
-0.933333 0.964706 0.960784 rg
-n
-53 635.8898 m
-68 635.8898 l
-70.764 635.8898 73 638.1258 73 640.8898 c
-73 655.8898 l
-73 658.6538 70.764 660.8898 68 660.8898 c
-53 660.8898 l
-50.236 660.8898 48 658.6538 48 655.8898 c
-48 640.8898 l
-48 638.1258 50.236 635.8898 53 635.8898 c
-h
-f*
-0.027451 0.4 0.368627 rg
-BT
-/F2 12 Tf
-14.4 TL
-ET
-BT
-1 0 0 1 57.164 644.1898 Tm
-(1) Tj
-T*
-ET
-q
-1 0 0 1 85 621.8898 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 23 Tm
-/F2 15 Tf
-19 TL
-(D\351finir un syst\350me d\351centralis\351 par rapport \340 un syst\350me) Tj
-T*
-(distribu\351) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 558.8898 cm
-q
-BT
-1 0 0 1 0 39.6 Tm
-17 TL
-/F1 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(Un ) Tj
-/F2 11.4 Tf
-(syst\350me distribu\351) Tj
-/F1 11.4 Tf
-( se compose de plusieurs n\234uds qui communiquent par le r\351seau et) Tj
-T*
-(coop\350rent pour fournir un service\056 Dans un ) Tj
-/F2 11.4 Tf
-(syst\350me d\351centralis\351) Tj
-/F1 11.4 Tf
-(\054 le contr\364le et la prise de) Tj
-T*
-(d\351cision sont r\351partis entre plusieurs n\234uds\054 sans coordinateur central indispensable\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 516.8898 cm
-q
-BT
-1 0 0 1 0 22.6 Tm
-17 TL
-/F2 11.4 Tf
-0.270588 0.34902 0.407843 rg
-(Exemple\056) Tj
-/F1 11.4 Tf
-( Plusieurs serveurs ex\351cutent des calculs\056 Un serveur ma\356tre attribue toutes les t\342ches\056) Tj
-T*
-(Le calcul est distribu\351 et la coordination est centralis\351e\056) Tj
-T*
-ET
-Q
-Q
-0.827451 0.87451 0.894118 RG
-0.65 w
-n
-48 497.8898 m
-547.2756 497.8898 l
-S
-0.933333 0.964706 0.960784 rg
-n
-53 451.8898 m
-68 451.8898 l
-70.764 451.8898 73 454.1258 73 456.8898 c
-73 471.8898 l
-73 474.6538 70.764 476.8898 68 476.8898 c
-53 476.8898 l
-50.236 476.8898 48 474.6538 48 471.8898 c
-48 456.8898 l
-48 454.1258 50.236 451.8898 53 451.8898 c
-h
-f*
-0.027451 0.4 0.368627 rg
-BT
-/F2 12 Tf
-14.4 TL
-ET
-BT
-1 0 0 1 57.164 460.1898 Tm
-(2) Tj
-T*
-ET
-q
-1 0 0 1 85 456.8898 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 4 Tm
-/F2 15 Tf
-19 TL
-(Quel est le r\364le d\222un middleware dans un syst\350me distribu\351 \077) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 371.8898 cm
-q
-BT
-1 0 0 1 0 56.6 Tm
-17 TL
-/F1 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(Un ) Tj
-/F2 11.4 Tf
-(middleware) Tj
-/F1 11.4 Tf
-( est une couche logicielle interm\351diaire qui facilite la communication et la) Tj
-T*
-(coordination entre les composants\056 Il masque une partie de la complexit\351 du r\351seau et de) Tj
-T*
-(l\222h\351t\351rog\351n\351it\351 des machines\054 des syst\350mes ou des langages\056 Selon le middleware\054 il fournit des) Tj
-T*
-(appels distants\054 des files de messages ou des m\351canismes de s\351rialisation\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 329.8898 cm
-q
-BT
-1 0 0 1 0 22.6 Tm
-17 TL
-/F2 11.4 Tf
-0.270588 0.34902 0.407843 rg
-(Exemple\056) Tj
-/F1 11.4 Tf
-( Avec RabbitMQ\054 un service place une demande dans une file\056 Un autre la r\351cup\350re plus) Tj
-T*
-(tard\056 Les deux services communiquent de fa\347on asynchrone\056) Tj
-T*
-ET
-Q
-Q
-0.827451 0.87451 0.894118 RG
-0.65 w
-n
-48 310.8898 m
-547.2756 310.8898 l
-S
-0.933333 0.964706 0.960784 rg
-n
-53 264.8898 m
-68 264.8898 l
-70.764 264.8898 73 267.1258 73 269.8898 c
-73 284.8898 l
-73 287.6538 70.764 289.8898 68 289.8898 c
-53 289.8898 l
-50.236 289.8898 48 287.6538 48 284.8898 c
-48 269.8898 l
-48 267.1258 50.236 264.8898 53 264.8898 c
-h
-f*
-0.027451 0.4 0.368627 rg
-BT
-/F2 12 Tf
-14.4 TL
-ET
-BT
-1 0 0 1 57.164 273.1898 Tm
-(3) Tj
-T*
-ET
-q
-1 0 0 1 85 269.8898 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 4 Tm
-/F2 15 Tf
-19 TL
-(Qu\222est\055ce qu\222un r\351seau superpos\351 \077 Donner un exemple\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 201.8898 cm
-q
-BT
-1 0 0 1 0 39.6 Tm
-17 TL
-/F1 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(Un ) Tj
-/F2 11.4 Tf
-(r\351seau superpos\351) Tj
-/F1 11.4 Tf
-( \050) Tj
-/F3 11.4 Tf
-(overlay network) Tj
-/F1 11.4 Tf
-(\051 est un r\351seau logique construit au\055dessus d\222un r\351seau) Tj
-T*
-(sous\055jacent\056 Deux n\234uds voisins dans ce r\351seau logique peuvent communiquer par un chemin qui) Tj
-T*
-(traverse plusieurs routeurs du r\351seau sous\055jacent\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 159.8898 cm
-q
-BT
-1 0 0 1 0 22.6 Tm
-17 TL
-/F2 11.4 Tf
-0.270588 0.34902 0.407843 rg
-(Exemple\056) Tj
-/F1 11.4 Tf
-( Un VPN relie deux bureaux via Internet\056 Le tunnel VPN forme le lien logique entre eux\056) Tj
-T*
-(Internet transporte les paquets du tunnel\056) Tj
-T*
-ET
-Q
-Q
-0.827451 0.87451 0.894118 RG
-n
-48 49 m
-547.2756 49 l
-S
-0.270588 0.34902 0.407843 rg
-BT
-/F1 9 Tf
-10.8 TL
-ET
-BT
-1 0 0 1 48 33 Tm
-(Fiche de r\351vision) Tj
-T*
-ET
-BT
-1 0 0 1 529.7616 33 Tm
-(1 \057 7) Tj
-T*
-ET
-
-endstream
 endobj
-41 0 obj
+48 0 obj
 <<
-/Length 5298
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+49 0 obj
+<<
+/Length 5303
 >>
 stream
+q
 1 0 0 1 0 0 cm
 BT
 /F1 12 Tf
@@ -3174,1573 +2615,90 @@ BT
 T*
 ET
 
-endstream
-endobj
-42 0 obj
-<<
-/Length 6449
->>
-stream
-1 0 0 1 0 0 cm
-BT
-/F1 12 Tf
-14.4 TL
-ET
-0.027451 0.4 0.368627 rg
-n
-48 791.8898 30 3 re
-f*
-BT
-/F2 10 Tf
-12 TL
-ET
-BT
-1 0 0 1 48 773.8898 Tm
-(MASTER 2 DATA SCIENCE  \057  CLOUD) Tj
-T*
-ET
-q
-1 0 0 1 48 694.8898 cm
-q
-BT
-1 0 0 1 0 36 Tm
-32 TL
-/F2 28 Tf
-0.090196 0.164706 0.227451 rg
-(Questions de l\222examen) Tj
-T*
-(de l\222an dernier) Tj
-T*
-ET
 Q
-Q
-0.933333 0.964706 0.960784 rg
-n
-53 646.8898 m
-68 646.8898 l
-70.764 646.8898 73 649.1258 73 651.8898 c
-73 666.8898 l
-73 669.6538 70.764 671.8898 68 671.8898 c
-53 671.8898 l
-50.236 671.8898 48 669.6538 48 666.8898 c
-48 651.8898 l
-48 649.1258 50.236 646.8898 53 646.8898 c
-h
-f*
-0.027451 0.4 0.368627 rg
-BT
-/F2 12 Tf
-14.4 TL
-ET
-BT
-1 0 0 1 57.164 655.1898 Tm
-(6) Tj
-T*
-ET
-q
-1 0 0 1 85 632.8898 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 23 Tm
-/F2 15 Tf
-19 TL
-(Quelles sont les diff\351rences entre calcul parall\350le\054 cluster) Tj
-T*
-(computing et grid computing \077) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 395.6898 cm
-q
-0.933333 0.964706 0.960784 rg
-n
-0 225.2 499.2756 -28.1 re
-f*
-0.964706 0.976471 0.980392 rg
-n
-0 197.1 499.2756 -56.3 re
-f*
-1 1 1 rg
-n
-0 140.8 499.2756 -70.4 re
-f*
-0.964706 0.976471 0.980392 rg
-n
-0 70.4 499.2756 -70.4 re
-f*
-0 0 0 rg
-BT
-/F1 10 Tf
-12 TL
-ET
-q
-1 0 0 1 9 204.1 cm
-q
-0.027451 0.4 0.368627 rg
-BT
-1 0 0 1 0 3.9 Tm
-/F2 10.2 Tf
-14.1 TL
-(Notion) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 115 204.1 cm
-q
-0.027451 0.4 0.368627 rg
-BT
-1 0 0 1 0 3.9 Tm
-/F2 10.2 Tf
-14.1 TL
-(Principe) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 334 204.1 cm
-q
-0.027451 0.4 0.368627 rg
-BT
-1 0 0 1 0 3.9 Tm
-/F2 10.2 Tf
-14.1 TL
-(Exemple) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 9 176 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 3.9 Tm
-/F2 10.2 Tf
-14.1 TL
-(Calcul parall\350le) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 115 147.8 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 32.1 Tm
-/F1 10.2 Tf
-14.1 TL
-(D\351couper un calcul en plusieurs parties et) Tj
-T*
-(les ex\351cuter simultan\351ment sur plusieurs) Tj
-T*
-(c\234urs\054 processeurs ou machines\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 334 161.9 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 18 Tm
-/F1 10.2 Tf
-14.1 TL
-(Quatre c\234urs calculent chacun) Tj
-T*
-(une partie d\222une matrice\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 9 105.6 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 18 Tm
-/F2 10.2 Tf
-14.1 TL
-(Cluster) Tj
-T*
-(computing) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 115 77.4 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 46.2 Tm
-/F1 10.2 Tf
-14.1 TL
-(Faire travailler ensemble plusieurs) Tj
-T*
-(machines\054 souvent homog\350nes\054 reli\351es par) Tj
-T*
-(un r\351seau rapide et administr\351es comme un) Tj
-T*
-(ensemble\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 334 91.5 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 32.1 Tm
-/F1 10.2 Tf
-14.1 TL
-(Les serveurs d\222un centre de calcul) Tj
-T*
-(se partagent une simulation) Tj
-T*
-(m\351t\351o\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 9 49.3 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 3.9 Tm
-/F2 10.2 Tf
-14.1 TL
-(Grid computing) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 115 7 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 46.2 Tm
-/F1 10.2 Tf
-14.1 TL
-(Mutualiser des ressources potentiellement) Tj
-T*
-(h\351t\351rog\350nes entre plusieurs sites ou) Tj
-T*
-(organisations\054 chacun pouvant garder sa) Tj
-T*
-(propre administration\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 334 35.2 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 18 Tm
-/F1 10.2 Tf
-14.1 TL
-(Plusieurs universit\351s pr\352tent des) Tj
-T*
-(serveurs \340 un projet scientifique\056) Tj
-T*
-ET
-Q
-Q
-q
-1 J
-1 j
-0.827451 0.87451 0.894118 RG
-0.5 w
-n
-0 197.1 m
-499.2756 197.1 l
-S
-n
-0 140.8 m
-499.2756 140.8 l
-S
-n
-0 70.4 m
-499.2756 70.4 l
-S
-n
-0 0 m
-499.2756 0 l
-S
-Q
-Q
-Q
-q
-1 0 0 1 48 353.6898 cm
-q
-BT
-1 0 0 1 0 21.6 Tm
-16.5 TL
-/F1 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(Le ) Tj
-/F2 11.4 Tf
-(calcul parall\350le) Tj
-/F1 11.4 Tf
-( d\351crit comment le travail est ex\351cut\351\056 Un ) Tj
-/F2 11.4 Tf
-(cluster) Tj
-/F1 11.4 Tf
-( et une ) Tj
-/F2 11.4 Tf
-(grille) Tj
-/F1 11.4 Tf
-( d\351crivent) Tj
-T*
-(comment les ressources sont organis\351es\056 Tous deux peuvent servir \340 faire du calcul parall\350le\056) Tj
-T*
-ET
-Q
-Q
-0.827451 0.87451 0.894118 RG
-0.65 w
-n
-48 337.6898 m
-547.2756 337.6898 l
-S
-0.933333 0.964706 0.960784 rg
-n
-53 293.6898 m
-68 293.6898 l
-70.764 293.6898 73 295.9258 73 298.6898 c
-73 313.6898 l
-73 316.4538 70.764 318.6898 68 318.6898 c
-53 318.6898 l
-50.236 318.6898 48 316.4538 48 313.6898 c
-48 298.6898 l
-48 295.9258 50.236 293.6898 53 293.6898 c
-h
-f*
-0.027451 0.4 0.368627 rg
-BT
-/F2 12 Tf
-14.4 TL
-ET
-BT
-1 0 0 1 57.164 301.9898 Tm
-(7) Tj
-T*
-ET
-q
-1 0 0 1 85 279.6898 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 23 Tm
-/F2 15 Tf
-19 TL
-(Quel est le principe d\222une architecture en couches dans un) Tj
-T*
-(syst\350me distribu\351 \077 Donner un exemple\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 218.1898 cm
-q
-BT
-1 0 0 1 0 38.1 Tm
-16.5 TL
-/F1 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(Une ) Tj
-/F2 11.4 Tf
-(architecture en couches) Tj
-/F1 11.4 Tf
-( s\351pare le logiciel en niveaux de responsabilit\351\056 Dans le mod\350le) Tj
-T*
-(classique\054 chaque couche fournit des services \340 la couche sup\351rieure via une interface et s\222appuie) Tj
-T*
-(sur les services de la couche inf\351rieure\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 193.6898 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 5.1 Tm
-/F2 11.4 Tf
-16.5 TL
-(Exemple d\222un portail de d\351p\364t de dossiers) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 58 173.1898 cm
-q
-BT
-1 0 0 1 0 5.1 Tm
-16.5 TL
-/F2 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(1\056 Pr\351sentation\056) Tj
-/F1 11.4 Tf
-( L\222interface web affiche le formulaire et transmet le dossier\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 58 153.6898 cm
-q
-BT
-1 0 0 1 0 5.1 Tm
-16.5 TL
-/F2 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(2\056 Logique m\351tier\056) Tj
-/F1 11.4 Tf
-( L\222API v\351rifie les r\350gles de d\351p\364t\054 comme la pr\351sence des pi\350ces obligatoires\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 58 117.6898 cm
-q
-BT
-1 0 0 1 0 21.6 Tm
-16.5 TL
-/F2 11.4 Tf
-0.090196 0.164706 0.227451 rg
-(3\056 Acc\350s aux donn\351es\056) Tj
-/F1 11.4 Tf
-( Cette couche enregistre le dossier dans la base et permet de le) Tj
-T*
-(retrouver\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 77.68976 cm
-q
-0.090196 0.164706 0.227451 rg
-BT
-1 0 0 1 0 21.6 Tm
-/F1 11.4 Tf
-16.5 TL
-(Les couches d\351crivent la s\351paration logique des responsabilit\351s\056 Elles peuvent \352tre d\351ploy\351es sur) Tj
-T*
-(une seule machine ou sur plusieurs\056) Tj
-T*
-ET
-Q
-Q
-0.827451 0.87451 0.894118 RG
-0.65 w
-n
-48 49 m
-547.2756 49 l
-S
-0.270588 0.34902 0.407843 rg
-BT
-/F1 9 Tf
-10.8 TL
-ET
-BT
-1 0 0 1 48 33 Tm
-(Fiche de r\351vision) Tj
-T*
-ET
-BT
-1 0 0 1 529.7616 33 Tm
-(3 \057 7) Tj
-T*
-ET
 
 endstream
 endobj
-43 0 obj
+50 0 obj
 <<
-/Length 6879
+/Length 909
 >>
 stream
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
 1 0 0 1 0 0 cm
 BT
-/F1 12 Tf
+/F1-0 12 Tf
 14.4 TL
 ET
-0 0.396078 0.372549 rg
+0.929412 0.960784 0.960784 rg
 n
-48 791.3898 30.5 3.2 re
-f*
-BT
-/F2 10 Tf
-12 TL
-ET
-BT
-1 0 0 1 48 773.8898 Tm
-(MASTER 2 DATA SCIENCE  \057  CLOUD) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F2 28 Tf
-33.6 TL
-ET
-BT
-1 0 0 1 48 731.8898 Tm
-(Questions de l\222examen) Tj
-T*
-ET
-BT
-1 0 0 1 48 699.8898 Tm
-(de l\222an dernier) Tj
-T*
-ET
-0.917647 0.952941 0.94902 rg
-n
-54 647.8898 m
-67 647.8898 l
-70.3168 647.8898 73 650.573 73 653.8898 c
-73 666.8898 l
-73 670.2066 70.3168 672.8898 67 672.8898 c
-54 672.8898 l
-50.6832 672.8898 48 670.2066 48 666.8898 c
-48 653.8898 l
-48 650.573 50.6832 647.8898 54 647.8898 c
+52 79.8898 m
+543.2756 79.8898 l
+545.4868 79.8898 547.2756 81.6786 547.2756 83.8898 c
+547.2756 140.8898 l
+547.2756 143.101 545.4868 144.8898 543.2756 144.8898 c
+52 144.8898 l
+49.7888 144.8898 48 143.101 48 140.8898 c
+48 83.8898 l
+48 81.6786 49.7888 79.8898 52 79.8898 c
 h
 f*
 0 0.396078 0.372549 rg
 BT
-/F2 12 Tf
-14.4 TL
+/F2-0 10.5 Tf
+12.6 TL
 ET
 BT
-1 0 0 1 57.164 656.3898 Tm
-(8) Tj
+1 0 0 1 60 127.8898 Tm
+(\300 l\222\351crit \267 S\351ance du 14 novembre\054 02\07225\07207\22602\07226\07215) Tj
 T*
 ET
 q
-1 0 0 1 85 634.8898 cm
+1 0 0 1 60 94.8898 cm
 q
-0.086275 0.156863 0.227451 rg
+0.090196 0.192157 0.227451 rg
 BT
-1 0 0 1 0 22.6 Tm
-/F2 15.4 Tf
-19 TL
-(Donner un exemple d\222architecture centr\351e sur les ressources) Tj
+1 0 0 1 0 15 Tm
+/F1-0 10 Tf
+12.5 TL
+(Dans cette question\054 le professeur emploie \253 extensibilit\351 en taille \273 au sens de scalabilit\351\056 D\351finir la tenue) Tj
 T*
-(et pr\351ciser les op\351rations disponibles\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 590.4898 cm
-q
-BT
-1 0 0 1 0 21.2 Tm
-16.2 TL
-/F1 11.2 Tf
-0.086275 0.156863 0.227451 rg
-(Dans une ) Tj
-/F2 11.2 Tf
-(architecture REST) Tj
-/F1 11.2 Tf
-(\054 chaque ressource est identifi\351e par une ) Tj
-/F2 11.2 Tf
-(URI) Tj
-/F1 11.2 Tf
-( et manipul\351e via une) Tj
-T*
-/F2 11.2 Tf
-(interface uniforme) Tj
-/F1 11.2 Tf
-(\056 Par exemple\054 dans un portail de d\351p\364t\054 ) Tj
-/F2 11.2 Tf
-(\057dossiers\05742) Tj
-/F1 11.2 Tf
-( identifie le dossier n\260 42\056) Tj
+(d\222une charge croissante\054 puis illustrer les deux m\351thodes\054 verticale et horizontale\056) Tj
 T*
 ET
 Q
 Q
-q
-1 0 0 1 48 394.4898 cm
-q
-0.917647 0.952941 0.94902 rg
-n
-0 186 498.2756 -26 re
-f*
-0.952941 0.968627 0.972549 rg
-n
-0 160 498.2756 -40 re
-f*
-1 1 1 rg
-n
-0 120 498.2756 -40 re
-f*
-0.952941 0.968627 0.972549 rg
-n
-0 80 498.2756 -26 re
-f*
-1 1 1 rg
-n
-0 54 498.2756 -54 re
-f*
-0 0 0 rg
-BT
-/F1 10 Tf
-12 TL
-ET
-q
-1 0 0 1 9 166 cm
-q
-0 0.396078 0.372549 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F2 10.2 Tf
-14 TL
-(M\351thode) Tj
-T*
-ET
 Q
-Q
-q
-1 0 0 1 79 166 cm
-q
-0 0.396078 0.372549 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F2 10.2 Tf
-14 TL
-(R\364le dans l\222exemple) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 354 166 cm
-q
-0 0.396078 0.372549 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F2 10.2 Tf
-14 TL
-(Requ\352te) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 9 140 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F2 10.2 Tf
-14 TL
-(PUT) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 79 126 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 17.8 Tm
-/F1 10.2 Tf
-14 TL
-(Cr\351er \340 une URI connue ou remplacer l\222\351tat complet du) Tj
-T*
-(dossier\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 354 140 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F1 10.2 Tf
-14 TL
-(PUT \057dossiers\05742) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 9 100 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F2 10.2 Tf
-14 TL
-(GET) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 79 86 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 17.8 Tm
-/F1 10.2 Tf
-14 TL
-(R\351cup\351rer une repr\351sentation du dossier\054 par exemple) Tj
-T*
-(en JSON\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 354 100 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F1 10.2 Tf
-14 TL
-(GET \057dossiers\05742) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 9 60 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F2 10.2 Tf
-14 TL
-(DELETE) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 79 60 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F1 10.2 Tf
-14 TL
-(Supprimer le dossier identifi\351 par son URI\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 354 60 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F1 10.2 Tf
-14 TL
-(DELETE \057dossiers\05742) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 9 34 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F2 10.2 Tf
-14 TL
-(POST) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 79 6 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 31.8 Tm
-/F1 10.2 Tf
-14 TL
-(Appliquer un traitement d\351fini par le serveur\054 par) Tj
-T*
-(exemple modifier le dossier en lui envoyant un nouvel) Tj
-T*
-(\351tat\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 354 34 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 3.8 Tm
-/F1 10.2 Tf
-14 TL
-(POST \057dossiers\05742) Tj
-T*
-ET
-Q
-Q
-q
-1 J
-1 j
-0.780392 0.843137 0.890196 RG
-0.6 w
-n
-0 160 m
-498.2756 160 l
-S
-n
-0 120 m
-498.2756 120 l
-S
-n
-0 80 m
-498.2756 80 l
-S
-n
-0 54 m
-498.2756 54 l
-S
-n
-0 0 m
-498.2756 0 l
-S
-Q
-Q
-Q
-0.780392 0.843137 0.890196 RG
-0.6 w
-n
-48 376.4898 m
-546.2756 376.4898 l
-S
-0.917647 0.952941 0.94902 rg
-n
-54 334.4898 m
-67 334.4898 l
-70.3168 334.4898 73 337.173 73 340.4898 c
-73 353.4898 l
-73 356.8066 70.3168 359.4898 67 359.4898 c
-54 359.4898 l
-50.6832 359.4898 48 356.8066 48 353.4898 c
-48 340.4898 l
-48 337.173 50.6832 334.4898 54 334.4898 c
-h
-f*
-0 0.396078 0.372549 rg
-BT
-/F2 12 Tf
-14.4 TL
-ET
-BT
-1 0 0 1 57.164 342.9898 Tm
-(9) Tj
-T*
-ET
-q
-1 0 0 1 85 321.4898 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 22.6 Tm
-/F2 15.4 Tf
-19 TL
-(Comment relier l\222application A au middleware C en conservant) Tj
-T*
-(l\222API de la biblioth\350que B \077) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 260.8898 cm
-q
-BT
-1 0 0 1 0 37.4 Tm
-16.2 TL
-/F1 11.2 Tf
-0.086275 0.156863 0.227451 rg
-(Ajouter un ) Tj
-/F2 11.2 Tf
-(adaptateur \050wrapper\051) Tj
-/F1 11.2 Tf
-( entre A et C\056 C\364t\351 A\054 l\222adaptateur expose la m\352me API que B\054) Tj
-T*
-(avec les m\352mes signatures\054 r\351sultats et erreurs attendus\056 Il d\351l\350gue \340 la biblioth\350que B les) Tj
-T*
-(traitements existants et traduit les \351changes d\222int\351gration vers l\222interface de C\056) Tj
-T*
-ET
-Q
-Q
-0.917647 0.952941 0.94902 rg
-n
-53 224.8898 m
-541.2756 224.8898 l
-544.0396 224.8898 546.2756 227.1258 546.2756 229.8898 c
-546.2756 246.8898 l
-546.2756 249.6538 544.0396 251.8898 541.2756 251.8898 c
-53 251.8898 l
-50.236 251.8898 48 249.6538 48 246.8898 c
-48 229.8898 l
-48 227.1258 50.236 224.8898 53 224.8898 c
-h
-f*
-q
-1 0 0 1 48 229.6898 cm
-q
-BT
-1 0 0 1 0 5 Tm
-133.985 0 Td
-16.2 TL
-/F2 11.2 Tf
-0.086275 0.156863 0.227451 rg
-(A) Tj
-/F1 11.2 Tf
-( \074) Tj
-(\055 API de B \055) Tj
-(\076 ) Tj
-/F2 11.2 Tf
-(Adaptateur) Tj
-/F1 11.2 Tf
-( \074) Tj
-(\055 API de C \055) Tj
-(\076 ) Tj
-/F2 11.2 Tf
-(C) Tj
-T*
--133.985 0 Td
-ET
-Q
-Q
-q
-1 0 0 1 48 183.4898 cm
-q
-BT
-1 0 0 1 0 21.2 Tm
-16.2 TL
-/F2 11.2 Tf
-0.086275 0.156863 0.227451 rg
-(Exemple\056) Tj
-/F1 11.2 Tf
-( A appelle toujours ) Tj
-/F2 11.2 Tf
-(validerDossier\05042\051) Tj
-/F1 11.2 Tf
-(\056 L\222adaptateur appelle B\054 restitue le r\351sultat attendu) Tj
-T*
-(par A et publie via C un message \253 DossierValid\351 \273 si B confirme la validation\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 144.0898 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 21.2 Tm
-/F1 11.2 Tf
-16.2 TL
-(Ce montage suppose que la d\351pendance B peut \352tre redirig\351e au d\351ploiement\054 par exemple vers) Tj
-T*
-(une biblioth\350que compatible charg\351e dynamiquement\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 122.0898 cm
-q
-0.243137 0.337255 0.427451 rg
-BT
-1 0 0 1 0 3 Tm
-/F1 9 Tf
-12 TL
-(Support de cours 1\054 sections 2\0561\0563 et 2\0562\0561\056 S\351mantique HTTP\054 RFC 9110\054 section 9\0563\056) Tj
-T*
-ET
-Q
-Q
-0.780392 0.843137 0.890196 RG
-n
-48 49 m
-546.2756 49 l
-S
-0.243137 0.337255 0.427451 rg
-BT
-/F1 9 Tf
-10.8 TL
-ET
-BT
-1 0 0 1 48 33 Tm
-(Fiche de r\351vision) Tj
-T*
-ET
-BT
-1 0 0 1 528.7616 33 Tm
-(4 \057 7) Tj
-T*
-ET
 
 endstream
 endobj
-44 0 obj
+51 0 obj
 <<
-/Length 7078
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
 >>
-stream
-1 0 0 1 0 0 cm
-BT
-/F1 12 Tf
-14.4 TL
-ET
-0 0.396078 0.372549 rg
-n
-48 791.3898 30.5 3.2 re
-f*
-BT
-/F2 10 Tf
-12 TL
-ET
-BT
-1 0 0 1 48 773.8898 Tm
-(MASTER 2 DATA SCIENCE  \057  CLOUD) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F2 28 Tf
-33.6 TL
-ET
-BT
-1 0 0 1 48 731.8898 Tm
-(Questions de l\222examen) Tj
-T*
-ET
-BT
-1 0 0 1 48 699.8898 Tm
-(de l\222an dernier) Tj
-T*
-ET
-0.917647 0.952941 0.94902 rg
-n
-54 647.8898 m
-67 647.8898 l
-70.3168 647.8898 73 650.573 73 653.8898 c
-73 666.8898 l
-73 670.2066 70.3168 672.8898 67 672.8898 c
-54 672.8898 l
-50.6832 672.8898 48 670.2066 48 666.8898 c
-48 653.8898 l
-48 650.573 50.6832 647.8898 54 647.8898 c
-h
-f*
-0 0.396078 0.372549 rg
-BT
-/F2 12 Tf
-14.4 TL
-ET
-BT
-1 0 0 1 53.828 656.3898 Tm
-(13) Tj
-T*
-ET
-q
-1 0 0 1 85 653.8898 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 3.6 Tm
-/F2 15.4 Tf
-19 TL
-(Producteur et consommateur avec Linda) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 611.0898 cm
-q
-BT
-1 0 0 1 0 19.8 Tm
-15.4 TL
-/F1 11 Tf
-0.086275 0.156863 0.227451 rg
-(Le producteur d\351pose des entiers al\351atoires entre 1 et 100 sous la forme ) Tj
-/F2 11 Tf
-(\050\042buffer\042\054 i\054 r\051) Tj
-/F1 11 Tf
-(\056 Compl\351ter le) Tj
-T*
-(consommateur qui les affiche\054 puis adapter les deux processus \340 une capacit\351 maximale ) Tj
-/F2 11 Tf
-(C) Tj
-/F1 11 Tf
-(\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 586.6898 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 4.4 Tm
-/F2 11 Tf
-15.4 TL
-(Consommateur avec un buffer sans limite) Tj
-T*
-ET
-Q
-Q
-0.952941 0.968627 0.972549 rg
-n
-53 488.6898 m
-541.2756 488.6898 l
-544.0396 488.6898 546.2756 490.9258 546.2756 493.6898 c
-546.2756 576.6898 l
-546.2756 579.4538 544.0396 581.6898 541.2756 581.6898 c
-53 581.6898 l
-50.236 581.6898 48 579.4538 48 576.6898 c
-48 493.6898 l
-48 490.9258 50.236 488.6898 53 488.6898 c
-h
-f*
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 566.6898 Tm
-(i \075 1) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 553.6898 Tm
-(while \0501\051 \173) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 540.6898 Tm
-(    in\050\042buffer\042\054 i\054 \077r\051) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 527.6898 Tm
-(    print\050r\051) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 514.6898 Tm
-(    i \075 i \053 1) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 501.6898 Tm
-(\175) Tj
-T*
-ET
-q
-1 0 0 1 48 449.8898 cm
-q
-BT
-1 0 0 1 0 19.8 Tm
-15.4 TL
-/F2 11 Tf
-0.086275 0.156863 0.227451 rg
-(in\050\042buffer\042\054 i\054 \077r\051) Tj
-/F1 11 Tf
-( attend le tuple d\222indice ) Tj
-/F2 11 Tf
-(i) Tj
-/F1 11 Tf
-(\054 le retire et affecte sa valeur \340 ) Tj
-/F2 11 Tf
-(r) Tj
-/F1 11 Tf
-(\056 Les indices imposent) Tj
-T*
-(l\222ordre d\222insertion\056 ) Tj
-/F2 11 Tf
-(rd) Tj
-/F1 11 Tf
-( laisserait le tuple dans le buffer\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 425.4898 cm
-q
-0.086275 0.156863 0.227451 rg
-BT
-1 0 0 1 0 4.4 Tm
-/F2 11 Tf
-15.4 TL
-(Buffer limit\351 \340 C places) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 390.6898 cm
-q
-BT
-1 0 0 1 0 19.8 Tm
-15.4 TL
-/F1 11 Tf
-0.086275 0.156863 0.227451 rg
-(Avant de lancer les deux processus\054 ex\351cuter ) Tj
-/F2 11 Tf
-(out\050\042libre\042\051) Tj
-/F1 11 Tf
-( exactement ) Tj
-/F2 11 Tf
-(C) Tj
-/F1 11 Tf
-( fois\054 avec C ) Tj
-/F4 11 Tf
-15.4 TL
-(\263) Tj
-/F1 11 Tf
-15.4 TL
-( 1\056 Chaque) Tj
-T*
-(tuple ) Tj
-/F2 11 Tf
-(\050\042libre\042\051) Tj
-/F1 11 Tf
-( est un jeton qui repr\351sente une place disponible\056) Tj
-T*
-ET
-Q
-Q
-0.952941 0.968627 0.972549 rg
-n
-53 251.6898 m
-287.1378 251.6898 l
-289.9018 251.6898 292.1378 253.9258 292.1378 256.6898 c
-292.1378 378.6898 l
-292.1378 381.4538 289.9018 383.6898 287.1378 383.6898 c
-53 383.6898 l
-50.236 383.6898 48 381.4538 48 378.6898 c
-48 256.6898 l
-48 253.9258 50.236 251.6898 53 251.6898 c
-h
-f*
-0 0.396078 0.372549 rg
-BT
-/F5 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 368.6898 Tm
-(\043 Producteur) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 355.6898 Tm
-(i \075 1) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 342.6898 Tm
-(while \0501\051 \173) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 329.6898 Tm
-(    in\050\042libre\042\051) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 316.6898 Tm
-(    r \075 random\056randint\0501\054 100\051) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 303.6898 Tm
-(    out\050\042buffer\042\054 i\054 r\051) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 290.6898 Tm
-(    i \075 i \053 1) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 277.6898 Tm
-(    time\056sleep\050r \057 100\0560\051) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 60 264.6898 Tm
-(\175) Tj
-T*
-ET
-0.952941 0.968627 0.972549 rg
-n
-307.1378 251.6898 m
-541.2756 251.6898 l
-544.0396 251.6898 546.2756 253.9258 546.2756 256.6898 c
-546.2756 378.6898 l
-546.2756 381.4538 544.0396 383.6898 541.2756 383.6898 c
-307.1378 383.6898 l
-304.3738 383.6898 302.1378 381.4538 302.1378 378.6898 c
-302.1378 256.6898 l
-302.1378 253.9258 304.3738 251.6898 307.1378 251.6898 c
-h
-f*
-0 0.396078 0.372549 rg
-BT
-/F5 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 314.1378 368.6898 Tm
-(\043 Consommateur) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 314.1378 355.6898 Tm
-(i \075 1) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 314.1378 342.6898 Tm
-(while \0501\051 \173) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 314.1378 329.6898 Tm
-(    in\050\042buffer\042\054 i\054 \077r\051) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 314.1378 316.6898 Tm
-(    out\050\042libre\042\051) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 314.1378 303.6898 Tm
-(    print\050r\051) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 314.1378 290.6898 Tm
-(    i \075 i \053 1) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 314.1378 277.6898 Tm
-(\175) Tj
-T*
-ET
-0.086275 0.156863 0.227451 rg
-BT
-/F3 9.4 Tf
-11.28 TL
-ET
-BT
-1 0 0 1 314.1378 264.6898 Tm
-T*
-ET
-q
-1 0 0 1 48 197.4898 cm
-q
-BT
-1 0 0 1 0 35.2 Tm
-15.4 TL
-/F1 11 Tf
-0.086275 0.156863 0.227451 rg
-(Le producteur r\351serve une place avant chaque d\351p\364t et attend si tous les jetons sont pris\056 Le) Tj
-T*
-(consommateur rend une place d\350s qu\222il retire un entier\056 Pour ) Tj
-/F2 11 Tf
-(C \075 2) Tj
-/F1 11 Tf
-(\054 un troisi\350me d\351p\364t attend qu\222un) Tj
-T*
-(des deux entiers soit retir\351\056) Tj
-T*
-ET
-Q
-Q
-q
-1 0 0 1 48 177.4898 cm
-q
-0.243137 0.337255 0.427451 rg
-BT
-1 0 0 1 0 3 Tm
-/F1 9 Tf
-12 TL
-(Support de cours 1\054 \247 2\0561\0564\0562 et 2\0561\0564\0564\056) Tj
-T*
-ET
-Q
-Q
-0.780392 0.843137 0.890196 RG
-0.6 w
-n
-48 49 m
-546.2756 49 l
-S
-0.243137 0.337255 0.427451 rg
-BT
-/F1 9 Tf
-10.8 TL
-ET
-BT
-1 0 0 1 48 33 Tm
-(Fiche de r\351vision) Tj
-T*
-ET
-BT
-1 0 0 1 528.7616 33 Tm
-(5 \057 7) Tj
-T*
-ET
-
-endstream
 endobj
-45 0 obj
+52 0 obj
 <<
-/Length 5041
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+53 0 obj
+<<
+/Length 5046
 >>
 stream
+q
 1 0 0 1 0 0 cm
 BT
 /F1 12 Tf
@@ -5091,137 +3049,131 @@ BT
 T*
 ET
 
+Q
+
 endstream
 endobj
-46 0 obj
+54 0 obj
 <<
-/Contents 47 0 R
-/MediaBox [ 0 0 595.2756 841.8898 ]
-/Resources <<
-/Font 48 0 R
-/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->>
-/Rotate 0
-/Trans <<
->>
-/Type /Page
-/Parent 2 0 R
->>
-endobj
-47 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ]
-/Length 2284
+/Length 1018
 >>
 stream
-Gatm<968iI%)2U?i6iLPlR3r';:;.nDOU"[:ARNAhJuJ(VGTjelB+g@r;rcCdC/C">u/J&.$=Q9I!Cd)MgnG!:CD\;f5U_L!TUDu#Ne*3XKUQ&]l:gX@c<%R5!pCd0f35R-28(*0lsuUNkf_,!'H$(,N8XP6;caX>XaJ[FRUe"=OQ'QF!B>M/n"MSc-?+U1N7U9B)MpO0)iT_E,c2'%WHF\n]T[RYl4jm=%'uH,Jh7t*#=?$Gi3N^q>hh'#-L'4Y+Fg4H+k>hpg3^#mBWa.@3Zr1jdaMlUl_FlE-o'Mj(Z!UPE`Sj.5TZ0K#T>UIL&[gnCVCKoOF4<eL^hEE(Ucn(*]8<q''o$O,7QH'RCl'e1X#9l_(\.5pIPmI5o*Wg_Bl[)Bm_]`590bMS0nh$`#?uO&)D3R"c6e)]n6q7YZDq7p<-ZL(W-'@Cg\c+=Li1A<=*T3D8\VO:s.<Yst0pZ)-^R$aVYs/H$8BE?$QHF8uK16AlJ<&1C4GU+AOPoKbD1K2;CYe4BaF=d>J0:]j].7A;,mr726XdT'Ep/^^`kD\<Qq(;p5gb)!MY6\,/g6>-D&ZnF0IjmX^,GpT.-eu_Vl-":$mFXKH]U!BE(/C>8>f7id]H[`_DLM=Y7$*o3U+o0tfZNQFO)NRnLB':kQKVJ;db>Rb+Eo8F`0OV8Brak`,bd/MZ86?2-T'u*ppRt=XDI9j,ja)>tqiYL6'A-8qWJMa7IJ>kL^A%J.gGf"M_[CS5p>Fn2crO;)i<nUQ<G/U[hu^<R1pV[[2!;0GME?c87IlZX8T)%_L<@4[.&[uS+J7r3d\^3q1$YXI9CB)jCP8"^I@B0-g[:3,kKK3djU$\=X3YF[EYOahDu%Tm-lIcOkC`>8Bjd<4C<(7(Q_`oZm@KF]Wb,Lnp?7uf#$OPWWDR_M!DU0n$kVA!a'#rM@$'TDA_4(S_^1@!"UtN+alLVI56l'QfGl]G@^jc_T6MNr;eWM@ATj\;+ReQp^'-Z"os3pbYbB%dXVWb1_;DZdW!%@)Eh7ioMW8\n9JZ_3f6'/"PH-kh2_U43s4JPm`T"`Ic9PdZ*;Fl>J]AW)JfhiE-&h$Il:m=W,7@2P.T3@@.Li=%9[Ut5bHgNA:87:m$s)R@77GjJnL[Z^63#d5\@6D'S0m`*r?FeZakm=WC<r/Y#S[0j^91JOa&8U(0]WlZKMu5ESl'/H?6s3;IRJ:[>b@\02RnT3<+N!EYtEDXA:)oR-/o9BOR*fU;(Oi:_U:&e7Q>3-aFui$VLO_S%>!R'2+55cG:$SDa]2m+V56*<q*8+@Gi0J@!1'oog#qQ!8_7KpG]ZH]cr"'E4@E\O0^N'38(B1]I7/p.hdY?S25_P`?:0=+j^ZjajOd(DoPkqHWolsEH"*)dJ4ETr%WP0D'&0ZaP#WjZNZj;n*i?]:']!A_ap-6pC8.[2o&FJ/?)n,(s5AJinG[]%O=,Y/k*n$f98#OsT1VfpIdp^q)2!Dh5Z.qD%\<5QRJ4Zo.<;@h5gsO>s1V?u87CC2)HAO2EP&S0"S-E^pcD+Rd(G*8XBYcZAt=-tLZ53#Z!RNK-'_hKl`FWGT<%L7UF8K.fld)KAdC>'9AmjQK3JJKEA9;4doo&'a/@I8@Kte4RnuX`AdNpW=lLnS:%,oA]@?'Z3"ZSi+6m.u%O)hi_f^]W7et)OJkGc6D%?FG$bVVP**"ol_F/`G+BX(HQ.D0IL@lllb]2enidS4<^KU!iKA8WV;bt7.ZX!snSBm69*DMJulSDba6\bSoU506VgC2af_^T"71@+1L?)roO/^fQPVDK9RR;sL#/?#lihp8TjhA8.Fk?7hPBuR&&qjdRR-N7;jHWiX]4FTm\<h)Bb=)f^r`iCN_WEHnP=oQ7p[tPJbXqu.u,2ZlOAq_XV=Y/M&?OQ3Kr\^[KQm+bTEk!h1_4&0%R;hQ^Y53N/PLDKQn`<J#GCK`%2%mMM>ke)l"H=8R@t@!!"Dqs1ff/f[)F]flbp[_bO4ZpPlA)WN>d(?N*55BPNHM_,.\j)aL+1C2^&j4k'),cAh).Tuft*)E;))'0fb5qS>-\q3W#;UVm"fe>d6CLI1:91-O-E6aFdYOtc6JWkfO@3"[@jO4g@V2)I-abt99i6&G$.D<XQpV4S>o.d=S*W;;-_kI%Nc8D;-#u8q$5]r3)Mfg%@I$sQ"rF/H>G(97t=g('b>LNLHFKh5Jn5c%f4YB([aohF'qr6*[=J`?YH+lLlcpfn4?NEgi_aKgf#S(^<6e<S)HPn9Mlh?#H%r`:bZ=$L2[Wr[1jDV!@Q^]B)~>
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+0.929412 0.960784 0.960784 rg
+n
+52 112.8898 m
+543.2756 112.8898 l
+545.4868 112.8898 547.2756 114.6786 547.2756 116.8898 c
+547.2756 173.8898 l
+547.2756 176.101 545.4868 177.8898 543.2756 177.8898 c
+52 177.8898 l
+49.7888 177.8898 48 176.101 48 173.8898 c
+48 116.8898 l
+48 114.6786 49.7888 112.8898 52 112.8898 c
+h
+f*
+0 0.396078 0.372549 rg
+BT
+/F2-0 10.5 Tf
+12.6 TL
+ET
+BT
+1 0 0 1 60 160.8898 Tm
+(Cas du cours \267 N\234uds actifs de 0 \340 59) Tj
+T*
+ET
+q
+1 0 0 1 60 115.3898 cm
+q
+0.090196 0.192157 0.227451 rg
+BT
+1 0 0 1 0 27.5 Tm
+/F1-0 10 Tf
+12.5 TL
+(Limiter le hachage \340 ces IDs garantit une destination active\056 La route 55\054 63\054 59 passe par un sommet) Tj
+T*
+(vacant\056 Le trajet via 51 reste actif et change un bit \340 chaque saut\056 Effacer les bits en trop avant d\222activer les) Tj
+T*
+(bits manquants permet de rester dans l\222intervalle actif\056 Oral du 14\05711\054 03\07200\07206\22603\07203\07202\056) Tj
+T*
+ET
+Q
+Q
+Q
+
 endstream
 endobj
-48 0 obj
-<<
-/F1 49 0 R
-/F2 50 0 R
-/F3 51 0 R
-/F4 52 0 R
->>
-endobj
-49 0 obj
-<<
-/BaseFont /Helvetica
-/Encoding /WinAnsiEncoding
-/Name /F1
-/Subtype /Type1
-/Type /Font
->>
-endobj
-50 0 obj
-<<
-/BaseFont /Helvetica-Bold
-/Encoding /WinAnsiEncoding
-/Name /F2
-/Subtype /Type1
-/Type /Font
->>
-endobj
-51 0 obj
-<<
-/BaseFont /Helvetica-Oblique
-/Encoding /WinAnsiEncoding
-/Name /F3
-/Subtype /Type1
-/Type /Font
->>
-endobj
-52 0 obj
-<<
-/BaseFont /Helvetica-BoldOblique
-/Encoding /WinAnsiEncoding
-/Name /F4
-/Subtype /Type1
-/Type /Font
->>
-endobj
 xref
-0 53
+0 55
 0000000000 65535 f 
 0000000015 00000 n 
 0000000064 00000 n 
 0000000164 00000 n 
-0000000364 00000 n 
-0000005263 00000 n 
-0000005314 00000 n 
-0000005421 00000 n 
-0000005533 00000 n 
-0000005648 00000 n 
-0000005849 00000 n 
-0000011200 00000 n 
-0000011255 00000 n 
-0000011363 00000 n 
-0000011476 00000 n 
-0000011596 00000 n 
-0000011798 00000 n 
-0000018300 00000 n 
-0000018344 00000 n 
-0000018452 00000 n 
-0000018565 00000 n 
-0000018767 00000 n 
-0000025699 00000 n 
-0000025743 00000 n 
-0000025851 00000 n 
-0000025964 00000 n 
-0000026166 00000 n 
-0000033297 00000 n 
-0000033374 00000 n 
-0000033482 00000 n 
-0000033595 00000 n 
-0000033701 00000 n 
-0000033779 00000 n 
-0000033890 00000 n 
-0000034092 00000 n 
-0000036182 00000 n 
-0000036237 00000 n 
-0000036345 00000 n 
-0000036458 00000 n 
-0000036574 00000 n 
-0000036752 00000 n 
-0000041652 00000 n 
-0000047003 00000 n 
-0000053505 00000 n 
-0000060437 00000 n 
-0000067568 00000 n 
-0000072662 00000 n 
-0000072864 00000 n 
-0000075241 00000 n 
-0000075307 00000 n 
-0000075415 00000 n 
-0000075528 00000 n 
-0000075644 00000 n 
+0000000363 00000 n 
+0000005262 00000 n 
+0000005313 00000 n 
+0000005420 00000 n 
+0000005532 00000 n 
+0000005647 00000 n 
+0000005848 00000 n 
+0000005882 00000 n 
+0000005963 00000 n 
+0000006071 00000 n 
+0000006184 00000 n 
+0000006304 00000 n 
+0000006506 00000 n 
+0000013008 00000 n 
+0000013052 00000 n 
+0000013160 00000 n 
+0000013273 00000 n 
+0000013475 00000 n 
+0000020407 00000 n 
+0000020451 00000 n 
+0000020559 00000 n 
+0000020672 00000 n 
+0000020874 00000 n 
+0000028005 00000 n 
+0000028082 00000 n 
+0000028190 00000 n 
+0000028303 00000 n 
+0000028409 00000 n 
+0000028487 00000 n 
+0000028598 00000 n 
+0000028800 00000 n 
+0000028834 00000 n 
+0000028915 00000 n 
+0000029023 00000 n 
+0000029136 00000 n 
+0000029252 00000 n 
+0000029454 00000 n 
+0000031831 00000 n 
+0000031897 00000 n 
+0000032005 00000 n 
+0000032118 00000 n 
+0000032234 00000 n 
+0000032354 00000 n 
+0000032532 00000 n 
+0000032640 00000 n 
+0000032753 00000 n 
+0000038109 00000 n 
+0000039070 00000 n 
+0000039178 00000 n 
+0000039291 00000 n 
+0000044390 00000 n 
 trailer
 <<
-/Size 53
+/Size 55
 /Root 1 0 R
-/Info 39 0 R
+/Info 46 0 R
 >>
 startxref
-75764
+45461
 %%EOF

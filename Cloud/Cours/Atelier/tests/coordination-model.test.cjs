@@ -7,3 +7,28 @@ test('Une occurrence ne peut être retirée deux fois',()=>{const s=M.create();M
 test('Une lecture en attente reprend au dépôt suivant',()=>{const s=M.create();M.read(s,'A','rd');assert.equal(s.pending.length,1);M.out(s);assert.equal(s.pending.length,0);assert.deepEqual(s.tuples,[1]);});
 test('Deux dépôts identiques créent deux occurrences',()=>{const s=M.create();M.out(s);M.out(s);M.read(s,'A','in');assert.deepEqual(s.tuples,[2]);});
 test('La reprise illustrée peut lire puis retirer le même tuple',()=>{const s=M.create();M.read(s,'A','rd');M.read(s,'B','in');M.out(s);assert.match(s.results.A,/T1 lue/);assert.match(s.results.B,/T1 retirée/);assert.deepEqual(s.tuples,[]);});
+
+test('Le troisième dépôt attend un jeton et reprend après un retrait', () => {
+  const buffer = M.createBuffer(2);
+  M.produce(buffer);
+  M.produce(buffer);
+  assert.match(M.produce(buffer), /Producteur bloqué/);
+  assert.deepEqual(buffer.queue, [1, 2]);
+  assert.equal(buffer.free, 0);
+  assert.equal(buffer.producerWaiting, true);
+  assert.equal(M.produce(buffer), undefined);
+  assert.match(M.consume(buffer), /termine le dépôt #3/);
+  assert.equal(buffer.producerWaiting, false);
+  assert.deepEqual(buffer.queue, [2, 3]);
+  assert.equal(buffer.free, 0);
+});
+
+test('Un consommateur en attente retire le dépôt suivant et rend sa place', () => {
+  const buffer = M.createBuffer(2);
+  assert.match(M.consume(buffer), /Consommateur bloqué/);
+  assert.equal(buffer.consumerWaiting, true);
+  assert.match(M.produce(buffer), /reprise du consommateur/);
+  assert.equal(buffer.consumerWaiting, false);
+  assert.deepEqual(buffer.queue, []);
+  assert.equal(buffer.free, 2);
+});

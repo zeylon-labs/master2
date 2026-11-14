@@ -20,6 +20,39 @@
     if(s.pending.some(r=>r.consumer===consumer))return;
     s.pending.push({consumer,operation});s.results[consumer]=`${operation} en attente d’un tuple correspondant.`;settle(s);
   }
-  const api={create,publish,connect,out,read};
+  function createBuffer(capacity){
+    return {capacity, free:capacity, queue:[], next:1, producerWaiting:false, consumerWaiting:false};
+  }
+  function produce(s){
+    if(s.producerWaiting)return;
+    if(s.free===0){
+      s.producerWaiting=true;
+      return 'Producteur bloqué sur in(libre) : le buffer est plein.';
+    }
+    s.free--;
+    const index=s.next++;
+    if(s.consumerWaiting){
+      s.consumerWaiting=false;
+      s.free++;
+      return `Dépôt #${index} et reprise du consommateur : il retire la donnée et rend un jeton.`;
+    }
+    s.queue.push(index);
+    return `Dépôt #${index} : in(libre), puis out(buffer, ${index}, valeur).`;
+  }
+  function consume(s){
+    if(s.consumerWaiting)return;
+    if(!s.queue.length){
+      s.consumerWaiting=true;
+      return 'Consommateur bloqué sur in(buffer, i, ?valeur) : le buffer est vide.';
+    }
+    const index=s.queue.shift();
+    s.free++;
+    if(!s.producerWaiting)return `Retrait #${index} : out(libre) libère une place.`;
+    s.producerWaiting=false;
+    const next=s.next;
+    produce(s);
+    return `Retrait #${index} : out(libre) réveille le producteur, qui termine le dépôt #${next}.`;
+  }
+  const api={create,publish,connect,out,read,createBuffer,produce,consume};
   if(typeof module==='object'&&module.exports)module.exports=api;else root.CoordinationModel=api;
 })(typeof window==='object'?window:globalThis);

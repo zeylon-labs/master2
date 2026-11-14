@@ -72,7 +72,7 @@ heading('Un parcours de révision en quatre passages')
 for t in [
  '1. Cours 1 : fondations, mise en charge, architectures, Linda et compléments du 24 octobre.',
  '2. Cours 2 : threads, virtualisation, serveurs, migration, RPC, messagerie et diffusion.',
- '3. Entraînement : formules, questions corrigées et sujet blanc avec un exercice complémentaire.',
+ '3. Entraînement : formules, questions corrigées, exercices repris le 14 novembre et sujet blanc de 90 minutes.',
  '4. Pratique : VM, répartiteur, panne et compte rendu. Les sources figurent à la fin du guide.',
 ]: add(t)
 add('La Fiche 01 illustrée et les modules de l’Atelier complètent ce guide. Les renvois C2 désignent les pages physiques du second PDF, couverture comprise. Le numéro imprimé est supérieur de 34 à partir de la page 9.','small')
@@ -104,7 +104,7 @@ render_architectures(D['architectures'],page,add,heading,table,story,link)
 
 render_seance24(D['morning24'],page,add,heading,table,link)
 
-for lesson in D['course2Pages']:
+for lesson in D['course2Pages'] + D['morning14']['lessons']:
     page(lesson['title'], lesson['source'])
     for block in lesson['blocks']:
         if block['kind'] == 'table':
@@ -170,6 +170,17 @@ heading('Vérifier les deux calculs du cours 2')
 add('TLP : calculer le nombre de threads simultanés en moyenne, puis diviser par la fraction du temps avec au moins un thread actif.')
 add('Pull : sous l’hypothèse de tirages indépendants et uniformes, un nœud reste ignorant si lui-même et le pair choisi le sont, soit p².')
 
+mock = D['morning14']['mock90']
+page('Sujet blanc · 90 minutes','Énoncé · Barème et temps par exercice proposés')
+add(mock['intro'])
+for exercise in mock['exercises']:
+    heading(exercise['title'])
+    add(exercise['prompt'])
+page('Sujet blanc · Corrigé','Réponses courtes et critères de correction')
+for exercise in mock['exercises']:
+    heading(exercise['title'])
+    add(exercise['rubric'])
+
 for start in [0,3]:
  page('TP · '+('Construire et observer' if start==0 else 'Tester et expliquer'),'Préparation proposée du TP évoqué à l’oral : machines virtuelles et load balancing sur Google Cloud')
  if start==0:story.append(graph())
@@ -184,11 +195,11 @@ page('Livre et sources','Traçabilité et limites de cette consolidation')
 heading(D['book']['title']);add(D['book']['text']);link('Livre, slides et demande de copie numérique',D['book']['url'])
 for c in D['book']['chapters']:add(c,'reference')
 add(D['book']['reading'])
-heading('Sources utilisées et corrections')
+page('Sources du cours','Supports, transcriptions et documentation')
 for s in D['sources']:
  add(s['title']+' — '+s['detail'],'reference')
  if s.get('url') and s['url']!=D['book']['url']:link(s['title'],s['url'])
-add('Pour enrichir le cours : mettre à jour revisions.json, puis exécuter Outils/generer_revisions.py depuis Cloud/Cours. Le PDF et revision-data.js sont régénérés ensemble. Ajouter un repère de source à chaque nouvelle notion.','small')
+add('Pour enrichir le cours : mettre à jour Resumes/revisions.json, puis exécuter python Outils/generer_revisions.py depuis Cloud/Cours. Le PDF et revision-data.js sont régénérés ensemble. Ajouter un repère de source à chaque nouvelle notion.','small')
 
 class GuideDocument(SimpleDocTemplate):
     def afterFlowable(self, flowable):

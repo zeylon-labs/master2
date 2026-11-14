@@ -1,26 +1,22 @@
 window.CloudStudy = {
-  "date": "13 novembre 2026",
-  "scope": "Guide des deux supports d’Olivier Grunder. Les chapitres 1 et 2 reprennent les fondations, les architectures et les compléments des séances des 23 et 24 octobre. Les chapitres 3 et 4 abordent les processus et les communications à partir du support du week-end. Des exemples résolus, des questions corrigées et un parcours de préparation aux TP complètent le cours.",
+  "date": "14 novembre 2026",
+  "scope": "Guide des deux supports d’Olivier Grunder, complété par les séances des 23 et 24 octobre et du 14 novembre. Les chapitres 1 et 2 couvrent les fondations et les architectures. Les chapitres 3 et 4 abordent les processus et les communications. Trois exercices repris en séance et un sujet blanc de 90 minutes préparent à l’écrit.",
   "evidence": [
     {
-      "label": "Annoncé oralement",
-      "text": "L’examen comporte quelques questions de mathématiques appliquées aux systèmes distribués, et aussi des questions non mathématiques. Transcription du 23/10, 02:37:44 (p. 63)."
+      "label": "Durée et attentes annoncées",
+      "text": "Écrit de 1 h 30. L’épreuve de 2024, utilisée comme exemple, durait 1 h. Le professeur attend des réponses courtes centrées sur les notions essentielles. Un schéma est facultatif. Transcription du 14/11, 02:14:21–02:15:27 et 02:41:08–02:41:30."
+    },
+    {
+      "label": "Périmètre de révision",
+      "text": "L’écrit suit ce qui a été traité en octobre et pendant le week-end de novembre. Le 14/11, le cours s’arrête après ZeroMQ avant les révisions. Priorité à RPC, sockets et ZeroMQ. Les détails DCE RPC, MPI, messagerie avancée et gossip restent à vérifier pour l’écrit."
+    },
+    {
+      "label": "Maths et modalités à confirmer",
+      "text": "L’oral du 23/10 annonce un mélange de concepts et de maths. Le 14/11, un exercice P2P est présenté. La date exacte, le barème, les documents autorisés et les formules à mémoriser restent à confirmer."
     },
     {
       "label": "Pratique évoquée",
-      "text": "Machines virtuelles et équilibrage de charge sur Google Cloud. Transcription, 00:03:28–00:04:09 (p. 2). Le parcours TP ci-dessous est un entraînement proposé, pas le sujet officiel."
-    },
-    {
-      "label": "À confirmer",
-      "text": "Les dates exactes, la durée définitive, les documents autorisés et le barème des évaluations. Le Word et l’oral évoquent un écrit en décembre et un final ; la pondération 50/25/25 évoquée à 00:07:35 ne constitue pas une consigne officielle stabilisée ici. Le résumé du 24/10 p. 2 rapporte certains schémas avancés de mobilité/capteurs hors examen : périmètre à confirmer, sans exclure tout le chapitre."
-    },
-    {
-      "label": "Priorités proposées",
-      "text": "Les priorités ci-dessous reposent sur le support et l’insistance de l’oral. Elles ne prédisent ni le sujet ni la probabilité d’une question. Les suggestions de Plaud ne sont pas reprises comme devoirs donnés par le professeur. La liste « devoirs et plan d’action » de Plaud reste une proposition de révision, pas un énoncé officiel."
-    },
-    {
-      "label": "Support du cours 2",
-      "text": "44 pages, couverture 2024–2025. Les exercices sur les processus et la communication sont proposés pour la révision. Le document ne fixe ni les modalités de l’examen ni un énoncé de TP."
+      "text": "Machines virtuelles et équilibrage de charge sur Google Cloud, transcription du 23/10, 00:03:28–00:04:09. Le guide et l’Atelier proposent un parcours de préparation au TP."
     }
   ],
   "topics": [
@@ -416,7 +412,7 @@ window.CloudStudy = {
     {
       "id": "interfaces-message",
       "title": "Sockets, ZeroMQ et MPI",
-      "priority": "Cours 2 · Communication",
+      "priority": "Sockets et ZeroMQ vus le 14/11 · MPI dans le support",
       "source": "Cours 2, PDF p. 31–35",
       "route": "evenements",
       "standalone": true,
@@ -429,7 +425,7 @@ window.CloudStudy = {
     {
       "id": "broker",
       "title": "Files de messages et broker",
-      "priority": "Cours 2 · Communication",
+      "priority": "Support du cours 2 · Périmètre de l’écrit à vérifier",
       "source": "Cours 2, PDF p. 36–38",
       "route": "evenements",
       "standalone": true,
@@ -442,7 +438,7 @@ window.CloudStudy = {
     {
       "id": "gossip",
       "title": "Multicast, inondation et gossip",
-      "priority": "Cours 2 · Communication",
+      "priority": "Support du cours 2 · Périmètre de l’écrit à vérifier",
       "source": "Cours 2, PDF p. 38–42",
       "route": "donnees",
       "standalone": true,
@@ -452,6 +448,51 @@ window.CloudStudy = {
         8,
         9
       ]
+    },
+    {
+      "id": "linda-borne",
+      "title": "Linda · un buffer de capacité limitée",
+      "priority": "Exercice repris à l’oral",
+      "source": "Séance du 14/11, 02:42:30–02:55:22 · Support du cours 1, p. 31–32",
+      "route": "evenements",
+      "trap": "Le jeton doit être réservé avant le dépôt, puis rendu après le retrait.",
+      "task": "Écris les deux boucles, puis déroule trois dépôts avec deux places.",
+      "points": [
+        "Un producteur écrit des tuples (« buffer », i, valeur). Un consommateur doit afficher les valeurs dans l’ordre des indices. Pour borner le stock à C places, initialiser C tuples (« libre »). Chaque jeton représente une place disponible.",
+        "Avec C = 2, deux dépôts remplissent le buffer. Au troisième, in(« libre ») attend. Quand le consommateur retire la première donnée et remet un jeton, le producteur reprend. Quand le buffer est vide, le consommateur attend le tuple demandé.",
+        "Dans cette trace, les indices imposent l’ordre de lecture. La primitive in retire une occurrence, tandis que rd la conserve. Le contrôle de capacité utilise l’attente naturelle de in."
+      ],
+      "standalone": true
+    },
+    {
+      "id": "hypercube-60",
+      "title": "Hypercube · 60 nœuds et 4 sommets vacants",
+      "priority": "Exercice repris à l’oral",
+      "source": "Séance du 14/11, 02:56:33–03:05:03 · Support du cours 1, p. 34–35",
+      "route": "maths",
+      "trap": "Le hachage choisit un destinataire actif. Chaque sommet intermédiaire doit aussi être accessible.",
+      "task": "Sépare les trois résultats : capacité brute, dimension logique et route active.",
+      "points": [
+        "Pour stocker 50 To avec 1 To par nœud, il faut au moins 50 nœuds, sans réplication. Avec les 60 nœuds disponibles, on dispose de 60 To bruts, dont 10 To de marge. Pour placer les 60 nœuds, 2⁵ = 32 < 60 ≤ 64 = 2⁶ : il faut une dimension 6 et quatre sommets restent vacants.",
+        "Première décision : attribuer chaque clé à un sommet actif. Deuxième décision : vérifier que chaque saut modifie un seul bit et mène à un sommet actif. Avec les IDs actifs 0 à 59, un hachage vers ces IDs résout la première décision.",
+        "Pour les IDs actifs contigus 0 à 59, effacer d’abord les bits qui doivent passer à 0, puis activer ceux qui doivent passer à 1, donne un plus court chemin actif. La première phase descend jusqu’au ET bit à bit des extrémités et la seconde remonte sans dépasser la destination. Pour des trous arbitraires, vérifier les chemins disponibles."
+      ],
+      "standalone": true
+    },
+    {
+      "id": "p2p-ttl",
+      "title": "Recherche P2P · comparer les stratégies",
+      "priority": "Exercice présenté à l’oral",
+      "source": "Séance du 14/11, 03:05:23–03:06:16 · Anciennes questions p. 7 · Support p. 36–37",
+      "route": "maths",
+      "trap": "La frontière du quatrième saut compte 7 290 nœuds. Le cumul compte 8 200 nœuds.",
+      "task": "Calcule le cumul, la probabilité et le ratio pour chaque stratégie.",
+      "points": [
+        "Réseau de 10 000 nœuds, degré 10 dans le modèle idéal, 1 % de copies, TTL = 4. Exclure la source. On calcule le maximum du modèle sans recouvrement, puis on approxime chaque sondage comme indépendant avec 1 % de succès.",
+        "Sur n tests indépendants, l’échec de tous les tests a pour probabilité 0,99 à la puissance n. Donc P(succès) = 1 − 0,99 à la puissance n. La marche a un ratio environ 81 fois supérieur dans cet exemple. L’inondation réussit beaucoup plus souvent et coûte davantage en contacts.",
+        "Les revisites, les cycles et la répartition des copies peuvent modifier les résultats sur un graphe réel. Le ratio de l’exercice utilise le budget maximal de contacts."
+      ],
+      "standalone": true
     }
   ],
   "formulas": [
@@ -635,6 +676,30 @@ window.CloudStudy = {
       "q": "Calculer le TLP avec c₀ = 20 %, c₁ = 40 %, c₂ = 30 % et c₃ = 10 %.",
       "a": "Le nombre moyen de threads actifs, temps inactif compris, vaut 1 × 0,4 + 2 × 0,3 + 3 × 0,1 = 1,30. La fraction de temps actif vaut 0,80. Le TLP vaut 1,30 / 0,80 = 1,625.",
       "source": "C2 p. 13"
+    },
+    {
+      "category": "Coordination",
+      "q": "Linda. Avec deux places, quand un troisième dépôt peut-il reprendre ?",
+      "a": "Initialiser deux jetons « libre ». Le producteur en retire un avec in avant chaque out de donnée. Le consommateur retire une donnée avec in, puis rend un jeton avec out. Le troisième dépôt attend ce retour.",
+      "source": "Oral 14/11, 02:50:56–02:55:22"
+    },
+    {
+      "category": "Maths",
+      "q": "Hypercube. Peut-on adresser 60 nœuds sur 5 bits ?",
+      "a": "Non, 5 bits ne donnent que 32 positions. Il faut 6 bits et 64 sommets. Avec les IDs actifs 0 à 59, 55 → 63 → 59 est impraticable. 55 → 51 → 59 fournit un chemin actif en deux sauts.",
+      "source": "Oral 14/11, 02:56:33–03:05:03"
+    },
+    {
+      "category": "Maths",
+      "q": "P2P. Quel est le cumul hors source de l’inondation pour un degré 10 et un TTL de 4 ?",
+      "a": "Dans le modèle sans recouvrement, 10 + 90 + 810 + 7 290 = 8 200. La marche aléatoire a un budget de 4 contacts. Avec 1 % de succès indépendant par contact, P = 1 − 0,99 à la puissance n.",
+      "source": "Oral 14/11, 03:05:23–03:06:16 et anciennes questions p. 7"
+    },
+    {
+      "category": "Communication",
+      "q": "ZeroMQ en REQ/REP. Que prouve une mise en file réussie ?",
+      "a": "Elle confirme que la bibliothèque a accepté le message dans sa file locale. Le client doit recevoir la réponse pour poursuivre la séquence REQ/REP classique. La file en mémoire ne survit pas à l’arrêt du processus.",
+      "source": "Oral 14/11, 01:59:22–02:04:58 et documentation libzmq"
     }
   ],
   "mock": [
@@ -770,6 +835,10 @@ window.CloudStudy = {
       "title": "Complément : durée de vie des événements",
       "detail": "Redis Pub/Sub : messages manqués non rejoués ; les garanties dépendent du mécanisme choisi.",
       "url": "https://redis.io/docs/latest/develop/pubsub/"
+    },
+    {
+      "title": "Séance du 14 novembre 2026",
+      "detail": "Transcription Plaud, 84 p. Durée et attentes p. 62 et 73, Linda p. 74–79, hypercube p. 80–83, P2P p. 83–84 et anciennes questions p. 7."
     }
   ],
   "linda": {
@@ -1841,7 +1910,7 @@ window.CloudStudy = {
             [
               "Hyperviseur natif (type 1)",
               "La couche de virtualisation s’exécute directement sur le matériel dans le modèle du cours.",
-              "Héberger plusieurs VM sur un serveur."
+              "Héberger plusieurs VM. Hyper-V est de type 1, avec Windows dans la partition racine."
             ],
             [
               "Hyperviseur hébergé (type 2)",
@@ -1861,7 +1930,12 @@ window.CloudStudy = {
         },
         {
           "kind": "paragraph",
-          "text": "Pour les conteneurs, retenir trois rôles. Les namespaces isolent la vue des processus ou du réseau. Les cgroups encadrent les ressources comme le CPU et la mémoire. Un système de fichiers en couches assemble le contenu de l’image et peut ajouter une couche d’écriture propre à l’instance. Une image décrit ce qui sert à démarrer un conteneur. PlanetLab illustre une tranche constituée d’environnements isolés sur plusieurs nœuds."
+          "text": "Pour les conteneurs, retenir trois rôles. Les namespaces isolent la vue des processus ou du réseau. Les cgroups encadrent les ressources comme le CPU et la mémoire. Un système de fichiers en couches assemble le contenu de l’image et peut ajouter une couche d’écriture propre à l’instance. Une image décrit ce qui sert à démarrer un conteneur. PlanetLab illustre une tranche constituée d’environnements isolés sur plusieurs nœuds. Si deux conteneurs modifient le même chemin dans leur image commune, chacun écrit dans sa propre couche supérieure."
+        },
+        {
+          "kind": "link",
+          "title": "Microsoft Learn — architecture Hyper-V",
+          "url": "https://learn.microsoft.com/fr-fr/windows-server/administration/performance-tuning/role/hyper-v-server/architecture"
         }
       ]
     },
@@ -1888,6 +1962,10 @@ window.CloudStudy = {
         {
           "kind": "paragraph",
           "text": "Pour une distribution géographique, DNS peut orienter vers une réplique proche, mais la localisation observée peut être celle du résolveur. Mobile IPv6 illustre la dissociation entre une adresse stable et une adresse de transit. Ces deux exemples éclairent la transparence de localisation avec des mécanismes différents."
+        },
+        {
+          "kind": "diagram",
+          "text": "TCP handoff dans le modèle du cours : requête client → frontal → serveur applicatif choisi. Le serveur applicatif → client pour la réponse directe."
         }
       ]
     },
@@ -1936,6 +2014,10 @@ window.CloudStudy = {
         {
           "kind": "paragraph",
           "text": "Pour migrer une VM, le support compare la pré-copie des pages mémoire avec recopie des pages modifiées, l’arrêt-copie-redémarrage et la copie à la demande après bascule. Le graphique p. 24 montre une période de latence accrue et une fenêtre d’indisponibilité plus courte. À l’oral ou en TP, distinguer durée totale du transfert, durée de dégradation et durée de coupure. Les durées illustrées dépendent du scénario."
+        },
+        {
+          "kind": "diagram",
+          "text": "Migration : début du transfert → éventuelle hausse de latence → arrêt et bascule → reprise → fin du transfert. Mesurer séparément durée totale, dégradation et coupure."
         }
       ]
     },
@@ -1971,6 +2053,10 @@ window.CloudStudy = {
         {
           "kind": "paragraph",
           "text": "Un RPC classique est généralement synchrone et transitoire. Un appel asynchrone peut attendre un accusé d’acceptation puis recevoir le résultat plus tard. Un producteur peut aussi attendre la confirmation d’écriture dans une file persistante alors que le consommateur traitera le message ultérieurement. Ces exemples montrent que l’attente de l’appelant et la conservation du message sont deux propriétés indépendantes."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trois questions à poser : jusqu’à quel accusé l’appelant attend-il ? Que devient le message si le destinataire est absent ? Que devient la file si le processus qui conserve le message s’arrête ?"
         }
       ]
     },
@@ -1993,6 +2079,10 @@ window.CloudStudy = {
         {
           "kind": "paragraph",
           "text": "Exemple. CréerCommande(42) peut réussir côté serveur alors que la réponse se perd. Si le client réessaie, un identifiant d’opération stable et une déduplication persistante côté serveur permettent de reconnaître la même demande. En mode asynchrone, un retour « accepté » signifie que le serveur a pris la demande en charge. Le résultat métier arrive ensuite, par exemple via un callback."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Pour la sérialisation, choisir une représentation convenue des types et des octets. La copie-restauration transfère une valeur et peut appliquer un changement au retour. Une référence distante repose sur un identifiant et un protocole. Deux appels asynchrones peuvent avancer en parallèle avant que le client attende leurs résultats."
         }
       ]
     },
@@ -2036,7 +2126,12 @@ window.CloudStudy = {
         },
         {
           "kind": "paragraph",
-          "text": "ZeroMQ fournit des modèles de communication au-dessus des sockets. Le cours le place dans la messagerie transitoire. Dans les exemples, une réception peut bloquer et une file interne ne constitue pas à elle seule une boîte persistante pour les abonnés absents."
+          "text": "ZeroMQ transmet les messages en arrière-plan et peut les mettre en file en mémoire. La mise en file ne confirme ni la livraison ni le traitement. Cette file est volatile. Le patron REQ/REP standard alterne envoi et réception, et un appel de réception bloquant peut attendre."
+        },
+        {
+          "kind": "link",
+          "title": "libzmq — sockets ZeroMQ et mise en file",
+          "url": "https://libzmq.readthedocs.io/en/latest/zmq_socket.html"
         },
         {
           "kind": "link",
@@ -2045,7 +2140,7 @@ window.CloudStudy = {
         },
         {
           "kind": "paragraph",
-          "text": "MPI. Cette interface cible la communication et la synchronisation entre processus de calcul parallèle. Un communicateur définit un contexte de communication et un groupe. Le rang identifie un processus à l’intérieur de ce groupe. MPI_COMM_WORLD est le communicateur initial du programme illustré. Avec quatre processus, les rangs sont 0 à 3. L’ordre d’affichage dépend de l’exécution. Une barrière synchronise le passage à la suite quand les membres l’ont atteinte. Pour pratiquer, retenir MPI_Sendrecv comme combinaison d’un envoi et d’une réception, et MPI_Isend comme lancement non bloquant dont il faut vérifier l’achèvement avant de modifier le tampon. L’exemple MPI:: de C2 utilise les anciennes liaisons C++ retirées de MPI-3. Pour un exemple exécutable, utiliser l’API C depuis C ou C++."
+          "text": "MPI figure dans le PDF au-delà du point d’arrêt du 14/11. MPI. Cette interface cible la communication et la synchronisation entre processus de calcul parallèle. Un communicateur définit un contexte de communication et un groupe. Le rang identifie un processus à l’intérieur de ce groupe. MPI_COMM_WORLD est le communicateur initial du programme illustré. Avec quatre processus, les rangs sont 0 à 3. L’ordre d’affichage dépend de l’exécution. Une barrière synchronise le passage à la suite quand les membres l’ont atteinte. Pour pratiquer, retenir MPI_Sendrecv comme combinaison d’un envoi et d’une réception, et MPI_Isend comme lancement non bloquant dont il faut vérifier l’achèvement avant de modifier le tampon. L’exemple MPI:: de C2 utilise les anciennes liaisons C++ retirées de MPI-3. Pour un exemple exécutable, utiliser l’API C depuis C ou C++."
         },
         {
           "kind": "link",
@@ -2066,7 +2161,7 @@ window.CloudStudy = {
     },
     {
       "title": "Files de messages et broker",
-      "source": "Cours 2, PDF p. 36–38",
+      "source": "Cours 2, PDF p. 36–38 · Périmètre de l’écrit à vérifier",
       "blocks": [
         {
           "kind": "paragraph",
@@ -2089,7 +2184,7 @@ window.CloudStudy = {
     },
     {
       "title": "Multicast et inondation",
-      "source": "Cours 2, PDF p. 38–39",
+      "source": "Cours 2, PDF p. 38–39 · Périmètre de l’écrit à vérifier",
       "blocks": [
         {
           "kind": "paragraph",
@@ -2107,7 +2202,7 @@ window.CloudStudy = {
     },
     {
       "title": "Gossip et suppressions distribuées",
-      "source": "Cours 2, PDF p. 39–42",
+      "source": "Cours 2, PDF p. 39–42 · Périmètre de l’écrit à vérifier",
       "blocks": [
         {
           "kind": "table",
@@ -2149,5 +2244,151 @@ window.CloudStudy = {
         }
       ]
     }
-  ]
+  ],
+  "morning14": {
+    "lessons": [
+      {
+        "title": "Linda · un buffer de capacité limitée",
+        "source": "Séance du 14/11, 02:42:30–02:55:22 · Support du cours 1, p. 31–32",
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "text": "Un producteur écrit des tuples (« buffer », i, valeur). Un consommateur doit afficher les valeurs dans l’ordre des indices. Pour borner le stock à C places, initialiser C tuples (« libre »). Chaque jeton représente une place disponible."
+          },
+          {
+            "kind": "table",
+            "rows": [
+              [
+                "Processus",
+                "Instructions"
+              ],
+              [
+                "Initialisation",
+                "Répéter C fois : out(« libre »)."
+              ],
+              [
+                "Producteur",
+                "in(« libre »), puis out(« buffer », i, valeur). Incrémenter i."
+              ],
+              [
+                "Consommateur",
+                "in(« buffer », i, ?valeur), puis out(« libre »). Afficher la valeur et incrémenter i."
+              ]
+            ]
+          },
+          {
+            "kind": "paragraph",
+            "text": "Avec C = 2, deux dépôts remplissent le buffer. Au troisième, in(« libre ») attend. Quand le consommateur retire la première donnée et remet un jeton, le producteur reprend. Quand le buffer est vide, le consommateur attend le tuple demandé."
+          },
+          {
+            "kind": "paragraph",
+            "text": "Dans cette trace, les indices imposent l’ordre de lecture. La primitive in retire une occurrence, tandis que rd la conserve. Le contrôle de capacité utilise l’attente naturelle de in."
+          }
+        ]
+      },
+      {
+        "title": "Hypercube · 60 nœuds et 4 sommets vacants",
+        "source": "Séance du 14/11, 02:56:33–03:05:03 · Support du cours 1, p. 34–35",
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "text": "Pour stocker 50 To avec 1 To par nœud, il faut au moins 50 nœuds, sans réplication. Avec les 60 nœuds disponibles, on dispose de 60 To bruts, dont 10 To de marge. Pour placer les 60 nœuds, 2⁵ = 32 < 60 ≤ 64 = 2⁶ : il faut une dimension 6 et quatre sommets restent vacants."
+          },
+          {
+            "kind": "paragraph",
+            "text": "Première décision : attribuer chaque clé à un sommet actif. Deuxième décision : vérifier que chaque saut modifie un seul bit et mène à un sommet actif. Avec les IDs actifs 0 à 59, un hachage vers ces IDs résout la première décision."
+          },
+          {
+            "kind": "table",
+            "rows": [
+              [
+                "Chemin testé",
+                "Vérification"
+              ],
+              [
+                "55 → 63 → 59",
+                "63 est vacant. Le chemin échoue au premier saut."
+              ],
+              [
+                "55 → 51 → 59",
+                "51 est actif. Chaque saut modifie un seul bit."
+              ]
+            ]
+          },
+          {
+            "kind": "paragraph",
+            "text": "Pour les IDs actifs contigus 0 à 59, effacer d’abord les bits qui doivent passer à 0, puis activer ceux qui doivent passer à 1, donne un plus court chemin actif. La première phase descend jusqu’au ET bit à bit des extrémités et la seconde remonte sans dépasser la destination. Pour des trous arbitraires, vérifier les chemins disponibles."
+          }
+        ]
+      },
+      {
+        "title": "Recherche P2P · comparer les stratégies",
+        "source": "Séance du 14/11, 03:05:23–03:06:16 · Anciennes questions p. 7 · Support p. 36–37",
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "text": "Réseau de 10 000 nœuds, degré 10 dans le modèle idéal, 1 % de copies, TTL = 4. Exclure la source. On calcule le maximum du modèle sans recouvrement, puis on approxime chaque sondage comme indépendant avec 1 % de succès."
+          },
+          {
+            "kind": "table",
+            "rows": [
+              [
+                "Stratégie",
+                "Budget maximal de nœuds",
+                "Succès et ratio P/n"
+              ],
+              [
+                "Inondation",
+                "10 + 90 + 810 + 7 290 = 8 200",
+                "P ≈ 100 % et P/n ≈ 0,000122"
+              ],
+              [
+                "Marche aléatoire",
+                "4, un contact par saut",
+                "P ≈ 3,94 % et P/n ≈ 0,00985"
+              ]
+            ]
+          },
+          {
+            "kind": "paragraph",
+            "text": "Sur n tests indépendants, l’échec de tous les tests a pour probabilité 0,99 à la puissance n. Donc P(succès) = 1 − 0,99 à la puissance n. La marche a un ratio environ 81 fois supérieur dans cet exemple. L’inondation réussit beaucoup plus souvent et coûte davantage en contacts."
+          },
+          {
+            "kind": "paragraph",
+            "text": "Les revisites, les cycles et la répartition des copies peuvent modifier les résultats sur un graphe réel. Le ratio de l’exercice utilise le budget maximal de contacts."
+          }
+        ]
+      }
+    ],
+    "mock90": {
+      "intro": "90 minutes, sur 20. Temps indicatifs par partie. Rédige une réponse courte pour les notions, puis indique les hypothèses et les unités de chaque calcul. Un schéma est possible s’il rend la réponse plus claire.",
+      "exercises": [
+        {
+          "title": "A · Architectures et middleware · 4 points · 15 min",
+          "prompt": "Distinguer distribué et décentralisé. Expliquer le rôle du middleware et donner un exemple de réseau superposé. Pourquoi la transparence aux pannes est-elle difficile ?",
+          "rubric": "1 pt par idée. Un service sur plusieurs VM peut conserver un contrôle central. Le middleware fournit des fonctions communes, par exemple le nommage et RPC. Dans Chord, les pairs forment un réseau logique au-dessus d’IP. Un timeout peut venir d’une panne, d’une lenteur ou du réseau, et une opération peut déjà avoir abouti."
+        },
+        {
+          "title": "B · Communications · 4 points · 15 min",
+          "prompt": "Décrire le trajet d’un RPC, puis distinguer accusé et résultat. Donner l’ordre des primitives TCP côté serveur. Expliquer ce qui peut arriver à un message ZeroMQ encore en file si le processus s’arrête.",
+          "rubric": "1 pt par idée. Client, stub client, réseau, stub serveur, service, puis réponse en sens inverse. Un accusé marque un jalon, le résultat arrive ensuite, par exemple via un callback. TCP : socket, bind, listen, accept, puis échange sur la socket connectée et close. La file ZeroMQ en mémoire peut être perdue à l’arrêt du processus."
+        },
+        {
+          "title": "C · Linda et buffer borné · 4 points · 20 min",
+          "prompt": "Écrire l’initialisation et les deux boucles d’un producteur et d’un consommateur pour un buffer de deux places, indexé par i. Dire à quel moment chaque processus peut attendre.",
+          "rubric": "1 pt pour les deux jetons initiaux, 1 pt pour in(« libre ») avant le dépôt indexé, 1 pt pour in(« buffer », i, ?r) puis out(« libre »), 1 pt pour l’attente du producteur quand le buffer est plein et du consommateur quand le tuple attendu manque."
+        },
+        {
+          "title": "D · Capacité et hypercube · 3 points · 15 min",
+          "prompt": "Stocker 50 To sur 60 nœuds de 1 To. Calculer la capacité minimale et la dimension logique. Avec les IDs actifs 0 à 59, discuter la route 55 → 63 → 59 et donner une autre route.",
+          "rubric": "1 pt : 50 nœuds au minimum, 10 To de marge brute avec 60 nœuds. 1 pt : dimension 6 et 64 sommets, dont 4 vacants. 1 pt : 63 est vacant, 55 → 51 → 59 reste actif et change un bit à chaque saut."
+        },
+        {
+          "title": "E · Recherche P2P · 5 points · 25 min",
+          "prompt": "Un réseau comprend 10 000 nœuds, degré 10 et 1 % de copies. Avec TTL = 4, comparer inondation et marche aléatoire. Calculer les contacts hors source, la probabilité de succès et le ratio P/n. Préciser le modèle.",
+          "rubric": "2 pts : 8 200 contacts idéaux pour l’inondation et 4 pour la marche. 1 pt : P = 1 − 0,99 à la puissance n sous l’hypothèse de sondages indépendants, soit quasi 100 % et 3,94 %. 1 pt : P/n ≈ 0,000122 et 0,00985. 1 pt : le second ratio vaut environ 81 fois le premier, avec un succès nettement plus faible."
+        }
+      ]
+    }
+  }
 };

@@ -42,8 +42,8 @@ def register_fonts():
 
 
 def make_styles(compact):
-    body = ParagraphStyle('body', fontName='Revision', fontSize=9.6 if compact else 10,
-                          leading=13.1 if compact else 14.5, textColor=INK, spaceAfter=7)
+    body = ParagraphStyle('body', fontName='Revision', fontSize=9.5 if compact else 10,
+                          leading=12.8 if compact else 13.6, textColor=INK, spaceAfter=6)
     return {
         'h1': ParagraphStyle('h1', parent=body, fontName='RevisionBold', fontSize=25,
                               leading=30, spaceAfter=10, keepWithNext=True),
@@ -56,7 +56,7 @@ def make_styles(compact):
                                    borderPadding=7, backColor=PALE, spaceBefore=6, spaceAfter=12),
         'list': ParagraphStyle('list', parent=body, leftIndent=16, firstLineIndent=-16),
         'cell': ParagraphStyle('cell', parent=body, fontSize=8.8 if compact else 9.2,
-                               leading=11.9 if compact else 12.8, spaceAfter=0),
+                               leading=11.6 if compact else 12.4, spaceAfter=0),
     }
 
 
@@ -67,7 +67,7 @@ def markup(line):
     line = re.sub(r'`([^`]+)`', r'<b>\1</b>', line)
     for chars, values, tag in (
         ('₀₁₂₃₄₅₆₇₈₉ₐᵢⱼₖ₊', '0123456789aijk+', 'sub'),
-        ('⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁽⁾ᴺᵈᵏᵐʲᵖ', '0123456789-()Ndkmjp', 'super'),
+        ('⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁽⁾ᴺᵈᵏᵐⁿʲᵖ', '0123456789-()Ndkmnjp', 'super'),
     ):
         mapping = str.maketrans(chars, values)
         line = re.sub(f'[{chars}]+', lambda m: f'<{tag}>{m[0].translate(mapping)}</{tag}>', line)
@@ -87,8 +87,8 @@ def table_flowable(block, styles, width):
         ('BACKGROUND', (0, 0), (-1, 0), PALE),
         ('LINEBELOW', (0, 0), (-1, -1), 0.45, RULE),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('TOPPADDING', (0, 0), (-1, -1), 5),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
+        ('TOPPADDING', (0, 0), (-1, -1), 4),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
     ]))
     return table
 

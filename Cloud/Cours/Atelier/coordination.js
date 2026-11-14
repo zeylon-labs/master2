@@ -12,6 +12,39 @@
  const lesson=document.createElement('section');lesson.id='linda-clair';lesson.className='coord-summary linda-lesson';
  lesson.innerHTML=`<h2>${esc(L.title)}</h2><p>${esc(L.intro)}</p><p>${esc(L.tuple)}</p><h3>Les trois opérations</h3><div class="linda-operations">${L.operations.map(op=>`<article><h4><code>${esc(op[0])}</code></h4><p>${esc(op[1])}</p><p>${esc(op[2])}</p></article>`).join('')}</div><p class="linda-memory"><b>${esc(L.memory)}</b></p><h3>Exercice corrigé · espace initialement vide</h3><p>A et B sont deux processus. Suis les instructions dans cet ordre : B peut avancer pendant que A attend. Cet exercice manipule des « notes » ; la simulation au-dessus manipule des « commandes », avec les mêmes règles.</p><ol class="linda-trace">${L.trace.map(t=>`<li><code>${esc(t.instruction)}</code><p>${esc(t.result)}</p><p class="linda-space">Espace après : <strong>${esc(t.space)}</strong></p></li>`).join('')}</ol><h3>Raisonner pour un exercice</h3><ul>${L.pitfalls.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><p>${esc(L.course)}</p><p class="study-source">${esc(L.source)}</p>`;
  $('#evenements').append(lesson);
+ const bounded=document.createElement('section');
+ bounded.className='coord-summary';
+ bounded.innerHTML=`<h2>Linda · un buffer de deux places</h2>
+ <p>Essaie trois dépôts, puis retire une donnée. Réinitialise et commence par un retrait pour observer l’autre attente.</p>
+ <div class="coord-actions">
+ <button class="button primary" id="buffer-produce">Produire une donnée</button>
+ <button class="button" id="buffer-consume">Consommer une donnée</button>
+ <button class="button" id="buffer-reset">Réinitialiser le buffer</button>
+ </div>
+ <p id="buffer-feedback" class="coord-feedback" role="status"></p>
+ <dl class="coord-receipts">
+ <div><dt>Jetons libres</dt><dd id="buffer-free"></dd></div>
+ <div><dt>Tuples stockés</dt><dd id="buffer-values"></dd></div>
+ <div><dt>Processus en attente</dt><dd id="buffer-waiting"></dd></div>
+ </dl>`;
+ lesson.before(bounded);
+ let buffer;
+ function drawBuffer(message){
+  $('#buffer-free').textContent=String(buffer.free);
+  $('#buffer-values').textContent=buffer.queue.map(i=>`#${i}`).join(', ')||'Aucun';
+  $('#buffer-waiting').textContent=buffer.producerWaiting?'Producteur':buffer.consumerWaiting?'Consommateur':'Aucun';
+  $('#buffer-produce').disabled=buffer.producerWaiting;
+  $('#buffer-consume').disabled=buffer.consumerWaiting;
+  $('#buffer-feedback').textContent=message;
+ }
+ function resetBuffer(){
+  buffer=M.createBuffer(2);
+  drawBuffer('Initialisation : out(libre) deux fois. Le buffer est vide.');
+ }
+ $('#buffer-produce').addEventListener('click',()=>drawBuffer(M.produce(buffer)));
+ $('#buffer-consume').addEventListener('click',()=>drawBuffer(M.consume(buffer)));
+ $('#buffer-reset').addEventListener('click',resetBuffer);
+ resetBuffer();
  const jump=document.createElement('button');jump.type='button';jump.id='coord-linda-link';jump.className='button';jump.textContent='Linda : définition et exercice ↓';
  jump.addEventListener('click',()=>{lesson.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});lesson.querySelector('h2').tabIndex=-1;lesson.querySelector('h2').focus({preventScroll:true});});
  $('#evenements .coord-lead').after(jump);
@@ -48,7 +81,7 @@
  $('#coord-out').addEventListener('click',()=>{const id=M.out(state);$('#coord-tuple-feedback').textContent=`out : occurrence T${id} déposée.${state.tuples.includes(id)?' Elle reste disponible.':' Une demande in en attente l’a immédiatement retirée.'}`;draw();});
  ['rd','in'].forEach(op=>$('#coord-'+op).addEventListener('click',()=>{M.read(state,$('#coord-consumer').value,op);$('#coord-tuple-feedback').textContent=`Demande ${op} du consommateur ${$('#coord-consumer').value}. Résultat ci-dessous.`;draw();}));
  $('#coord-consumer').addEventListener('change',draw);
- $('#reset').addEventListener('click',()=>{if(location.hash==='#evenements'){state=M.create();$('#coord-consumer').value='A';$('#coord-tuple-feedback').textContent='Dépose un tuple, ou lance une lecture pour observer l’attente.';draw();}});
+ $('#reset').addEventListener('click',()=>{if(location.hash==='#evenements'){state=M.create();$('#coord-consumer').value='A';$('#coord-tuple-feedback').textContent='Dépose un tuple, ou lance une lecture pour observer l’attente.';resetBuffer();draw();}});
  addEventListener('resize',()=>{if(location.hash==='#evenements')draw();});
  addEventListener('hashchange',()=>{if(location.hash==='#evenements')draw();});draw();
 })();

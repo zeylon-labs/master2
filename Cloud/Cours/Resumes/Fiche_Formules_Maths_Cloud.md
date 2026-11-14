@@ -2,7 +2,7 @@
 
 > Master DSICS · Écrit de mi-décembre · Supports disponibles au 14 novembre 2026
 
-Les références C1 et C2 désignent les pages des PDF d’Olivier Grunder, couverture comprise. Les relations dérivées et les modèles d’entraînement précisent leurs hypothèses. Le périmètre exact de l’écrit et les apports de la séance du 14 novembre restent à confirmer.
+Les références C1 et C2 désignent les pages des PDF d’Olivier Grunder, couverture comprise. La séance du 14 novembre précise l’écrit de 1 h 30 et reprend le dimensionnement d’un hypercube et la recherche P2P. Les formules à mémoriser restent à confirmer.
 
 ## 1 · File d’attente M/M/1 et loi de Little
 
@@ -51,12 +51,39 @@ Sources · C1 p. 16 à 18 et Plaud 23/10 p. 8 à 9. Little par périmètre et le
 | Sujet | Formule ou méthode |
 | --- | --- |
 | Adaptateurs EAI | **N(N − 1)** en point-à-point orienté, **N(N − 1)/2** en paires non orientées. Avec un broker distinct, **2N** directions ou N liens bidirectionnels. Avec N = 6, cela donne 30 contre 12 dans la convention orientée. |
-| Hypercube de dimension d | **2ᵈ** nœuds, **d** voisins par nœud, **d·2ᵈ⁻¹** liens physiques non orientés. Sauts minimaux = bits différents, soit distance de Hamming. De 0 à 14 en dimension 4 : trois sauts. |
+| Hypercube complet | **2ᵈ** sommets, **d** voisins par sommet, **d·2ᵈ⁻¹** liens non orientés dans l’overlay. Sauts minimaux = bits différents, soit distance de Hamming. Pour N sommets actifs, **d = plafond(log₂ N)** est la dimension minimale pour les adresser. |
 | Chord | Espace circulaire de **2ᵐ** identifiants, nœuds présents éventuellement moins nombreux. Responsable = **succ(k)**, le premier nœud à partir de k inclus dans le sens croissant (revenir au début). Entrée de raccourci j du nœud n = succ((n + 2ʲ) mod 2ᵐ), j de 0 à m − 1. |
 | Marche aléatoire idéalisée | N nœuds, r copies, **p = r/N**. Tirages indépendants uniformes avec remise. **P(K = k) = p(1 − p)ᵏ⁻¹**, **P(K ≤ k) = 1 − (1 − p)ᵏ**, **E[K] = 1/p = N/r** sans limite de tirages. Sur un vrai graphe, les visites peuvent être dépendantes. |
 | Inondation idéalisée | Degré d et voisinage sans recouvrement. Frontière du saut k ≥ 1 : **F(k) = d(d − 1)ᵏ⁻¹**. Cumul hors source = Σⱼ F(j), j de 1 à k. Une espérance de copies **F(k)·r/N ≥ 1** indique un ordre de grandeur. Le résultat peut manquer malgré ce seuil. |
 
 Sources · C1 p. 21 à 22, 32 et 34 à 37. Plaud 24/10 p. 5 à 6. La règle des raccourcis Chord et les probabilités cumulées complètent les exemples du support.
+
+<!-- page -->
+
+# Deux calculs repris le 14 novembre
+
+## Hypercube · Capacité, dimension et chemin
+
+**Capacité** = nombre de nœuds × capacité par nœud. Pour 50 To de données et des nœuds de 1 To, il faut 50 nœuds au minimum sans réplication. Avec 60 nœuds, la marge brute vaut 10 To.
+
+**Dimension minimale** = plafond(log₂ 60) = 6, soit 64 sommets logiques et quatre positions vacantes. Si les IDs actifs sont 0 à 59, 55 → 63 → 59 échoue. 55 → 51 → 59 reste actif et change un bit à chaque saut.
+
+## Recherche P2P avec une limite de 4 sauts
+
+Dans un réseau de 10 000 nœuds, on suppose un degré uniforme de 10 et 1 % de copies. On exclut la source. L’inondation est modélisée sans recouvrement. Pour la probabilité, on approxime chaque sondage comme indépendant avec **p = 0,01**.
+
+1. **Budget n de contacts.** Additionner les frontières pour l’inondation. Pour une marche, compter au plus un contact par saut.
+2. **Succès P.** Calculer l’échec de tous les contacts, puis prendre le complément. **P = 1 − (1 − p)ⁿ**.
+3. **Succès par contact.** Calculer **P/n** avec P exprimé entre 0 et 1 et n égal au budget maximal.
+
+| Stratégie | Contacts n | Probabilité et ratio |
+| --- | --- | --- |
+| Inondation | 10 + 90 + 810 + 7 290 = **8 200** | P ≈ 100 %. P/n ≈ **0,000122**. |
+| Marche aléatoire | **4** | P = 1 − 0,99⁴ ≈ **3,94 %**. P/n ≈ **0,00985**. |
+
+Le ratio de la marche est environ **81 fois** supérieur dans cet exemple. L’inondation offre une probabilité de succès bien plus élevée. Sur un graphe réel, les cycles et revisites réduisent le nombre de nœuds distincts et peuvent rendre les sondages dépendants.
+
+Sources · Oral du 14/11, 02:56:33–03:06:16, anciennes questions p. 6–7 et C1 p. 34–37.
 
 <!-- page -->
 
@@ -82,7 +109,11 @@ N = population, p = fraction ignorante au début du tour. Le modèle de calcul s
 
 **Exemple avec N = 10, p = 0,60.** Pull : 36 %. Push : 0,60 × 0,9⁴ ≈ 39,37 %. Push-pull : 0,36 × 0,9⁴ ≈ 23,62 %. La ligne push-pull et le classement push/pull du support C2 p. 40 sont ambigus ou incohérents avec ses récurrences dans certains régimes. Justifier la formule par les événements et préciser le modèle de tirage.
 
-## 7 · Compléments figurant dans les supports
+<!-- page -->
+
+# Compléments du cours
+
+## 7 · Rumeur et capteurs
 
 | Sujet | Relation et interprétation |
 | --- | --- |
@@ -90,4 +121,4 @@ N = population, p = fraction ignorante au début du tour. Le modèle de calcul s
 | Dérivation de la rumeur · C2 p. 40 à 41 | Avec s ignorants et i informés actifs, **ds/dt = −s·i**, **di/dt = s·i − pstop(1 − s)i**. Leur quotient donne **di/ds = −(1 + pstop) + pstop/s**. Avec i(1) ≈ 0, **i(s) = (1 + pstop)(1 − s) + pstop ln(s)**. Poser i(s) = 0 à la fin donne l’équation précédente. |
 | Capteurs et communautés · C1 p. 25 à 26 | **τ = Tactif/(Tactif + Tsuspendu)**. Ex. 2 s sur un cycle de 10 s → 20 %. Mobilité, si Fⱼ est non vide : ajouter j à Cᵢ si **card(Fⱼ ∩ Cᵢ)/card(Fⱼ) > λ**. Fusion si **card(Cᵢ ∩ Cⱼ) > γ·card(Cᵢ ∪ Cⱼ)**. Ici λ et γ sont des seuils. |
 
-Sources · C2 p. 13 et 38 à 41. Plaud 24/10 signale une possible exclusion de schémas avancés de mobilité et de capteurs. À vérifier avant d’écarter cette partie.
+Sources · C2 p. 13 et 38 à 41, C1 p. 25 à 26. Périmètre des compléments à vérifier.
