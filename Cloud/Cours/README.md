@@ -2,10 +2,10 @@
 
 Notes de cours, fiches de notions et exemples à enrichir au fil des séances.
 
-- [Guide pour l’examen de mi-décembre](Atelier/Guide_Cloud_Examen_Mi_Decembre.pdf) · les quatre chapitres expliqués avec un exemple commun et un mini-sujet corrigé.
-- [Fiche de formules](Atelier/Fiche_Formules_Maths_Cloud.pdf) · méthodes, unités et calculs des deux supports, avec exemples.
+- [Guide pour l’examen de mi-décembre](Resumes/Guide_Cloud_Examen_Mi_Decembre.pdf) · les quatre chapitres expliqués avec un exemple commun et un mini-sujet corrigé.
+- [Fiche de formules](Resumes/Fiche_Formules_Maths_Cloud.pdf) · méthodes, unités et calculs des deux supports, avec exemples.
 
-Ces deux PDF sont aussi accessibles dans la rubrique « Préparer l’examen » de l’Atelier. Leurs sources Markdown sont dans `Resumes/`. Pour les actualiser après un nouveau cours, lancer `python Cloud/Cours/Outils/generer_fiches_examen.py` depuis la racine (ReportLab et Arial ou DejaVu Sans).
+Les PDF et leurs sources Markdown sont dans `Resumes/`. Pour les actualiser après un nouveau cours, lancer `python Cloud/Cours/Outils/generer_fiches_examen.py` depuis la racine (ReportLab et Arial ou DejaVu Sans). Le script actualise aussi les copies accessibles dans la rubrique « Préparer l’examen » de l’Atelier.
 
 - [Resumes](Resumes/) : [Fiche 01 illustrée](Resumes/Fiche_01_Cloud_et_systemes_distribues.pdf), [guide consolidé des cours 1 et 2](Resumes/Guide_revision_Cloud_examen_TP.pdf) et données éditables `revisions.json`.
 - [Atelier](Atelier/README.md) : douze modules pour comprendre les notions, réviser et préparer les TP ; fonctionnement local, sans build.

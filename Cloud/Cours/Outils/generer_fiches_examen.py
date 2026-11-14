@@ -6,6 +6,7 @@ Usage: python Cloud/Cours/Outils/generer_fiches_examen.py (ReportLab et DejaVu S
 from html import escape
 from pathlib import Path
 import re
+from shutil import copyfile
 
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
@@ -127,12 +128,13 @@ def main():
     register_fonts()
     for name in DOCUMENTS:
         source = (COURSE / 'Resumes' / f'{name}.md').read_text(encoding='utf-8')
-        output = COURSE / 'Atelier' / f'{name}.pdf'
+        output = COURSE / 'Resumes' / f'{name}.pdf'
         doc = SimpleDocTemplate(str(output), pagesize=A4, leftMargin=42, rightMargin=42,
                                 topMargin=40, bottomMargin=52, pageCompression=True,
                                 title=source.splitlines()[0][2:], author='Master DSICS', invariant=True)
         doc.build(list(contents(source, make_styles(name.startswith('Fiche')), doc.width - 12)),
                   onFirstPage=page_footer, onLaterPages=page_footer)
+        copyfile(output, COURSE / 'Atelier' / output.name)
         print(output)
 
 
