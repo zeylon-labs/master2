@@ -1,80 +1,463 @@
 %PDF-1.4
-%“Œ‹ž ReportLab Generated PDF document (opensource)
+%âãÏÓ
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R /F3 4 0 R
+/Producer (pypdf)
+/Title (Cloud \055 Questions de l\220examen de l\220an dernier)
+/Subject (Cinq questions corrig\351es sur les syst\350mes distribu\351s)
 >>
 endobj
 2 0 obj
 <<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+/Type /Pages
+/Count 2
+/Kids [ 4 0 R 10 0 R ]
 >>
 endobj
 3 0 obj
 <<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+/Type /Catalog
+/Pages 2 0 R
 >>
 endobj
 4 0 obj
 <<
-/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+/Contents 5 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
 >>
 endobj
 5 0 obj
 <<
-/Contents 9 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 8 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
-
->> 
-  /Type /Page
+/Length 4847
 >>
+stream
+1 0 0 1 0 0 cm
+BT
+/F1 12 Tf
+14.4 TL
+ET
+0.027451 0.4 0.368627 rg
+n
+48 791.8898 30 3 re
+f*
+BT
+/F2 10 Tf
+12 TL
+ET
+BT
+1 0 0 1 48 773.8898 Tm
+(MASTER 2 DATA SCIENCE  \057  CLOUD) Tj
+T*
+ET
+q
+1 0 0 1 48 690.8898 cm
+q
+BT
+1 0 0 1 0 38 Tm
+34 TL
+/F2 30 Tf
+0.090196 0.164706 0.227451 rg
+(Questions de l\222examen) Tj
+T*
+(de l\222an dernier) Tj
+T*
+ET
+Q
+Q
+0.933333 0.964706 0.960784 rg
+n
+53 635.8898 m
+68 635.8898 l
+70.764 635.8898 73 638.1258 73 640.8898 c
+73 655.8898 l
+73 658.6538 70.764 660.8898 68 660.8898 c
+53 660.8898 l
+50.236 660.8898 48 658.6538 48 655.8898 c
+48 640.8898 l
+48 638.1258 50.236 635.8898 53 635.8898 c
+h
+f*
+0.027451 0.4 0.368627 rg
+BT
+/F2 12 Tf
+14.4 TL
+ET
+BT
+1 0 0 1 57.164 644.1898 Tm
+(1) Tj
+T*
+ET
+q
+1 0 0 1 85 621.8898 cm
+q
+0.090196 0.164706 0.227451 rg
+BT
+1 0 0 1 0 23 Tm
+/F2 15 Tf
+19 TL
+(D\351finir un syst\350me d\351centralis\351 par rapport \340 un syst\350me) Tj
+T*
+(distribu\351) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 48 558.8898 cm
+q
+BT
+1 0 0 1 0 39.6 Tm
+17 TL
+/F1 11.4 Tf
+0.090196 0.164706 0.227451 rg
+(Un ) Tj
+/F2 11.4 Tf
+(syst\350me distribu\351) Tj
+/F1 11.4 Tf
+( se compose de plusieurs n\234uds qui communiquent par le r\351seau et) Tj
+T*
+(coop\350rent pour fournir un service\056 Dans un ) Tj
+/F2 11.4 Tf
+(syst\350me d\351centralis\351) Tj
+/F1 11.4 Tf
+(\054 le contr\364le et la prise de) Tj
+T*
+(d\351cision sont r\351partis entre plusieurs n\234uds\054 sans coordinateur central indispensable\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 48 516.8898 cm
+q
+BT
+1 0 0 1 0 22.6 Tm
+17 TL
+/F2 11.4 Tf
+0.270588 0.34902 0.407843 rg
+(Exemple\056) Tj
+/F1 11.4 Tf
+( Plusieurs serveurs ex\351cutent des calculs\056 Un serveur ma\356tre attribue toutes les t\342ches\056) Tj
+T*
+(Le calcul est distribu\351 et la coordination est centralis\351e\056) Tj
+T*
+ET
+Q
+Q
+0.827451 0.87451 0.894118 RG
+0.65 w
+n
+48 497.8898 m
+547.2756 497.8898 l
+S
+0.933333 0.964706 0.960784 rg
+n
+53 451.8898 m
+68 451.8898 l
+70.764 451.8898 73 454.1258 73 456.8898 c
+73 471.8898 l
+73 474.6538 70.764 476.8898 68 476.8898 c
+53 476.8898 l
+50.236 476.8898 48 474.6538 48 471.8898 c
+48 456.8898 l
+48 454.1258 50.236 451.8898 53 451.8898 c
+h
+f*
+0.027451 0.4 0.368627 rg
+BT
+/F2 12 Tf
+14.4 TL
+ET
+BT
+1 0 0 1 57.164 460.1898 Tm
+(2) Tj
+T*
+ET
+q
+1 0 0 1 85 456.8898 cm
+q
+0.090196 0.164706 0.227451 rg
+BT
+1 0 0 1 0 4 Tm
+/F2 15 Tf
+19 TL
+(Quel est le r\364le d\222un middleware dans un syst\350me distribu\351 \077) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 48 371.8898 cm
+q
+BT
+1 0 0 1 0 56.6 Tm
+17 TL
+/F1 11.4 Tf
+0.090196 0.164706 0.227451 rg
+(Un ) Tj
+/F2 11.4 Tf
+(middleware) Tj
+/F1 11.4 Tf
+( est une couche logicielle interm\351diaire qui facilite la communication et la) Tj
+T*
+(coordination entre les composants\056 Il masque une partie de la complexit\351 du r\351seau et de) Tj
+T*
+(l\222h\351t\351rog\351n\351it\351 des machines\054 des syst\350mes ou des langages\056 Selon le middleware\054 il fournit des) Tj
+T*
+(appels distants\054 des files de messages ou des m\351canismes de s\351rialisation\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 48 329.8898 cm
+q
+BT
+1 0 0 1 0 22.6 Tm
+17 TL
+/F2 11.4 Tf
+0.270588 0.34902 0.407843 rg
+(Exemple\056) Tj
+/F1 11.4 Tf
+( Avec RabbitMQ\054 un service place une demande dans une file\056 Un autre la r\351cup\350re plus) Tj
+T*
+(tard\056 Les deux services communiquent de fa\347on asynchrone\056) Tj
+T*
+ET
+Q
+Q
+0.827451 0.87451 0.894118 RG
+0.65 w
+n
+48 310.8898 m
+547.2756 310.8898 l
+S
+0.933333 0.964706 0.960784 rg
+n
+53 264.8898 m
+68 264.8898 l
+70.764 264.8898 73 267.1258 73 269.8898 c
+73 284.8898 l
+73 287.6538 70.764 289.8898 68 289.8898 c
+53 289.8898 l
+50.236 289.8898 48 287.6538 48 284.8898 c
+48 269.8898 l
+48 267.1258 50.236 264.8898 53 264.8898 c
+h
+f*
+0.027451 0.4 0.368627 rg
+BT
+/F2 12 Tf
+14.4 TL
+ET
+BT
+1 0 0 1 57.164 273.1898 Tm
+(3) Tj
+T*
+ET
+q
+1 0 0 1 85 269.8898 cm
+q
+0.090196 0.164706 0.227451 rg
+BT
+1 0 0 1 0 4 Tm
+/F2 15 Tf
+19 TL
+(Qu\222est\055ce qu\222un r\351seau superpos\351 \077 Donner un exemple\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 48 201.8898 cm
+q
+BT
+1 0 0 1 0 39.6 Tm
+17 TL
+/F1 11.4 Tf
+0.090196 0.164706 0.227451 rg
+(Un ) Tj
+/F2 11.4 Tf
+(r\351seau superpos\351) Tj
+/F1 11.4 Tf
+( \050) Tj
+/F3 11.4 Tf
+(overlay network) Tj
+/F1 11.4 Tf
+(\051 est un r\351seau logique construit au\055dessus d\222un r\351seau) Tj
+T*
+(sous\055jacent\056 Deux n\234uds voisins dans ce r\351seau logique peuvent communiquer par un chemin qui) Tj
+T*
+(traverse plusieurs routeurs du r\351seau sous\055jacent\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 48 159.8898 cm
+q
+BT
+1 0 0 1 0 22.6 Tm
+17 TL
+/F2 11.4 Tf
+0.270588 0.34902 0.407843 rg
+(Exemple\056) Tj
+/F1 11.4 Tf
+( Un VPN relie deux bureaux via Internet\056 Le tunnel VPN forme le lien logique entre eux\056) Tj
+T*
+(Internet transporte les paquets du tunnel\056) Tj
+T*
+ET
+Q
+Q
+0.827451 0.87451 0.894118 RG
+n
+48 49 m
+547.2756 49 l
+S
+0.270588 0.34902 0.407843 rg
+BT
+/F1 9 Tf
+10.8 TL
+ET
+BT
+1 0 0 1 48 33 Tm
+(Fiche de r\351vision) Tj
+T*
+ET
+BT
+1 0 0 1 529.7616 33 Tm
+(1 \057 2) Tj
+T*
+ET
+
+endstream
 endobj
 6 0 obj
 <<
-/PageMode /UseNone /Pages 8 0 R /Type /Catalog
+/F1 7 0 R
+/F2 8 0 R
+/F3 9 0 R
 >>
 endobj
 7 0 obj
 <<
-/Author (anonymous) /CreationDate (D:20000101000000+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20000101000000+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (Syst\350mes distribu\351s, middleware et r\351seau superpos\351) /Title (Cloud - Questions de l\220examen de l\220an dernier) /Trapped /False
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 8 0 obj
 <<
-/Count 1 /Kids [ 5 0 R ] /Type /Pages
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 9 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 1935
+/BaseFont /Helvetica-Oblique
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+10 0 obj
+<<
+/Contents 11 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font 12 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+>>
+endobj
+11 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ]
+/Length 2042
 >>
 stream
-GauI795iQE&:j6K'm"JT<7QVISJKm*>nfi%EVJN%,LHh0''5:>S,W;UTd36Fm'OA1RK0T`PJ_Zp6R;^SIfoSWVucnQ^rt=1"<hT)&290]jpE_"/'e`)('f@'?BetlR"E%X.:=$hH/N7:SjDF)"BrV/q9"R$+n2V$E"IW-_/LI_9;?snVM=cuoBXZ_-OA\jHufeLYMNNuHZ]Ya'&_<jqp-))@.OO[cUl40eP&Gqqn7r_`\1rp;&(T@Z3HCCOk%GBF$I_Zn:H=i5(87"?2>>f+$3n7fdHs!J8-$XTt'9n;"eihI6GksKhJe96I-ACLqd7;d1:Kt+?iU!1h5*<X#P\VML0d;<K^(OC6eX%R]pKQV6u^-KQ7%97QX[.MPkkZb.JuhF%7+iYa/$TgcdcI**'&lpVJ>HB#p=6*;^_:qe3q'4rTE,NA<tokOoXk]+sJEn['1?j2WF7`@jt86?k9WJh]cIUKN\tOG(G$$VlJ%R35p+;QV.J<?rqLeed'h%X(`A%@mRlh6]0#f)eS@U(F?T]TS!RYico]hsVN?_DYm&ElY-H\s0)Bntr0F5:"GsRq%DmWGKknK[^IZ5+f)J"7k4,)?!]h4jP$,XC':JqGFN.i&)>P78rXor5?h:=.PJJdg";[N*'."ptA;C;0PW]mEdZ?+dE%%!fc+YLt6jFBUV)TX6md$e$-_SUS!6(a?k,j_6O!NTBZ:s'G%T9,=RIof5.48iNm3kiiq%_RPP,fb)ur:*t0djPt+2FBn24'B)*;]dM#@'V,Y+H04E34UdDQYKeiS''&KDR%['c\%`;kj-U2ialGm%^ou(l8`6':>6oNhepS-N*B.cRI_3mQ[[L_BS>2HY$O&DW.]ILM8GjnjqX.\Ub-m9u-eu"=T[_XO"]k[W._8>2,(h`"-8do_?@Cf"6+TTf#jD\;/LuSSmH.bHED"u(S&7k:pY8+n]^@a(6jlq:qLfoTVMN_bWK'T%L)+Dl]lpd#YDC23fb]0&iac+Co%;&jW.9gbZV2=6<Ha[1&,KF@S6cP++luOl@Z9,bb7r6"QVt8]X-fQo!^>ZRAT&T>%Sc?Q<Fqi-PSGSQ9nR=#[UgB"]W+B+4iZ#oh/I-ZnJ/nLW=?T,fE2ju,P,I=.V!X:*,mue'i9IPLTPA@U+[q+)9%=8SP7aYP&ks\ImW]m*fo!MJ/;T4XZDcF<m%"l^Kc8K[:NrsF/G_:?(:ukkg[d#s/G=G4Lm<>?=r3L\K(!cHg<7kaI;,&5k*A1Fr>@QSWAQ?sU_3r1)GQ>LcuaH2ip)ie,$!Q)<2_KS5<8*>A2SH=M_0-4p0gf9)fDs[QbJYo-^oVG%ETU9Yb!DUP,@X`=Sui(+L5m2Ph]-'s"8>a+%-.%ps"e7hgR\Woh'$n]]c+jMOLToA\YH]>E8=#`gZWF/%VDVgQptaf5b/CE+T!ph2h-OZF-J&*B""c@R.I!Y)5<sW;hY=..A>:g<KR'Y/>q;E:$+)f5;q3[Ah&dR,g&.LDcT?3m?"UY/;f7\9?16f5BYgm:KHYag'0.L22!ZeW8,^Y+<jZqjn)F+hh\O>Xt]24aH3>E,FL)9`(P,;@T:j\7)t^d)_e"b&G`V-1"&sbU_X?onEB::-[]#q7*_#.Wi9D-DP:\3=&p\n"<)GXjR/2gpMPgY^Y^KU-/MoDlqZt3oh7K?6H=CB3_W]X'PCeVDBm>E4SNtopH0>h9QT@hJ;A(em;CrOe_WE4&C&qV6923*`'ZP;bKPrAcd\KBU>.ELc*uml!_sTjuPX@aWUS"*5rcprS\c1;;&[<DS#'hl?WsGal*\O<t#jQ&D@W#Z*MPsNNT6^!q&t3COHFV):Q9C'EI>AAa#,XDm=YL)d;R!?L4j/F1BpV0=<qb:O->*r;S+QV2.N&qOa+q^A4p=9=eSs6WtJr/'pu#3C^7/V+Hc-3s0^6o/BfSr<l9q[Kl~>endstream
+Gatm<gN)%,&:N/3m%^(j&`,0:*S5;bbbT(g.s]PN6pWR`,Y/TElLaDS$h1$/SCI7k-%`pAEVAajKjAZef/8&a!oUNk]RK0ulbR$4DSQ<U]SF,<N&b2aKJ)0_o:mT%@]6al"[N30lEV[,'C[%3TbakX2)Ai,E#iH.l\sc#g[.Ms@c+=m'JTRYk'h=E#s<HRZabS`gNRjkh;/1F#.T*]pZFJ:YkSQ`=(LB32R*jjJ[LUTpgR\S?&?Y,DtYMb]S(Z@:?o?'"O)jWfYLA0Su^_br*q7!,>4kA/KeDHSgU+S+dCZMG+\Nh>iCoN8Pr8'qhW!<p#u]`g6k_]-Va_qeL^>9$6neS0oM4b.A+QhMkaZ"M.pkM>VEJA_[b^C7ShFANh0,aKg*fJCrG.7g*%NgdI-s34prCn+[X'P@G0BihkPW@4b^d7HKtIoD=g"fc^2ltB#oVR[-?7`8?thb_O)O#4,;&I3>.im5nZNFHP70b&+MhL4J/\n7mc6,8oDl1/H*rO81!Sn"-$,\Y%0.(H3L$oS:f+3c6n5O)D:Vd0L-Q8VZpEVS1/RK26s-.Jdl)`6/7U(i`_6YE5]#NOfdu$f#+ZreCrr2R)J04n%$Xrhi1ajF5M*Hj3-e=J*O8X#?)0p$Zj*'U%;p0i`UJMj$3QI[LF8^O/:!BB//&'.\i5+]JHL[CkjGZn]8kI.Q(;PL_J[&$n>]J($/V:AB#/O;X+J<0_iG!&5T%!EcDPbU1MU-8uhsNh8r@C/XsQj]*PS.0`OgD8XTBRi1;=?0uV[s&P^uEH/$EriJQsm0j*\G?C?ubGi10Z$e?o$]NE]nj<6gFL3'>>,MH=.)_T]Q-F@[f#h@q>7E]"i@Do;DRTBVP0cJq`?+)W9LC-8>i)1_<,Xm3A@jUD7=Vk>j4J$*c%BOOE7IYpT3=#OPAp^cr-4*_@+E]fJ2cOsKKDcT`2]-^3WTCbpgE48_k"T'&DaoZVjV9jCs-n1iP!J@p!5bIf\/.8SOSILm']W2Q/F@L"B+@1Tq3(dhC^_!0h1#-H)5H,d1&@ZHjhFp$/u+)&ok^"MC7oo=3aufbMJs`_Ya!_W?Grb8HAe#:i:V78Z&qgBcd63$QZ?hO!<2,u4-J]/U.GUe&5<,O3YD<%<0hXkP]S!]i495BqL+)b#liQN-9uQ*?l'@Y0k(thj&cfchpm+hB=-(aiG$[:@0F!n:E:3nRd[/'(M-M?^_tb_'-cg=1d>rk\[]QHh.ZfW1hckB6AOmod._toU\Vgq\UEc@l>-km:XAc%Rd[-dMgEVYcY:*8#Ep-P6-\R`0Wm6q7OTc,34-\)Y2uZ@g0k[:RVrqS*S@p3aqSO5oc2.($5gpGUs(SO\nQgsCZHkKT;q'a>KY-(msF<joA+ht+<@BNG7K'Gbqi=1SC&@Zi;0_7lXqOo@n!ML_5f'SZktKr;:sBo;5/#kenN4%m2G=`5##]o]&'L(7`Y?0b:]d<!c9GGo`O).l(q<TH'%5A73O0'BGR2O\QF'h+46ru`^/PN.)?+$WO?Zqi>`(-"dC"YVtu,F<&F1ZM`--913@.E'lmOYfSWj;h?`em`7%\(P"tAke/EIL#e+B&k$,+'3k'sRcnX\9^*,YG[PiLse]B`4YjU67m!-ohIUM2\mP]C@35/@`;A3>UV8N[P+SM1F7qk,sBk5Df^72c;X;K`$U@RP[`pO0\)22ct8VF>PmJ!kO_[7Q'>J@EaU6TLj9@".&23pha>T\r7a(`ebm6TX0W)I!`>nVAGc!(C:9"?4!afR%.j4T/j"YK,(bK=A+/NV[/fNi.gAC,#7'-:RpqHRo$\/94uS,Uo#m!L1(B:GJk4k42^7+rVIkKFs_C[duY9L"_N'A'Ldp,.5V"+sAnVln/*gt:STq!=@)Q*fot?!.KP]LV]O*`4o1M4Zll6#No%Pu61:4T<B7Ic"1+=Z:GVYsm*S`X?'amt*1`R:fYp?N]X4))`8F\B3()H0JXfQeL$YdK.GHe9HmSJ+>g/^,agCXi*UH&n352?c&n&s(@N,4+fM5UOF^(?@t2A%C?'7p6[2E~>
+endstream
+endobj
+12 0 obj
+<<
+/F1 13 0 R
+/F2 14 0 R
+/F3 15 0 R
+>>
+endobj
+13 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+14 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+15 0 obj
+<<
+/BaseFont /Helvetica-BoldOblique
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
 endobj
 xref
-0 10
+0 16
 0000000000 65535 f 
-0000000061 00000 n 
-0000000112 00000 n 
-0000000219 00000 n 
-0000000331 00000 n 
-0000000446 00000 n 
-0000000649 00000 n 
-0000000717 00000 n 
-0000001073 00000 n 
-0000001132 00000 n 
+0000000015 00000 n 
+0000000191 00000 n 
+0000000257 00000 n 
+0000000306 00000 n 
+0000000505 00000 n 
+0000005404 00000 n 
+0000005455 00000 n 
+0000005562 00000 n 
+0000005674 00000 n 
+0000005789 00000 n 
+0000005991 00000 n 
+0000008126 00000 n 
+0000008181 00000 n 
+0000008289 00000 n 
+0000008402 00000 n 
 trailer
 <<
-/ID 
-[<13f3d79661c430ab528d8f5b020f4d15><13f3d79661c430ab528d8f5b020f4d15>]
-% ReportLab generated PDF document -- digest (opensource)
-
-/Info 7 0 R
-/Root 6 0 R
-/Size 10
+/Size 16
+/Root 3 0 R
+/Info 1 0 R
 >>
 startxref
-3158
+8522
 %%EOF
