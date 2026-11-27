@@ -9,42 +9,28 @@ from time import perf_counter
 from ecdsa import BadSignatureError, NIST384p, SigningKey
 
 
-# Q1. Ici, c'est l'intégrité qui compte. Si on remplace les 70 € dépensés
-# chez Total par 700 €, on obtient une autre empreinte en recalculant le bloc.
-# Le bloc suivant contient encore l'ancienne. C'est ce qui permet de repérer
-# la modification. Les montants, eux, restent lisibles en clair.
+# Q1. C'est l'intégrité. Si la dépense chez Total passe de 70 € à 700 €,
+# l'empreinte recalculée ne correspond plus à celle que garde le bloc suivant.
 #
-# Q2. Dans le main.py fourni, un bloc reçoit une liste de transactions
-# (transaction_list) et l'empreinte du bloc précédent (previous_block_hash).
-# Le programme joint les libellés avec " - " et ajoute l'empreinte précédente
-# à la fin pour former block_data. Il encode ce texte en UTF-8, calcule son
-# SHA-256 et garde le résultat en hexadécimal dans block_hash. Le bloc
-# « Genesis Block » utilise "0" puisqu'il n'a pas de prédécesseur. Les six
-# opérations viennent ensuite.
+# Q2. Dans main.py, chaque bloc contient les transactions (transaction_list)
+# et l'empreinte du bloc précédent (previous_block_hash). Le programme les
+# assemble dans block_data, puis calcule l'empreinte SHA-256 de ce texte
+# et la stocke dans block_hash. Le premier bloc utilise "0" comme référence.
 #
-# Q3. Dans la version de départ, il suffit d'écrire une dépense pour qu'elle
-# soit ajoutée. Personne ne la signe et le programme ne vérifie pas si celui
-# qui paie a les fonds. Il calcule une seule empreinte par bloc, sans preuve
-# de travail. Quand on affiche la chaîne, on relit les empreintes enregistrées
-# sans les vérifier. Il n'y a qu'une copie du carnet et aucun autre mineur.
+# Q3. Le programme de départ accepte une transaction sans signature et sans
+# vérifier si la personne a de quoi payer. Il manque aussi la preuve
+# de travail et la vérification de la chaîne. Le carnet reste sur un seul poste.
 #
-# Q4. Le code dans main() signe chaque libellé avec la clé privée du carnet.
-# À l'ajout du bloc, verifier_signature() vérifie le même texte avec la clé
-# publique. On peut le voir sur la dépense chez Total en changeant le montant
-# et en gardant la signature d'origine.
+# Q4. La clé privée sert à signer chaque transaction. Avant d'ajouter le bloc,
+# le programme vérifie la signature avec la clé publique.
 #
-# Q5. Je peux écrire que mon employeur m'a versé 2 000 € et signer la ligne
-# moi-même. La signature sera valide même si je n'ai rien reçu. Mon employeur
-# n'a rien signé de son côté. Pour savoir si les 2 000 € sont vraiment arrivés,
-# il faudrait par exemple vérifier le versement sur mon relevé de compte.
+# Q5. Le titulaire du carnet peut y inscrire un salaire de 2 000 € même si
+# le virement n'a jamais eu lieu. Sa signature ne prouve pas que l'employeur
+# a autorisé le paiement.
 #
-# Q6. Sur le Core i5-12400F, le meilleur résultat en dix minutes a été de
-# six zéros en tête. Le programme les a trouvés après 59,06 s avec le nonce
-# 26 361 962. Il a continué jusqu'à 600,01 s, soit 298 602 496 essais au
-# total, sans atteindre sept zéros. En hexadécimal, un zéro correspond à
-# quatre bits. Pour d zéros en tête, on a une chance sur 16**d par essai.
-# Un zéro de plus demande donc en moyenne seize fois plus d'essais.
-# Empreinte : 000000ce3ec1c6b558fb64d2137f8fab837e2135c241f7f628126c20f3f6983e
+# Q6. On fait varier un compteur appelé nonce et on recalcule l'empreinte
+# du bloc à chaque essai. Pendant le test de dix minutes, la meilleure
+# empreinte obtenue commençait par six zéros.
 
 
 def verifier_signature(cle_publique, transaction, signature):
@@ -118,25 +104,20 @@ def mesurer_minage(bloc, secondes):
     if not math.isfinite(secondes) or secondes <= 0:
         raise ValueError("La durée de mesure doit être positive et finie.")
     prefixe = bloc.prefixe_minage()
-    debut = perf_counter()
-    limite = debut + secondes
+    limite = perf_counter() + secondes
     essais = 0
     meilleur = -1
     cible = ""
+    print(f"Recherche pendant {secondes:g} s…", flush=True)
     while essais == 0 or perf_counter() < limite:
-        # Vérifier l'heure tous les 4 096 essais évite de le faire après chaque hash.
         for nonce in range(essais, essais + 4096):
             valeur = empreinte(prefixe, nonce)
             if valeur.startswith(cible):
                 meilleur = len(valeur) - len(valeur.lstrip("0"))
                 meilleur_nonce, meilleur_hash = nonce, valeur
                 cible = "0" * (meilleur + 1)
-                print(f"{meilleur} zéro(s) en {perf_counter() - debut:.2f} s "
-                      f"(nonce {nonce})", flush=True)
         essais += 4096
-    duree = perf_counter() - debut
-    print(f"Mesure : {essais} essais en {duree:.2f} s ({essais / duree:.0f} essais/s).")
-    print(f"Meilleure preuve : {meilleur} zéros, nonce {meilleur_nonce}, SHA-256 {meilleur_hash}")
+    print(f"Nombre maximal de zéros en début d'empreinte : {meilleur}.")
     return meilleur, meilleur_nonce, meilleur_hash
 
 

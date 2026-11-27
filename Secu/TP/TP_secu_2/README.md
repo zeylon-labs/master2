@@ -48,26 +48,7 @@ La première page du sujet décrit un bloc avec cinq éléments. Son empreinte e
 | Q3 | À l’origine, le programme accepte tout libellé, calcule une empreinte et l’affiche. Le modèle du sujet ajoute le contrôle des fonds, les signatures, le minage et la vérification collective. | Commentaire Q3. |
 | Q4 | Une clé privée ECDSA P-384 signe les octets UTF-8 de chaque libellé avec SHA-256. La clé publique vérifie la signature avant l’ajout du bloc. | Les deux dernières lignes du lancement court comparent la dépense de 70 € et le même texte porté à 700 € avec la signature initiale. |
 | Q5 | La signature du titulaire atteste son accord pour inscrire le salaire. L’employeur n’a fourni aucun justificatif signé. Même une chaîne entièrement cohérente peut donc donner un solde de départ faux. | Commentaire Q5 et libellé du premier versement. |
-| Q6 | Pour mesurer ce que le PC peut atteindre, fixer la durée, garder un même bloc signé et parcourir les nonces. Retenir la meilleure empreinte réellement obtenue. | `mesurer_minage`, option `--mesure 600` et résultats ci-dessous. |
-
-### Interpréter la mesure de Q6
-
-Le préfixe fixe encode le hash précédent, la liste des opérations et les signatures. Le programme ajoute un séparateur et le nonce décimal avant d’appeler SHA-256. À chaque nouveau record, il affiche le nombre de zéros en tête, le nonce et le temps écoulé. En fin de mesure, il affiche aussi le nombre d’essais et l’empreinte complète. La lecture de l’horloge se fait par séries de 4 096 essais.
-
-**Résultat du 27 novembre 2026 sur le Core i5-12400F, sous Windows et Python 3.12.14.** Le programme a testé 298 602 496 nonces sur le premier bloc signé en 600,01 s, soit 497 664 essais/s. Le meilleur résultat est de **six zéros hexadécimaux**.
-
-| Préfixe recherché | Premier nonce trouvé | Temps écoulé |
-| --- | ---: | ---: |
-| 4 zéros | 33 952 | 0,07 s |
-| 5 zéros | 371 144 | 1,70 s |
-| 6 zéros | 26 361 962 | 59,06 s |
-| 7 zéros | Aucun sur cette série | 600,01 s de recherche |
-
-Empreinte du meilleur essai : `000000ce3ec1c6b558fb64d2137f8fab837e2135c241f7f628126c20f3f6983e`. Au débit mesuré, le temps **moyen** attendu pour sept zéros est d’environ neuf minutes. Le tirage de ce soir illustre qu’une recherche de dix minutes peut finir sans en trouver.
-
-Il y a seize valeurs possibles pour un chiffre hexadécimal. Obtenir six zéros demande en moyenne 16 777 216 essais. Pour sept zéros, la moyenne passe à 268 435 456 essais. Le seuil de vingt zéros cité dans l’introduction représente 80 bits imposés, soit environ 1,21 × 10²⁴ essais en moyenne. Les blocs ordinaires utilisent deux zéros pour que la démonstration reste fluide.
-
-Une mesure donne un résultat atteint dans des conditions précises. Un nouvel essai crée une nouvelle paire de clés et donc une autre signature. Les nonces gagnants et le meilleur nombre de zéros peuvent changer sur la même machine.
+| Q6 | Le programme change le nonce à chaque essai et compte les zéros au début de l’empreinte. Le meilleur résultat du test de dix minutes est de six zéros. | Fonction `mesurer_minage`, option `--mesure 600`. |
 
 ## Partie 2 · Comptes entre trois amis
 
