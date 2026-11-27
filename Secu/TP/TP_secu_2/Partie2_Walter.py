@@ -65,12 +65,14 @@ class Transaction:
             raise ValueError("Choisir un seul autre ami pour cette opération.")
 
     def message(self, precedent):
-        # L'accord porte aussi sur la place de cette écriture dans le carnet.
+        # On signe aussi l'empreinte précédente. Une fois l'opération ajoutée,
+        # les mêmes signatures ne permettent pas de l'inscrire une deuxième fois.
         return encoder([precedent, asdict(self)])
 
     def parts(self):
         quotient, reste = divmod(self.centimes, len(self.beneficiaires))
-        # Chaque centime restant revient à un bénéficiaire, par ordre alphabétique.
+        # Pour 10 € à trois, Alice prend 3,34 €, Benoît et Chloé 3,33 € chacun.
+        # L'ordre alphabétique détermine à qui revient le centime en plus.
         return {ami: quotient + (i < reste)
                 for i, ami in enumerate(sorted(self.beneficiaires))}
 
@@ -123,7 +125,8 @@ class Bloc:
 
 
 def enregistrer_soldes(soldes, operation):
-    # soldes[A][B] > 0 signifie que B doit de l'argent à A.
+    # Si Alice avance 20 € à Benoît, soldes["Alice"]["Benoît"] vaut +2000
+    # centimes. Vu du côté de Benoît, la même dette vaut -2000.
     payeur = operation.payeur
     if operation.nature == "remboursement":
         creancier = operation.beneficiaires[0]
@@ -162,6 +165,8 @@ class Blockchain:
         self.blocs.append(bloc)
 
     def valider(self):
+        # Q8. On repart de la genèse et on refait les comptes au fil des blocs.
+        # On peut ainsi vérifier chaque remboursement avec la dette de ce moment-là.
         soldes = {ami: {autre: 0 for autre in AMIS if autre != ami} for ami in AMIS}
         if not self.blocs or self.blocs[0].empreinte != self.empreinte_genese:
             raise ValueError("Le bloc de genèse est absent ou a changé.")
@@ -212,6 +217,8 @@ def afficher_historique(chaine, ami):
 
 
 def proposer(chaine, operation, cles_privees, accepter):
+    # Q7. Pour le billet de train, Alice et Benoît doivent signer.
+    # Pour le déjeuner à trois, il faut aussi l'accord de Chloé.
     operation.verifier()
     print(operation.libelle())
     signatures = {}
@@ -272,7 +279,7 @@ def menu(chaine, cles):
 
 
 def demonstration(chaine, cles):
-    # Les accords sont simulés dans cet exemple. Dans le menu, chacun répond.
+    # Ici, les trois amis acceptent. Dans le menu, chacun peut refuser de signer.
     exemples = [
         Transaction("2026-11-27T12:00:00+01:00", "avance", "Alice", ("Benoît",), 2000, "Billet de train"),
         Transaction("2026-11-27T12:30:00+01:00", "achat", "Chloé", AMIS, 3000, "Déjeuner à trois"),

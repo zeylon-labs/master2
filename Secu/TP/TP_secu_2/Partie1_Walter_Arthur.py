@@ -9,40 +9,46 @@ from time import perf_counter
 from ecdsa import BadSignatureError, NIST384p, SigningKey
 
 
-# Q1. Le critère prioritaire est l'intégrité. Si le montant d'une dépense
-# change, son empreinte change aussi et le bloc suivant référence encore
-# l'ancienne empreinte. Le rapprochement des deux révèle l'incohérence.
-# Les opérations de cet exemple sont lisibles en clair.
+# Q1. Ici, c'est l'intégrité qui compte. Si on remplace les 70 € dépensés
+# chez Total par 700 €, on obtient une autre empreinte en recalculant le bloc.
+# Le bloc suivant contient encore l'ancienne. C'est ce qui permet de repérer
+# la modification. Les montants, eux, restent lisibles en clair.
 #
-# Q2. Dans main.py, chaque Block contient previous_block_hash et
-# transaction_list. block_data assemble les libellés avec « - », puis ajoute
-# l'empreinte précédente. block_hash est le SHA-256 de ce texte encodé en
-# UTF-8, écrit en hexadécimal. Le premier bloc contient « Genesis Block » et
-# utilise la chaîne « 0 » comme référence. Les six opérations viennent ensuite.
+# Q2. Dans le main.py fourni, un bloc reçoit une liste de transactions
+# (transaction_list) et l'empreinte du bloc précédent (previous_block_hash).
+# Le programme joint les libellés avec " - " et ajoute l'empreinte précédente
+# à la fin pour former block_data. Il encode ce texte en UTF-8, calcule son
+# SHA-256 et garde le résultat en hexadécimal dans block_hash. Le bloc
+# « Genesis Block » utilise "0" puisqu'il n'a pas de prédécesseur. Les six
+# opérations viennent ensuite.
 #
-# Q3. Le programme de départ relie les blocs, mais chacun peut y inscrire un
-# libellé. Il manque la signature et sa vérification, le contrôle des fonds
-# de l'émetteur et la preuve de travail. Le programme affiche les empreintes
-# déjà stockées sans les recalculer pour contrôler la chaîne. Il conserve
-# aussi une seule copie locale, sans les autres mineurs décrits dans le sujet.
+# Q3. Dans la version de départ, il suffit d'écrire une dépense pour qu'elle
+# soit ajoutée. Personne ne la signe et le programme ne vérifie pas si celui
+# qui paie a les fonds. Il calcule une seule empreinte par bloc, sans preuve
+# de travail. Quand on affiche la chaîne, on relit les empreintes enregistrées
+# sans les vérifier. Il n'y a qu'une copie du carnet et aucun autre mineur.
 #
-# Q5. Si j'inscris « L'employeur me verse 2000 € », ma signature prouve que
-# j'ai approuvé cette écriture. Rien ne prouve que mon employeur a ordonné
-# le virement, ni que l'argent est arrivé sur mon compte. Je peux donc tenir
-# un registre cohérent dans lequel mon solde de départ est faux.
+# Q4. Le code dans main() signe chaque libellé avec la clé privée du carnet.
+# À l'ajout du bloc, verifier_signature() vérifie le même texte avec la clé
+# publique. On peut le voir sur la dépense chez Total en changeant le montant
+# et en gardant la signature d'origine.
 #
-# Q6. Un zéro hexadécimal représente quatre bits. Pour d zéros imposés,
-# la probabilité de succès par essai vaut 1/16**d, soit 16**d essais en
-# moyenne. À débit égal, un zéro de plus multiplie le travail moyen par 16.
-# Le meilleur résultat en dix minutes dépend du bloc, du PC et de la chance.
-# Sur le Core i5-12400F, le meilleur résultat de la mesure est de 6 zéros.
-# Le nonce 26 361 962 a été trouvé après 59,06 s. Au terme des 600,01 s,
-# 298 602 496 nonces avaient été testés, sans trouver de septième zéro.
+# Q5. Je peux écrire que mon employeur m'a versé 2 000 € et signer la ligne
+# moi-même. La signature sera valide même si je n'ai rien reçu. Mon employeur
+# n'a rien signé de son côté. Pour savoir si les 2 000 € sont vraiment arrivés,
+# il faudrait par exemple vérifier le versement sur mon relevé de compte.
+#
+# Q6. Sur le Core i5-12400F, le meilleur résultat en dix minutes a été de
+# six zéros en tête. Le programme les a trouvés après 59,06 s avec le nonce
+# 26 361 962. Il a continué jusqu'à 600,01 s, soit 298 602 496 essais au
+# total, sans atteindre sept zéros. En hexadécimal, un zéro correspond à
+# quatre bits. Pour d zéros en tête, on a une chance sur 16**d par essai.
+# Un zéro de plus demande donc en moyenne seize fois plus d'essais.
 # Empreinte : 000000ce3ec1c6b558fb64d2137f8fab837e2135c241f7f628126c20f3f6983e
 
 
 def verifier_signature(cle_publique, transaction, signature):
-    # Q4. La vérification porte sur les mêmes octets que la signature.
+    # Le libellé est encodé en UTF-8 ici aussi, comme au moment de le signer.
     try:
         return cle_publique.verify(
             signature, transaction.encode("utf-8"), hashfunc=hashlib.sha256
@@ -90,7 +96,6 @@ class Blockchain:
         self.chain.append(Block("0", ["Genesis Block"], [], self.difficulte))
 
     def create_block_from_transaction(self, transaction_list, signatures):
-        # Un justificatif signé est nécessaire pour chaque ligne du bloc.
         if not transaction_list or len(signatures) != len(transaction_list):
             raise ValueError("Il faut une signature par transaction.")
         for transaction, signature in zip(transaction_list, signatures):
@@ -119,7 +124,7 @@ def mesurer_minage(bloc, secondes):
     meilleur = -1
     cible = ""
     while essais == 0 or perf_counter() < limite:
-        # On consulte l'horloge par séries pour mesurer surtout le hachage.
+        # Vérifier l'heure tous les 4 096 essais évite de le faire après chaque hash.
         for nonce in range(essais, essais + 4096):
             valeur = empreinte(prefixe, nonce)
             if valeur.startswith(cible):
@@ -150,7 +155,7 @@ def main():
     t5 = "J'ai dépensé 110 € chez Engi"
     t6 = "J'ai dépensé 30 € chez SFR"
 
-    # Q4. Une paire pour la tenue de mon carnet. La clé privée reste ici.
+    # Q4. La même paire de clés sert pour les six écritures du carnet.
     cle_privee = SigningKey.generate(curve=NIST384p)
     cle_publique = cle_privee.verifying_key
     myblockchain = Blockchain(cle_publique)
