@@ -1,22 +1,22 @@
 window.CloudStudy = {
-  "date": "24 octobre 2026",
-  "scope": "Synthèse du support fourni (42 pages), des notes Word, de la transcription et du résumé Plaud du 23 octobre, complétée par les fiches et simulations existantes. L’enregistrement s’arrête pendant l’introduction aux systèmes HPC ; les architectures de la suite du PDF sont aussi à travailler, sans les présenter comme déjà traitées oralement.",
+  "date": "14 novembre 2026",
+  "scope": "Guide des deux supports d’Olivier Grunder, complété par les séances des 23 et 24 octobre et du 14 novembre. Les chapitres 1 et 2 couvrent les fondations et les architectures. Les chapitres 3 et 4 abordent les processus et les communications. Trois exercices repris en séance et un sujet blanc de 90 minutes préparent à l’écrit.",
   "evidence": [
     {
-      "label": "Annoncé oralement",
-      "text": "L’examen comporte quelques questions de mathématiques appliquées aux systèmes distribués, et aussi des questions non mathématiques. Transcription du 23/10, 02:37:44 (p. 63)."
+      "label": "Durée et attentes annoncées",
+      "text": "Écrit de 1 h 30. L’épreuve de 2024, utilisée comme exemple, durait 1 h. Le professeur attend des réponses courtes centrées sur les notions essentielles. Un schéma est facultatif. Transcription du 14/11, 02:14:21–02:15:27 et 02:41:08–02:41:30."
+    },
+    {
+      "label": "Périmètre de révision",
+      "text": "L’écrit suit ce qui a été traité en octobre et pendant le week-end de novembre. Le 14/11, le cours s’arrête après ZeroMQ avant les révisions. Priorité à RPC, sockets et ZeroMQ. Les détails DCE RPC, MPI, messagerie avancée et gossip restent à vérifier pour l’écrit."
+    },
+    {
+      "label": "Maths et modalités à confirmer",
+      "text": "L’oral du 23/10 annonce un mélange de concepts et de maths. Le 14/11, un exercice P2P est présenté. La date exacte, le barème, les documents autorisés et les formules à mémoriser restent à confirmer."
     },
     {
       "label": "Pratique évoquée",
-      "text": "Machines virtuelles et équilibrage de charge sur Google Cloud. Transcription, 00:03:28–00:04:09 (p. 2). Le parcours TP ci-dessous est un entraînement proposé, pas le sujet officiel."
-    },
-    {
-      "label": "À confirmer",
-      "text": "Les dates exactes, la durée définitive, les documents autorisés et le barème des évaluations. Le Word et l’oral évoquent un écrit en décembre et un final ; la pondération 50/25/25 évoquée à 00:07:35 ne constitue pas une consigne officielle stabilisée ici."
-    },
-    {
-      "label": "Priorités proposées",
-      "text": "Les priorités ci-dessous reposent sur le support et l’insistance de l’oral. Elles ne prédisent ni le sujet ni la probabilité d’une question. Les suggestions de Plaud ne sont pas reprises comme devoirs donnés par le professeur."
+      "text": "Machines virtuelles et équilibrage de charge sur Google Cloud, transcription du 23/10, 00:03:28–00:04:09. Le guide et l’Atelier proposent un parcours de préparation au TP."
     }
   ],
   "topics": [
@@ -98,7 +98,7 @@ window.CloudStudy = {
     {
       "id": "architectures",
       "title": "6 · Couches, services et messages",
-      "priority": "Suite du PDF à préparer",
+      "priority": "Support ; éléments repris dans le résumé Plaud du 24 octobre",
       "source": "Support p. 23–24 et 28–33 ; complément HTTP RFC 9110",
       "route": "middleware",
       "points": [
@@ -114,7 +114,7 @@ window.CloudStudy = {
     {
       "id": "p2p",
       "title": "7 · P2P, Chord et recherches",
-      "priority": "Suite du PDF à préparer",
+      "priority": "Support ; hypercube repris dans le résumé Plaud du 24 octobre",
       "source": "Support p. 34–39",
       "route": "chord",
       "points": [
@@ -130,16 +130,369 @@ window.CloudStudy = {
     {
       "id": "autres",
       "title": "8 · Transactions, mobilité et énergie",
-      "priority": "Suite du PDF à préparer",
+      "priority": "Support ; éléments repris dans le résumé Plaud du 24 octobre",
       "source": "Support p. 23–26",
       "route": "maths",
       "points": [
         "Une transaction regroupe des opérations avec une décision de validation ou d’abandon. L’atomicité impose tout ou rien ; envoyer plusieurs appels réseau ne suffit pas à fournir cette propriété.",
         "Les systèmes mobiles et capteurs doivent gérer déconnexions, ressources limitées et consommation. Pour un capteur : τ = T_actif/(T_actif + T_sommeil). Avec 2 s actives et 8 s de sommeil, τ = 20 %.",
-        "Le mode hors ligne d’une PWA nécessite une stratégie de cache et de synchronisation. Un service worker ne résout pas automatiquement les conflits lors de la reconnexion."
+        "Le mode hors ligne d’une PWA nécessite une stratégie de cache et de synchronisation. Un service worker ne résout pas automatiquement les conflits lors de la reconnexion.",
+        "Un système omniprésent s’intègre à l’environnement : capteurs pour comprendre le contexte, autonomie et adaptation discrète des interactions. Le support distingue systèmes ubiquitaires, mobiles et réseaux de capteurs/actionneurs, avec recoupements possibles. Être mobile ajoute notamment les problèmes de découverte et de connectivité variable."
       ],
       "trap": "Un pourcentage de temps actif n’est pas directement un pourcentage d’énergie économisée : il faut aussi connaître les puissances et coûts de transition.",
       "task": "Décris ce qui arrive à une écriture faite hors ligne si la même donnée a été modifiée ailleurs."
+    },
+    {
+      "id": "objets-services",
+      "title": "9 · Architectures orientées objet et services",
+      "priority": "Support p. 29 ; comparaison SOA : complément pédagogique",
+      "source": "Support p. 29, section 2.1.2 ; synthèse et exemple proposés",
+      "route": "middleware",
+      "points": [
+        "Orientée objet : les composants encapsulent un état et exposent des méthodes. Exemple : un objet Panier contient des lignes et propose ajouterProduit(). Son implémentation reste cachée. Il peut être local ; s’il est distant, un proxy et un middleware peuvent transporter l’appel sur le réseau.",
+        "Un appel de méthode distant ressemble à un appel local dans le code, mais ajoute sérialisation, latence et pannes partielles. Un timeout ne prouve pas que la méthode n’a pas modifié l’objet. Ni les classes ni l’encapsulation ne suppriment les contraintes du distribué.",
+        "Orientée services (SOA) : organiser des capacités métier derrière des contrats explicites. Exemple : un service Paiement propose une opération autoriserPaiement(), utilisée par plusieurs applications sans exposer son code interne. HTTP/REST, RPC ou des messages sont des moyens de communication possibles.",
+        "Les deux approches sont compatibles : un service peut être développé avec des objets. Objet décrit surtout la structure du composant et son interface ; service décrit une capacité accessible par contrat. Une architecture SOA n’impose ni un protocole unique ni un bus central obligatoire."
+      ],
+      "trap": "Un objet distant n’est pas automatiquement un microservice : il faut aussi considérer le découpage métier et l’autonomie de déploiement.",
+      "task": "Compare Panier.ajouterProduit() et le contrat d’un service Commandes ; explique ce qui change si l’appel traverse le réseau."
+    },
+    {
+      "id": "docker-microservices",
+      "title": "10 · Microservices et Docker : deux rôles différents",
+      "priority": "Résumé Plaud du 24/10 p. 3 et compléments ; périmètre d’examen à confirmer",
+      "source": "Résumé Plaud du 24/10 p. 3 ; documentations officielles Docker et Microsoft Azure Architecture Center.",
+      "route": "cloud",
+      "points": [
+        "Microservices : découper une application par capacités métier autonomes, déployables indépendamment. Dans une boutique : Catalogue, Commandes, Paiement. On peut multiplier les instances du seul Catalogue. Chaque service maîtrise ses données et ses contrats ; une base physique distincte par service n’est pas une obligation universelle.",
+        "Le gain d’autonomie demande de gérer réseau, timeouts, sécurité et diagnostic entre services. Si le paiement échoue après la création d’une commande, l’ensemble n’est pas automatiquement annulé : il faut prévoir états, reprise ou compensation. Un monolithe modulaire peut rester un meilleur choix pour une petite application.",
+        "Docker sert à construire et exécuter des conteneurs. Image : modèle de fichiers et configuration ; conteneur : processus isolé créé depuis une image. Dockerfile : recette de construction ; registre : stockage des images ; volume : données conservées indépendamment du conteneur. Compose décrit et lance plusieurs services conteneurisés.",
+        "Une VM possède son noyau invité ; les conteneurs Linux partagent le noyau de l’hôte Linux. Sur Windows, Docker Desktop peut fournir cet hôte via une VM ou WSL 2. Plusieurs conteneurs sur un même hôte ne protègent pas d’une panne de cet hôte."
+      ],
+      "trap": "Docker n’est pas une architecture microservices : on peut conteneuriser un monolithe et exécuter des microservices sans Docker. Compose ne transforme pas un projet en cluster tolérant aux pannes.",
+      "task": "Dessine Client → Catalogue / Commandes → Paiement ; place un conteneur par service, puis montre ce qui reste partagé sur l’hôte."
+    },
+    {
+      "id": "evenements-espaces",
+      "title": "11 · Événements, publish/subscribe et espaces partagés",
+      "priority": "Support p. 30–31 ; point signalé pendant la séance du 24 octobre",
+      "source": "Support p. 30–31 ; résumé Plaud reçu du 24/10 p. 4–5, avec corrections sur la persistance.",
+      "route": "evenements",
+      "points": [
+        "Un événement décrit un fait survenu, par exemple CommandeCréée. Dans publish/subscribe, un producteur publie sur un sujet (topic) ou un bus ; les abonnés intéressés reçoivent une notification. Exemple : Email et Stock réagissent à la même commande sans que le service Commandes connaisse chacun de leurs destinataires.",
+        "Couplage référentiel : faut-il désigner le destinataire pour communiquer ? Le découplage référentiel permet de passer par un sujet ou de chercher une donnée par son contenu. Couplage temporel : les participants doivent-ils être disponibles en même temps ? Le découplage temporel demande qu’un intermédiaire conserve ce qui doit être récupéré plus tard.",
+        "La grille du cours compare quatre modèles : échange direct = couplage temporel et référentiel ; événement éphémère = couplage temporel, découplage référentiel ; boîte aux lettres persistante adressée = découplage temporel, couplage référentiel ; espace de données partagé avec conservation des tuples = découplage temporel et référentiel.",
+        "Nuance : publish/subscribe n’implique pas automatiquement de perdre les événements hors ligne, ni de pouvoir les rejouer. Cela dépend de la conservation, des abonnements et des garanties du système. Redis Pub/Sub classique, par exemple, ne rejoue pas les messages manqués après une déconnexion. Un mécanisme durable configuré pour conserver les messages peut fournir un découplage temporel.",
+        "Dans un espace de données partagé de type Linda, un producteur dépose un tuple, par exemple (commande, 42, prête). Le consommateur cherche un tuple correspondant à un motif, sans identifier son producteur. Le support précise : out(t) ajoute un tuple ; rd(motif) lit une copie sans retirer le tuple ; in(motif) récupère et retire un tuple correspondant. in et rd attendent si aucun tuple ne correspond ; deux out identiques créent deux occurrences.",
+        "Lien avec les microservices : un service Commandes peut publier CommandeCréée ; Stock et Email réagissent indépendamment. Publication ne signifie pas que tous ont déjà traité l’événement. Réessais, doublons et ordre dépendent des garanties ; identifier les événements et rendre certains traitements idempotents aide à éviter de répéter un effet."
+      ],
+      "trap": "Asynchrone ne signifie pas durable. Un espace de tuples n’est ni une mémoire RAM commune à tous les OS ni une diffusion automatique vers tous les abonnés : in et rd sélectionnent des tuples par motif.",
+      "task": "Classe un appel direct, un topic éphémère, une boîte aux lettres persistante et Linda selon les deux couplages. Puis explique ce qui arrive si le consommateur est absent lors de la publication."
+    },
+    {
+      "id": "linda-clair",
+      "title": "12 · Linda, en clair : lire et tracer un exercice",
+      "standalone": true,
+      "priority": "Support p. 31–32 ; entraînement proposé",
+      "source": "Support p. 31–32 ; exercice numérique proposé pour l’entraînement. La possibilité d’un exercice Linda est signalée par Arthur à partir de l’oral ; le sujet exact n’est pas connu.",
+      "route": "evenements",
+      "points": [
+        "Linda est un langage de coordination : plusieurs processus communiquent et se synchronisent grâce à un espace de tuples partagé. On peut ajouter ces opérations à un langage comme C. Imagine un tableau commun : un processus dépose une information, un autre la cherche par son contenu, sans connaître son producteur. Ce tableau est une abstraction logicielle, pas une RAM commune aux OS.",
+        "Un tuple est une suite ordonnée de valeurs, par exemple (\"commande\", 42, \"prête\"). Un motif précise les valeurs recherchées ; ?x indique une valeur à récupérer dans la variable x. La syntaxe ci-dessous est un pseudo-code proche de celle du cours.",
+        "Attention au nom : out dépose dans l’espace ; in prend dans l’espace. rd lit sans retirer.",
+        "Exercice : out(\"note\", 12), puis rd(\"note\", ?x) donne x = 12 sans retrait ; in(\"note\", ?y) donne y = 12 et vide l’espace. Un nouveau in(\"note\", ?z) bloque jusqu’au dépôt d’un tuple correspondant par un autre processus."
+      ],
+      "trap": "Un processus bloqué ne peut pas exécuter ses instructions suivantes. Le dépôt qui le débloque doit venir d’un processus qui peut encore avancer.",
+      "task": "Dans le module Événements et espace partagé, lire la section « Linda, en clair » sous les schémas, puis tracer l’espace pour chaque instruction."
+    },
+    {
+      "id": "architectures-systemes",
+      "title": "13 · Architectures des systèmes : comparer un même exemple",
+      "standalone": true,
+      "priority": "Support et comparaison pédagogique",
+      "source": "Support p. 28–29 et 34–39 ; rapprochements et exemple de boutique proposés. Microservices et déploiement : compléments documentaires officiels.",
+      "route": "architectures",
+      "points": [
+        "Même besoin : consulter la fiche du livre 42 et envoyer une demande de commande. Dans la variante P2P, le livre est proposé par un participant vendeur.",
+        "Ces schémas sont des choix pédagogiques, pas cinq catégories exclusives. Ils montrent des composants et leurs échanges, pas un nombre imposé de machines. Les retours et certains détails techniques sont omis ; les étapes précisent le sens de l’échange.",
+        "Client-serveur : Un client demande le catalogue ou envoie une commande à un serveur. Dans cet exemple simple, le serveur regroupe logique métier et stockage local.",
+        "3 tiers : L’interface appelle le tiers métier ; celui-ci accède au tiers de données. Le client n’interroge pas directement la base dans cet exemple.",
+        "Services (SOA) : L’application boutique utilise les contrats des services Catalogue et Commandes. Ces services peuvent aussi servir à d’autres applications.",
+        "Microservices : Catalogue et Commandes sont des services autonomes, déployables séparément. Chaque service maîtrise son stockage et communique par contrat.",
+        "P2P : La boutique devient une place de marché entre pairs. Chaque pair peut demander des offres et proposer les siennes : il joue des rôles de client et de serveur."
+      ],
+      "trap": "Ne pas confondre rôle client/serveur, découpage logique, déploiement en tiers et autonomie des services. Une boîte du schéma ne correspond pas automatiquement à une machine.",
+      "task": "Ouvrir le module Architectures des systèmes, suivre la consultation puis la commande pour chaque modèle et justifier où résident les données."
+    },
+    {
+      "id": "bilan-24",
+      "title": "14 · Séance du 24 octobre · bilan vérifié",
+      "standalone": true,
+      "priority": "Mise à jour de la séance du 24 octobre ; exercices proposés",
+      "source": "Résumé Plaud du 24/10, p. 1–8 ; support du professeur ; corrections documentées ci-dessous.",
+      "route": "architectures",
+      "points": [
+        "Le résumé de ce matin reprend les architectures, Linda et l’hypercube déjà préparés ; il complète surtout transactions, middleware et économie du cloud. Il s’agit d’un résumé automatique de huit pages, pas de la transcription intégrale : les consignes d’examen rapportées restent à confirmer.",
+        "Couches, services, Docker, microservices — Préciser service / interface / protocole, serverless et idempotence HTTP.",
+        "Couplages, pub/sub et Linda — Distinguer tuples et événements persistants ; préciser initialisation et blocages.",
+        "P2P et Chord — Ajouter le routage complet 0 → 14 dans l’hypercube à 4 bits.",
+        "Middleware et migration évoqués — Détailler ACID/TPM, adaptateurs, intercepteurs et calculs de flux/coûts.",
+        "Un espace de tuples n’est pas simplement du pub/sub avec persistance : Linda recherche par motif et in retire une occurrence. La durabilité d’un bus règle une autre question. Le couple in puis out protège temporairement l’accès à un jeton ; les deux instructions ne constituent pas une transaction atomique unique.",
+        "Idempotent signifie : plusieurs demandes identiques ont le même effet métier attendu qu’une seule. GET est sûr au sens lecture, même si le serveur écrit un journal. PUT et DELETE sont idempotents ; une seconde réponse DELETE peut être différente. POST ne garantit pas l’idempotence par sa méthode, mais une application peut dédupliquer une demande avec un identifiant.",
+        "REST est un style d’architecture ; SOAP est un protocole de messages XML. « Stateless » ne signifie pas absence de données métier. Un broker réduit le nombre d’adaptateurs, sans garantir à lui seul les performances ou la disponibilité.",
+        "La mention « certains schémas avancés de mobilité/capteurs hors examen » vient du résumé Plaud p. 2 ; ne pas exclure tout le chapitre sans confirmation. La liste « devoirs et plan d’action » reste une proposition de révision tant qu’aucun énoncé n’est fourni. Les échanges personnels et logistiques sont exclus de la synthèse."
+      ],
+      "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
+      "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
+    },
+    {
+      "id": "integration-24",
+      "title": "15 · Transactions et structure du middleware",
+      "standalone": true,
+      "priority": "Mise à jour de la séance du 24 octobre ; exercices proposés",
+      "source": "Support p. 23–24 et 32–33 ; Plaud du 24/10 p. 2 et 5.",
+      "route": "middleware",
+      "points": [
+        "L’intégration d’applications d’entreprise (EAI) relie des applications par fichiers, base commune, appels ou messages. Connecter les applications ne garantit pas automatiquement leur cohérence : formats, contrats et transactions doivent être définis.",
+        "Atomicité — Tout ou rien pour les opérations couvertes par la transaction.",
+        "Cohérence — Les règles et contraintes d’intégrité de l’application sont respectées.",
+        "Isolation — Les exécutions concurrentes sont contrôlées selon le niveau d’isolation choisi.",
+        "Durabilité — Les effets validés sont conservés selon les garanties du système.",
+        "Un moniteur de transactions (TPM, Transaction Processing Monitor) coordonne des participants. L’exemple vol + hôtel n’est atomique que si les participants et le protocole le permettent. Une API externe ayant déjà confirmé une action irréversible peut exiger une compensation ; un simple appel réseau n’assure pas un rollback global.",
+        "Service : la capacité fournie, par exemple réserver une chambre. Interface : les opérations et paramètres exposés. Protocole : les règles des échanges. L’API socket est une interface ; TCP est un protocole de transport. Un composant peut proposer un contrat indépendant de son implémentation.",
+        "Un wrapper adapte une interface existante. Avec les conventions du support, N applications nécessitent N(N − 1) adaptateurs orientés en point-à-point, contre 2N interfaces via un broker. Pour N = 10 : 90 contre 20. Les paires non orientées sont N(N − 1)/2 = 45 : ne pas mélanger ces comptages.",
+        "Un intercepteur ajoute un traitement sur le chemin d’un appel, entre application et middleware ou middleware et OS. Exemples : journalisation, redirection vers une réplique, découpage/réassemblage applicatif de gros transferts. Il doit conserver le contrat attendu ; découper un fichier ne garantit pas de réduire son volume ou son coût réseau."
+      ],
+      "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
+      "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
+    },
+    {
+      "id": "linda-hypercube-24",
+      "title": "16 · Linda et hypercube · exercices de lecture",
+      "standalone": true,
+      "priority": "Mise à jour de la séance du 24 octobre ; exercices proposés",
+      "source": "Support p. 31–35 ; Plaud du 24/10 p. 4–6 ; exemples proposés, sans sujet d’examen confirmé.",
+      "route": "evenements",
+      "points": [
+        "Un in ou rd sur un motif absent bloque le processus appelant. Les autres processus continuent. Les philosophes ont donc besoin de tuples initiaux pour les baguettes et les autorisations d’entrée. Avec N philosophes, donner N autorisations peut permettre à tous de saisir une baguette puis d’attendre la suivante ; limiter l’entrée à N − 1 est une solution classique dans ce protocole, sans garantie générale d’absence de famine.",
+        "Un compteur partagé peut être protégé par un tuple unique : in(\"server index\", ?id), puis out(\"server index\", id + 1). Pendant le retrait, les autres lecteurs in de ce motif attendent. Si le détenteur tombe en panne avant de remettre le tuple, ils peuvent rester bloqués. Une clé de requête permet ensuite d’associer demande et réponse ; elle ne garantit pas à elle seule la livraison.",
+        "Dans un hypercube complet de dimension d, il y a 2^d nœuds, d voisins par nœud et d × 2^d / 2 liens non orientés. Deux voisins diffèrent d’un bit. Pour l’exemple simplifié du support, la clé 14 mène au nœud 1110. Depuis 0 = 0000, un chemin possible corrige les bits de gauche à droite :",
+        "0000 — 0 — 3",
+        "1000 — 8 — 2",
+        "1100 — 12 — 1",
+        "1110 — 14 — 0",
+        "La distance de Hamming compte les bits différents : ici 3 différences, donc 3 sauts minimaux. En dimension 4 : 16 nœuds, 4 voisins chacun et 32 liens ; au maximum 4 sauts entre deux nœuds. 0 → 2 → 6 → 14 est également un plus court chemin. Respecter l’ordre de correction imposé par l’énoncé, s’il y en a un.",
+        "La proximité est binaire, pas la différence entre les valeurs décimales. Cette borne concerne un routage idéal sans panne ; elle ne prédit pas le temps réel en présence de congestion ou de défaillances. Le stockage des clés et la topologie sont deux aspects à distinguer."
+      ],
+      "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
+      "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
+    },
+    {
+      "id": "cloud-economie-24",
+      "title": "17 · Cloud · exécution et modèle économique",
+      "standalone": true,
+      "priority": "Mise à jour de la séance du 24 octobre ; exercices proposés",
+      "source": "Support p. 21–22 ; Plaud du 24/10 p. 3 et 6–7 ; compléments officiels Kubernetes et serverless.",
+      "route": "cloud",
+      "points": [
+        "Application — Usage de logiciels et fonctions métier.",
+        "Plateforme — Runtimes, frameworks et abstractions de déploiement.",
+        "Infrastructure — Ressources virtuelles de calcul, stockage et réseau.",
+        "Fabrique / matériel — CPU, mémoire, disques, réseau et équipements du centre de données.",
+        "La « fabrique » ne désigne pas les abstractions de plus haut niveau. Kubernetes gère des charges conteneurisées et leur état désiré sur des nœuds ; il n’est ni le matériel, ni un hyperviseur universel, ni un PaaS complet à lui seul. Le placer dans une seule couche est une simplification pédagogique.",
+        "Serverless désigne une offre où le fournisseur prend en charge une grande part de l’exploitation des serveurs ; ils existent toujours. Les fonctions à la demande (FaaS) en sont un exemple, pas la totalité du serverless. Il reste à gérer code, droits, données, configuration et limites du service. Docker empaquette un logiciel ; ces notions ne sont pas interchangeables.",
+        "Capex : investissement dans des actifs, par exemple du matériel. Opex : dépenses d’exploitation récurrentes. Le cloud peut déplacer une partie des dépenses vers la consommation ou l’abonnement ; il ne rend pas automatiquement la solution moins chère.",
+        "Comparer sur la même durée et le même périmètre : calcul, stockage, réseau, licences, exploitation humaine, transition et coûts restant sur site. Un amortissement comptable, une dépense déjà engagée et une économie réellement évitable ne sont pas trois fois le même gain.",
+        "B_calcul = bénéfice unitaire net de migration ; M_calcul = nombre de composants de calcul migrés. Même définition pour stockage. G_brut = B_calcul × M_calcul + B_stockage × M_stockage. Le support note les deux nombres M_c et M_s ; ne pas les confondre avec N_i, le nombre de serveurs d’un composant.",
+        "Exemple d’entraînement : 3 composants à 40 €/mois de bénéfice net chacun et 2 à 15 €/mois donnent 3 × 40 + 2 × 15 = 150 €/mois, avant les coûts supplémentaires qui n’y sont pas déjà inclus. Les contraintes de sécurité, de latence et de fonctionnement transactionnel restent à respecter."
+      ],
+      "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
+      "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
+    },
+    {
+      "id": "migration-flux-24",
+      "title": "18 · Migration cloud · calculer les flux et le gain",
+      "standalone": true,
+      "priority": "Mise à jour de la séance du 24 octobre ; exercices proposés",
+      "source": "Support p. 21–22 ; Plaud du 24/10 p. 6–8. Tous les nombres et tarifs de cet exercice sont fictifs.",
+      "route": "maths",
+      "points": [
+        "Pour l’arc i → j : T_ij est un nombre de transactions par mois ; s_ij est ici le volume moyen en Go par transaction. Alors F_ij = T_ij × s_ij est un flux en Go/mois. Si S_ij donné dans l’énoncé est déjà un volume total par mois, prendre F_ij = S_ij et ne pas le multiplier à nouveau. Le libellé S du support appelle cette vérification d’unités.",
+        "N_i est le nombre initial de serveurs du composant i ; n_i est le nombre déplacé ; f_i = n_i/N_i, avec 0 ≤ f_i ≤ 1 et N_i > 0. Le modèle suppose une répartition uniforme du trafic et des placements indépendants entre extrémités.",
+        "Local → local — (1 − f_i)(1 − f_j) — 375 Go/mois",
+        "Local → cloud — (1 − f_i)f_j — 125 Go/mois",
+        "Cloud → local — f_i(1 − f_j) — 375 Go/mois",
+        "Cloud → cloud — f_i f_j — 125 Go/mois",
+        "Valeurs de l’exemple : T = 100 000 transactions/mois, s = 0,01 Go/transaction, f_i = 0,5 et f_j = 0,25. Les quatre fractions font 1 et les volumes font 1 000. Le trafic qui traverse la frontière local/cloud vaut 125 + 375 = 500 Go/mois.",
+        "Tarifs fictifs pour cet exercice : c_local→cloud = 0,02 €/Go et c_cloud→local = 0,08 €/Go, chacun incluant toutes les charges retenues pour ce sens. C_réseau_après = 125 × 0,02 + 375 × 0,08 = 32,50 €/mois. On suppose ici les autres flux gratuits ou inchangés ; ce n’est pas une règle de tarification réelle.",
+        "Toujours comparer avant/après : ΔC_réseau = C_réseau_après − C_réseau_avant. Si le bénéfice calcul/stockage du plan est déjà net de ces postes et vaut 150 €/mois, si C_réseau_avant = 0 et si les autres surcoûts retenus sont nuls, G_net = 150 − 32,50 = 117,50 €/mois.",
+        "En général : gain = coût total avant − coût total après, sur le même horizon. Inclure les flux utilisateurs, autres arcs, communications inter-zones, réplications et coûts de transition lorsqu’ils existent. Ne pas recompter un poste déjà déduit des bénéfices unitaires. Une économie calculée ne rend pas un plan admissible si les contraintes fonctionnelles sont violées."
+      ],
+      "trap": "Distinguer la notion du support, les formulations du résumé automatique et les hypothèses ajoutées pour l’entraînement.",
+      "task": "Expliquer les hypothèses et refaire les exemples sans aide ; vérifier les unités et les limites du modèle."
+    },
+    {
+      "id": "threads",
+      "title": "Threads, ordonnancement et serveurs concurrents",
+      "priority": "Cours 2 · Processus",
+      "source": "Cours 2, PDF p. 10–13 et 17",
+      "route": "tp",
+      "standalone": true,
+      "trap": "Concurrence et parallélisme décrivent deux propriétés différentes.",
+      "task": "Expliquer le dispatcher, comparer deux traitements d’E/S et calculer le TLP.",
+      "coursePages": [
+        0
+      ]
+    },
+    {
+      "id": "virtualisation",
+      "title": "Virtualisation, VM et conteneurs",
+      "priority": "Cours 2 · Processus",
+      "source": "Cours 2, PDF p. 14–15 et 20–21",
+      "route": "cloud",
+      "standalone": true,
+      "trap": "Une image contient le nécessaire pour démarrer un conteneur. Le conteneur est une instance en exécution.",
+      "task": "Dessiner le rôle de l’hyperviseur, du noyau invité, des namespaces et des cgroups.",
+      "coursePages": [
+        1
+      ]
+    },
+    {
+      "id": "serveurs",
+      "title": "Clients, état et clusters",
+      "priority": "Cours 2 · Processus",
+      "source": "Cours 2, PDF p. 15–21",
+      "route": "tp",
+      "standalone": true,
+      "trap": "L’état TCP et la session applicative relèvent de couches différentes.",
+      "task": "Suivre une requête du frontal jusqu’au worker, puis expliquer la reprise d’une session.",
+      "coursePages": [
+        2
+      ]
+    },
+    {
+      "id": "migration",
+      "title": "Migration de code et de VM",
+      "priority": "Cours 2 · Processus",
+      "source": "Cours 2, PDF p. 22–24",
+      "route": "cloud",
+      "standalone": true,
+      "trap": "La durée de migration, la dégradation et l’indisponibilité sont trois mesures différentes.",
+      "task": "Identifier qui déplace le code, où il s’exécute et quel état il emporte.",
+      "coursePages": [
+        3
+      ]
+    },
+    {
+      "id": "transport",
+      "title": "Transport et deux axes de communication",
+      "priority": "Cours 2 · Communication",
+      "source": "Cours 2, PDF p. 26–28",
+      "route": "middleware",
+      "standalone": true,
+      "trap": "L’attente d’un accusé et la conservation du message sont deux axes indépendants.",
+      "task": "Identifier le jalon confirmé dans un appel ou un dépôt en file.",
+      "coursePages": [
+        4
+      ]
+    },
+    {
+      "id": "rpc",
+      "title": "RPC, stubs et passage de paramètres",
+      "priority": "Cours 2 · Communication",
+      "source": "Cours 2, PDF p. 28–30",
+      "route": "middleware",
+      "standalone": true,
+      "trap": "Un timeout laisse le résultat de l’écriture incertain.",
+      "task": "Dessiner le trajet d’un appel et justifier une stratégie de reprise.",
+      "coursePages": [
+        5
+      ]
+    },
+    {
+      "id": "interfaces-message",
+      "title": "Sockets, ZeroMQ et MPI",
+      "priority": "Sockets et ZeroMQ vus le 14/11 · MPI dans le support",
+      "source": "Cours 2, PDF p. 31–35",
+      "route": "evenements",
+      "standalone": true,
+      "trap": "Un flux TCP peut fractionner ou regrouper les octets de plusieurs messages.",
+      "task": "Choisir entre sockets, ZeroMQ et MPI selon le besoin.",
+      "coursePages": [
+        6
+      ]
+    },
+    {
+      "id": "broker",
+      "title": "Files de messages et broker",
+      "priority": "Support du cours 2 · Périmètre de l’écrit à vérifier",
+      "source": "Cours 2, PDF p. 36–38",
+      "route": "evenements",
+      "standalone": true,
+      "trap": "Un accusé de dépôt ne confirme pas le résultat métier.",
+      "task": "Distinguer producteur, file, broker, gestionnaire et consommateur.",
+      "coursePages": [
+        7
+      ]
+    },
+    {
+      "id": "gossip",
+      "title": "Multicast, inondation et gossip",
+      "priority": "Support du cours 2 · Périmètre de l’écrit à vérifier",
+      "source": "Cours 2, PDF p. 38–42",
+      "route": "donnees",
+      "standalone": true,
+      "trap": "Une rumeur peut s’arrêter avant d’atteindre toutes les copies. Une suppression doit se propager.",
+      "task": "Calculer un tour de pull et expliquer l’utilité d’un tombstone.",
+      "coursePages": [
+        8,
+        9
+      ]
+    },
+    {
+      "id": "linda-borne",
+      "title": "Linda · un buffer de capacité limitée",
+      "priority": "Exercice repris à l’oral",
+      "source": "Séance du 14/11, 02:42:30–02:55:22 · Support du cours 1, p. 31–32",
+      "route": "evenements",
+      "trap": "Le jeton doit être réservé avant le dépôt, puis rendu après le retrait.",
+      "task": "Écris les deux boucles, puis déroule trois dépôts avec deux places.",
+      "points": [
+        "Un producteur écrit des tuples (« buffer », i, valeur). Un consommateur doit afficher les valeurs dans l’ordre des indices. Pour borner le stock à C places, initialiser C tuples (« libre »). Chaque jeton représente une place disponible.",
+        "Avec C = 2, deux dépôts remplissent le buffer. Au troisième, in(« libre ») attend. Quand le consommateur retire la première donnée et remet un jeton, le producteur reprend. Quand le buffer est vide, le consommateur attend le tuple demandé.",
+        "Dans cette trace, les indices imposent l’ordre de lecture. La primitive in retire une occurrence, tandis que rd la conserve. Le contrôle de capacité utilise l’attente naturelle de in."
+      ],
+      "standalone": true
+    },
+    {
+      "id": "hypercube-60",
+      "title": "Hypercube · 60 nœuds et 4 sommets vacants",
+      "priority": "Exercice repris à l’oral",
+      "source": "Séance du 14/11, 02:56:33–03:05:03 · Support du cours 1, p. 34–35",
+      "route": "maths",
+      "trap": "Le hachage choisit un destinataire actif. Chaque sommet intermédiaire doit aussi être accessible.",
+      "task": "Sépare les trois résultats : capacité brute, dimension logique et route active.",
+      "points": [
+        "Pour stocker 50 To avec 1 To par nœud, il faut au moins 50 nœuds, sans réplication. Avec les 60 nœuds disponibles, on dispose de 60 To bruts, dont 10 To de marge. Pour placer les 60 nœuds, 2⁵ = 32 < 60 ≤ 64 = 2⁶ : il faut une dimension 6 et quatre sommets restent vacants.",
+        "Première décision : attribuer chaque clé à un sommet actif. Deuxième décision : vérifier que chaque saut modifie un seul bit et mène à un sommet actif. Avec les IDs actifs 0 à 59, un hachage vers ces IDs résout la première décision.",
+        "Pour les IDs actifs contigus 0 à 59, effacer d’abord les bits qui doivent passer à 0, puis activer ceux qui doivent passer à 1, donne un plus court chemin actif. La première phase descend jusqu’au ET bit à bit des extrémités et la seconde remonte sans dépasser la destination. Pour des trous arbitraires, vérifier les chemins disponibles."
+      ],
+      "standalone": true
+    },
+    {
+      "id": "p2p-ttl",
+      "title": "Recherche P2P · comparer les stratégies",
+      "priority": "Exercice présenté à l’oral",
+      "source": "Séance du 14/11, 03:05:23–03:06:16 · Anciennes questions p. 7 · Support p. 36–37",
+      "route": "maths",
+      "trap": "La frontière du quatrième saut compte 7 290 nœuds. Le cumul compte 8 200 nœuds.",
+      "task": "Calcule le cumul, la probabilité et le ratio pour chaque stratégie.",
+      "points": [
+        "Réseau de 10 000 nœuds, degré 10 dans le modèle idéal, 1 % de copies, TTL = 4. Exclure la source. On calcule le maximum du modèle sans recouvrement, puis on approxime chaque sondage comme indépendant avec 1 % de succès.",
+        "Sur n tests indépendants, l’échec de tous les tests a pour probabilité 0,99 à la puissance n. Donc P(succès) = 1 − 0,99 à la puissance n. La marche a un ratio environ 81 fois supérieur dans cet exemple. L’inondation réussit beaucoup plus souvent et coûte davantage en contacts.",
+        "Les revisites, les cycles et la répartition des copies peuvent modifier les résultats sur un graphe réel. Le ratio de l’exercice utilise le budget maximal de contacts."
+      ],
+      "standalone": true
     }
   ],
   "formulas": [
@@ -251,6 +604,102 @@ window.CloudStudy = {
       "q": "Deux VM servent des pages différentes après équilibrage. Comment diagnostiquer ?",
       "a": "Afficher l’identité/version de chaque backend, vérifier le déploiement et la configuration, examiner les logs et le cache. Répéter des requêtes n’impose pas une alternance stricte ; l’affinité et la politique du répartiteur peuvent maintenir un même backend.",
       "source": "Entraînement proposé VM et load balancing"
+    },
+    {
+      "category": "Maths",
+      "q": "M/M/1. À 75 req/s et 12,5 ms de service moyen, calculer l’utilisation et la latence. Que se passe-t-il à 80 req/s ?",
+      "a": "μ = 80 req/s, U = 93,75 %, R = 1/(80 − 75) = 200 ms, W = 187,5 ms et L = 15. À 80 req/s, aucun régime stationnaire.",
+      "source": "C1 p. 16–17"
+    },
+    {
+      "category": "TP",
+      "q": "Dimensionnement. Deux VM de 100 req/s reçoivent 160 req/s uniformément. Calculer la charge et la latence idéales, puis expliquer une panne.",
+      "a": "Chaque VM reçoit 80 req/s, soit U = 80 % et R = 50 ms. Après retrait de B du routage, A reçoit 160 req/s, soit U = 160 % et aucun régime stationnaire. Avant retrait, une partie des demandes est encore envoyée à B.",
+      "source": "C1 p. 16–18 et C2 p. 17–19"
+    },
+    {
+      "category": "Architectures",
+      "q": "Chord. Avec les neuf nœuds du cours, qui gère la clé 30 ? Si 30 est l’identifiant d’un groupe multicast, quel rôle prend ce nœud ?",
+      "a": "En revenant au début de l’anneau, le successeur est 1. Pour le groupe multicast, 1 devient la racine de l’arbre logique dans le modèle décrit.",
+      "source": "C1 p. 35 et C2 p. 38"
+    },
+    {
+      "category": "Maths",
+      "q": "Threads. Deux tâches indépendantes attendent chacune 80 ms une E/S, puis calculent chacune 20 ms. Quel ordre de grandeur si elles commencent ensemble sur un cœur ?",
+      "a": "En série, 200 ms. Si les attentes se recouvrent entièrement et que le CPU traite les deux calculs l’un après l’autre, environ 120 ms hors surcoûts. Le recouvrement des E/S explique le gain.",
+      "source": "C2 p. 10–13"
+    },
+    {
+      "category": "TP",
+      "q": "État. La première requête enregistre un panier sur A. La suivante arrive sur B, qui renvoie un panier vide. Que vérifier ?",
+      "a": "Localiser le stockage de session, contrôler le contexte porté par la requête et comparer le stockage vu par A et B. Une affinité peut masquer le symptôme tant qu’A reste accessible. Une session externe accessible aux deux backends facilite la reprise.",
+      "source": "C2 p. 18–19"
+    },
+    {
+      "category": "Concepts",
+      "q": "Virtualisation. Quel mécanisme limite la mémoire d’un conteneur ? Lequel lui donne sa propre vue du réseau ?",
+      "a": "Les cgroups encadrent les ressources. Les namespaces isolent des vues, notamment celle du réseau. Une VM système ajoute un OS invité.",
+      "source": "C2 p. 14–15, 20–21"
+    },
+    {
+      "category": "Communication",
+      "q": "RPC. Une écriture reçoit un timeout. Peut-on relancer la commande immédiatement ?",
+      "a": "L’écriture a pu aboutir avant la perte de réponse. Vérifier l’état ou réessayer avec le même identifiant d’opération et une déduplication adaptée. Un accusé d’acceptation ne suffit pas à prouver la réussite métier.",
+      "source": "C2 p. 27–30 et C1 p. 14"
+    },
+    {
+      "category": "Communication",
+      "q": "Messagerie. Un worker est arrêté pendant dix minutes. Dans quel scénario peut-il traiter à son retour la demande publiée pendant son absence ?",
+      "a": "Avec une file qui conserve le message pour ce worker et une politique adaptée. Un abonné absent à un PUB/SUB transitoire peut manquer le message. Si le gestionnaire redémarre aussi, vérifier la persistance et la validation du dépôt.",
+      "source": "C2 p. 32–38"
+    },
+    {
+      "category": "Concepts",
+      "q": "Migration. Un graphique indique une hausse de latence sur 25 s et une coupure de 2 s. Quels chiffres rapporter ?",
+      "a": "Rapporter les deux durées séparément. Mesurer aussi le temps total de migration si les événements début et fin sont connus.",
+      "source": "C2 p. 23–24"
+    },
+    {
+      "category": "Maths",
+      "q": "Gossip. Quatre répliques sur dix connaissent la version v2. Avec pull et des tirages indépendants uniformes avec remise, quelle fraction restera ignorante après un tour en moyenne ?",
+      "a": "La fraction initiale ignorante est 0,6. Il faut à la fois être ignorant et tirer un ignorant, soit 0,6² = 0,36. Une réalisation sur dix nœuds peut s’écarter de cette espérance.",
+      "source": "C2 p. 39–40"
+    },
+    {
+      "category": "Communication",
+      "q": "Suppression distribuée. A supprime un objet, mais B revient après une panne avec une ancienne version. Comment empêcher sa réapparition ?",
+      "a": "Représenter la suppression par une mise à jour versionnée, propager cette version et conserver le marqueur jusqu’au critère de purge retenu.",
+      "source": "C2 p. 41"
+    },
+    {
+      "category": "Maths",
+      "q": "Calculer le TLP avec c₀ = 20 %, c₁ = 40 %, c₂ = 30 % et c₃ = 10 %.",
+      "a": "Le nombre moyen de threads actifs, temps inactif compris, vaut 1 × 0,4 + 2 × 0,3 + 3 × 0,1 = 1,30. La fraction de temps actif vaut 0,80. Le TLP vaut 1,30 / 0,80 = 1,625.",
+      "source": "C2 p. 13"
+    },
+    {
+      "category": "Coordination",
+      "q": "Linda. Avec deux places, quand un troisième dépôt peut-il reprendre ?",
+      "a": "Initialiser deux jetons « libre ». Le producteur en retire un avec in avant chaque out de donnée. Le consommateur retire une donnée avec in, puis rend un jeton avec out. Le troisième dépôt attend ce retour.",
+      "source": "Oral 14/11, 02:50:56–02:55:22"
+    },
+    {
+      "category": "Maths",
+      "q": "Hypercube. Peut-on adresser 60 nœuds sur 5 bits ?",
+      "a": "Non, 5 bits ne donnent que 32 positions. Il faut 6 bits et 64 sommets. Avec les IDs actifs 0 à 59, 55 → 63 → 59 est impraticable. 55 → 51 → 59 fournit un chemin actif en deux sauts.",
+      "source": "Oral 14/11, 02:56:33–03:05:03"
+    },
+    {
+      "category": "Maths",
+      "q": "P2P. Quel est le cumul hors source de l’inondation pour un degré 10 et un TTL de 4 ?",
+      "a": "Dans le modèle sans recouvrement, 10 + 90 + 810 + 7 290 = 8 200. La marche aléatoire a un budget de 4 contacts. Avec 1 % de succès indépendant par contact, P = 1 − 0,99 à la puissance n.",
+      "source": "Oral 14/11, 03:05:23–03:06:16 et anciennes questions p. 7"
+    },
+    {
+      "category": "Communication",
+      "q": "ZeroMQ en REQ/REP. Que prouve une mise en file réussie ?",
+      "a": "Elle confirme que la bibliothèque a accepté le message dans sa file locale. Le client doit recevoir la réponse pour poursuivre la séquence REQ/REP classique. La file en mémoire ne survit pas à l’arrêt du processus.",
+      "source": "Oral 14/11, 01:59:22–02:04:58 et documentation libzmq"
     }
   ],
   "mock": [
@@ -273,6 +722,11 @@ window.CloudStudy = {
       "title": "D · Architecturer et diagnostiquer — 4 points",
       "prompt": "Proposer un client → répartiteur → deux VM → stockage partagé. Distinguer répartition et réplication. Expliquer quoi mesurer lors d’une panne et retrouver le responsable de la clé 30 dans Chord.",
       "rubric": "Architecture et données 1 pt ; mesures/health checks 2 pts ; responsable 1 dans Chord 1 pt."
+    },
+    {
+      "title": "E · Exercice complémentaire du cours 2",
+      "prompt": "Un service reçoit des commandes pendant un arrêt du worker. Proposer un échange et expliquer quel événement autorise à informer le client que la commande a été créée. Si la fraction de répliques ignorantes vaut 0,2, calculer son espérance après un tour de pull dans le modèle du cours.",
+      "rubric": "Utiliser une file persistante selon la politique retenue. Confirmer la création après validation métier, et distinguer cette confirmation de l’accusé de dépôt. Le pull donne 0,2² = 0,04, soit 4 %."
     }
   ],
   "labs": [
@@ -336,12 +790,16 @@ window.CloudStudy = {
       "detail": "Olivier Grunder, Cloud et traitements distribués, fichier lucc01-cours01-26.pdf, 42 pages. Les références p. n sont les pages du PDF, couverture comprise."
     },
     {
+      "title": "Support du cours 2",
+      "detail": "Olivier Grunder, Cloud et traitements distribués, lucc01-cours02-26.pdf (44 pages, couverture 2024–2025). C2 désigne la page physique du PDF. À partir de la p. 9, le numéro imprimé est supérieur de 34."
+    },
+    {
       "title": "Notes personnelles et oral",
       "detail": "notes de cours.docx et transcription Plaud du 23/10/2026, 75 pages. Les repères hh:mm:ss renvoient à l’enregistrement. Le calendrier reste à confirmer ; les apartés privés sont exclus."
     },
     {
       "title": "Résumé Plaud et productions précédentes",
-      "detail": "Résumé Plaud du 23/10, 12 pages, utilisé après vérification ; Fiche 01 illustrée, schéma middleware et Atelier Cloud. Noms corrigés : Maarten van Steen ; Plouin pour la référence 2022. Ne pas assimiler transparence de réplication et cohérence immédiate."
+      "detail": "Résumés Plaud du 23/10 (12 p.) et du 24/10 (8 p.), confrontés au support ; Fiche 01 et Atelier. Le second est un résumé sans transcription fournie ; les apartés et démarches personnelles sont exclus."
     },
     {
       "title": "Livre et ressources officielles",
@@ -362,6 +820,1575 @@ window.CloudStudy = {
       "title": "TP : exemple de répartiteur",
       "detail": "Exemple officiel de classic Application Load Balancer avec groupe géré ; exemple de préparation, pas le produit imposé pour le TP.",
       "url": "https://docs.cloud.google.com/load-balancing/docs/https/ext-https-lb-simple"
+    },
+    {
+      "title": "Complément : conteneurs et Docker",
+      "detail": "Documentation officielle : images, conteneurs et partage du noyau. Complément au support fourni, consulté le 24/10/2026.",
+      "url": "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/"
+    },
+    {
+      "title": "Complément : microservices",
+      "detail": "Microsoft Azure Architecture Center : autonomie métier, déploiement et compromis. Complément pédagogique, pas une annonce de programme d’examen.",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices"
+    },
+    {
+      "title": "Complément : durée de vie des événements",
+      "detail": "Redis Pub/Sub : messages manqués non rejoués ; les garanties dépendent du mécanisme choisi.",
+      "url": "https://redis.io/docs/latest/develop/pubsub/"
+    },
+    {
+      "title": "Séance du 14 novembre 2026",
+      "detail": "Transcription Plaud, 84 p. Durée et attentes p. 62 et 73, Linda p. 74–79, hypercube p. 80–83, P2P p. 83–84 et anciennes questions p. 7."
     }
-  ]
+  ],
+  "linda": {
+    "title": "Linda, en clair",
+    "intro": "Linda est un langage de coordination : plusieurs processus communiquent et se synchronisent grâce à un espace de tuples partagé. On peut ajouter ces opérations à un langage comme C. Imagine un tableau commun : un processus dépose une information, un autre la cherche par son contenu, sans connaître son producteur. Ce tableau est une abstraction logicielle, pas une RAM commune aux OS.",
+    "tuple": "Un tuple est une suite ordonnée de valeurs, par exemple (\"commande\", 42, \"prête\"). Un motif précise les valeurs recherchées ; ?x indique une valeur à récupérer dans la variable x. La syntaxe ci-dessous est un pseudo-code proche de celle du cours.",
+    "operations": [
+      [
+        "out(t)",
+        "Dépose une nouvelle occurrence du tuple.",
+        "N’attend pas qu’un consommateur le lise."
+      ],
+      [
+        "rd(motif)",
+        "Lit une copie, sans retirer le tuple.",
+        "Attend si aucun tuple ne correspond au motif."
+      ],
+      [
+        "in(motif)",
+        "Récupère et retire une occurrence correspondante.",
+        "Attend si aucun tuple ne correspond au motif."
+      ]
+    ],
+    "memory": "Attention au nom : out dépose dans l’espace ; in prend dans l’espace. rd lit sans retirer.",
+    "trace": [
+      {
+        "instruction": "A : out(\"note\", 12)",
+        "result": "Le tuple est déposé.",
+        "space": "(\"note\", 12)"
+      },
+      {
+        "instruction": "A : rd(\"note\", ?x)",
+        "result": "x = 12 ; la lecture conserve le tuple.",
+        "space": "(\"note\", 12)"
+      },
+      {
+        "instruction": "A : in(\"note\", ?y)",
+        "result": "y = 12 ; le tuple est retiré.",
+        "space": "Vide"
+      },
+      {
+        "instruction": "A : in(\"note\", ?z)",
+        "result": "A se bloque : aucun tuple correspondant.",
+        "space": "Vide"
+      },
+      {
+        "instruction": "B : out(\"note\", 18)",
+        "result": "Un autre processus dépose le tuple ; la demande de A reprend avec z = 18 et le retire.",
+        "space": "Vide après la reprise de A"
+      }
+    ],
+    "pitfalls": [
+      "Tracer l’espace après chaque instruction : ajout, conservation ou retrait. Une opération bloquée empêche la suite de ce processus d’avancer, mais pas les autres processus.",
+      "La présence d’un tuple quelconque ne suffit pas : le motif doit correspondre. out(\"autre\", 18) ne débloque pas in(\"note\", ?z).",
+      "Deux out identiques donnent deux occurrences. Une même occurrence ne peut pas être retirée deux fois, même si deux consommateurs sont en concurrence.",
+      "Avec plusieurs tuples correspondants ou plusieurs processus, ne pas inventer un ordre FIFO : considérer les choix et ordres d’exécution possibles, sauf indication contraire de l’énoncé."
+    ],
+    "course": "Le support propose les philosophes à table et un échange client/serveur, pages 31–32. Dans un modèle à jetons, in prend une ressource et out la remet à disposition. Savoir repérer les attentes et les blocages est utile pour ces exercices.",
+    "source": "Support p. 31–32 ; exercice numérique proposé pour l’entraînement. La possibilité d’un exercice Linda est signalée par Arthur à partir de l’oral ; le sujet exact n’est pas connu."
+  },
+  "architectures": {
+    "example": "Même besoin : consulter la fiche du livre 42 et envoyer une demande de commande. Dans la variante P2P, le livre est proposé par un participant vendeur.",
+    "scope": "Ces schémas sont des choix pédagogiques, pas cinq catégories exclusives. Ils montrent des composants et leurs échanges, pas un nombre imposé de machines. Les retours et certains détails techniques sont omis ; les étapes précisent le sens de l’échange.",
+    "modes": [
+      {
+        "id": "client-serveur",
+        "title": "Client-serveur",
+        "focus": "Qui demande et qui fournit le service ?",
+        "description": "Un client demande le catalogue ou envoie une commande à un serveur. Dans cet exemple simple, le serveur regroupe logique métier et stockage local.",
+        "placement": "Un poste client et une machine serveur. La centralisation du stockage est un choix de cet exemple, pas une définition universelle du client-serveur.",
+        "advantage": "Un point d’entrée et une exploitation simples pour démarrer.",
+        "tradeoff": "Le serveur et son stockage peuvent devenir des goulots ou des points de panne.",
+        "failure": "Si le serveur unique s’arrête, le client ne peut plus consulter ni commander dans cet exemple.",
+        "data": "Données regroupées sur le serveur.",
+        "change": "Application serveur à redéployer dans cet exemple.",
+        "warning": "Client-serveur décrit une relation d’échange. Les modèles 3 tiers, services et microservices peuvent aussi utiliser cette relation.",
+        "nodes": [
+          {
+            "id": "client",
+            "title": "Client",
+            "detail": "Interface de la boutique",
+            "x": 60,
+            "y": 110,
+            "w": 210,
+            "mx": 75,
+            "my": 10,
+            "mw": 210
+          },
+          {
+            "id": "server",
+            "title": "Serveur boutique",
+            "detail": "Métier + données locales",
+            "x": 430,
+            "y": 95,
+            "w": 330,
+            "mx": 30,
+            "my": 170,
+            "mw": 300
+          }
+        ],
+        "edges": [
+          {
+            "id": "cs",
+            "source": "client",
+            "target": "server",
+            "both": true
+          }
+        ],
+        "mobileHeight": 300,
+        "journeys": {
+          "catalogue": [
+            {
+              "edge": "cs",
+              "text": "Le client demande la fiche du livre 42."
+            },
+            {
+              "edge": "cs",
+              "text": "Le serveur lit ses données et renvoie la fiche au client."
+            }
+          ],
+          "commande": [
+            {
+              "edge": "cs",
+              "text": "Le client transmet une demande de commande pour le livre 42."
+            },
+            {
+              "edge": "cs",
+              "text": "Le serveur vérifie et enregistre la demande, puis répond au client."
+            }
+          ]
+        }
+      },
+      {
+        "id": "trois-tiers",
+        "title": "3 tiers",
+        "focus": "Où placer interface, métier et données ?",
+        "description": "L’interface appelle le tiers métier ; celui-ci accède au tiers de données. Le client n’interroge pas directement la base dans cet exemple.",
+        "placement": "Trois tiers physiquement séparés sont illustrés. Une couche est une responsabilité logique ; un tiers concerne le déploiement et peut contenir plusieurs couches.",
+        "advantage": "Faire évoluer ou dimensionner séparément les tiers selon leur charge.",
+        "tradeoff": "Les échanges réseau ajoutent de la latence ; une base unique reste un goulot possible.",
+        "failure": "Si le tiers de données unique est indisponible, les requêtes qui en dépendent échouent, même si le tiers métier fonctionne.",
+        "data": "Base dans un tiers dédié.",
+        "change": "Déploiement et capacité par tiers.",
+        "warning": "Trois couches logiques ne prouvent pas l’existence de trois machines. Un tiers peut lui-même être répliqué sur plusieurs machines.",
+        "nodes": [
+          {
+            "id": "client",
+            "title": "Présentation",
+            "detail": "Interface utilisateur",
+            "x": 40,
+            "y": 110,
+            "w": 220,
+            "mx": 70,
+            "my": 10,
+            "mw": 220
+          },
+          {
+            "id": "app",
+            "title": "Métier",
+            "detail": "Catalogue + Commandes",
+            "x": 340,
+            "y": 110,
+            "w": 220,
+            "mx": 70,
+            "my": 160,
+            "mw": 220
+          },
+          {
+            "id": "db",
+            "title": "Données",
+            "detail": "Livres + commandes",
+            "x": 640,
+            "y": 110,
+            "w": 220,
+            "mx": 70,
+            "my": 310,
+            "mw": 220
+          }
+        ],
+        "edges": [
+          {
+            "id": "ca",
+            "source": "client",
+            "target": "app",
+            "both": false
+          },
+          {
+            "id": "ad",
+            "source": "app",
+            "target": "db",
+            "both": false
+          }
+        ],
+        "mobileHeight": 410,
+        "journeys": {
+          "catalogue": [
+            {
+              "edge": "ca",
+              "text": "L’interface demande la fiche au tiers métier."
+            },
+            {
+              "edge": "ad",
+              "text": "Le tiers métier lit le livre 42 dans la base ; la réponse revient par le même chemin."
+            }
+          ],
+          "commande": [
+            {
+              "edge": "ca",
+              "text": "L’interface transmet une demande de commande au métier."
+            },
+            {
+              "edge": "ad",
+              "text": "Le métier applique ses règles et écrit la demande dans la base, puis répond."
+            }
+          ]
+        }
+      },
+      {
+        "id": "services",
+        "title": "Services (SOA)",
+        "focus": "Quelles capacités exposer par contrat ?",
+        "description": "L’application boutique utilise les contrats des services Catalogue et Commandes. Ces services peuvent aussi servir à d’autres applications.",
+        "placement": "Interface, application et services peuvent être sur des machines distinctes. La base partagée dessinée ici est un choix d’exemple, pas une obligation de SOA.",
+        "advantage": "Réutiliser des capacités métier sans exposer leur implémentation.",
+        "tradeoff": "Les contrats, dépendances et données partagées demandent une coordination.",
+        "failure": "Sans le service Commandes, la consultation peut rester possible, mais la commande dépend de ce service.",
+        "data": "Base partagée dans cet exemple de SOA.",
+        "change": "Évolution des services et de leurs contrats.",
+        "warning": "SOA n’impose ni REST, ni SOAP, ni un bus central. Un service peut être programmé avec des objets.",
+        "nodes": [
+          {
+            "id": "client",
+            "title": "Client",
+            "detail": "Interface",
+            "x": 20,
+            "y": 115,
+            "w": 150,
+            "mx": 105,
+            "my": 8,
+            "mw": 150
+          },
+          {
+            "id": "app",
+            "title": "Boutique",
+            "detail": "Orchestration",
+            "x": 215,
+            "y": 115,
+            "w": 160,
+            "mx": 100,
+            "my": 115,
+            "mw": 160
+          },
+          {
+            "id": "cat",
+            "title": "Catalogue",
+            "detail": "Contrat de lecture",
+            "x": 435,
+            "y": 25,
+            "w": 180,
+            "mx": 4,
+            "my": 255,
+            "mw": 168
+          },
+          {
+            "id": "cmd",
+            "title": "Commandes",
+            "detail": "Contrat de commande",
+            "x": 435,
+            "y": 210,
+            "w": 180,
+            "mx": 188,
+            "my": 255,
+            "mw": 168
+          },
+          {
+            "id": "db",
+            "title": "Base partagée",
+            "detail": "Choix de cet exemple",
+            "x": 705,
+            "y": 115,
+            "w": 180,
+            "mx": 80,
+            "my": 425,
+            "mw": 200
+          }
+        ],
+        "edges": [
+          {
+            "id": "ca",
+            "source": "client",
+            "target": "app",
+            "both": false
+          },
+          {
+            "id": "ac",
+            "source": "app",
+            "target": "cat",
+            "both": false
+          },
+          {
+            "id": "ao",
+            "source": "app",
+            "target": "cmd",
+            "both": false
+          },
+          {
+            "id": "cd",
+            "source": "cat",
+            "target": "db",
+            "both": false
+          },
+          {
+            "id": "od",
+            "source": "cmd",
+            "target": "db",
+            "both": false
+          }
+        ],
+        "mobileHeight": 520,
+        "journeys": {
+          "catalogue": [
+            {
+              "edge": "ca",
+              "text": "Le client interroge l’application boutique."
+            },
+            {
+              "edge": "ac",
+              "text": "La boutique appelle le contrat du service Catalogue."
+            },
+            {
+              "edge": "cd",
+              "text": "Catalogue lit les informations partagées ; la fiche est renvoyée."
+            }
+          ],
+          "commande": [
+            {
+              "edge": "ca",
+              "text": "Le client transmet sa demande à la boutique."
+            },
+            {
+              "edge": "ac",
+              "text": "La boutique interroge Catalogue pour vérifier les informations du livre."
+            },
+            {
+              "edge": "ao",
+              "text": "La boutique appelle le contrat de Commandes."
+            },
+            {
+              "edge": "od",
+              "text": "Commandes enregistre la demande dans la base partagée ; la réponse revient."
+            }
+          ]
+        }
+      },
+      {
+        "id": "microservices",
+        "title": "Microservices",
+        "focus": "Quelles capacités déployer indépendamment ?",
+        "description": "Catalogue et Commandes sont des services autonomes, déployables séparément. Chaque service maîtrise son stockage et communique par contrat.",
+        "placement": "Les boîtes ne sont pas des VM : plusieurs services peuvent partager un hôte, ou être répartis et répliqués. Les stockages représentent une propriété logique des données.",
+        "advantage": "Déployer et dimensionner Catalogue sans redéployer Commandes.",
+        "tradeoff": "La cohérence entre services et les pannes partielles deviennent plus complexes.",
+        "failure": "Une panne de Commandes peut laisser Catalogue disponible si les dépendances et la gestion des erreurs le permettent. Le partage d’un hôte peut créer une panne commune.",
+        "data": "Données et schéma maîtrisés par chaque service.",
+        "change": "Déploiement autonome par capacité métier.",
+        "warning": "Docker est un outil de déploiement, pas une condition des microservices. Enregistrer une demande ne garantit pas une réservation atomique du livre.",
+        "nodes": [
+          {
+            "id": "client",
+            "title": "Client",
+            "detail": "Interface",
+            "x": 10,
+            "y": 115,
+            "w": 150,
+            "mx": 105,
+            "my": 5,
+            "mw": 150
+          },
+          {
+            "id": "gateway",
+            "title": "Entrée API",
+            "detail": "Routage choisi ici",
+            "x": 210,
+            "y": 115,
+            "w": 160,
+            "mx": 100,
+            "my": 115,
+            "mw": 160
+          },
+          {
+            "id": "cat",
+            "title": "Catalogue",
+            "detail": "Service autonome",
+            "x": 435,
+            "y": 25,
+            "w": 180,
+            "mx": 5,
+            "my": 255,
+            "mw": 165
+          },
+          {
+            "id": "cmd",
+            "title": "Commandes",
+            "detail": "Service autonome",
+            "x": 435,
+            "y": 210,
+            "w": 180,
+            "mx": 190,
+            "my": 255,
+            "mw": 165
+          },
+          {
+            "id": "catdb",
+            "title": "Données Catalogue",
+            "detail": "Sous son contrôle",
+            "x": 705,
+            "y": 25,
+            "w": 180,
+            "mx": 5,
+            "my": 425,
+            "mw": 165
+          },
+          {
+            "id": "cmddb",
+            "title": "Données Commandes",
+            "detail": "Sous son contrôle",
+            "x": 705,
+            "y": 210,
+            "w": 180,
+            "mx": 190,
+            "my": 425,
+            "mw": 165
+          }
+        ],
+        "edges": [
+          {
+            "id": "cg",
+            "source": "client",
+            "target": "gateway",
+            "both": false
+          },
+          {
+            "id": "gc",
+            "source": "gateway",
+            "target": "cat",
+            "both": false
+          },
+          {
+            "id": "go",
+            "source": "gateway",
+            "target": "cmd",
+            "both": false
+          },
+          {
+            "id": "cd",
+            "source": "cat",
+            "target": "catdb",
+            "both": false
+          },
+          {
+            "id": "od",
+            "source": "cmd",
+            "target": "cmddb",
+            "both": false
+          },
+          {
+            "id": "oc",
+            "source": "cmd",
+            "target": "cat",
+            "both": false
+          }
+        ],
+        "mobileHeight": 525,
+        "journeys": {
+          "catalogue": [
+            {
+              "edge": "cg",
+              "text": "Le client demande le livre 42 via l’entrée API."
+            },
+            {
+              "edge": "gc",
+              "text": "L’entrée route vers Catalogue."
+            },
+            {
+              "edge": "cd",
+              "text": "Catalogue lit ses propres données et renvoie la fiche."
+            }
+          ],
+          "commande": [
+            {
+              "edge": "cg",
+              "text": "Le client envoie sa demande via l’entrée API."
+            },
+            {
+              "edge": "go",
+              "text": "L’entrée route vers Commandes."
+            },
+            {
+              "edge": "oc",
+              "text": "Commandes consulte Catalogue par son contrat, sans lire directement sa base."
+            },
+            {
+              "edge": "od",
+              "text": "Commandes stocke la demande dans ses données. La réservation définitive nécessite un protocole métier adapté."
+            }
+          ]
+        }
+      },
+      {
+        "id": "p2p",
+        "title": "P2P",
+        "focus": "Quels rôles les participants peuvent-ils partager ?",
+        "description": "La boutique devient une place de marché entre pairs. Chaque pair peut demander des offres et proposer les siennes : il joue des rôles de client et de serveur.",
+        "placement": "Les pairs représentent des participants distincts sur un réseau logique. Les liens ne sont pas le câblage physique. Le livre 42 appartient ici au pair B.",
+        "advantage": "Répartir la fourniture des offres entre participants.",
+        "tradeoff": "Découverte, disponibilité des pairs, confiance et cohérence doivent être organisées.",
+        "failure": "Si B est absent, son offre ne peut pas être confirmée dans ce scénario sans copie ni relais. Les offres des autres pairs peuvent rester accessibles.",
+        "data": "Chaque pair possède ses offres dans cet exemple.",
+        "change": "Participants autonomes et protocole commun.",
+        "warning": "P2P ne garantit ni copies, ni disponibilité, ni transaction globale. Cette place de marché est un exemple pédagogique ; ce n’est pas un système de paiement décentralisé prêt à l’emploi.",
+        "nodes": [
+          {
+            "id": "a",
+            "title": "Pair A · acheteur",
+            "detail": "Demande et propose",
+            "x": 60,
+            "y": 25,
+            "w": 260,
+            "mx": 5,
+            "my": 10,
+            "mw": 165
+          },
+          {
+            "id": "b",
+            "title": "Pair B · vendeur",
+            "detail": "Possède le livre 42",
+            "x": 580,
+            "y": 25,
+            "w": 260,
+            "mx": 190,
+            "my": 10,
+            "mw": 165
+          },
+          {
+            "id": "c",
+            "title": "Pair C",
+            "detail": "Ses propres offres",
+            "x": 60,
+            "y": 210,
+            "w": 260,
+            "mx": 5,
+            "my": 200,
+            "mw": 165
+          },
+          {
+            "id": "d",
+            "title": "Pair D",
+            "detail": "Ses propres offres",
+            "x": 580,
+            "y": 210,
+            "w": 260,
+            "mx": 190,
+            "my": 200,
+            "mw": 165
+          }
+        ],
+        "edges": [
+          {
+            "id": "ab",
+            "source": "a",
+            "target": "b",
+            "both": true
+          },
+          {
+            "id": "ac",
+            "source": "a",
+            "target": "c",
+            "both": true
+          },
+          {
+            "id": "bd",
+            "source": "b",
+            "target": "d",
+            "both": true
+          },
+          {
+            "id": "cd",
+            "source": "c",
+            "target": "d",
+            "both": true
+          }
+        ],
+        "mobileHeight": 300,
+        "journeys": {
+          "catalogue": [
+            {
+              "edge": "ab",
+              "text": "A interroge B, trouvé par le mécanisme de découverte non détaillé ici."
+            },
+            {
+              "edge": "ab",
+              "text": "B renvoie son offre pour le livre 42. Le protocole doit organiser la découverte des autres offres."
+            }
+          ],
+          "commande": [
+            {
+              "edge": "ab",
+              "text": "A adresse la demande au vendeur B."
+            },
+            {
+              "edge": "ab",
+              "text": "B reçoit et confirme selon ses règles. Une confirmation fiable demande un protocole adapté aux déconnexions."
+            }
+          ]
+        }
+      }
+    ],
+    "questions": [
+      [
+        "Une application microservices peut-elle être client-serveur ?",
+        "Oui : ses appels entre client, entrée API et services suivent des relations demande/fourniture. Les deux notions répondent à des questions différentes."
+      ],
+      [
+        "Trois couches logiques imposent-elles trois machines ?",
+        "Non. Les couches séparent les responsabilités ; les tiers décrivent leur séparation physique. Une application peut regrouper plusieurs couches dans un même tiers."
+      ],
+      [
+        "Plusieurs services garantissent-ils la tolérance aux pannes ?",
+        "Non. Il faut aussi examiner hôtes communs, données, réplication, dépendances et traitement des erreurs."
+      ],
+      [
+        "Comment comparer sans dire que l’un est toujours meilleur ?",
+        "Identifier le besoin, les dépendances, les données, les unités de déploiement et les coûts réseau. Justifier le choix et ses limites."
+      ]
+    ],
+    "source": "Support p. 28–29 et 34–39 ; rapprochements et exemple de boutique proposés. Microservices et déploiement : compléments documentaires officiels.",
+    "links": [
+      [
+        "Architectures N tiers",
+        "https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/n-tier"
+      ],
+      [
+        "Microservices",
+        "https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices"
+      ]
+    ]
+  },
+  "morning24": {
+    "date": "24 octobre 2026",
+    "source": "Résumé Plaud du matin, 8 pages, reçu et comparé au support ; transcription de cette séance non fournie.",
+    "sections": [
+      {
+        "id": "bilan-24",
+        "title": "Séance du 24 octobre · bilan vérifié",
+        "source": "Résumé Plaud du 24/10, p. 1–8 ; support du professeur ; corrections documentées ci-dessous.",
+        "route": "architectures",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Le résumé de ce matin reprend les architectures, Linda et l’hypercube déjà préparés ; il complète surtout transactions, middleware et économie du cloud. Il s’agit d’un résumé automatique de huit pages, pas de la transcription intégrale : les consignes d’examen rapportées restent à confirmer."
+          },
+          {
+            "type": "table",
+            "header": [
+              "Déjà présent",
+              "Mise à jour utile"
+            ],
+            "rows": [
+              [
+                "Couches, services, Docker, microservices",
+                "Préciser service / interface / protocole, serverless et idempotence HTTP."
+              ],
+              [
+                "Couplages, pub/sub et Linda",
+                "Distinguer tuples et événements persistants ; préciser initialisation et blocages."
+              ],
+              [
+                "P2P et Chord",
+                "Ajouter le routage complet 0 → 14 dans l’hypercube à 4 bits."
+              ],
+              [
+                "Middleware et migration évoqués",
+                "Détailler ACID/TPM, adaptateurs, intercepteurs et calculs de flux/coûts."
+              ]
+            ],
+            "widths": [
+              176,
+              323
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Corrections à conserver"
+          },
+          {
+            "type": "text",
+            "text": "Un espace de tuples n’est pas simplement du pub/sub avec persistance : Linda recherche par motif et in retire une occurrence. La durabilité d’un bus règle une autre question. Le couple in puis out protège temporairement l’accès à un jeton ; les deux instructions ne constituent pas une transaction atomique unique."
+          },
+          {
+            "type": "text",
+            "text": "Idempotent signifie : plusieurs demandes identiques ont le même effet métier attendu qu’une seule. GET est sûr au sens lecture, même si le serveur écrit un journal. PUT et DELETE sont idempotents ; une seconde réponse DELETE peut être différente. POST ne garantit pas l’idempotence par sa méthode, mais une application peut dédupliquer une demande avec un identifiant."
+          },
+          {
+            "type": "text",
+            "text": "REST est un style d’architecture ; SOAP est un protocole de messages XML. « Stateless » ne signifie pas absence de données métier. Un broker réduit le nombre d’adaptateurs, sans garantir à lui seul les performances ou la disponibilité."
+          },
+          {
+            "type": "heading",
+            "text": "Ce qui ne devient pas une consigne officielle"
+          },
+          {
+            "type": "text",
+            "text": "La mention « certains schémas avancés de mobilité/capteurs hors examen » vient du résumé Plaud p. 2 ; ne pas exclure tout le chapitre sans confirmation. La liste « devoirs et plan d’action » reste une proposition de révision tant qu’aucun énoncé n’est fourni. Les échanges personnels et logistiques sont exclus de la synthèse."
+          }
+        ]
+      },
+      {
+        "id": "integration-24",
+        "title": "Transactions et structure du middleware",
+        "source": "Support p. 23–24 et 32–33 ; Plaud du 24/10 p. 2 et 5.",
+        "route": "middleware",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "EAI et transactions ACID"
+          },
+          {
+            "type": "text",
+            "text": "L’intégration d’applications d’entreprise (EAI) relie des applications par fichiers, base commune, appels ou messages. Connecter les applications ne garantit pas automatiquement leur cohérence : formats, contrats et transactions doivent être définis."
+          },
+          {
+            "type": "table",
+            "header": [
+              "Propriété",
+              "Ce qu’il faut comprendre"
+            ],
+            "rows": [
+              [
+                "Atomicité",
+                "Tout ou rien pour les opérations couvertes par la transaction."
+              ],
+              [
+                "Cohérence",
+                "Les règles et contraintes d’intégrité de l’application sont respectées."
+              ],
+              [
+                "Isolation",
+                "Les exécutions concurrentes sont contrôlées selon le niveau d’isolation choisi."
+              ],
+              [
+                "Durabilité",
+                "Les effets validés sont conservés selon les garanties du système."
+              ]
+            ],
+            "widths": [
+              108,
+              391
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Un moniteur de transactions (TPM, Transaction Processing Monitor) coordonne des participants. L’exemple vol + hôtel n’est atomique que si les participants et le protocole le permettent. Une API externe ayant déjà confirmé une action irréversible peut exiger une compensation ; un simple appel réseau n’assure pas un rollback global."
+          },
+          {
+            "type": "heading",
+            "text": "Service, interface et protocole"
+          },
+          {
+            "type": "text",
+            "text": "Service : la capacité fournie, par exemple réserver une chambre. Interface : les opérations et paramètres exposés. Protocole : les règles des échanges. L’API socket est une interface ; TCP est un protocole de transport. Un composant peut proposer un contrat indépendant de son implémentation."
+          },
+          {
+            "type": "heading",
+            "text": "Wrappers, broker et intercepteurs"
+          },
+          {
+            "type": "text",
+            "text": "Un wrapper adapte une interface existante. Avec les conventions du support, N applications nécessitent N(N − 1) adaptateurs orientés en point-à-point, contre 2N interfaces via un broker. Pour N = 10 : 90 contre 20. Les paires non orientées sont N(N − 1)/2 = 45 : ne pas mélanger ces comptages."
+          },
+          {
+            "type": "text",
+            "text": "Un intercepteur ajoute un traitement sur le chemin d’un appel, entre application et middleware ou middleware et OS. Exemples : journalisation, redirection vers une réplique, découpage/réassemblage applicatif de gros transferts. Il doit conserver le contrat attendu ; découper un fichier ne garantit pas de réduire son volume ou son coût réseau."
+          }
+        ]
+      },
+      {
+        "id": "linda-hypercube-24",
+        "title": "Linda et hypercube · exercices de lecture",
+        "source": "Support p. 31–35 ; Plaud du 24/10 p. 4–6 ; exemples proposés, sans sujet d’examen confirmé.",
+        "route": "evenements",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "Linda : initialiser, puis suivre les processus"
+          },
+          {
+            "type": "text",
+            "text": "Un in ou rd sur un motif absent bloque le processus appelant. Les autres processus continuent. Les philosophes ont donc besoin de tuples initiaux pour les baguettes et les autorisations d’entrée. Avec N philosophes, donner N autorisations peut permettre à tous de saisir une baguette puis d’attendre la suivante ; limiter l’entrée à N − 1 est une solution classique dans ce protocole, sans garantie générale d’absence de famine."
+          },
+          {
+            "type": "text",
+            "text": "Un compteur partagé peut être protégé par un tuple unique : in(\"server index\", ?id), puis out(\"server index\", id + 1). Pendant le retrait, les autres lecteurs in de ce motif attendent. Si le détenteur tombe en panne avant de remettre le tuple, ils peuvent rester bloqués. Une clé de requête permet ensuite d’associer demande et réponse ; elle ne garantit pas à elle seule la livraison."
+          },
+          {
+            "type": "heading",
+            "text": "Hypercube : rejoindre la cible en corrigeant les bits"
+          },
+          {
+            "type": "text",
+            "text": "Dans un hypercube complet de dimension d, il y a 2^d nœuds, d voisins par nœud et d × 2^d / 2 liens non orientés. Deux voisins diffèrent d’un bit. Pour l’exemple simplifié du support, la clé 14 mène au nœud 1110. Depuis 0 = 0000, un chemin possible corrige les bits de gauche à droite :"
+          },
+          {
+            "type": "table",
+            "header": [
+              "Nœud courant",
+              "Décimal",
+              "Bits différents de 1110"
+            ],
+            "rows": [
+              [
+                "0000",
+                "0",
+                "3"
+              ],
+              [
+                "1000",
+                "8",
+                "2"
+              ],
+              [
+                "1100",
+                "12",
+                "1"
+              ],
+              [
+                "1110",
+                "14",
+                "0"
+              ]
+            ],
+            "widths": [
+              165,
+              95,
+              239
+            ]
+          },
+          {
+            "type": "text",
+            "text": "La distance de Hamming compte les bits différents : ici 3 différences, donc 3 sauts minimaux. En dimension 4 : 16 nœuds, 4 voisins chacun et 32 liens ; au maximum 4 sauts entre deux nœuds. 0 → 2 → 6 → 14 est également un plus court chemin. Respecter l’ordre de correction imposé par l’énoncé, s’il y en a un."
+          },
+          {
+            "type": "text",
+            "text": "La proximité est binaire, pas la différence entre les valeurs décimales. Cette borne concerne un routage idéal sans panne ; elle ne prédit pas le temps réel en présence de congestion ou de défaillances. Le stockage des clés et la topologie sont deux aspects à distinguer."
+          }
+        ]
+      },
+      {
+        "id": "cloud-economie-24",
+        "title": "Cloud · exécution et modèle économique",
+        "source": "Support p. 21–22 ; Plaud du 24/10 p. 3 et 6–7 ; compléments officiels Kubernetes et serverless.",
+        "route": "cloud",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "Quatre couches, des responsabilités différentes"
+          },
+          {
+            "type": "table",
+            "header": [
+              "Couche du modèle",
+              "Rôle illustratif"
+            ],
+            "rows": [
+              [
+                "Application",
+                "Usage de logiciels et fonctions métier."
+              ],
+              [
+                "Plateforme",
+                "Runtimes, frameworks et abstractions de déploiement."
+              ],
+              [
+                "Infrastructure",
+                "Ressources virtuelles de calcul, stockage et réseau."
+              ],
+              [
+                "Fabrique / matériel",
+                "CPU, mémoire, disques, réseau et équipements du centre de données."
+              ]
+            ],
+            "widths": [
+              130,
+              369
+            ]
+          },
+          {
+            "type": "text",
+            "text": "La « fabrique » ne désigne pas les abstractions de plus haut niveau. Kubernetes gère des charges conteneurisées et leur état désiré sur des nœuds ; il n’est ni le matériel, ni un hyperviseur universel, ni un PaaS complet à lui seul. Le placer dans une seule couche est une simplification pédagogique."
+          },
+          {
+            "type": "text",
+            "text": "Serverless désigne une offre où le fournisseur prend en charge une grande part de l’exploitation des serveurs ; ils existent toujours. Les fonctions à la demande (FaaS) en sont un exemple, pas la totalité du serverless. Il reste à gérer code, droits, données, configuration et limites du service. Docker empaquette un logiciel ; ces notions ne sont pas interchangeables."
+          },
+          {
+            "type": "heading",
+            "text": "Capex, Opex et périmètre du coût"
+          },
+          {
+            "type": "text",
+            "text": "Capex : investissement dans des actifs, par exemple du matériel. Opex : dépenses d’exploitation récurrentes. Le cloud peut déplacer une partie des dépenses vers la consommation ou l’abonnement ; il ne rend pas automatiquement la solution moins chère."
+          },
+          {
+            "type": "text",
+            "text": "Comparer sur la même durée et le même périmètre : calcul, stockage, réseau, licences, exploitation humaine, transition et coûts restant sur site. Un amortissement comptable, une dépense déjà engagée et une économie réellement évitable ne sont pas trois fois le même gain."
+          },
+          {
+            "type": "heading",
+            "text": "Approche forfaitaire du support"
+          },
+          {
+            "type": "text",
+            "text": "B_calcul = bénéfice unitaire net de migration ; M_calcul = nombre de composants de calcul migrés. Même définition pour stockage. G_brut = B_calcul × M_calcul + B_stockage × M_stockage. Le support note les deux nombres M_c et M_s ; ne pas les confondre avec N_i, le nombre de serveurs d’un composant."
+          },
+          {
+            "type": "text",
+            "text": "Exemple d’entraînement : 3 composants à 40 €/mois de bénéfice net chacun et 2 à 15 €/mois donnent 3 × 40 + 2 × 15 = 150 €/mois, avant les coûts supplémentaires qui n’y sont pas déjà inclus. Les contraintes de sécurité, de latence et de fonctionnement transactionnel restent à respecter."
+          }
+        ]
+      },
+      {
+        "id": "migration-flux-24",
+        "title": "Migration cloud · calculer les flux et le gain",
+        "source": "Support p. 21–22 ; Plaud du 24/10 p. 6–8. Tous les nombres et tarifs de cet exercice sont fictifs.",
+        "route": "maths",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "Fixer les unités avant de multiplier"
+          },
+          {
+            "type": "text",
+            "text": "Pour l’arc i → j : T_ij est un nombre de transactions par mois ; s_ij est ici le volume moyen en Go par transaction. Alors F_ij = T_ij × s_ij est un flux en Go/mois. Si S_ij donné dans l’énoncé est déjà un volume total par mois, prendre F_ij = S_ij et ne pas le multiplier à nouveau. Le libellé S du support appelle cette vérification d’unités."
+          },
+          {
+            "type": "text",
+            "text": "N_i est le nombre initial de serveurs du composant i ; n_i est le nombre déplacé ; f_i = n_i/N_i, avec 0 ≤ f_i ≤ 1 et N_i > 0. Le modèle suppose une répartition uniforme du trafic et des placements indépendants entre extrémités."
+          },
+          {
+            "type": "table",
+            "header": [
+              "Flux après placement",
+              "Fraction de F_ij",
+              "Exemple : F = 1 000"
+            ],
+            "rows": [
+              [
+                "Local → local",
+                "(1 − f_i)(1 − f_j)",
+                "375 Go/mois"
+              ],
+              [
+                "Local → cloud",
+                "(1 − f_i)f_j",
+                "125 Go/mois"
+              ],
+              [
+                "Cloud → local",
+                "f_i(1 − f_j)",
+                "375 Go/mois"
+              ],
+              [
+                "Cloud → cloud",
+                "f_i f_j",
+                "125 Go/mois"
+              ]
+            ],
+            "widths": [
+              161,
+              171,
+              167
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Valeurs de l’exemple : T = 100 000 transactions/mois, s = 0,01 Go/transaction, f_i = 0,5 et f_j = 0,25. Les quatre fractions font 1 et les volumes font 1 000. Le trafic qui traverse la frontière local/cloud vaut 125 + 375 = 500 Go/mois."
+          },
+          {
+            "type": "heading",
+            "text": "Passer du trafic au coût, puis au bénéfice net"
+          },
+          {
+            "type": "text",
+            "text": "Tarifs fictifs pour cet exercice : c_local→cloud = 0,02 €/Go et c_cloud→local = 0,08 €/Go, chacun incluant toutes les charges retenues pour ce sens. C_réseau_après = 125 × 0,02 + 375 × 0,08 = 32,50 €/mois. On suppose ici les autres flux gratuits ou inchangés ; ce n’est pas une règle de tarification réelle."
+          },
+          {
+            "type": "text",
+            "text": "Toujours comparer avant/après : ΔC_réseau = C_réseau_après − C_réseau_avant. Si le bénéfice calcul/stockage du plan est déjà net de ces postes et vaut 150 €/mois, si C_réseau_avant = 0 et si les autres surcoûts retenus sont nuls, G_net = 150 − 32,50 = 117,50 €/mois."
+          },
+          {
+            "type": "text",
+            "text": "En général : gain = coût total avant − coût total après, sur le même horizon. Inclure les flux utilisateurs, autres arcs, communications inter-zones, réplications et coûts de transition lorsqu’ils existent. Ne pas recompter un poste déjà déduit des bénéfices unitaires. Une économie calculée ne rend pas un plan admissible si les contraintes fonctionnelles sont violées."
+          }
+        ]
+      }
+    ],
+    "links": [
+      [
+        "Sémantique HTTP (RFC 9110)",
+        "https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2"
+      ],
+      [
+        "Kubernetes : périmètre",
+        "https://kubernetes.io/docs/concepts/overview/"
+      ],
+      [
+        "Serverless : définition",
+        "https://aws.amazon.com/serverless/"
+      ]
+    ]
+  },
+  "course2Pages": [
+    {
+      "title": "Threads, ordonnancement et serveurs concurrents",
+      "source": "Cours 2, PDF p. 10–13 et 17",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Un processus possède notamment un espace d’adressage et des ressources. Ses threads partagent cet espace tout en ayant leur propre pile, registres et position d’exécution. Une commutation sauvegarde l’état nécessaire à la reprise. Le coût direct vient de la commutation elle-même. Le coût indirect peut venir des données évincées du cache. La mémoire partagée facilite les échanges mais impose de coordonner les écritures concurrentes."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Le cours compare les threads utilisateur, les threads pris en charge par le noyau et un modèle hybride many-to-many avec des processus légers (LWP). Dans le modèle utilisateur pur présenté, si le noyau ne connaît qu’un seul contexte ordonnançable pour le processus, un appel bloquant peut suspendre l’ensemble. Avec plusieurs threads connus du noyau, celui-ci peut en exécuter un autre. Le modèle LWP multiplexe des threads utilisateur sur plusieurs contextes ordonnançables."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La concurrence organise plusieurs opérations dont les durées se recouvrent. Le parallélisme signifie que certaines s’exécutent simultanément. Sur un seul cœur, on peut commencer une autre tâche pendant l’attente d’une E/S. Sur plusieurs cœurs, plusieurs tâches CPU peuvent avancer réellement en parallèle. Le cours illustre ce recouvrement avec des ressources web téléchargées en parallèle et des appels RPC lancés vers plusieurs serveurs. Avec des appels indépendants et des ressources suffisantes, attendre tous les résultats prend approximativement la durée du plus lent, plus les coûts de coordination."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Un serveur itératif traite une demande à la fois. Dans le modèle dispatcher/workers, le dispatcher reçoit et confie les demandes à des travailleurs, qui peuvent être des threads ou des processus. Une boucle d’événements utilisant des E/S non bloquantes peut gérer plusieurs demandes en cours sur un thread. Pour obtenir du parallélisme CPU, il faut des unités d’exécution distinctes. Un pool de workers et sa file peuvent eux-mêmes saturer."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Calcul TLP. Si cᵢ est la fraction de temps avec i threads en exécution simultanée, TLP = Σ(i × cᵢ)/(1 − c₀), sur les instants où au moins un thread s’exécute. Pour c₀ = 20 %, c₁ = 40 %, c₂ = 30 % et c₃ = 10 %, le numérateur vaut 1,30 et le TLP vaut 1,625. La métrique décrit la simultanéité observée. Elle ne donne pas à elle seule le gain de vitesse."
+        }
+      ]
+    },
+    {
+      "title": "Virtualisation, VM et conteneurs",
+      "source": "Cours 2, PDF p. 14–15 et 20–21",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La virtualisation expose une interface attendue au-dessus d’un autre environnement. Selon le niveau, cette interface peut être un jeu d’instructions (ISA), des appels système ou une API de bibliothèque. Le support distingue une VM de processus, qui fournit un environnement d’exécution à un programme, et une VM système, dans laquelle un OS invité s’exécute sous le contrôle d’un VMM ou hyperviseur."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Forme",
+              "Organisation",
+              "Exemple d’usage"
+            ],
+            [
+              "VM de processus",
+              "Un runtime fournit une machine abstraite à un programme.",
+              "Exécuter du bytecode sur plusieurs plateformes."
+            ],
+            [
+              "Hyperviseur natif (type 1)",
+              "La couche de virtualisation s’exécute directement sur le matériel dans le modèle du cours.",
+              "Héberger plusieurs VM. Hyper-V est de type 1, avec Windows dans la partition racine."
+            ],
+            [
+              "Hyperviseur hébergé (type 2)",
+              "La couche de virtualisation s’appuie sur un OS hôte.",
+              "Exécuter une VM de test sur un poste."
+            ],
+            [
+              "Conteneur",
+              "Les processus sont isolés au niveau de l’OS et partagent un noyau.",
+              "Emballer et déployer une application avec ses dépendances."
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dans le modèle classique, le VMM peut intercepter les instructions sensibles si elles déclenchent un piège en mode non privilégié. Le support explique le problème historique des instructions sensibles qui ne déclenchent pas ce piège et compare émulation, réécriture et paravirtualisation. L’exemple x86 décrit une difficulté historique du modèle classique. Le cours relie les VM à l’IaaS et rappelle que des VM partageant une machine physique peuvent encore se disputer ses ressources."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Pour les conteneurs, retenir trois rôles. Les namespaces isolent la vue des processus ou du réseau. Les cgroups encadrent les ressources comme le CPU et la mémoire. Un système de fichiers en couches assemble le contenu de l’image et peut ajouter une couche d’écriture propre à l’instance. Une image décrit ce qui sert à démarrer un conteneur. PlanetLab illustre une tranche constituée d’environnements isolés sur plusieurs nœuds. Si deux conteneurs modifient le même chemin dans leur image commune, chacun écrit dans sa propre couche supérieure."
+        },
+        {
+          "kind": "link",
+          "title": "Microsoft Learn — architecture Hyper-V",
+          "url": "https://learn.microsoft.com/fr-fr/windows-server/administration/performance-tuning/role/hyper-v-server/architecture"
+        }
+      ]
+    },
+    {
+      "title": "Clients, état et clusters",
+      "source": "Cours 2, PDF p. 15–21",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Un protocole peut être propre à une application ou fourni par le middleware. X Window montre que le rôle de serveur dépend du service considéré. Le serveur X gère l’affichage et les entrées près de l’utilisateur. L’application, locale ou distante, est son client. Des échanges très synchrones entre les deux deviennent pénalisants quand la latence augmente."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Un serveur expose un point d’accès, fixe ou découvert via un annuaire ou un service de résolution. Le support évoque également un canal séparé pour une demande urgente et le mécanisme urgent de TCP comme exemples de communication hors bande."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Un serveur applicatif sans état de session local peut traiter une requête avec le contexte qu’elle transporte ou qu’il récupère dans un stockage partagé. Un serveur avec état local peut mémoriser l’ouverture d’un fichier, la session ou l’état du cache d’un client. Cela peut accélérer certaines interactions, mais impose de gérer la reprise après changement de serveur. Une connexion TCP conserve son propre état au niveau transport. Un service applicatif sans état de session local peut s’appuyer sur TCP."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Le cluster du support a trois tiers, un frontal, des serveurs applicatifs et des bases distribuées. Le répartiteur du cluster choisit un backend. Le dispatcher interne de ce backend choisit un travailleur pour traiter la demande. Le frontal peut devenir le goulot même si les backends disposent de capacité. Le cours compare des décisions fondées sur la connexion ou les métriques de transport à des décisions fondées sur le contenu de la requête. Il présente aussi un transfert TCP où le backend peut répondre directement dans le modèle décrit."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Pour une distribution géographique, DNS peut orienter vers une réplique proche, mais la localisation observée peut être celle du résolveur. Mobile IPv6 illustre la dissociation entre une adresse stable et une adresse de transit. Ces deux exemples éclairent la transparence de localisation avec des mécanismes différents."
+        },
+        {
+          "kind": "diagram",
+          "text": "TCP handoff dans le modèle du cours : requête client → frontal → serveur applicatif choisi. Le serveur applicatif → client pour la réponse directe."
+        }
+      ]
+    },
+    {
+      "title": "Migration de code et de VM",
+      "source": "Cours 2, PDF p. 22–24",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "On peut rapprocher le calcul des données, répartir la charge ou fournir du code à la demande. Pour identifier le modèle, demander qui possède le code, où il s’exécute et quel état le suit."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Modèle",
+              "Mouvement",
+              "Exemple"
+            ],
+            [
+              "Client-serveur classique",
+              "La demande voyage vers le serveur, qui a déjà le code.",
+              "Lecture d’une page calculée sur un serveur."
+            ],
+            [
+              "Évaluation à distance",
+              "Le client envoie le code à la machine qui l’exécute.",
+              "Script envoyé à un serveur de calcul."
+            ],
+            [
+              "Code à la demande",
+              "Le client récupère du code et l’exécute localement.",
+              "JavaScript téléchargé par le navigateur."
+            ],
+            [
+              "Agent mobile",
+              "Le code et un état se déplacent entre les hôtes.",
+              "Agent qui collecte des résultats sur plusieurs serveurs."
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "La mobilité faible transfère le code et éventuellement des données d’initialisation. L’exécution recommence à un point prévu. La mobilité forte emporte le contexte nécessaire pour reprendre l’exécution. Une VM ou une machine abstraite peut faciliter le transfert entre environnements compatibles. Il faut encore traiter les dépendances aux ressources locales, comme les volumes et le réseau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Pour migrer une VM, le support compare la pré-copie des pages mémoire avec recopie des pages modifiées, l’arrêt-copie-redémarrage et la copie à la demande après bascule. Le graphique p. 24 montre une période de latence accrue et une fenêtre d’indisponibilité plus courte. À l’oral ou en TP, distinguer durée totale du transfert, durée de dégradation et durée de coupure. Les durées illustrées dépendent du scénario."
+        },
+        {
+          "kind": "diagram",
+          "text": "Migration : début du transfert → éventuelle hausse de latence → arrêt et bascule → reprise → fin du transfert. Mesurer séparément durée totale, dégradation et coupure."
+        }
+      ]
+    },
+    {
+      "title": "Transport et deux axes de communication",
+      "source": "Cours 2, PDF p. 26–28",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Le modèle en couches sépare la transmission physique, la liaison, le routage et le transport. TCP fournit un flux d’octets ordonné avec contrôle de livraison tant que la connexion fonctionne. UDP envoie des datagrammes en mode best effort. La sérialisation, le nommage et la coordination relèvent de mécanismes au-dessus du transport."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Question",
+              "Distinction"
+            ],
+            [
+              "Que devient le message quand le destinataire est indisponible ?",
+              "Transitoire si le système finit par abandonner faute de livraison. Persistant si le middleware conserve le message pour une livraison ultérieure selon la politique configurée."
+            ],
+            [
+              "Jusqu’à quand l’émetteur attend-il ?",
+              "Dans un appel synchrone, il attend un jalon défini. Dans un échange asynchrone, il peut poursuivre avant le résultat final."
+            ],
+            [
+              "Que confirme l’accusé reçu ?",
+              "Il peut confirmer l’acceptation de la demande, sa réception à destination ou la fin de son traitement. Il faut identifier le jalon exact."
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Un RPC classique est généralement synchrone et transitoire. Un appel asynchrone peut attendre un accusé d’acceptation puis recevoir le résultat plus tard. Un producteur peut aussi attendre la confirmation d’écriture dans une file persistante alors que le consommateur traitera le message ultérieurement. Ces exemples montrent que l’attente de l’appelant et la conservation du message sont deux propriétés indépendantes."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trois questions à poser : jusqu’à quel accusé l’appelant attend-il ? Que devient le message si le destinataire est absent ? Que devient la file si le processus qui conserve le message s’arrête ?"
+        }
+      ]
+    },
+    {
+      "title": "RPC, stubs et passage de paramètres",
+      "source": "Cours 2, PDF p. 28–30",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Le stub client présente une interface locale et sérialise les arguments. Le système client transmet la requête. Le stub serveur désérialise les données, appelle la procédure locale puis sérialise le résultat. La réponse fait le trajet inverse. Un IDL décrit les opérations et types échangés. Le DCE du support illustre le rôle d’un annuaire et d’un service qui permet de résoudre le port effectif."
+        },
+        {
+          "kind": "diagram",
+          "text": "Client → stub client → réseau → stub serveur → service. Le résultat suit le chemin inverse."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Le client et le serveur doivent s’accorder sur les types, l’encodage et la représentation des données. Un pointeur mémoire local n’identifie aucune donnée exploitable dans l’autre processus. Une référence distante est un identifiant interprété par un protocole prévu à cet effet. L’interface peut donner l’apparence d’un appel local tout en laissant au client la gestion du délai, du timeout et des erreurs."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Exemple. CréerCommande(42) peut réussir côté serveur alors que la réponse se perd. Si le client réessaie, un identifiant d’opération stable et une déduplication persistante côté serveur permettent de reconnaître la même demande. En mode asynchrone, un retour « accepté » signifie que le serveur a pris la demande en charge. Le résultat métier arrive ensuite, par exemple via un callback."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Pour la sérialisation, choisir une représentation convenue des types et des octets. La copie-restauration transfère une valeur et peut appliquer un changement au retour. Une référence distante repose sur un identifiant et un protocole. Deux appels asynchrones peuvent avancer en parallèle avant que le client attende leurs résultats."
+        }
+      ]
+    },
+    {
+      "title": "Sockets, ZeroMQ et MPI",
+      "source": "Cours 2, PDF p. 31–35",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Sockets TCP. Le serveur crée un socket, l’associe à une adresse avec bind, écoute avec listen et accepte les connexions avec accept. Le client utilise connect. L’échange de données se fait sur le socket connecté. En Python, recv(1024) peut renvoyer une partie de message ou des octets de plusieurs messages. Il faut définir un cadrage, par exemple une longueur suivie du contenu, lire le nombre d’octets nécessaire et traiter les cas de fermeture. sendall aide à envoyer le bloc complet au niveau du socket. La confirmation du traitement relève de l’application. Les exemples de C2 illustrent le flux, avec une syntaxe et une manipulation des octets à adapter pour Python 3."
+        },
+        {
+          "kind": "link",
+          "title": "Documentation Python — Socket Programming HOWTO",
+          "url": "https://docs.python.org/3/howto/sockets.html"
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Modèle ZeroMQ",
+              "Quand le reconnaître"
+            ],
+            [
+              "REQ/REP",
+              "Une demande attend une réponse suivant le protocole d’échange."
+            ],
+            [
+              "PUB/SUB",
+              "Un producteur publie à plusieurs abonnés, avec filtrage possible par sujet. Un abonné tardif peut manquer des messages."
+            ],
+            [
+              "PUSH/PULL",
+              "Des tâches sont distribuées à des consommateurs dans un pipeline."
+            ],
+            [
+              "ROUTER/DEALER",
+              "Un intermédiaire peut piloter les échanges et le routage entre plusieurs interlocuteurs."
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "ZeroMQ transmet les messages en arrière-plan et peut les mettre en file en mémoire. La mise en file ne confirme ni la livraison ni le traitement. Cette file est volatile. Le patron REQ/REP standard alterne envoi et réception, et un appel de réception bloquant peut attendre."
+        },
+        {
+          "kind": "link",
+          "title": "libzmq — sockets ZeroMQ et mise en file",
+          "url": "https://libzmq.readthedocs.io/en/latest/zmq_socket.html"
+        },
+        {
+          "kind": "link",
+          "title": "Guide ZeroMQ",
+          "url": "https://zguide.zeromq.org/docs/chapter1/"
+        },
+        {
+          "kind": "paragraph",
+          "text": "MPI figure dans le PDF au-delà du point d’arrêt du 14/11. MPI. Cette interface cible la communication et la synchronisation entre processus de calcul parallèle. Un communicateur définit un contexte de communication et un groupe. Le rang identifie un processus à l’intérieur de ce groupe. MPI_COMM_WORLD est le communicateur initial du programme illustré. Avec quatre processus, les rangs sont 0 à 3. L’ordre d’affichage dépend de l’exécution. Une barrière synchronise le passage à la suite quand les membres l’ont atteinte. Pour pratiquer, retenir MPI_Sendrecv comme combinaison d’un envoi et d’une réception, et MPI_Isend comme lancement non bloquant dont il faut vérifier l’achèvement avant de modifier le tampon. L’exemple MPI:: de C2 utilise les anciennes liaisons C++ retirées de MPI-3. Pour un exemple exécutable, utiliser l’API C depuis C ou C++."
+        },
+        {
+          "kind": "link",
+          "title": "Open MPI — MPI_Sendrecv",
+          "url": "https://docs.open-mpi.org/en/main/man-openmpi/man3/MPI_Sendrecv.3.html"
+        },
+        {
+          "kind": "link",
+          "title": "MPI_Isend",
+          "url": "https://docs.open-mpi.org/en/main/man-openmpi/man3/MPI_Isend.3.html"
+        },
+        {
+          "kind": "link",
+          "title": "Liaisons retirées",
+          "url": "https://docs.open-mpi.org/en/v5.0.x/building-apps/removed-mpi-constructs.html"
+        }
+      ]
+    },
+    {
+      "title": "Files de messages et broker",
+      "source": "Cours 2, PDF p. 36–38 · Périmètre de l’écrit à vérifier",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Le producteur dépose un message dans une file. Le middleware l’achemine vers la file de destination, que le consommateur peut consulter plus tard. Dans le modèle du support, put dépose un message, get attend si la file est vide puis retire le premier, poll tente une lecture sans bloquer, notify déclenche un gestionnaire quand un message arrive."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Les gestionnaires de files résolvent un nom logique vers une destination réseau et transfèrent les messages. Un broker peut aussi router par sujet ou traduire des formats entre applications. Dans l’exemple WebSphere MQ, des agents de canal transfèrent les messages entre gestionnaires sur des canaux orientés. Le support illustre notamment l’ordre de livraison et les nouvelles tentatives configurées."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Exemple d’intégration. Une application dépose une demande de génération de rapport. La file peut confirmer son acceptation alors que le service de traitement est arrêté. Quand un worker revient, il peut produire le rapport et publier un événement distinct. La survie au redémarrage du gestionnaire dépend de la persistance configurée et de la validation du dépôt. La déduplication des effets métier reste un point de conception si un message peut être représenté au consommateur."
+        },
+        {
+          "kind": "link",
+          "title": "IBM MQ — Persistance des messages",
+          "url": "https://www.ibm.com/docs/en/ibm-mq/10.0.x?topic=messages-message-persistence"
+        }
+      ]
+    },
+    {
+      "title": "Multicast et inondation",
+      "source": "Cours 2, PDF p. 38–39 · Périmètre de l’écrit à vérifier",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La multidiffusion vise plusieurs destinataires. Une application peut construire un réseau superposé où chaque lien logique traverse un chemin physique. Dans l’exemple Chord, un identifiant multicast mid désigne le groupe. Son successeur succ(mid) devient la racine. Les demandes de jointure remontent vers la racine et peuvent s’arrêter lorsqu’elles rencontrent une branche connue. La recherche de clé du cours 1 fournit ici un point d’ancrage à la construction d’un arbre."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lire les coûts de l’exemple p. 39. En supposant les liens bidirectionnels, le plus court chemin physique pour chaque saut logique et des coûts de délai additifs, le trajet logique A → B → E → D → C coûte 9 + 39 + 27 + 7 = 82. Le plus court chemin physique A → C coûte 52 via Rₐ → Rₑ → R꜀. L’élongation vaut donc 82/52 ≈ 1,58. Le lien Rₐ–Rᵦ est traversé deux fois par ce chemin logique, une illustration du stress de liaison. Le stress compte des traversées d’un lien physique. L’élongation compare deux délais de trajet."
+        },
+        {
+          "kind": "paragraph",
+          "text": "L’inondation retransmet un message inédit aux voisins et reconnaît les doublons. Elle diffuse vite sur un graphe connecté, avec un coût qui augmente avec le nombre d’arêtes. Une variante retransmet avec une probabilité choisie. Le cours 1 l’utilise pour chercher une donnée. Le cours 2 l’utilise pour propager un message ou une mise à jour."
+        }
+      ]
+    },
+    {
+      "title": "Gossip et suppressions distribuées",
+      "source": "Cours 2, PDF p. 39–42 · Périmètre de l’écrit à vérifier",
+      "blocks": [
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Gossip",
+              "Mécanisme",
+              "Ce qu’on observe"
+            ],
+            [
+              "Push",
+              "Le nœud à l’initiative propose ses mises à jour au pair tiré.",
+              "Les nœuds à jour peuvent informer plusieurs pairs au fil des tours."
+            ],
+            [
+              "Pull",
+              "Le nœud à l’initiative demande les mises à jour au pair tiré.",
+              "Un nœud ignorant reste ignorant s’il tire un autre nœud ignorant."
+            ],
+            [
+              "Push-pull",
+              "Les deux pairs échangent leurs différences.",
+              "La diffusion bénéficie des deux directions. Le support donne un ordre logarithmique du nombre de tours dans son modèle."
+            ],
+            [
+              "Propagation de rumeurs",
+              "Un nœud informé peut arrêter de transmettre après des contacts avec des pairs déjà informés.",
+              "L’activité baisse, et certaines répliques peuvent rester ignorantes."
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Le cours suppose l’absence de conflits d’écriture concurrents. En anti-entropie, on poursuit des échanges périodiques pour rapprocher les répliques. Pour le modèle du pull, si la fraction ignorante est p et que les tirages sont indépendants et uniformes, la fraction attendue au tour suivant est p². Avec p = 0,20, cela donne 0,04, soit 4 %. En push, le support donne p(1 − 1/N)^{N(1 − p)}, proche de p × exp(−(1 − p)) pour N grand. L’approximation p/e suppose en plus p petit. À p = 0,20, les mêmes approximations donnent environ 8,99 % en push et 1,80 % en push-pull, avec l’approximation d’indépendance utilisée pour combiner les conditions. La p. 40 affiche une expression ambiguë pour push-pull et un classement push/pull incompatible avec ses propres récurrences dans ce régime. Réviser à partir des événements « rester ignorant » plutôt qu’en apprenant ce classement."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rumeurs et suppressions. La fraction finale ignorante s du modèle peut satisfaire s = exp[−(1 + 1/pstop)(1 − s)], où pstop est la probabilité de cesser de propager après avoir contacté un nœud déjà informé. Le tableau p. 41 donne environ 595 ignorants sur 10 000 pour pstop = 0,5. Cela motive un mécanisme complémentaire si toutes les répliques doivent finalement recevoir la mise à jour. Une suppression se propage comme une écriture spéciale, appelée tombstone. Si l’on efface seulement la valeur sur A, B peut ensuite réintroduire son ancienne copie. Un tombstone versionné permet à A d’annoncer la suppression à B. Son retrait demande une garantie suffisante de propagation ou une hypothèse explicite sur les délais."
+        }
+      ]
+    }
+  ],
+  "morning14": {
+    "lessons": [
+      {
+        "title": "Linda · un buffer de capacité limitée",
+        "source": "Séance du 14/11, 02:42:30–02:55:22 · Support du cours 1, p. 31–32",
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "text": "Un producteur écrit des tuples (« buffer », i, valeur). Un consommateur doit afficher les valeurs dans l’ordre des indices. Pour borner le stock à C places, initialiser C tuples (« libre »). Chaque jeton représente une place disponible."
+          },
+          {
+            "kind": "table",
+            "rows": [
+              [
+                "Processus",
+                "Instructions"
+              ],
+              [
+                "Initialisation",
+                "Répéter C fois : out(« libre »)."
+              ],
+              [
+                "Producteur",
+                "in(« libre »), puis out(« buffer », i, valeur). Incrémenter i."
+              ],
+              [
+                "Consommateur",
+                "in(« buffer », i, ?valeur), puis out(« libre »). Afficher la valeur et incrémenter i."
+              ]
+            ]
+          },
+          {
+            "kind": "paragraph",
+            "text": "Avec C = 2, deux dépôts remplissent le buffer. Au troisième, in(« libre ») attend. Quand le consommateur retire la première donnée et remet un jeton, le producteur reprend. Quand le buffer est vide, le consommateur attend le tuple demandé."
+          },
+          {
+            "kind": "paragraph",
+            "text": "Dans cette trace, les indices imposent l’ordre de lecture. La primitive in retire une occurrence, tandis que rd la conserve. Le contrôle de capacité utilise l’attente naturelle de in."
+          }
+        ]
+      },
+      {
+        "title": "Hypercube · 60 nœuds et 4 sommets vacants",
+        "source": "Séance du 14/11, 02:56:33–03:05:03 · Support du cours 1, p. 34–35",
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "text": "Pour stocker 50 To avec 1 To par nœud, il faut au moins 50 nœuds, sans réplication. Avec les 60 nœuds disponibles, on dispose de 60 To bruts, dont 10 To de marge. Pour placer les 60 nœuds, 2⁵ = 32 < 60 ≤ 64 = 2⁶ : il faut une dimension 6 et quatre sommets restent vacants."
+          },
+          {
+            "kind": "paragraph",
+            "text": "Première décision : attribuer chaque clé à un sommet actif. Deuxième décision : vérifier que chaque saut modifie un seul bit et mène à un sommet actif. Avec les IDs actifs 0 à 59, un hachage vers ces IDs résout la première décision."
+          },
+          {
+            "kind": "table",
+            "rows": [
+              [
+                "Chemin testé",
+                "Vérification"
+              ],
+              [
+                "55 → 63 → 59",
+                "63 est vacant. Le chemin échoue au premier saut."
+              ],
+              [
+                "55 → 51 → 59",
+                "51 est actif. Chaque saut modifie un seul bit."
+              ]
+            ]
+          },
+          {
+            "kind": "paragraph",
+            "text": "Pour les IDs actifs contigus 0 à 59, effacer d’abord les bits qui doivent passer à 0, puis activer ceux qui doivent passer à 1, donne un plus court chemin actif. La première phase descend jusqu’au ET bit à bit des extrémités et la seconde remonte sans dépasser la destination. Pour des trous arbitraires, vérifier les chemins disponibles."
+          }
+        ]
+      },
+      {
+        "title": "Recherche P2P · comparer les stratégies",
+        "source": "Séance du 14/11, 03:05:23–03:06:16 · Anciennes questions p. 7 · Support p. 36–37",
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "text": "Réseau de 10 000 nœuds, degré 10 dans le modèle idéal, 1 % de copies, TTL = 4. Exclure la source. On calcule le maximum du modèle sans recouvrement, puis on approxime chaque sondage comme indépendant avec 1 % de succès."
+          },
+          {
+            "kind": "table",
+            "rows": [
+              [
+                "Stratégie",
+                "Budget maximal de nœuds",
+                "Succès et ratio P/n"
+              ],
+              [
+                "Inondation",
+                "10 + 90 + 810 + 7 290 = 8 200",
+                "P ≈ 100 % et P/n ≈ 0,000122"
+              ],
+              [
+                "Marche aléatoire",
+                "4, un contact par saut",
+                "P ≈ 3,94 % et P/n ≈ 0,00985"
+              ]
+            ]
+          },
+          {
+            "kind": "paragraph",
+            "text": "Sur n tests indépendants, l’échec de tous les tests a pour probabilité 0,99 à la puissance n. Donc P(succès) = 1 − 0,99 à la puissance n. La marche a un ratio environ 81 fois supérieur dans cet exemple. L’inondation réussit beaucoup plus souvent et coûte davantage en contacts."
+          },
+          {
+            "kind": "paragraph",
+            "text": "Les revisites, les cycles et la répartition des copies peuvent modifier les résultats sur un graphe réel. Le ratio de l’exercice utilise le budget maximal de contacts."
+          }
+        ]
+      }
+    ],
+    "mock90": {
+      "intro": "90 minutes, sur 20. Temps indicatifs par partie. Rédige une réponse courte pour les notions, puis indique les hypothèses et les unités de chaque calcul. Un schéma est possible s’il rend la réponse plus claire.",
+      "exercises": [
+        {
+          "title": "A · Architectures et middleware · 4 points · 15 min",
+          "prompt": "Distinguer distribué et décentralisé. Expliquer le rôle du middleware et donner un exemple de réseau superposé. Pourquoi la transparence aux pannes est-elle difficile ?",
+          "rubric": "1 pt par idée. Un service sur plusieurs VM peut conserver un contrôle central. Le middleware fournit des fonctions communes, par exemple le nommage et RPC. Dans Chord, les pairs forment un réseau logique au-dessus d’IP. Un timeout peut venir d’une panne, d’une lenteur ou du réseau, et une opération peut déjà avoir abouti."
+        },
+        {
+          "title": "B · Communications · 4 points · 15 min",
+          "prompt": "Décrire le trajet d’un RPC, puis distinguer accusé et résultat. Donner l’ordre des primitives TCP côté serveur. Expliquer ce qui peut arriver à un message ZeroMQ encore en file si le processus s’arrête.",
+          "rubric": "1 pt par idée. Client, stub client, réseau, stub serveur, service, puis réponse en sens inverse. Un accusé marque un jalon, le résultat arrive ensuite, par exemple via un callback. TCP : socket, bind, listen, accept, puis échange sur la socket connectée et close. La file ZeroMQ en mémoire peut être perdue à l’arrêt du processus."
+        },
+        {
+          "title": "C · Linda et buffer borné · 4 points · 20 min",
+          "prompt": "Écrire l’initialisation et les deux boucles d’un producteur et d’un consommateur pour un buffer de deux places, indexé par i. Dire à quel moment chaque processus peut attendre.",
+          "rubric": "1 pt pour les deux jetons initiaux, 1 pt pour in(« libre ») avant le dépôt indexé, 1 pt pour in(« buffer », i, ?r) puis out(« libre »), 1 pt pour l’attente du producteur quand le buffer est plein et du consommateur quand le tuple attendu manque."
+        },
+        {
+          "title": "D · Capacité et hypercube · 3 points · 15 min",
+          "prompt": "Stocker 50 To sur 60 nœuds de 1 To. Calculer la capacité minimale et la dimension logique. Avec les IDs actifs 0 à 59, discuter la route 55 → 63 → 59 et donner une autre route.",
+          "rubric": "1 pt : 50 nœuds au minimum, 10 To de marge brute avec 60 nœuds. 1 pt : dimension 6 et 64 sommets, dont 4 vacants. 1 pt : 63 est vacant, 55 → 51 → 59 reste actif et change un bit à chaque saut."
+        },
+        {
+          "title": "E · Recherche P2P · 5 points · 25 min",
+          "prompt": "Un réseau comprend 10 000 nœuds, degré 10 et 1 % de copies. Avec TTL = 4, comparer inondation et marche aléatoire. Calculer les contacts hors source, la probabilité de succès et le ratio P/n. Préciser le modèle.",
+          "rubric": "2 pts : 8 200 contacts idéaux pour l’inondation et 4 pour la marche. 1 pt : P = 1 − 0,99 à la puissance n sous l’hypothèse de sondages indépendants, soit quasi 100 % et 3,94 %. 1 pt : P/n ≈ 0,000122 et 0,00985. 1 pt : le second ratio vaut environ 81 fois le premier, avec un succès nettement plus faible."
+        }
+      ]
+    }
+  }
 };

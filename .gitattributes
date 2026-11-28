@@ -1,2 +1,5 @@
 # Conserver exactement les fins de ligne du fichier original fourni pour le TP.
 Secu/TP/TP_secu_1/sources/RSA_B_A.py -text
+
+# PDF streams must never be normalized as text.
+*.pdf binary

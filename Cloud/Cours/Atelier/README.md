@@ -1,6 +1,6 @@
 # Atelier Cloud
 
-Application pédagogique avec dix modules pour comprendre le cours Cloud et traitements distribués, réviser l’examen et préparer les TP.
+Application pédagogique avec douze modules pour comprendre le cours Cloud et traitements distribués, réviser l’examen et préparer les TP.
 
 ## Utilisation
 
@@ -20,14 +20,16 @@ Puis ouvrir http://127.0.0.1:8765.
 - Données distribuées : comparaison de la réplication et du partitionnement, panne du nœud A, lectures et propagation manuelle d’une mise à jour.
 - Chord : recherche d’une clé de 0 à 31 parmi les neuf nœuds du support, avec les raccourcis et le chemin parcouru.
 - ASP et cloud : accès web ou client natif, puis comparaison pédagogique des responsabilités sur site, IaaS, PaaS et SaaS.
+- Événements et espace partagé : deux schémas interactifs, diffusion vers les abonnés présents, reprise d’une opération Linda et buffer de deux places à jetons. Accès direct : `index.html#evenements`.
+- Architectures des systèmes : cinq schémas sur un même exemple (fiche du livre 42 et commande), parcours des échanges, déploiement illustratif et tableau de comparaison. Accès direct : `index.html#architectures`.
 - Middleware : schéma des applications, des instances de middleware, des OS locaux et du réseau, avec un exemple d’appel distant.
 - Évolutivité : comparaison verticale et horizontale, avec charge entrante, facteur de capacité et nombre de machines réglables.
-- Entraînement maths : huit exercices avec réponse numérique et correction pas à pas sur les files, les probabilités, Little, le dimensionnement, la recherche aléatoire et les capteurs.
-- Synthèse du cours : huit thèmes avec recherche, pièges, savoir-faire et références au support ou à l’oral ; aperçu du livre et corrections du résumé automatique.
-- Préparer l’examen : douze questions filtrables avec corrections masquées, sujet blanc de 45 minutes sur 20 et mémo des formules. Ce format est proposé pour l’entraînement, pas annoncé par le professeur.
+- Entraînement maths : douze exercices avec réponse numérique et correction pas à pas, dont l’hypercube à 60 nœuds et la comparaison P2P avec TTL.
+- Synthèse du cours : trente thèmes avec recherche, pièges, savoir-faire et références au support ou à l’oral.
+- Préparer l’examen : vingt-huit questions à correction masquée, sujet blanc de 90 minutes sur 20, entraînement de 45 minutes et mémo. L’enseignant a annoncé une durée de 90 minutes. Les sujets et barèmes servent à l’entraînement.
 - Préparer les TP : simulation de panne avant/après détection, effet de la charge sur le survivant et six étapes avec preuves à produire. La progression est conservée dans le navigateur si son stockage local est disponible ; « Réinitialiser » dans cette rubrique l’efface.
 
-La fiche initiale et le nouveau [guide de révision et TP de 13 pages](guide-revision.pdf) sont accessibles dans l’application. Accès direct aux nouvelles rubriques : `index.html#synthese`, `index.html#examens`, `index.html#tp`.
+La fiche initiale et le nouveau [guide de révision des cours 1 et 2](guide-revision.pdf) sont accessibles dans l’application. Accès direct aux nouvelles rubriques : `index.html#synthese`, `index.html#examens`, `index.html#tp`.
 
 ## Sources et limites
 
@@ -52,7 +54,9 @@ Modifier `../Resumes/revisions.json`, puis exécuter `python ../Outils/generer_r
 Avec Node.js disponible :
 
 ```powershell
-node --test tests/model.test.cjs
+node --test tests/*.test.cjs
 ```
 
-Les tests vérifient le modèle de file, le parcours Chord du support, le bouclage de l’anneau et les 288 combinaisons départ/clé.
+Les 16 tests vérifient les modèles de file et de capacité, Chord sur les 288 combinaisons départ/clé, et la coordination par pub/sub, tuples Linda et buffer borné.
+
+La comparaison événements/Linda est un modèle local : pub/sub éphémère sans durabilité ; tous les tuples utilisent le même motif et chaque dépôt crée une occurrence. La simulation reprend les demandes bloquées dans leur ordre d’arrivée pour l’illustration, sans présenter cet ordre comme une garantie de Linda. Le journal des réceptions pub/sub est une trace visuelle, pas une file de rejeu.
