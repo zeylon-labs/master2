@@ -23,7 +23,7 @@ Travaille dans le dépôt `zeylon-labs/master2`, sous `Secu/TP/TP_secu_3/`. Dév
 
 **Choix de réalisation.** Un formulaire de connexion, une session Flask et un seul compte local suffisent pour la partie 5. Conserver un hachage salé et paramétré du mot de passe du compte, par exemple avec scrypt via Werkzeug. Documenter la création du compte et la vérification du hachage. Utiliser des données fictives. Le membre authentifié doit pouvoir lire le message après un démarrage normal du serveur. Pour la partie 4, utiliser le certificat correspondant à l’URL exacte. Pour reproduire les deux états de confiance, privilégier un profil de navigateur dédié ou une configuration de test isolée. Conserver la vérification TLS active dans le test de succès.
 
-**Partie 6, p. 4.** L’extension est facultative et signalée « Projet à 3 ». Les deux pistes proposées sont les principes OWASP appliqués à plusieurs utilisateurs ou le chiffrement ABE selon leur statut. Avec le périmètre individuel ou en binôme, terminer le mandat à la partie 5.
+**Partie 6 (facultative, p. 4).** Le mandat actuel s’arrête à la partie 5. Attendre une demande explicite d’Arthur avant de commencer la partie 6. Si elle est demandée, traiter uniquement l’application des principes OWASP à plusieurs utilisateurs. Le chiffrement ABE est exclu du périmètre.
 
 ## Ordre de réalisation et recette
 
