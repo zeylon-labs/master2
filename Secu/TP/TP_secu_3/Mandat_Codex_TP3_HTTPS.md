@@ -25,6 +25,16 @@ Travaille dans le dépôt `zeylon-labs/master2`, sous `Secu/TP/TP_secu_3/`. Dév
 
 **Partie 6 (facultative, p. 4).** Le mandat actuel s’arrête à la partie 5. Attendre une demande explicite d’Arthur avant de commencer la partie 6. Si elle est demandée, traiter uniquement l’application des principes OWASP à plusieurs utilisateurs. Le chiffrement ABE est exclu du périmètre.
 
+## Qualité du code et rédaction du rendu
+
+Au démarrage, consulter les consignes du dépôt et les skills disponibles dans la session Codex. Appliquer ceux qui conviennent à ce TP Python pour la conception, la revue du code, les tests et la rédaction. Si aucun skill adapté n’est disponible pour un point, appliquer directement les critères ci-dessous.
+
+- **Architecture.** Garder le déroulement du TP lisible depuis `build.py` et `run_server.py`. Le premier enchaîne la création de l’autorité, la demande du serveur et sa signature. Le second expose le service Flask. Garder les opérations cryptographiques dans les modules fournis et permettre aux tests d’exercer ces mêmes fonctions.
+- **Factorisation.** Réutiliser les fonctions du squelette avant d’en créer. Par exemple, si la construction et le lancement utilisent chacun leur propre liste de chemins PEM, les regrouper à un endroit pour qu’un changement de nom se répercute partout. Extraire une fonction quand son nom rend l’intention plus claire ou qu’elle évite de maintenir deux fois la même règle.
+- **Lisibilité et commentaires.** Suivre les conventions Python du projet. Choisir des noms qui distinguent la clé privée, la demande de signature et le certificat signé. Garder les étapes dans leur ordre d’exécution. Commenter en français les choix dont la raison mérite d’être expliquée, par exemple pourquoi le certificat doit couvrir le nom `localhost`. Retirer les mentions « à compléter » une fois le travail fait.
+- **Rapport, légendes et réponses à Arthur.** Écrire dans un français simple et précis, pour un camarade de master qui découvre le TP. Développer les sigles à leur première apparition. Répondre directement à la question et appuyer l’explication sur un détail visible dans la capture ou la sortie du test. Par exemple, si le navigateur signale une autorité inconnue, citer le message affiché et expliquer pourquoi ce navigateur ne reconnaît pas la CA du TP. Réserver les formulations à la première personne aux manipulations réellement effectuées par l’auteur.
+- **Relecture avant publication.** Relire le diff pour repérer les duplications, les noms ambigus et les commentaires qui paraphrasent le code. Rejouer les tests concernés après toute refactorisation. Enfin, relire le PDF avec les captures ouvertes et vérifier qu’un lecteur peut retrouver, pour chacune des cinq parties, la manipulation effectuée, le résultat observé et sa signification.
+
 ## Ordre de réalisation et recette
 
 Commencer par vérifier Python, les dépendances, le navigateur, Wireshark et la capture locale Npcap sous Windows. Prendre les deux captures HTTP avant de passer au serveur final. Si l’accès à la boucle locale ou à une fenêtre graphique manque, poursuivre le développement, les tests réseau et la rédaction. À la fin, indiquer exactement la capture manquante et le geste restant sur le poste. Un journal réseau peut aider au diagnostic. La pièce demandée en partie 1 est une capture d’écran Wireshark.
