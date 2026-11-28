@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv*/
+resources/
+remise-locale/
+*.pem
+compte.json
